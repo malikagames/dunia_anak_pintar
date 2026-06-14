@@ -390,7 +390,34 @@
 
         /* --- HP MEDIA QUERIES PENYESUAIAN --- */
         @media (max-width: 480px) {
-            .g1-screen, .g2-screen { padding: 20px 15px; border-radius: 28px; }
+            .g1-screen { padding: 20px 15px; border-radius: 28px; }
+            
+            /* REVISI RESPONSIVE PILIH KARAKTER GAME 2 (PORTRAIT) */
+            #screen-character-g2.g2-screen {
+                height: auto !important;
+                max-height: 95vh !important;
+                padding: 15px 15px 10px 15px !important;
+            }
+            #screen-character-g2 .char-grid {
+                margin: 10px 0 !important;
+                gap: 10px !important;
+            }
+            #screen-character-g2 .char-card {
+                width: 82px !important;
+                height: 82px !important;
+                line-height: 70px !important;
+                font-size: 36px !important;
+                border-radius: 18px !important;
+            }
+            #screen-character-g2 .btn-action {
+                margin-bottom: 5px !important;
+                margin-top: 5px !important;
+                padding: 10px 20px !important;
+                font-size: 16px !important;
+            }
+
+            /* Penyesuaian Global Sisa Gameplay Lainnya */
+            .g2-screen { padding: 20px 15px; border-radius: 28px; }
             .btn-choice { width: 62px; height: 68px; font-size: 28px; border-radius: 16px; } 
             .carriage { height: 42px; font-size: 22px; }
             .locomotive { font-size: 36px; } 
@@ -403,7 +430,6 @@
             .game-menu-card { width: 160px; padding: 15px; }
             .game-icon { font-size: 45px; }
             .game-card-title { font-size: 15px; }
-            .char-card { width: 85px; height: 85px; line-height: 72px; font-size: 38px;}
             .emoji-item, .target-slot { width: 46px; height: 46px; line-height: 46px; font-size: 30px; }
             .g2-body-style h1 { font-size: 22px; }
             .btn-theme { font-size: 15px; padding: 12px; }
@@ -412,34 +438,26 @@
 </head>
 <body>
 
-    <!-- =================================================== -->
-    <!-- MENU SELEKSI UTAMA (HUB UTAMA)                      -->
-    <!-- =================================================== -->
     <div id="mainMenuHub" class="hub-container">
         <h1 class="hub-title">Dunia Game Anak Pintar 🌟</h1>
         <p class="hub-subtitle">Yuk pilih permainan seru kamu hari ini!</p>
         
         <div class="game-menu-grid">
-            <!-- Kartu Game 1 -->
             <div class="game-menu-card" onclick="launchGame('gamePetugasKereta')">
                 <span class="game-icon">🚂</span>
                 <div class="game-card-title">Petugas Kereta</div>
                 <p style="font-size: 12px; margin: 5px 0 0 0; color: #7f8c8d;">Susun pola gerbong hewan cerdas!</p>
             </div>
             
-            <!-- Kartu Game 2 -->
             <div class="game-menu-card" onclick="launchGame('gamePasangkanGambar')">
                 <span class="game-icon">🧩</span>
                 <div class="game-card-title">Pasangkan Gambar</div>
-                <p style="font-size: 12px; margin: 5px 0 0 0; color: #7f8c8d;">Main tebak puzzle emoji seru!</p>
+                <p style="font-size: 12px; margin: 5px 0 0 0; color: #7f8c8d;">Pasangkan gambar yang sesuai!</p>
             </div>
         </div>
     </div>
 
 
-    <!-- =================================================== -->
-    <!-- CONTAINER UTAMA - GAME 1: PETUGAS KERETA            -->
-    <!-- =================================================== -->
     <div id="gamePetugasKereta" class="game-hub-screen">
         <div class="g1-body-style">
             
@@ -511,13 +529,9 @@
     </div>
 
 
-    <!-- =================================================== -->
-    <!-- CONTAINER UTAMA - GAME 2: PASANGKAN GAMBAR          -->
-    <!-- =================================================== -->
     <div id="gamePasangkanGambar" class="game-hub-screen">
         <div class="g2-body-style">
             
-            <!-- LAYAR CHOOSE CHARACTER GAME 2 -->
             <div id="screen-character-g2" class="g2-screen active">
                 <div style="width:100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
                     <button class="btn-header-back" onclick="showMainMenuHub()">🏠 Keluar</button>
@@ -537,7 +551,6 @@
                 <button id="btn-start-game" class="btn-action btn-disabled" onclick="confirmCharacterG2()" disabled>Mulai Main Baru 🎮</button>
             </div>
 
-            <!-- LAYAR MAP SELECTION TEMA GAME 2 -->
             <div id="screen-theme-g2" class="g2-screen">
                 <div class="g2-map-header">
                     <h1 id="theme-welcome" style="font-size:22px; margin:0; text-align:left; color:#e67e22;">Yuk Bermain!</h1>
@@ -550,11 +563,10 @@
                     <button class="btn-theme" id="btn-ternak" onclick="checkAndStartTheme('ternak')">🐄 BERMAIN DI PETERNAKAN</button>
                     <button class="btn-theme" id="btn-tumbuhan" onclick="checkAndStartTheme('tumbuhan')">🌲 KEBUN TANAMAN & BUAH</button>
                     <button class="btn-theme" id="btn-space" onclick="checkAndStartTheme('space')">🚀 TERBANG KE ANTARIKSA</button>
-                    <button class="btn-theme" id="btn-kendaraan" onclick="checkAndStartTheme('kendaraan')">🚑 GARASI KENDARAAN KOTA</button>
+                    <button class="btn-theme" id="btn-kendaraan" onclick="checkAndStartTheme('kendaraan')">🚑 ALAT TRANSPORTASI</button>
                 </div>
             </div>
 
-            <!-- LAYAR GAMEPLAY PASANGKAN PUZZLE -->
             <div id="screen-game-g2" class="g2-screen">
                 <div class="g2-game-header">
                     <button class="btn-back" onclick="backToThemeMenu()">⬅️ Peta Tema</button>
@@ -580,7 +592,6 @@
                 </div>
             </div>
 
-            <!-- LAYAR MENANG AKHIR GAME 2 -->
             <div id="screen-win-g2" class="g2-screen" style="justify-content: center; gap: 15px;">
                 <div class="big-char" id="final-char">👦</div>
                 <h1 style="color: #9b59b6; font-size: 26px; margin: 5px 0;">HOREEE SELESAI SEMUA! 🥳🏆</h1>
@@ -595,9 +606,6 @@
     </div>
 
 
-    <!-- =================================================== -->
-    <!-- LOGIKA JAVASCRIPT GLOBAL & GABUNGAN                 -->
-    <!-- =================================================== -->
     <script>
         // --- AUDIO HUB AUDIO CONTEXT ---
         let globalAudioCtx = null;
