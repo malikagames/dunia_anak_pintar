@@ -215,6 +215,7 @@
             padding: 15px;
             cursor: pointer;
             width: 105px;
+            text-align: center;
             transition: all 0.15s ease;
         }
 
@@ -646,6 +647,7 @@
             padding: 15px;
             cursor: pointer;
             width: 105px;
+            text-align: center;
             transition: all 0.15s ease;
         }
 
@@ -1442,7 +1444,7 @@
 
 
         /* ============================================================
-           BAGIAN 8: RESPONSIVE — MEDIA QUERIES
+           BAGIAN 8: RESPONSIVE — MEDIA QUERIES (FIXED OVERFLOW BUG)
            ============================================================ */
         @media (max-width: 920px) and (orientation: landscape) {
             .g3-game-layout {
@@ -1550,7 +1552,7 @@
                 font-size: 15px;
             }
 
-            /* Game 2 - Portrait */
+            /* Game 2 - Portrait (FIXED BUG VISUAL SELECTION) */
             #screen-character-g2.g2-screen {
                 height: auto !important;
                 max-height: 95vh !important;
@@ -1562,19 +1564,29 @@
                 gap: 10px !important;
             }
 
+            /* Perbaikan Utama: Mengganti height statis menjadi auto agar nama tidak meluap ke bawah luar modal */
             #screen-character-g2 .char-card {
-                width: 82px !important;
-                height: 82px !important;
-                line-height: 70px !important;
+                width: 92px !important;
+                height: auto !important;
+                line-height: normal !important;
                 font-size: 36px !important;
                 border-radius: 18px !important;
-            }
-            #screen-character-g2 .char-card .avatar {
-                font-size: 45px;
+                padding: 10px !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
             }
 
-             #screen-character-g2 .char-card .name {
-                font-size: 15px;
+            #screen-character-g2 .char-card .avatar {
+                font-size: 44px !important;
+                line-height: 1 !important;
+            }
+
+            #screen-character-g2 .char-card .name {
+                font-size: 14px !important;
+                margin-top: 6px !important;
+                line-height: normal !important;
             }
 
             #screen-character-g2 .btn-action {
@@ -1631,7 +1643,6 @@
 
     <!-- ================================================================
          MENU HUB UTAMA
-         Tambahkan kartu game baru di dalam .game-menu-grid di bawah ini
          ================================================================ -->
     <div id="mainMenuHub" class="hub-container">
         <h1 class="hub-title">Dunia Game Anak Pintar 🌟</h1>
@@ -1639,41 +1650,26 @@
 
         <div class="game-menu-grid">
 
-            <!-- KARTU GAME 1: Petugas Kereta -->
+            <!-- KARTU GAME 1 -->
             <div class="game-menu-card" onclick="launchGame('gamePetugasKereta')">
                 <span class="game-icon">🚂</span>
                 <div class="game-card-title">Petugas Kereta</div>
                 <p class="game-card-desc">Susun pola gerbong hewan cerdas!</p>
             </div>
 
-            <!-- KARTU GAME 2: Pasangkan Gambar -->
+            <!-- KARTU GAME 2 -->
             <div class="game-menu-card" onclick="launchGame('gamePasangkanGambar')">
                 <span class="game-icon">🖼️</span>
                 <div class="game-card-title">Pasangkan Gambar</div>
                 <p class="game-card-desc">Pasangkan gambar yang sesuai!</p>
             </div>
 
-            <!-- KARTU GAME 3: Puzzle Adventure -->
+            <!-- KARTU GAME 3 -->
             <div class="game-menu-card" onclick="launchGame('gamePuzzleAdventure')">
                 <span class="game-icon">🧩</span>
                 <div class="game-card-title">Puzzle Adventure</div>
                 <p class="game-card-desc">Susun puzzle gambar seru!</p>
             </div>
-
-            <!-- ┌─────────────────────────────────────────────────────┐
-                 │  PLACEHOLDER: TAMBAH GAME BARU DI SINI             │
-                 │                                                     │
-                 │  Salin blok di bawah ini, ganti isinya:            │
-                 │  - 'gameNamaGameBaru' → ID unik game kamu           │
-                 │  - Emoji, judul, dan deskripsi sesuaikan           │
-                 │                                                     │
-                 │  <div class="game-menu-card"                       │
-                 │       onclick="launchGame('gameNamaGameBaru')">     │
-                 │    <span class="game-icon">🎯</span>               │
-                 │    <div class="game-card-title">Nama Game</div>    │
-                 │    <p class="game-card-desc">Deskripsi singkat</p> │
-                 │  </div>                                             │
-                 └─────────────────────────────────────────────────────┘ -->
 
         </div>
     </div>
@@ -1734,7 +1730,7 @@
                 </div>
             </div>
 
-            <!-- Layar: Selesai / Menang -->
+            <!-- Layar: Selesai -->
             <div id="screen-end-g1" class="g1-screen">
                 <h1>Horeee! Luar Biasa! 🎉</h1>
                 <p id="end-congrats"></p>
@@ -1834,7 +1830,7 @@
                 </div>
             </div>
 
-            <!-- Layar: Selesai / Menang -->
+            <!-- Layar: Selesai -->
             <div id="screen-win-g2" class="g2-screen" style="justify-content: center; gap: 15px;">
                 <div class="big-char" id="final-char">👦</div>
                 <h1 style="color: #9b59b6; font-size: 26px; margin: 5px 0;">HOREEE SELESAI SEMUA! 🥳🏆</h1>
@@ -1971,962 +1967,911 @@
     </div>
 
 
-    <!-- ================================================================
-         PLACEHOLDER: LAYAR GAME BARU
-         Salin blok di bawah ini untuk setiap game baru yang ditambah.
-         Ganti semua teks 'NAMA_GAME' dengan nama game kamu.
-         ================================================================
-
-    <div id="gameNAMA_GAME" class="game-hub-screen">
-        <div class="gX-wrapper"> ← buat class wrapper baru, misal g4-wrapper
-
-            (Isi HTML game kamu di sini)
-
-        </div>
-    </div>
-
-    ================================================================ -->
-
-
+    <!-- ============================================================================
+         SCRIPT CORE & REFACTORED LOGIC ENGINE (Namespace-Based)
+         ============================================================================ -->
     <script>
-        /* ============================================================
-           SCRIPT BAGIAN 0: AUDIO GLOBAL & NAVIGASI HUB
-           (Fungsi ini dipakai oleh semua game)
-           ============================================================ */
-        let globalAudioCtx = null;
-        let trainKlaksonBuffer = null;
+        /* -----------------------------------------------------------
+           1. APPCRE: CENTRAL HUB SYSTEM & AUDIO MANAGER
+           ----------------------------------------------------------- */
+        const AppCore = {
+            audioCtx: null,
+            trainKlaksonBuffer: null,
 
-        function initGlobalAudio() {
-            if (!globalAudioCtx) {
-                globalAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                loadKlaksonAudio();
-            }
-        }
-
-        function loadKlaksonAudio() {
-            const soundUrl = "https://raw.githubusercontent.com/malikagames/dunia_anak_pintar/main/klakson.mp3";
-            fetch(soundUrl)
-                .then(r => r.arrayBuffer())
-                .then(b => globalAudioCtx.decodeAudioData(b))
-                .then(a => trainKlaksonBuffer = a)
-                .catch(e => console.error('Gagal memuat audio klakson:', e));
-        }
-
-        function playKlaksonFileSound() {
-            if (!globalAudioCtx || !trainKlaksonBuffer) {
-                playSystemSound('level-up');
-                return;
-            }
-            const source = globalAudioCtx.createBufferSource();
-            source.buffer = trainKlaksonBuffer;
-            source.connect(globalAudioCtx.destination);
-            source.start(globalAudioCtx.currentTime);
-            source.stop(globalAudioCtx.currentTime + 1.5);
-        }
-
-        /**
-         * launchGame(gameId)
-         * Fungsi untuk berpindah dari menu ke game yang dipilih.
-         *
-         * CARA MENAMBAH GAME BARU:
-         * 1. Tambah blok `else if` baru di bawah ini.
-         * 2. Panggil fungsi reset/init game baru kamu.
-         *
-         * Contoh:
-         *   else if (gameId === 'gameNamaGameBaru') {
-         *       initGameBaru(); // fungsi inisialisasi game baru
-         *   }
-         */
-        function launchGame(gameId) {
-            initGlobalAudio();
-            document.getElementById('mainMenuHub').style.display = 'none';
-            document.querySelectorAll('.game-hub-screen').forEach(el => el.classList.remove('active-hub'));
-
-            const targetGame = document.getElementById(gameId);
-            if (targetGame) targetGame.classList.add('active-hub');
-
-            if (gameId === 'gamePetugasKereta') {
-                restartGameG1();
-            } else if (gameId === 'gamePasangkanGambar') {
-                restartGameG2();
-            } else if (gameId === 'gamePuzzleAdventure') {
-                resetAllGameG3();
-            }
-            // ── TAMBAH ELSE IF UNTUK GAME BARU DI SINI ──────────────
-            // else if (gameId === 'gameNamaGameBaru') {
-            //     initGameBaru();
-            // }
-            // ─────────────────────────────────────────────────────────
-        }
-
-        /**
-         * showMainMenuHub()
-         * Kembali ke menu utama dari game manapun.
-         * Tambahkan cleanup timer/variabel game baru di sini jika perlu.
-         */
-        function showMainMenuHub() {
-            // Cleanup tiap game saat keluar
-            if (typeof stopHintTimer === 'function') stopHintTimer();
-            if (typeof intervalG3 !== 'undefined') clearInterval(intervalG3);
-            // ── TAMBAH CLEANUP GAME BARU DI SINI ─────────────────────
-            // if (typeof intervalGameBaru !== 'undefined') clearInterval(intervalGameBaru);
-            // ─────────────────────────────────────────────────────────
-
-            document.querySelectorAll('.game-hub-screen').forEach(el => el.classList.remove('active-hub'));
-            document.getElementById('mainMenuHub').style.display = 'flex';
-        }
-
-
-        /* ============================================================
-           SCRIPT BAGIAN 1: GAME 1 — PETUGAS KERETA 🚂
-           ============================================================ */
-        let playerName = '';
-        let playerAvatar = '';
-        let currentLevel = 1;
-        const maxLevels = 15;
-        let targetAnimals = [];
-        let userCarriages = [];
-        let isTransitioning = false;
-
-        const animalEmojis = { panda: '🐼', lion: '🦁', frog: '🐸', rabbit: '🐰' };
-        const animalKeys = ['panda', 'lion', 'frog', 'rabbit'];
-
-        function playSystemSound(type) {
-            initGlobalAudio();
-            if (!globalAudioCtx) return;
-            const osc = globalAudioCtx.createOscillator();
-            const gain = globalAudioCtx.createGain();
-            osc.connect(gain);
-            gain.connect(globalAudioCtx.destination);
-            const now = globalAudioCtx.currentTime;
-
-            if (type === 'click') {
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(450, now);
-                gain.gain.setValueAtTime(0.2, now);
-                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
-                osc.start(now); osc.stop(now + 0.08);
-            } else if (type === 'correct') {
-                osc.type = 'triangle';
-                osc.frequency.setValueAtTime(587.33, now);
-                osc.frequency.setValueAtTime(783.99, now + 0.12);
-                gain.gain.setValueAtTime(0.2, now);
-                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
-                osc.start(now); osc.stop(now + 0.3);
-            } else if (type === 'wrong') {
-                osc.type = 'sawtooth';
-                osc.frequency.setValueAtTime(150, now);
-                osc.frequency.setValueAtTime(110, now + 0.1);
-                gain.gain.setValueAtTime(0.2, now);
-                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
-                osc.start(now); osc.stop(now + 0.25);
-            } else if (type === 'level-up') {
-                osc.type = 'sine';
-                const freqs = [523.25, 659.25, 783.99, 1046.50];
-                freqs.forEach((f, i) => osc.frequency.setValueAtTime(f, now + (i * 0.07)));
-                gain.gain.setValueAtTime(0.2, now);
-                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
-                osc.start(now); osc.stop(now + 0.4);
-            }
-        }
-
-        function playDriveHorn() { initGlobalAudio(); playKlaksonFileSound(); }
-
-        function showScreenG1(screenId) {
-            document.querySelectorAll('#gamePetugasKereta .g1-screen').forEach(s => s.classList.remove('active'));
-            document.getElementById(screenId).classList.add('active');
-        }
-
-        function selectCharacterG1(name, avatar) {
-            playSystemSound('click');
-            playerName = name;
-            playerAvatar = avatar;
-            document.getElementById('player-avatar').innerText = playerAvatar;
-            document.getElementById('player-name').innerText = playerName;
-            const savedLevel = localStorage.getItem('kereta_hewan_level');
-            currentLevel = savedLevel ? parseInt(savedLevel, 10) : 1;
-            showScreenG1('screen-game-g1');
-            startGameplay();
-        }
-
-        function generatePattern(level) {
-            let length = 3;
-            if (level > 4) length = 4;
-            if (level > 8) length = 5;
-            if (level > 12) length = 6;
-            let pattern = [];
-            if (level <= 3) {
-                let a = animalKeys[Math.floor(Math.random() * 4)];
-                let b = animalKeys[Math.floor(Math.random() * 4)];
-                while (a === b) b = animalKeys[Math.floor(Math.random() * 4)];
-                for (let i = 0; i < length; i++) pattern.push(i % 2 === 0 ? a : b);
-            } else if (level <= 7) {
-                let a = animalKeys[Math.floor(Math.random() * 4)];
-                let b = animalKeys[Math.floor(Math.random() * 4)];
-                while (a === b) b = animalKeys[Math.floor(Math.random() * 4)];
-                for (let i = 0; i < length; i++) {
-                    pattern.push((i % 3 === 0 || i % 3 === 1) ? a : b);
-                }
-            } else {
-                for (let i = 0; i < length; i++) pattern.push(animalKeys[Math.floor(Math.random() * 4)]);
-            }
-            return pattern;
-        }
-
-        function startGameplay() {
-            hideMessage();
-            isTransitioning = false;
-            document.getElementById('current-level').innerText = currentLevel;
-            targetAnimals = generatePattern(currentLevel);
-            userCarriages = [];
-            const targetContainer = document.getElementById('target-pattern');
-            targetContainer.innerHTML = '';
-            targetAnimals.forEach((anim, index) => {
-                const item = document.createElement('div');
-                item.classList.add('pattern-item');
-                item.innerText = animalEmojis[anim];
-                targetContainer.appendChild(item);
-                if (index < targetAnimals.length - 1) {
-                    const arrow = document.createElement('div');
-                    arrow.classList.add('pattern-arrow');
-                    arrow.innerText = '➔';
-                    targetContainer.appendChild(arrow);
-                }
-            });
-            const wrapper = document.getElementById('train-wrapper');
-            wrapper.className = 'no-transition';
-            renderUserCarriages();
-            setTimeout(() => { wrapper.className = 'arrived'; }, 50);
-        }
-
-        function renderUserCarriages() {
-            const list = document.getElementById('carriages-list');
-            list.innerHTML = '';
-            userCarriages.forEach((anim, idx) => {
-                const car = document.createElement('div');
-                car.className = `carriage bg-${anim}`;
-                car.innerText = animalEmojis[anim];
-                car.onclick = () => { if (!isTransitioning) removeCarriageAt(idx); };
-                list.appendChild(car);
-            });
-        }
-
-        function triggerChoice(animal) {
-            if (isTransitioning) return;
-            if (userCarriages.length >= targetAnimals.length) { playSystemSound('wrong'); return; }
-            playSystemSound('click');
-            const btn = document.getElementById(`btn-${animal}`);
-            btn.classList.add('pressed');
-            setTimeout(() => btn.classList.remove('pressed'), 400);
-            userCarriages.push(animal);
-            renderUserCarriages();
-            hideMessage();
-        }
-
-        function popLastAnimal() {
-            if (isTransitioning || userCarriages.length === 0) return;
-            playSystemSound('click');
-            userCarriages.pop();
-            renderUserCarriages();
-            hideMessage();
-        }
-
-        function removeCarriageAt(idx) {
-            playSystemSound('click');
-            userCarriages.splice(idx, 1);
-            renderUserCarriages();
-            hideMessage();
-        }
-
-        function checkTrainDeparture() {
-            if (isTransitioning) return;
-            if (userCarriages.length !== targetAnimals.length) {
-                playSystemSound('wrong');
-                showMessage('Gerbong keretanya belum lengkap, yuk isi lagi! 🚂', 'msg-error');
-                return;
-            }
-            let isCorrect = true;
-            for (let i = 0; i < targetAnimals.length; i++) {
-                if (userCarriages[i] !== targetAnimals[i]) { isCorrect = false; break; }
-            }
-            if (isCorrect) {
-                isTransitioning = true;
-                localStorage.setItem('kereta_hewan_level', currentLevel + 1);
-                playDriveHorn();
-                showMessage('Hebat! Keretanya siap berangkat! Juzz Juuzzz... 🟢💨', 'msg-success');
-                const trainWrapper = document.getElementById('train-wrapper');
-                trainWrapper.classList.add('wheels-rolling');
-                setTimeout(() => { trainWrapper.classList.remove('arrived'); trainWrapper.classList.add('departed'); }, 300);
-                setTimeout(() => {
-                    if (currentLevel < maxLevels) {
-                        currentLevel++;
-                        startGameplay();
-                    } else {
-                        localStorage.removeItem('kereta_hewan_level');
-                        showEndingScreenG1();
+            init() {
+                window.addEventListener('resize', () => {
+                    if (typeof PuzzleGame !== 'undefined' && PuzzleGame.resizeBoard) {
+                        PuzzleGame.resizeBoard();
                     }
-                }, 2600);
-            } else {
-                playSystemSound('wrong');
-                showMessage('Oh-oh! Urutan gerbongnya tertukar. Yuk coba lagi, pasti bisa! 💪', 'msg-error');
-            }
-        }
-
-        function showMessage(text, className) {
-            const msgBox = document.getElementById('message-box');
-            msgBox.innerText = text;
-            msgBox.className = className;
-            msgBox.style.display = 'block';
-        }
-
-        function hideMessage() { document.getElementById('message-box').style.display = 'none'; }
-
-        function showEndingScreenG1() {
-            document.getElementById('end-congrats').innerText =
-                `Hebat sekali, Masinis Cerdas ${playerName}! Kamu sukses menyusun semua gerbong dari level 1 sampai 15 dengan sempurna!`;
-            showScreenG1('screen-end-g1');
-        }
-
-        function restartGameG1() {
-            localStorage.removeItem('kereta_hewan_level');
-            showScreenG1('screen-char');
-        }
-
-
-        /* ============================================================
-           SCRIPT BAGIAN 2: GAME 2 — PASANGKAN GAMBAR 🖼️
-           ============================================================ */
-
-        // Data soal per tema (3 soal masing-masing berisi 7 emoji)
-        const databaseG2 = {
-            laut: [['🐬', '🐳', '🐙', '🦀', '🦈', '🐠', '🪼'], ['🦑', '🦐', '🐡', '🦭', '🪼', '🐋', '🦦'], ['🐬', '🐳', '🐙', '🦀', '🦈', '🐠', '🪼']],
-            ternak: [['🐄', '🐖', '🐑', '🐓', '🐎', '🐂', '🐔'], ['🦆', '🦃', '🐐', '🫏', '🐂', '🐃', '🦙'], ['🐄', '🐖', '🐑', '🐓', '🐎', '🐐', '🦆']],
-            tumbuhan: [['🌲', '🌻', '🍄', '🍓', '🥕', '🍎', '🍇'], ['🌴', '🌹', '🌵', '🍉', '🍌', '🍋', '🍍'], ['🌻', '🌲', '🍓', '🍎', '🌹', '🍉', '🍌']],
-            space: [['🚀', '👨‍🚀', '🛸', '🌍', '🌙', '☀️', '⭐'], ['🪐', '☄️', '🛰️', '🔭', '🚀', '👩‍🚀', '🛸'], ['🚀', '🌍', '🌙', '🪐', '⭐', '👨‍🚀', '🛰️']],
-            kendaraan: [['🚑', '🚂', '✈️', '🚢', '🚲', '🚗', '🚌'], ['🚒', '🚓', '🚕', '🚚', '🏍️', '🚁', '✈️'], ['🚑', '🚂', '✈️', '🚒', '🚗', '🚚', '🚁']]
-        };
-
-        const themeOrder = ['laut', 'ternak', 'tumbuhan', 'space', 'kendaraan'];
-        const titleMap = { laut: '🐬 Hewan Laut', ternak: '🐄 Peternakan', tumbuhan: '🌲 Tanaman & Buah', space: '🚀 Antariksa', kendaraan: '🚑 Kendaraan' };
-
-        let selectedCharacterG2 = '';
-        let currentTheme = '';
-        let currentQuestionIdx = 0;
-        let matchedCount = 0;
-        let finishedThemes = [];
-        let hintTimer = null;
-
-        function playSoundG2(type) {
-            initGlobalAudio();
-            if (!globalAudioCtx) return;
-            const osc = globalAudioCtx.createOscillator();
-            const gain = globalAudioCtx.createGain();
-            osc.connect(gain);
-            gain.connect(globalAudioCtx.destination);
-            const now = globalAudioCtx.currentTime;
-
-            if (type === 'click') {
-                osc.type = 'sine'; osc.frequency.setValueAtTime(400, now); gain.gain.setValueAtTime(0.3, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1); osc.start(now); osc.stop(now + 0.1);
-            } else if (type === 'correct') {
-                osc.type = 'triangle'; osc.frequency.setValueAtTime(523.25, now); osc.frequency.setValueAtTime(659.25, now + 0.1); gain.gain.setValueAtTime(0.3, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25); osc.start(now); osc.stop(now + 0.25);
-            } else if (type === 'error') {
-                osc.type = 'sawtooth'; osc.frequency.setValueAtTime(180, now); osc.frequency.setValueAtTime(120, now + 0.1); gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2); osc.start(now); osc.stop(now + 0.2);
-            } else if (type === 'star') {
-                osc.type = 'sine'; osc.frequency.setValueAtTime(587.33, now); osc.frequency.setValueAtTime(880, now + 0.1); gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2); osc.start(now); osc.stop(now + 0.2);
-            } else if (type === 'win') {
-                osc.type = 'square'; const notes = [523.25, 659.25, 783.99, 1046.50]; notes.forEach((freq, idx) => osc.frequency.setValueAtTime(freq, now + (idx * 0.08))); gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.45); osc.start(now); osc.stop(now + 0.45);
-            }
-        }
-
-        function showScreenG2(screenId) {
-            document.querySelectorAll('#gamePasangkanGambar .g2-screen').forEach(s => s.classList.remove('active'));
-            document.getElementById(screenId).classList.add('active');
-        }
-
-        function selectCharacterG2(char, element) {
-            playSoundG2('click');
-            selectedCharacterG2 = char;
-            document.querySelectorAll('#gamePasangkanGambar .char-card').forEach(card => card.classList.remove('selected'));
-            element.classList.add('selected');
-            const startBtn = document.getElementById('btn-start-game');
-            startBtn.classList.remove('btn-disabled');
-            startBtn.removeAttribute('disabled');
-        }
-
-        function confirmCharacterG2() { playSoundG2('click'); updateThemeMenuUI(); showScreenG2('screen-theme-g2'); }
-        function backToThemeMenu() { stopHintTimer(); playSoundG2('click'); updateThemeMenuUI(); showScreenG2('screen-theme-g2'); }
-
-        function updateThemeMenuUI() {
-            document.getElementById('theme-welcome').innerText = `${selectedCharacterG2} Pilih Tema!`;
-            themeOrder.forEach(theme => {
-                const btn = document.getElementById(`btn-${theme}`);
-                if (btn) {
-                    if (finishedThemes.includes(theme)) btn.classList.add('completed');
-                    else btn.classList.remove('completed');
-                }
-            });
-        }
-
-        function checkAndStartTheme(themeName) {
-            if (finishedThemes.includes(themeName)) return;
-            currentQuestionIdx = 0;
-            startQuestion(themeName, currentQuestionIdx);
-        }
-
-        function resetHintTimer() { stopHintTimer(); hintTimer = setTimeout(triggerHint, 10000); }
-
-        function stopHintTimer() {
-            clearTimeout(hintTimer);
-            document.querySelectorAll('#gamePasangkanGambar .emoji-item, #gamePasangkanGambar .target-slot')
-                .forEach(el => el.classList.remove('hint-blink'));
-        }
-
-        function triggerHint() {
-            const activePieces = Array.from(document.querySelectorAll('#gamePasangkanGambar .emoji-item'))
-                .filter(p => p.style.visibility !== 'hidden');
-            if (activePieces.length === 0) return;
-            const randomPiece = activePieces[0];
-            const targetEmoji = randomPiece.innerText;
-            const matchingSlot = Array.from(document.querySelectorAll('#gamePasangkanGambar .target-slot'))
-                .find(s => s.dataset.emoji === targetEmoji && !s.classList.contains('matched'));
-            if (randomPiece && matchingSlot) {
-                randomPiece.classList.add('hint-blink');
-                matchingSlot.classList.add('hint-blink');
-            }
-        }
-
-        function startQuestion(themeName, qIdx) {
-            currentTheme = themeName;
-            currentQuestionIdx = qIdx;
-            matchedCount = 0;
-            document.getElementById('next-popup').style.display = 'none';
-            document.querySelectorAll('#gamePasangkanGambar .star').forEach(s => s.classList.remove('show'));
-            document.getElementById('game-title').innerText = titleMap[themeName];
-            document.getElementById('game-question-info').innerText = `Soal ${qIdx + 1}/3`;
-
-            const piecesBox = document.getElementById('pieces-box');
-            const targetsBox = document.getElementById('targets-box');
-            piecesBox.innerHTML = '';
-            targetsBox.innerHTML = '';
-
-            const items = [...databaseG2[themeName][qIdx]];
-            const shuffledTargets = [...items].sort(() => Math.random() - 0.5);
-
-            shuffledTargets.forEach(emoji => {
-                const slot = document.createElement('div');
-                slot.classList.add('target-slot');
-                slot.dataset.emoji = emoji;
-                slot.innerText = emoji;
-                slot.addEventListener('dragover', e => e.preventDefault());
-                slot.addEventListener('drop', dropPiece);
-                targetsBox.appendChild(slot);
-            });
-
-            const shuffledPieces = [...items].sort(() => Math.random() - 0.5);
-            shuffledPieces.forEach(emoji => {
-                const piece = document.createElement('div');
-                piece.classList.add('emoji-item');
-                piece.setAttribute('draggable', 'true');
-                piece.id = 'emoji-' + emoji;
-                piece.innerText = emoji;
-                piece.addEventListener('dragstart', e => {
-                    stopHintTimer();
-                    e.dataTransfer.setData('text', e.target.innerText);
-                    e.dataTransfer.setData('id', e.target.id);
                 });
-                piece.addEventListener('touchmove', handleTouchMove, { passive: false });
-                piece.addEventListener('touchend', handleTouchEnd);
-                piecesBox.appendChild(piece);
-            });
+            },
 
-            resetHintTimer();
-            showScreenG2('screen-game-g2');
-        }
+            initAudio() {
+                if (!this.audioCtx) {
+                    this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    this.loadKlaksonAudio();
+                }
+            },
 
-        function executeMatch(slot, piece) {
-            stopHintTimer();
-            slot.classList.add('matched');
-            piece.style.visibility = 'hidden';
-            matchedCount++;
-            if (matchedCount === 7) { stopHintTimer(); createConfetti(); playSoundG2('win'); handleQuestionCleared(); }
-            else { playSoundG2('correct'); resetHintTimer(); }
-        }
+            loadKlaksonAudio() {
+                const soundUrl = "https://raw.githubusercontent.com/malikagames/dunia_anak_pintar/main/klakson.mp3";
+                fetch(soundUrl)
+                    .then(r => r.arrayBuffer())
+                    .then(b => this.audioCtx.decodeAudioData(b))
+                    .then(a => this.trainKlaksonBuffer = a)
+                    .catch(e => console.error('Gagal memuat audio klakson:', e));
+            },
 
-        function executeMismatch(piece) {
-            playSoundG2('error');
-            piece.classList.add('shake-error');
-            setTimeout(() => piece.classList.remove('shake-error'), 300);
-            resetHintTimer();
-        }
+            playKlakson() {
+                this.initAudio();
+                if (!this.audioCtx || !this.trainKlaksonBuffer) return;
+                const source = this.audioCtx.createBufferSource();
+                source.buffer = this.trainKlaksonBuffer;
+                source.connect(this.audioCtx.destination);
+                source.start(this.audioCtx.currentTime);
+                source.stop(this.audioCtx.currentTime + 1.5);
+            },
 
-        function dropPiece(e) {
-            e.preventDefault();
-            const draggedEmoji = e.dataTransfer.getData('text');
-            const draggedId = e.dataTransfer.getData('id');
-            const targetSlot = e.currentTarget;
-            const pieceElement = document.getElementById(draggedId);
-            if (targetSlot.dataset.emoji === draggedEmoji && !targetSlot.classList.contains('matched')) {
-                executeMatch(targetSlot, pieceElement);
-            } else {
-                executeMismatch(pieceElement);
-            }
-        }
+            switchScreen(gameId) {
+                this.initAudio();
+                document.getElementById('mainMenuHub').style.display = 'none';
+                document.querySelectorAll('.game-hub-screen').forEach(el => el.classList.remove('active-hub'));
 
-        let activeTouchElement = null;
-
-        function handleTouchMove(e) {
-            stopHintTimer();
-            const touch = e.touches[0];
-            activeTouchElement = e.currentTarget;
-            activeTouchElement.style.position = 'fixed';
-            activeTouchElement.style.left = (touch.clientX - 26) + 'px';
-            activeTouchElement.style.top = (touch.clientY - 26) + 'px';
-            activeTouchElement.style.zIndex = '9999';
-            e.preventDefault();
-        }
-
-        function handleTouchEnd(e) {
-            if (!activeTouchElement) return;
-            const element = activeTouchElement;
-            element.style.position = 'static';
-            element.style.zIndex = 'auto';
-            const touch = e.changedTouches[0];
-            const target = document.elementFromPoint(touch.clientX, touch.clientY);
-            if (target && target.classList.contains('target-slot') && target.dataset.emoji === element.innerText) {
-                if (!target.classList.contains('matched')) executeMatch(target, element);
-                else executeMismatch(element);
-            } else {
-                executeMismatch(element);
-            }
-            activeTouchElement = null;
-        }
-
-        function createConfetti() {
-            const screen = document.querySelector('#gamePasangkanGambar .g2-screen.active');
-            for (let i = 0; i < 30; i++) {
-                const confetti = document.createElement('div');
-                confetti.classList.add('confetti-piece');
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.backgroundColor = ['#ffeb3b', '#ff5722', '#e91e63', '#4caf50', '#00bcd4'][Math.floor(Math.random() * 5)];
-                confetti.style.animationDelay = Math.random() * 0.5 + 's';
-                screen.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 1500);
-            }
-        }
-
-        function handleQuestionCleared() {
-            const popup = document.getElementById('next-popup');
-            const title = document.getElementById('popup-status-title');
-            const text = document.getElementById('next-text');
-            const btn = document.getElementById('btn-next-action');
-
-            popup.style.display = 'block';
-            setTimeout(() => { document.getElementById('star1').classList.add('show'); playSoundG2('star'); }, 300);
-            setTimeout(() => { document.getElementById('star2').classList.add('show'); playSystemSound('click'); }, 600);
-            setTimeout(() => { document.getElementById('star3').classList.add('show'); playSystemSound('click'); }, 900);
-
-            if (currentQuestionIdx < 2) {
-                title.innerText = "🎉 Luar Biasa! 🎉";
-                text.innerText = `Kamu sukses menyelesaikan Soal ${currentQuestionIdx + 1}!`;
-                btn.innerText = `Main Soal ${currentQuestionIdx + 2} ➡️`;
-            } else {
-                if (!finishedThemes.includes(currentTheme)) finishedThemes.push(currentTheme);
-                const isAllGameFinished = themeOrder.every(t => finishedThemes.includes(t));
-                if (isAllGameFinished) {
-                    title.innerText = "🏆 PINTAR SEKALI! 🏆";
-                    text.innerText = "Semua tema telah kamu taklukkan!";
-                    btn.innerText = "Lihat Piala 👑";
+                if (gameId === 'mainMenuHub') {
+                    document.getElementById('mainMenuHub').style.display = 'flex';
                 } else {
-                    title.innerText = "✨ Tema Selesai! ✨";
-                    text.innerText = "Hebat, 3 soal tema selesai!";
-                    btn.innerText = "Pilih Tema Lain 🏛️";
+                    const targetGame = document.getElementById(gameId);
+                    if (targetGame) targetGame.classList.add('active-hub');
                 }
             }
-        }
-
-        function goToNextStep() {
-            playSoundG2('click');
-            if (currentQuestionIdx < 2) {
-                startQuestion(currentTheme, currentQuestionIdx + 1);
-            } else {
-                const isAllGameFinished = themeOrder.every(t => finishedThemes.includes(t));
-                if (isAllGameFinished) {
-                    document.getElementById('final-char').innerText = selectedCharacterG2;
-                    showScreenG2('screen-win-g2');
-                    playSoundG2('win');
-                } else {
-                    backToThemeMenu();
-                }
-            }
-        }
-
-        function restartGameG2() {
-            finishedThemes = [];
-            selectedCharacterG2 = '';
-            const startBtn = document.getElementById('btn-start-game');
-            if (startBtn) { startBtn.classList.add('btn-disabled'); startBtn.setAttribute('disabled', 'true'); }
-            document.querySelectorAll('#gamePasangkanGambar .char-card').forEach(card => card.classList.remove('selected'));
-            showScreenG2('screen-character-g2');
-        }
-
-
-        /* ============================================================
-           SCRIPT BAGIAN 3: GAME 3 — PUZZLE ADVENTURE 🧩
-           ============================================================ */
-
-        // Data tema puzzle (tambah tema baru di sini dengan menambah key baru)
-        const THEMES_G3 = {
-            dinosaurus: { name: "Dinosaurus", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Dinosaurus.jpeg" },
-            laut: { name: "Kehidupan Laut", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Kehidupan%20Laut.jpeg" },
-            peternakan: { name: "Peternakan", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Peternakan.jpeg" },
-            sabana: { name: "Sabana", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Sabana.jpeg" },
-            taman: { name: "Taman", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Taman.jpeg" },
-            dongeng: { name: "Dunia Dongeng", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Dunia%20Dongeng%20dan%20Kastil.jpeg" }
         };
 
-        let selectedCharacterG3 = null;
-        let selectedCharIconG3 = null;
-        let currentThemeKeyG3 = null;
-        let currentDifficultyModeG3 = 'easy';
-        let completedCombinationsG3 = [];
-        let rowsG3 = 3;
-        let colsG3 = 4;
-        let timerG3 = 0;
-        let intervalG3;
-        let placedG3 = 0;
-        let totalPiecesG3 = 0;
-        let draggedPieceG3 = null;
-        let touchStartCellG3 = null;
-        let isGameFinishedG3 = false;
-        let touchStartXG3 = 0;
-        let touchStartYG3 = 0;
+        /* -----------------------------------------------------------
+           2. TRAINGAME: MODUL GAME 1 (PETUGAS KERETA 🚂)
+           ----------------------------------------------------------- */
+        const TrainGame = {
+            state: {
+                playerName: '',
+                playerAvatar: '',
+                currentLevel: 1,
+                maxLevels: 15,
+                targetAnimals: [],
+                userCarriages: [],
+                isTransitioning: false
+            },
+            config: {
+                emojis: { panda: '🐼', lion: '🦁', frog: '🐸', rabbit: '🐰' },
+                keys: ['panda', 'lion', 'frog', 'rabbit']
+            },
+            dom: {},
 
-        function playSoundG3(type) {
-            initGlobalAudio();
-            if (!globalAudioCtx) return;
-            const osc = globalAudioCtx.createOscillator();
-            const gain = globalAudioCtx.createGain();
-            osc.connect(gain);
-            gain.connect(globalAudioCtx.destination);
-            const now = globalAudioCtx.currentTime;
+            initDom() {
+                this.dom = {
+                    avatar: document.getElementById('player-avatar'),
+                    name: document.getElementById('player-name'),
+                    level: document.getElementById('current-level'),
+                    targetPattern: document.getElementById('target-pattern'),
+                    trainWrapper: document.getElementById('train-wrapper'),
+                    carriagesList: document.getElementById('carriages-list'),
+                    messageBox: document.getElementById('message-box'),
+                    endCongrats: document.getElementById('end-congrats')
+                };
+            },
 
-            if (type === 'click') {
-                osc.type = 'sine'; osc.frequency.setValueAtTime(400, now); gain.gain.setValueAtTime(0.08, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1); osc.start(now); osc.stop(now + 0.1);
-            } else if (type === 'move') {
-                osc.type = 'triangle'; osc.frequency.setValueAtTime(240, now); osc.frequency.exponentialRampToValueAtTime(140, now + 0.12); gain.gain.setValueAtTime(0.12, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12); osc.start(now); osc.stop(now + 0.12);
-            } else if (type === 'theme_clear') {
-                osc.type = 'sine'; osc.frequency.setValueAtTime(320, now); osc.frequency.setValueAtTime(480, now + 0.1); osc.frequency.setValueAtTime(640, now + 0.2); gain.gain.setValueAtTime(0.15, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4); osc.start(now); osc.stop(now + 0.4);
-            } else if (type === 'all_clear') {
-                for (let i = 0; i < 3; i++) {
-                    const tOsc = globalAudioCtx.createOscillator();
-                    const tGain = globalAudioCtx.createGain();
-                    tOsc.connect(tGain); tGain.connect(globalAudioCtx.destination);
-                    tOsc.type = 'sawtooth';
-                    tOsc.frequency.setValueAtTime(523.25 + (i * 80), now + (i * 0.12));
-                    tGain.gain.setValueAtTime(0.08, now + (i * 0.12));
-                    tGain.gain.exponentialRampToValueAtTime(0.01, now + (i * 0.12) + 0.25);
-                    tOsc.start(now + (i * 0.12)); tOsc.stop(now + (i * 0.12) + 0.25);
+            playSound(type) {
+                if (!AppCore.audioCtx) return;
+                const osc = AppCore.audioCtx.createOscillator();
+                const gain = AppCore.audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(AppCore.audioCtx.destination);
+                const now = AppCore.audioCtx.currentTime;
+
+                if (type === 'click') {
+                    osc.type = 'sine'; osc.frequency.setValueAtTime(450, now); gain.gain.setValueAtTime(0.2, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08); osc.start(now); osc.stop(now + 0.08);
+                } else if (type === 'correct') {
+                    osc.type = 'triangle'; osc.frequency.setValueAtTime(587.33, now); osc.frequency.setValueAtTime(783.99, now + 0.12);
+                    gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3); osc.start(now); osc.stop(now + 0.3);
+                } else if (type === 'wrong') {
+                    osc.type = 'sawtooth'; osc.frequency.setValueAtTime(150, now); osc.frequency.setValueAtTime(110, now + 0.1);
+                    gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25); osc.start(now); osc.stop(now + 0.25);
+                } else if (type === 'level-up') {
+                    osc.type = 'sine'; const freqs = [523.25, 659.25, 783.99, 1046.50];
+                    freqs.forEach((f, i) => osc.frequency.setValueAtTime(f, now + (i * 0.07)));
+                    gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4); osc.start(now); osc.stop(now + 0.4);
                 }
-            }
-        }
+            },
 
-        function goToPageG3(pageId) {
-            playSoundG3('click');
-            document.querySelectorAll('.g3-page').forEach(p => p.classList.remove('active'));
-            document.getElementById('g3-page-game').classList.remove('active');
-            if (pageId === 'g3-page-theme') { renderThemeSelectionG3(); }
-            document.getElementById(pageId).classList.add('active');
-        }
+            selectCharacter(name, avatar) {
+                this.initDom();
+                this.playSound('click');
+                this.state.playerName = name;
+                this.state.playerAvatar = avatar;
+                this.dom.avatar.innerText = avatar;
+                this.dom.name.innerText = name;
+                const savedLevel = localStorage.getItem('kereta_hewan_level');
+                this.state.currentLevel = savedLevel ? parseInt(savedLevel, 10) : 1;
+                this.showScreenG1('screen-game-g1');
+                this.startGameplay();
+            },
 
-        function selectCharacterG3(name, icon, element) {
-            selectedCharacterG3 = name;
-            selectedCharIconG3 = icon;
-            playSoundG3('click');
-            document.querySelectorAll('#g3-page-character .g3-card').forEach(c => c.classList.remove('selected'));
-            element.classList.add('selected');
-            document.getElementById('g3-btn-next-theme').disabled = false;
-            document.getElementById('g3-display-char-icon').innerText = icon;
-            document.getElementById('g3-display-char-name').innerText = name;
-        }
-
-        function changeDifficultyUIG3(r, c, mode) {
-            playSoundG3('click');
-            rowsG3 = r; colsG3 = c; currentDifficultyModeG3 = mode;
-            document.querySelectorAll('.g3-diff-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(`g3-diff-${mode}`).classList.add('active');
-            renderThemeSelectionG3();
-        }
-
-        function renderThemeSelectionG3() {
-            const grid = document.getElementById('g3-theme-grid');
-            grid.innerHTML = '';
-            for (let key in THEMES_G3) {
-                const theme = THEMES_G3[key];
-                const comboKey = key + '_' + currentDifficultyModeG3;
-                const isDone = completedCombinationsG3.includes(comboKey);
-                const card = document.createElement('div');
-                card.className = `g3-card ${isDone ? 'disabled' : ''}`;
-                if (!isDone) card.onclick = () => launchGameInternalG3(key);
-                card.innerHTML = `<img class="thumb" src="${theme.img}" alt="${theme.name}">
-                                  <h3>${theme.name}</h3>
-                                  <div class="play-tag">${isDone ? '✅ Selesai' : '🎮 Mainkan'}</div>`;
-                grid.appendChild(card);
-            }
-        }
-
-        function launchGameInternalG3(themeKey) {
-            playSoundG3('click');
-            currentThemeKeyG3 = themeKey;
-            isGameFinishedG3 = false;
-            document.querySelectorAll('.g3-page').forEach(p => p.classList.remove('active'));
-            document.getElementById('g3-page-game').classList.add('active');
-            document.getElementById('g3-preview-success-zone').style.display = 'none';
-            document.getElementById('g3-btn-giveup').style.display = 'inline-block';
-
-            const textDifficulty = currentDifficultyModeG3 === 'easy' ? 'Mudah ⭐' :
-                currentDifficultyModeG3 === 'medium' ? 'Sedang ⭐⭐' : 'Sulit ⭐⭐⭐';
-            document.getElementById('g3-current-theme-title').innerText = THEMES_G3[themeKey].name + ' (' + textDifficulty + ')';
-            document.getElementById('g3-refImage').src = THEMES_G3[themeKey].img;
-
-            placedG3 = 0;
-            totalPiecesG3 = rowsG3 * colsG3;
-            document.getElementById('g3-progress').innerText = '0%';
-            loadBestG3();
-            startTimerG3();
-            createBoardG3();
-        }
-
-        function confirmExitG3() {
-            playSoundG3('click');
-            if (confirm('Apakah kamu ingin kembali? Progres saat ini akan hilang.')) {
-                clearInterval(intervalG3);
-                goToPageG3('g3-page-theme');
-            }
-        }
-
-        function formatTimeG3(sec) {
-            const m = Math.floor(sec / 60);
-            const s = sec % 60;
-            return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
-        }
-
-        function loadBestG3() {
-            const key = 'best_' + currentThemeKeyG3 + '_' + rowsG3 + 'x' + colsG3;
-            const best = localStorage.getItem(key);
-            document.getElementById('g3-bestTime').innerText = best || '-';
-        }
-
-        function saveBestG3() {
-            const key = 'best_' + currentThemeKeyG3 + '_' + rowsG3 + 'x' + colsG3;
-            const best = localStorage.getItem(key);
-            if (!best || timerG3 < (parseInt(best.split(':')[0]) * 60 + parseInt(best.split(':')[1]))) {
-                localStorage.setItem(key, formatTimeG3(timerG3));
-            }
-        }
-
-        function startTimerG3() {
-            clearInterval(intervalG3);
-            timerG3 = 0;
-            intervalG3 = setInterval(() => {
-                timerG3++;
-                document.getElementById('g3-timer').innerText = formatTimeG3(timerG3);
-            }, 1000);
-        }
-
-        function resizeBoardG3() {
-            const board = document.getElementById('g3-board');
-            if (!board) return;
-            const isLandscape = window.innerWidth > window.innerHeight;
-            const maxWidth = window.innerWidth - (isLandscape ? 240 : 60);
-            const maxHeight = window.innerHeight - (isLandscape ? 110 : 320);
-            let size = Math.min(maxWidth, maxHeight, 560);
-            if (size < 280) size = 280;
-            board.style.width = size + 'px';
-        }
-
-        function createBoardG3() {
-            const board = document.getElementById('g3-board');
-            board.innerHTML = '';
-            resizeBoardG3();
-            board.style.gridTemplateColumns = `repeat(${colsG3}, 1fr)`;
-
-            let pieces = [];
-            for (let y = 0; y < rowsG3; y++) {
-                for (let x = 0; x < colsG3; x++) {
-                    const index = y * colsG3 + x;
-                    const cell = document.createElement('div');
-                    cell.className = 'g3-cell';
-                    cell.dataset.index = index;
-                    cell.addEventListener('dragover', e => e.preventDefault());
-                    cell.addEventListener('drop', dropPieceG3);
-                    board.appendChild(cell);
-                    pieces.push(index);
-                }
-            }
-            pieces.sort(() => Math.random() - 0.5);
-
-            document.querySelectorAll('.g3-cell').forEach((cell, i) => {
-                const piece = document.createElement('div');
-                piece.className = 'g3-piece';
-                piece.draggable = true;
-                piece.dataset.correct = pieces[i];
-                const px = pieces[i] % colsG3;
-                const py = Math.floor(pieces[i] / colsG3);
-                piece.style.backgroundImage = `url(${THEMES_G3[currentThemeKeyG3].img})`;
-                piece.style.backgroundSize = `${colsG3 * 100}% ${rowsG3 * 100}%`;
-                piece.style.backgroundPosition = `${(px / (colsG3 - 1)) * 100}% ${(py / (rowsG3 - 1)) * 100}%`;
-                piece.addEventListener('dragstart', dragStartG3);
-                piece.addEventListener('touchstart', touchStartG3, { passive: false });
-                piece.addEventListener('touchmove', touchMoveG3, { passive: false });
-                piece.addEventListener('touchend', touchEndG3);
-                cell.appendChild(piece);
-            });
-        }
-
-        function dragStartG3() { if (isGameFinishedG3) return; draggedPieceG3 = this; }
-        function dropPieceG3() { if (!draggedPieceG3 || isGameFinishedG3) return; swapPiecesG3(draggedPieceG3, this); }
-
-        function touchStartG3(e) {
-            if (isGameFinishedG3) return;
-            draggedPieceG3 = this;
-            touchStartCellG3 = this.parentNode;
-            const touch = e.touches[0];
-            touchStartXG3 = touch.clientX;
-            touchStartYG3 = touch.clientY;
-            this.style.zIndex = '100';
-            this.style.position = 'relative';
-        }
-
-        function touchMoveG3(e) {
-            if (!draggedPieceG3 || isGameFinishedG3) return;
-            e.preventDefault();
-            const touch = e.touches[0];
-            const dx = touch.clientX - touchStartXG3;
-            const dy = touch.clientY - touchStartYG3;
-            draggedPieceG3.style.transform = `translate(${dx}px, ${dy}px)`;
-        }
-
-        function touchEndG3(e) {
-            if (!draggedPieceG3 || isGameFinishedG3) return;
-            const pieceRect = draggedPieceG3.getBoundingClientRect();
-            const pieceCenterX = pieceRect.left + (pieceRect.width / 2);
-            const pieceCenterY = pieceRect.top + (pieceRect.height / 2);
-            draggedPieceG3.style.transform = 'none';
-            draggedPieceG3.style.zIndex = '1';
-
-            let closestCell = null;
-            let minDistance = Infinity;
-            document.querySelectorAll('.g3-cell').forEach(cell => {
-                const cellRect = cell.getBoundingClientRect();
-                const cellCenterX = cellRect.left + (cellRect.width / 2);
-                const cellCenterY = cellRect.top + (cellRect.height / 2);
-                const distance = Math.hypot(cellCenterX - pieceCenterX, cellCenterY - pieceCenterY);
-                if (distance < minDistance) { minDistance = distance; closestCell = cell; }
-            });
-
-            if (closestCell && minDistance < pieceRect.width * 1.2 && closestCell !== touchStartCellG3) {
-                swapPiecesG3(draggedPieceG3, closestCell);
-            } else {
-                touchStartCellG3.appendChild(draggedPieceG3);
-            }
-            draggedPieceG3 = null;
-            touchStartCellG3 = null;
-        }
-
-        function swapPiecesG3(piece, targetCell) {
-            playSoundG3('move');
-            if (targetCell.children.length > 0) {
-                const other = targetCell.children[0];
-                piece.parentNode.appendChild(other);
-            }
-            targetCell.appendChild(piece);
-            checkPuzzleG3();
-        }
-
-        function checkPuzzleG3() {
-            let correct = 0;
-            document.querySelectorAll('.g3-cell').forEach(cell => {
-                const piece = cell.children[0];
-                if (!piece) return;
-                if (Number(piece.dataset.correct) === Number(cell.dataset.index)) {
-                    correct++;
-                    cell.classList.add('correct');
+            generatePattern(level) {
+                let length = (level > 12) ? 6 : (level > 8) ? 5 : (level > 4) ? 4 : 3;
+                let pattern = [];
+                if (level <= 3) {
+                    let a = this.config.keys[Math.floor(Math.random() * 4)];
+                    let b = this.config.keys[Math.floor(Math.random() * 4)];
+                    while (a === b) b = this.config.keys[Math.floor(Math.random() * 4)];
+                    for (let i = 0; i < length; i++) pattern.push(i % 2 === 0 ? a : b);
+                } else if (level <= 7) {
+                    let a = this.config.keys[Math.floor(Math.random() * 4)];
+                    let b = this.config.keys[Math.floor(Math.random() * 4)];
+                    while (a === b) b = this.config.keys[Math.floor(Math.random() * 4)];
+                    for (let i = 0; i < length; i++) pattern.push((i % 3 === 0 || i % 3 === 1) ? a : b);
                 } else {
-                    cell.classList.remove('correct');
+                    for (let i = 0; i < length; i++) pattern.push(this.config.keys[Math.floor(Math.random() * 4)]);
                 }
-            });
-            placedG3 = correct;
-            document.getElementById('g3-progress').innerText = Math.round((placedG3 / totalPiecesG3) * 100) + '%';
-            if (correct === totalPiecesG3) { clearInterval(intervalG3); saveBestG3(); handleThemeCompleteG3(); }
-        }
+                return pattern;
+            },
 
-        function handleThemeCompleteG3() {
-            isGameFinishedG3 = true;
-            playSoundG3('theme_clear');
-            document.getElementById('g3-btn-giveup').style.display = 'none';
-            const comboKey = currentThemeKeyG3 + '_' + currentDifficultyModeG3;
-            if (!completedCombinationsG3.includes(comboKey)) completedCombinationsG3.push(comboKey);
-            document.getElementById('g3-success-message').innerHTML =
-                `Hebat! Kamu berhasil menyusun tema <b>${THEMES_G3[currentThemeKeyG3].name}</b> bersama <b>${selectedCharacterG3}</b> dalam waktu <b>${formatTimeG3(timerG3)}</b>!`;
-            document.getElementById('g3-preview-success-zone').style.display = 'block';
-        }
+            startGameplay() {
+                this.hideMessage();
+                this.state.isTransitioning = false;
+                this.dom.level.innerText = this.state.currentLevel;
+                this.state.targetAnimals = this.generatePattern(this.state.currentLevel);
+                this.state.userCarriages = [];
+                
+                this.dom.targetPattern.innerHTML = '';
+                this.state.targetAnimals.forEach((anim, index) => {
+                    const item = document.createElement('div');
+                    item.classList.add('pattern-item');
+                    item.innerText = this.config.emojis[anim];
+                    this.dom.targetPattern.appendChild(item);
+                    if (index < this.state.targetAnimals.length - 1) {
+                        const arrow = document.createElement('div');
+                        arrow.classList.add('pattern-arrow');
+                        arrow.innerText = '➔';
+                        this.dom.targetPattern.appendChild(arrow);
+                    }
+                });
+                
+                this.dom.trainWrapper.className = 'no-transition';
+                this.renderUserCarriages();
+                setTimeout(() => { this.dom.trainWrapper.className = 'arrived'; }, 50);
+            },
 
-        function backToThemeAfterPreviewG3() {
-            playSoundG3('click');
-            const totalThemesCount = Object.keys(THEMES_G3).length;
-            const totalPossibleCombos = totalThemesCount * 3;
-            if (completedCombinationsG3.length === totalPossibleCombos) {
-                playSoundG3('all_clear');
-                document.getElementById('g3-modal-message').innerHTML =
-                    `Selamat! Semua ${totalThemesCount} tema dengan masing-masing 3 tingkat kesulitan telah berhasil kamu selesaikan seluruhnya dengan sempurna bersama <b>${selectedCharIconG3} ${selectedCharacterG3}</b>! 🏆🎉`;
-                document.getElementById('g3-game-modal').style.display = 'flex';
-            } else {
-                goToPageG3('g3-page-theme');
+            renderUserCarriages() {
+                this.dom.carriagesList.innerHTML = '';
+                this.state.userCarriages.forEach((anim, idx) => {
+                    const car = document.createElement('div');
+                    car.className = `carriage bg-${anim}`;
+                    car.innerText = this.config.emojis[anim];
+                    car.onclick = () => { if (!this.state.isTransitioning) this.removeCarriageAt(idx); };
+                    this.dom.carriagesList.appendChild(car);
+                });
+            },
+
+            triggerChoice(animal) {
+                if (this.state.isTransitioning) return;
+                if (this.state.userCarriages.length >= this.state.targetAnimals.length) { this.playSound('wrong'); return; }
+                this.playSound('click');
+                const btn = document.getElementById(`btn-${animal}`);
+                if (btn) {
+                    btn.classList.add('pressed');
+                    setTimeout(() => btn.classList.remove('pressed'), 400);
+                }
+                this.state.userCarriages.push(animal);
+                this.renderUserCarriages();
+                this.hideMessage();
+            },
+
+            popLastAnimal() {
+                if (this.state.isTransitioning || this.state.userCarriages.length === 0) return;
+                this.playSound('click');
+                this.state.userCarriages.pop();
+                this.renderUserCarriages();
+                this.hideMessage();
+            },
+
+            removeCarriageAt(idx) {
+                this.playSound('click');
+                this.state.userCarriages.splice(idx, 1);
+                this.renderUserCarriages();
+                this.hideMessage();
+            },
+
+            checkTrainDeparture() {
+                if (this.state.isTransitioning) return;
+                if (this.state.userCarriages.length !== this.state.targetAnimals.length) {
+                    this.playSound('wrong');
+                    this.showMessage('Gerbong keretanya belum lengkap, yuk isi lagi! 🚂', 'msg-error');
+                    return;
+                }
+                let isCorrect = this.state.userCarriages.every((v, i) => v === this.state.targetAnimals[i]);
+                if (isCorrect) {
+                    this.state.isTransitioning = true;
+                    localStorage.setItem('kereta_hewan_level', this.state.currentLevel + 1);
+                    AppCore.playKlakson();
+                    this.showMessage('Hebat! Keretanya siap berangkat! Juzz Juuzzz... 🟢💨', 'msg-success');
+                    this.dom.trainWrapper.classList.add('wheels-rolling');
+                    setTimeout(() => { 
+                        this.dom.trainWrapper.classList.remove('arrived'); 
+                        this.dom.trainWrapper.classList.add('departed'); 
+                    }, 300);
+                    setTimeout(() => {
+                        this.dom.trainWrapper.classList.remove('wheels-rolling');
+                        if (this.state.currentLevel < this.state.maxLevels) {
+                            this.state.currentLevel++;
+                            this.startGameplay();
+                        } else {
+                            localStorage.removeItem('kereta_hewan_level');
+                            this.showEndingScreenG1();
+                        }
+                    }, 2600);
+                } else {
+                    this.playSound('wrong');
+                    this.showMessage('Oh-oh! Urutan gerbongnya tertukar. Yuk coba lagi, pasti bisa! 💪', 'msg-error');
+                }
+            },
+
+            showMessage(text, className) {
+                this.dom.messageBox.innerText = text;
+                this.dom.messageBox.className = className;
+                this.dom.messageBox.style.display = 'block';
+            },
+
+            hideMessage() { if (this.dom.messageBox) this.dom.messageBox.style.display = 'none'; },
+
+            showEndingScreenG1() {
+                this.dom.endCongrats.innerText = `Hebat sekali, Masinis Cerdas ${this.state.playerName}! Kamu sukses menyusun semua gerbong dari level 1 sampai 15 dengan sempurna!`;
+                this.showScreenG1('screen-end-g1');
+            },
+
+            showScreenG1(screenId) {
+                document.querySelectorAll('#gamePetugasKereta .g1-screen').forEach(s => s.classList.remove('active'));
+                const target = document.getElementById(screenId);
+                if (target) target.classList.add('active');
+            },
+
+            restartGame() {
+                this.initDom();
+                localStorage.removeItem('kereta_hewan_level');
+                this.showScreenG1('screen-char');
             }
-        }
+        };
 
-        function resetAllGameG3() {
-            completedCombinationsG3 = [];
-            document.getElementById('g3-game-modal').style.display = 'none';
-            goToPageG3('g3-page-character');
-            selectedCharacterG3 = null;
-            selectedCharIconG3 = null;
-            document.getElementById('g3-btn-next-theme').disabled = true;
-            document.querySelectorAll('#g3-page-character .g3-card').forEach(c => c.classList.remove('selected'));
-        }
+        /* -----------------------------------------------------------
+           3. MATCHINGGAME: MODUL GAME 2 (PASANGKAN GAMBAR 🖼️)
+           ----------------------------------------------------------- */
+        const MatchingGame = {
+            state: {
+                selectedCharacterG2: '',
+                currentTheme: '',
+                currentQuestionIdx: 0,
+                matchedCount: 0,
+                finishedThemes: [],
+                hintTimer: null,
+                activeTouchElement: null
+            },
+            database: {
+                laut: [['🐬', '🐳', '🐙', '🦀', '🦈', '🐠', '🪼'], ['🦑', '🦐', '🐡', '🦭', '🪼', '🐋', '🦦'], ['🐬', '🐳', '🐙', '🦀', '🦈', '🐠', '🪼']],
+                ternak: [['🐄', '🐖', '🐑', '🐓', '🐎', '🐂', '🐔'], ['🦆', '🦃', '🐐', '🫏', '🐂', '🐃', '🦙'], ['🐄', '🐖', '🐑', '🐓', '🐎', '🐐', '🦆']],
+                tumbuhan: [['🌲', '🌻', '🍄', '🍓', '🥕', '🍎', '🍇'], ['🌴', '🌹', '🌵', '🍉', '🍌', '🍋', '🍍'], ['🌻', '🌲', '🍓', '🍎', '🌹', '🍉', '🍌']],
+                space: [['🚀', '👨‍🚀', '🛸', '🌍', '🌙', '☀️', '⭐'], ['🪐', '☄️', '🛰️', '🔭', '🚀', '👩‍🚀', '🛸'], ['🚀', '🌍', '🌙', '🪐', '⭐', '👨‍🚀', '🛰️']],
+                kendaraan: [['🚑', '🚂', '✈️', '🚢', '🚲', '🚗', '🚌'], ['🚒', '🚓', '🚕', '🚚', '🏍️', '🚁', '✈️'], ['🚑', '🚂', '✈️', '🚒', '🚗', '🚚', '🚁']]
+            },
+            themeOrder: ['laut', 'ternak', 'tumbuhan', 'space', 'kendaraan'],
+            titleMap: { laut: '🐬 Hewan Laut', ternak: '🐄 Peternakan', tumbuhan: '🌲 Tanaman & Buah', space: '🚀 Antariksa', kendaraan: '🚑 Kendaraan' },
 
+            playSound(type) {
+                if (!AppCore.audioCtx) return;
+                const osc = AppCore.audioCtx.createOscillator();
+                const gain = AppCore.audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(AppCore.audioCtx.destination);
+                const now = AppCore.audioCtx.currentTime;
 
-        /* ============================================================
-           PLACEHOLDER: SCRIPT GAME BARU
-           Salin template di bawah ini untuk game berikutnya.
-           ============================================================
+                if (type === 'click') {
+                    osc.type = 'sine'; osc.frequency.setValueAtTime(400, now); gain.gain.setValueAtTime(0.3, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1); osc.start(now); osc.stop(now + 0.1);
+                } else if (type === 'correct') {
+                    osc.type = 'triangle'; osc.frequency.setValueAtTime(523.25, now); osc.frequency.setValueAtTime(659.25, now + 0.1);
+                    gain.gain.setValueAtTime(0.3, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25); osc.start(now); osc.stop(now + 0.25);
+                } else if (type === 'error') {
+                    osc.type = 'sawtooth'; osc.frequency.setValueAtTime(180, now); osc.frequency.setValueAtTime(120, now + 0.1);
+                    gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2); osc.start(now); osc.stop(now + 0.2);
+                } else if (type === 'star') {
+                    osc.type = 'sine'; osc.frequency.setValueAtTime(587.33, now); osc.frequency.setValueAtTime(880, now + 0.1);
+                    gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2); osc.start(now); osc.stop(now + 0.2);
+                } else if (type === 'win') {
+                    osc.type = 'square'; const notes = [523.25, 659.25, 783.99, 1046.50];
+                    notes.forEach((freq, idx) => osc.frequency.setValueAtTime(freq, now + (idx * 0.08)));
+                    gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.45); osc.start(now); osc.stop(now + 0.45);
+                }
+            },
 
-        // ==========================================
-        // SCRIPT LOGIKA GAME 4: NAMA GAME BARU    
-        // ==========================================
+            selectCharacterG2(char, element) {
+                this.playSound('click');
+                this.state.selectedCharacterG2 = char;
+                document.querySelectorAll('#gamePasangkanGambar .char-card').forEach(card => card.classList.remove('selected'));
+                element.classList.add('selected');
+                const startBtn = document.getElementById('btn-start-game');
+                startBtn.classList.remove('btn-disabled');
+                startBtn.removeAttribute('disabled');
+            },
 
-        // Variabel state game baru (awali dengan gX_ agar tidak bentrok)
-        let variabelGameBaru = null;
+            confirmCharacterG2() { this.playSound('click'); this.updateThemeMenuUI(); this.showScreenG2('screen-theme-g2'); },
+            backToThemeMenu() { this.stopHintTimer(); this.playSound('click'); this.updateThemeMenuUI(); this.showScreenG2('screen-theme-g2'); },
 
-        function initGameBaru() {
-            // Reset state dan tampilkan layar pertama game baru
-        }
+            updateThemeMenuUI() {
+                document.getElementById('theme-welcome').innerText = `${this.state.selectedCharacterG2} Pilih Tema!`;
+                this.themeOrder.forEach(theme => {
+                    const btn = document.getElementById(`btn-${theme}`);
+                    if (btn) {
+                        if (this.state.finishedThemes.includes(theme)) btn.classList.add('completed');
+                        else btn.classList.remove('completed');
+                    }
+                });
+            },
 
-        function restartGameBaru() {
-            // Reset semua dan kembali ke layar awal
-            showScreenGBaru('screen-start-gbaru');
-        }
+            checkAndStartTheme(themeName) {
+                if (this.state.finishedThemes.includes(themeName)) return;
+                this.state.currentQuestionIdx = 0;
+                this.startQuestion(themeName, this.state.currentQuestionIdx);
+            },
 
-        // Fungsi-fungsi lain game baru di sini...
+            resetHintTimer() { this.stopHintTimer(); this.state.hintTimer = setTimeout(() => this.triggerHint(), 10000); },
 
-        ============================================================ */
+            stopHintTimer() {
+                clearTimeout(this.state.hintTimer);
+                document.querySelectorAll('#gamePasangkanGambar .emoji-item, #gamePasangkanGambar .target-slot')
+                    .forEach(el => el.classList.remove('hint-blink'));
+            },
 
+            triggerHint() {
+                const activePieces = Array.from(document.querySelectorAll('#gamePasangkanGambar .emoji-item')).filter(p => p.style.visibility !== 'hidden');
+                if (activePieces.length === 0) return;
+                const randomPiece = activePieces[0];
+                const targetEmoji = randomPiece.innerText;
+                const matchingSlot = Array.from(document.querySelectorAll('#gamePasangkanGambar .target-slot')).find(s => s.dataset.emoji === targetEmoji && !s.classList.contains('matched'));
+                if (randomPiece && matchingSlot) {
+                    randomPiece.classList.add('hint-blink');
+                    matchingSlot.classList.add('hint-blink');
+                }
+            },
 
-        /* ============================================================
-           EVENT LISTENER GLOBAL
-           ============================================================ */
-        window.addEventListener('resize', () => { resizeBoardG3(); });
+            startQuestion(themeName, qIdx) {
+                this.state.currentTheme = themeName;
+                this.state.currentQuestionIdx = qIdx;
+                this.state.matchedCount = 0;
+                document.getElementById('next-popup').style.display = 'none';
+                document.querySelectorAll('#gamePasangkanGambar .star').forEach(s => s.classList.remove('show'));
+                document.getElementById('game-title').innerText = this.titleMap[themeName];
+                document.getElementById('game-question-info').innerText = `Soal ${qIdx + 1}/3`;
 
+                const piecesBox = document.getElementById('pieces-box');
+                const targetsBox = document.getElementById('targets-box');
+                piecesBox.innerHTML = ''; targetsBox.innerHTML = '';
+
+                const items = [...this.database[themeName][qIdx]];
+                const shuffledTargets = [...items].sort(() => Math.random() - 0.5);
+
+                shuffledTargets.forEach(emoji => {
+                    const slot = document.createElement('div');
+                    slot.classList.add('target-slot');
+                    slot.dataset.emoji = emoji;
+                    slot.innerText = emoji;
+                    slot.addEventListener('dragover', e => e.preventDefault());
+                    slot.addEventListener('drop', e => this.dropPiece(e));
+                    targetsBox.appendChild(slot);
+                });
+
+                const shuffledPieces = [...items].sort(() => Math.random() - 0.5);
+                shuffledPieces.forEach(emoji => {
+                    const piece = document.createElement('div');
+                    piece.classList.add('emoji-item');
+                    piece.setAttribute('draggable', 'true');
+                    piece.id = 'emoji-' + emoji;
+                    piece.innerText = emoji;
+                    piece.addEventListener('dragstart', e => {
+                        this.stopHintTimer();
+                        e.dataTransfer.setData('text', e.target.innerText);
+                        e.dataTransfer.setData('id', e.target.id);
+                    });
+                    piece.addEventListener('touchmove', e => this.handleTouchMove(e), { passive: false });
+                    piece.addEventListener('touchend', e => this.handleTouchEnd(e));
+                    piecesBox.appendChild(piece);
+                });
+
+                this.resetHintTimer();
+                this.showScreenG2('screen-game-g2');
+            },
+
+            executeMatch(slot, piece) {
+                this.stopHintTimer();
+                slot.classList.add('matched');
+                piece.style.visibility = 'hidden';
+                this.state.matchedCount++;
+                if (this.state.matchedCount === 7) { 
+                    this.stopHintTimer(); this.createConfetti(); this.playSound('win'); this.handleQuestionCleared(); 
+                } else { 
+                    this.playSound('correct'); this.resetHintTimer(); 
+                }
+            },
+
+            executeMismatch(piece) {
+                this.playSound('error');
+                piece.classList.add('shake-error');
+                setTimeout(() => piece.classList.remove('shake-error'), 300);
+                this.resetHintTimer();
+            },
+
+            dropPiece(e) {
+                e.preventDefault();
+                const draggedEmoji = e.dataTransfer.getData('text');
+                const draggedId = e.dataTransfer.getData('id');
+                const targetSlot = e.currentTarget;
+                const pieceElement = document.getElementById(draggedId);
+                if (targetSlot.dataset.emoji === draggedEmoji && !targetSlot.classList.contains('matched')) {
+                    this.executeMatch(targetSlot, pieceElement);
+                } else {
+                    this.executeMismatch(pieceElement);
+                }
+            },
+
+            handleTouchMove(e) {
+                this.stopHintTimer();
+                const touch = e.touches[0];
+                this.state.activeTouchElement = e.currentTarget;
+                this.state.activeTouchElement.style.position = 'fixed';
+                this.state.activeTouchElement.style.left = (touch.clientX - 26) + 'px';
+                this.state.activeTouchElement.style.top = (touch.clientY - 26) + 'px';
+                this.state.activeTouchElement.style.zIndex = '9999';
+                e.preventDefault();
+            },
+
+            handleTouchEnd(e) {
+                if (!this.state.activeTouchElement) return;
+                const element = this.state.activeTouchElement;
+                element.style.position = 'static';
+                element.style.zIndex = 'auto';
+                const touch = e.changedTouches[0];
+                const target = document.elementFromPoint(touch.clientX, touch.clientY);
+                if (target && target.classList.contains('target-slot') && target.dataset.emoji === element.innerText) {
+                    if (!target.classList.contains('matched')) this.executeMatch(target, element);
+                    else this.executeMismatch(element);
+                } else {
+                    this.executeMismatch(element);
+                }
+                this.state.activeTouchElement = null;
+            },
+
+            createConfetti() {
+                const screen = document.querySelector('#gamePasangkanGambar .g2-screen.active');
+                for (let i = 0; i < 30; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti-piece');
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.backgroundColor = ['#ffeb3b', '#ff5722', '#e91e63', '#4caf50', '#00bcd4'][Math.floor(Math.random() * 5)];
+                    confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                    screen.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 1500);
+                }
+            },
+
+            handleQuestionCleared() {
+                const popup = document.getElementById('next-popup');
+                const title = document.getElementById('popup-status-title');
+                const text = document.getElementById('next-text');
+                const btn = document.getElementById('btn-next-action');
+
+                popup.style.display = 'block';
+                setTimeout(() => { document.getElementById('star1').classList.add('show'); this.playSound('star'); }, 300);
+                setTimeout(() => { document.getElementById('star2').classList.add('show'); TrainGame.playSound('click'); }, 600);
+                setTimeout(() => { document.getElementById('star3').classList.add('show'); TrainGame.playSound('click'); }, 900);
+
+                if (this.state.currentQuestionIdx < 2) {
+                    title.innerText = "🎉 Luar Biasa! 🎉";
+                    text.innerText = `Kamu sukses menyelesaikan Soal ${this.state.currentQuestionIdx + 1}!`;
+                    btn.innerText = `Main Soal ${this.state.currentQuestionIdx + 2} ➔`;
+                } else {
+                    if (!this.state.finishedThemes.includes(this.state.currentTheme)) this.state.finishedThemes.push(this.state.currentTheme);
+                    const isAllGameFinished = this.themeOrder.every(t => this.state.finishedThemes.includes(t));
+                    if (isAllGameFinished) {
+                        title.innerText = "🏆 PINTAR SEKALI! 🏆";
+                        text.innerText = "Semua tema telah kamu taklukkan!";
+                        btn.innerText = "Lihat Piala 👑";
+                    } else {
+                        title.innerText = "✨ Tema Selesai! ✨";
+                        text.innerText = "Hebat, 3 soal tema selesai!";
+                        btn.innerText = "Pilih Tema Lain 🗺️";
+                    }
+                }
+            },
+
+            goToNextStep() {
+                this.playSound('click');
+                if (this.state.currentQuestionIdx < 2) {
+                    this.startQuestion(this.state.currentTheme, this.state.currentQuestionIdx + 1);
+                } else {
+                    const isAllGameFinished = this.themeOrder.every(t => this.state.finishedThemes.includes(t));
+                    if (isAllGameFinished) {
+                        document.getElementById('final-char').innerText = this.state.selectedCharacterG2;
+                        this.showScreenG2('screen-win-g2');
+                        this.playSound('win');
+                    } else {
+                        this.backToThemeMenu();
+                    }
+                }
+            },
+
+            showScreenG2(screenId) {
+                document.querySelectorAll('#gamePasangkanGambar .g2-screen').forEach(s => s.classList.remove('active'));
+                const target = document.getElementById(screenId);
+                if (target) target.classList.add('active');
+            },
+
+            restartGame() {
+                this.state.finishedThemes = [];
+                this.state.selectedCharacterG2 = '';
+                const startBtn = document.getElementById('btn-start-game');
+                if (startBtn) { startBtn.classList.add('btn-disabled'); startBtn.setAttribute('disabled', 'true'); }
+                document.querySelectorAll('#gamePasangkanGambar .char-card').forEach(card => card.classList.remove('selected'));
+                this.showScreenG2('screen-character-g2');
+            }
+        };
+
+        /* -----------------------------------------------------------
+           4. PUZZLEGAME: MODUL GAME 3 (PUZZLE ADVENTURE 🧩)
+           ----------------------------------------------------------- */
+        const PuzzleGame = {
+            state: {
+                selectedCharacterG3: null,
+                selectedCharIconG3: null,
+                currentThemeKeyG3: null,
+                currentDifficultyModeG3: 'easy',
+                completedCombinationsG3: [],
+                rowsG3: 3,
+                colsG3: 4,
+                timerG3: 0,
+                placedG3: 0,
+                totalPiecesG3: 0,
+                draggedPieceG3: null,
+                touchStartCellG3: null,
+                isGameFinishedG3: false,
+                touchStartXG3: 0,
+                touchStartYG3: 0,
+                intervalG3: null
+            },
+            themes: {
+                dinosaurus: { name: "Dinosaurus", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Dinosaurus.jpeg" },
+                laut: { name: "Kehidupan Laut", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Kehidupan%20Laut.jpeg" },
+                peternakan: { name: "Peternakan", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Peternakan.jpeg" },
+                sabana: { name: "Sabana", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Sabana.jpeg" },
+                taman: { name: "Taman", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Taman.jpeg" },
+                dongeng: { name: "Dunia Dongeng", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Dunia%20Dongeng%20dan%20Kastil.jpeg" }
+            },
+
+            playSound(type) {
+                if (!AppCore.audioCtx) return;
+                const osc = AppCore.audioCtx.createOscillator();
+                const gain = AppCore.audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(AppCore.audioCtx.destination);
+                const now = AppCore.audioCtx.currentTime;
+
+                if (type === 'click') {
+                    osc.type = 'sine'; osc.frequency.setValueAtTime(400, now); gain.gain.setValueAtTime(0.08, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1); osc.start(now); osc.stop(now + 0.1);
+                } else if (type === 'move') {
+                    osc.type = 'triangle'; osc.frequency.setValueAtTime(240, now); osc.frequency.exponentialRampToValueAtTime(140, now + 0.12);
+                    gain.gain.setValueAtTime(0.12, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12); osc.start(now); osc.stop(now + 0.12);
+                } else if (type === 'theme_clear') {
+                    osc.type = 'sine'; osc.frequency.setValueAtTime(320, now); osc.frequency.setValueAtTime(480, now + 0.1); osc.frequency.setValueAtTime(640, now + 0.2);
+                    gain.gain.setValueAtTime(0.15, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4); osc.start(now); osc.stop(now + 0.4);
+                } else if (type === 'all_clear') {
+                    for (let i = 0; i < 3; i++) {
+                        const tOsc = AppCore.audioCtx.createOscillator(); const tGain = AppCore.audioCtx.createGain();
+                        tOsc.connect(tGain); tGain.connect(AppCore.audioCtx.destination); tOsc.type = 'sawtooth';
+                        tOsc.frequency.setValueAtTime(523.25 + (i * 80), now + (i * 0.12)); tGain.gain.setValueAtTime(0.08, now + (i * 0.12));
+                        tGain.gain.exponentialRampToValueAtTime(0.01, now + (i * 0.12) + 0.25); tOsc.start(now + (i * 0.12)); tOsc.stop(now + (i * 0.12) + 0.25);
+                    }
+                }
+            },
+
+            goToPageG3(pageId) {
+                this.playSound('click');
+                document.querySelectorAll('.g3-page').forEach(p => p.classList.remove('active'));
+                document.getElementById('g3-page-game').classList.remove('active');
+                if (pageId === 'g3-page-theme') { this.renderThemeSelectionG3(); }
+                document.getElementById(pageId).classList.add('active');
+            },
+
+            selectCharacterG3(name, icon, element) {
+                this.state.selectedCharacterG3 = name;
+                this.state.selectedCharIconG3 = icon;
+                this.playSound('click');
+                document.querySelectorAll('#g3-page-character .g3-card').forEach(c => c.classList.remove('selected'));
+                element.classList.add('selected');
+                document.getElementById('g3-btn-next-theme').disabled = false;
+                document.getElementById('g3-display-char-icon').innerText = icon;
+                document.getElementById('g3-display-char-name').innerText = name;
+            },
+
+            changeDifficultyUIG3(r, c, mode) {
+                this.playSound('click');
+                this.state.rowsG3 = r; this.state.colsG3 = c; this.state.currentDifficultyModeG3 = mode;
+                document.querySelectorAll('.g3-diff-btn').forEach(b => b.classList.remove('active'));
+                document.getElementById(`g3-diff-${mode}`).classList.add('active');
+                this.renderThemeSelectionG3();
+            },
+
+            renderThemeSelectionG3() {
+                const grid = document.getElementById('g3-theme-grid');
+                grid.innerHTML = '';
+                for (let key in this.themes) {
+                    const theme = this.themes[key];
+                    const comboKey = key + '_' + this.state.currentDifficultyModeG3;
+                    const isDone = this.state.completedCombinationsG3.includes(comboKey);
+                    const card = document.createElement('div');
+                    card.className = `g3-card ${isDone ? 'disabled' : ''}`;
+                    if (!isDone) card.onclick = () => this.launchGameInternalG3(key);
+                    card.innerHTML = `<img class="thumb" src="${theme.img}" alt="${theme.name}">
+                                      <h3>${theme.name}</h3>
+                                      <div class="play-tag">${isDone ? '✅ Selesai' : '🎮 Mainkan'}</div>`;
+                    grid.appendChild(card);
+                }
+            },
+
+            launchGameInternalG3(themeKey) {
+                this.playSound('click');
+                this.state.currentThemeKeyG3 = themeKey;
+                this.state.isGameFinishedG3 = false;
+                document.querySelectorAll('.g3-page').forEach(p => p.classList.remove('active'));
+                document.getElementById('g3-page-game').classList.add('active');
+                document.getElementById('g3-preview-success-zone').style.display = 'none';
+                document.getElementById('g3-btn-giveup').style.display = 'inline-block';
+
+                const textDifficulty = this.state.currentDifficultyModeG3 === 'easy' ? 'Mudah ⭐' :
+                    this.state.currentDifficultyModeG3 === 'medium' ? 'Sedang ⭐⭐' : 'Sulit ⭐⭐⭐';
+                document.getElementById('g3-current-theme-title').innerText = this.themes[themeKey].name + ' (' + textDifficulty + ')';
+                document.getElementById('g3-refImage').src = this.themes[themeKey].img;
+
+                this.state.placedG3 = 0;
+                this.state.totalPiecesG3 = this.state.rowsG3 * this.state.colsG3;
+                document.getElementById('g3-progress').innerText = '0%';
+                this.loadBestG3();
+                this.startTimerG3();
+                this.createBoardG3();
+            },
+
+            confirmExitG3() {
+                this.playSound('click');
+                if (confirm('Apakah kamu ingin kembali? Progres saat ini akan hilang.')) {
+                    clearInterval(this.state.intervalG3);
+                    this.goToPageG3('g3-page-theme');
+                }
+            },
+
+            formatTimeG3(sec) {
+                const m = Math.floor(sec / 60); const s = sec % 60;
+                return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+            },
+
+            loadBestG3() {
+                const key = 'best_' + this.state.currentThemeKeyG3 + '_' + this.state.rowsG3 + 'x' + this.state.colsG3;
+                const best = localStorage.getItem(key);
+                document.getElementById('g3-bestTime').innerText = best || '-';
+            },
+
+            saveBestG3() {
+                const key = 'best_' + this.state.currentThemeKeyG3 + '_' + this.state.rowsG3 + 'x' + this.state.colsG3;
+                const best = localStorage.getItem(key);
+                if (!best || this.state.timerG3 < (parseInt(best.split(':')[0]) * 60 + parseInt(best.split(':')[1]))) {
+                    localStorage.setItem(key, this.formatTimeG3(this.state.timerG3));
+                }
+            },
+
+            startTimerG3() {
+                clearInterval(this.state.intervalG3);
+                this.state.timerG3 = 0;
+                this.state.intervalG3 = setInterval(() => {
+                    this.state.timerG3++;
+                    document.getElementById('g3-timer').innerText = this.formatTimeG3(this.state.timerG3);
+                }, 1000);
+            },
+
+            resizeBoard() {
+                const board = document.getElementById('g3-board');
+                if (!board) return;
+                const isLandscape = window.innerWidth > window.innerHeight;
+                const maxWidth = window.innerWidth - (isLandscape ? 240 : 60);
+                const maxHeight = window.innerHeight - (isLandscape ? 110 : 320);
+                let size = Math.min(maxWidth, maxHeight, 560);
+                if (size < 280) size = 280;
+                board.style.width = size + 'px';
+            },
+
+            createBoardG3() {
+                const board = document.getElementById('g3-board');
+                board.innerHTML = '';
+                this.resizeBoard();
+                board.style.gridTemplateColumns = `repeat(${this.state.colsG3}, 1fr)`;
+
+                let pieces = [];
+                for (let y = 0; y < this.state.rowsG3; y++) {
+                    for (let x = 0; x < this.state.colsG3; x++) {
+                        const index = y * this.state.colsG3 + x;
+                        const cell = document.createElement('div');
+                        cell.className = 'g3-cell';
+                        cell.dataset.index = index;
+                        cell.addEventListener('dragover', e => e.preventDefault());
+                        cell.addEventListener('drop', () => this.dropPieceG3(cell));
+                        board.appendChild(cell);
+                        pieces.push(index);
+                    }
+                }
+                pieces.sort(() => Math.random() - 0.5);
+
+                const cells = board.querySelectorAll('.g3-cell');
+                cells.forEach((cell, i) => {
+                    const piece = document.createElement('div');
+                    piece.className = 'g3-piece';
+                    piece.draggable = true;
+                    piece.dataset.correct = pieces[i];
+                    const px = pieces[i] % this.state.colsG3;
+                    const py = Math.floor(pieces[i] / this.state.colsG3);
+                    piece.style.backgroundImage = `url(${this.themes[this.state.currentThemeKeyG3].img})`;
+                    piece.style.backgroundSize = `${this.state.colsG3 * 100}% ${this.state.rowsG3 * 100}%`;
+                    piece.style.backgroundPosition = `${(px / (this.state.colsG3 - 1)) * 100}% ${(py / (this.state.rowsG3 - 1)) * 100}%`;
+                    piece.addEventListener('dragstart', () => this.dragStartG3(piece));
+                    piece.addEventListener('touchstart', e => this.touchStartG3(e, piece), { passive: false });
+                    piece.addEventListener('touchmove', e => this.touchMoveG3(e), { passive: false });
+                    piece.addEventListener('touchend', () => this.touchEndG3());
+                    cell.appendChild(piece);
+                });
+            },
+
+            dragStartG3(piece) { if (this.state.isGameFinishedG3) return; this.state.draggedPieceG3 = piece; },
+            dropPieceG3(cell) { if (!this.state.draggedPieceG3 || this.state.isGameFinishedG3) return; this.swapPiecesG3(this.state.draggedPieceG3, cell); },
+
+            touchStartG3(e, piece) {
+                if (this.state.isGameFinishedG3) return;
+                this.state.draggedPieceG3 = piece;
+                this.state.touchStartCellG3 = piece.parentNode;
+                const touch = e.touches[0];
+                this.state.touchStartXG3 = touch.clientX;
+                this.state.touchStartYG3 = touch.clientY;
+                piece.style.zIndex = '100';
+                piece.style.position = 'relative';
+            },
+
+            touchMoveG3(e) {
+                if (!this.state.draggedPieceG3 || this.state.isGameFinishedG3) return;
+                e.preventDefault();
+                const touch = e.touches[0];
+                const dx = touch.clientX - this.state.touchStartXG3;
+                const dy = touch.clientY - this.state.touchStartYG3;
+                this.state.draggedPieceG3.style.transform = `translate(${dx}px, ${dy}px)`;
+            },
+
+            touchEndG3() {
+                if (!this.state.draggedPieceG3 || this.state.isGameFinishedG3) return;
+                const pieceRect = this.state.draggedPieceG3.getBoundingClientRect();
+                const pieceCenterX = pieceRect.left + (pieceRect.width / 2);
+                const pieceCenterY = pieceRect.top + (pieceRect.height / 2);
+                this.state.draggedPieceG3.style.transform = 'none';
+                this.state.draggedPieceG3.style.zIndex = '1';
+
+                let closestCell = null; let minDistance = Infinity;
+                document.querySelectorAll('.g3-cell').forEach(cell => {
+                    const cellRect = cell.getBoundingClientRect();
+                    const cellCenterX = cellRect.left + (cellRect.width / 2);
+                    const cellCenterY = cellRect.top + (cellRect.height / 2);
+                    const distance = Math.hypot(cellCenterX - pieceCenterX, cellCenterY - pieceCenterY);
+                    if (distance < minDistance) { minDistance = distance; closestCell = cell; }
+                });
+
+                if (closestCell && minDistance < pieceRect.width * 1.2 && closestCell !== this.state.touchStartCellG3) {
+                    this.swapPiecesG3(this.state.draggedPieceG3, closestCell);
+                } else {
+                    this.state.touchStartCellG3.appendChild(this.state.draggedPieceG3);
+                }
+                this.state.draggedPieceG3 = null; this.state.touchStartCellG3 = null;
+            },
+
+            swapPiecesG3(piece, targetCell) {
+                this.playSound('move');
+                if (targetCell.children.length > 0) {
+                    const other = targetCell.children[0];
+                    piece.parentNode.appendChild(other);
+                }
+                targetCell.appendChild(piece);
+                this.checkPuzzleG3();
+            },
+
+            checkPuzzleG3() {
+                let correct = 0;
+                document.querySelectorAll('.g3-cell').forEach(cell => {
+                    const piece = cell.children[0];
+                    if (!piece) return;
+                    if (Number(piece.dataset.correct) === Number(cell.dataset.index)) {
+                        correct++; cell.classList.add('correct');
+                    } else {
+                        cell.classList.remove('correct');
+                    }
+                });
+                this.state.placedG3 = correct;
+                document.getElementById('g3-progress').innerText = Math.round((this.state.placedG3 / this.state.totalPiecesG3) * 100) + '%';
+                if (correct === this.state.totalPiecesG3) { clearInterval(this.state.intervalG3); this.saveBestG3(); this.handleThemeCompleteG3(); }
+            },
+
+            handleThemeCompleteG3() {
+                this.state.isGameFinishedG3 = true;
+                this.playSound('theme_clear');
+                document.getElementById('g3-btn-giveup').style.display = 'none';
+                const comboKey = this.state.currentThemeKeyG3 + '_' + this.state.currentDifficultyModeG3;
+                if (!this.state.completedCombinationsG3.includes(comboKey)) this.state.completedCombinationsG3.push(comboKey);
+                document.getElementById('g3-success-message').innerHTML =
+                    `Hebat! Kamu berhasil menyusun tema <b>${this.themes[this.state.currentThemeKeyG3].name}</b> bersama <b>${this.state.selectedCharacterG3}</b> dalam waktu <b>${this.formatTimeG3(this.state.timerG3)}</b>!`;
+                document.getElementById('g3-preview-success-zone').style.display = 'block';
+            },
+
+            backToThemeAfterPreviewG3() {
+                this.playSound('click');
+                const totalThemesCount = Object.keys(this.themes).length;
+                const totalPossibleCombos = totalThemesCount * 3;
+                if (this.state.completedCombinationsG3.length === totalPossibleCombos) {
+                    this.playSound('all_clear');
+                    document.getElementById('g3-modal-message').innerHTML =
+                        `Selamat! Semua ${totalThemesCount} tema dengan masing-masing 3 tingkat kesulitan telah berhasil kamu selesaikan seluruhnya dengan sempurna bersama <b>${this.state.selectedCharIconG3} ${this.state.selectedCharacterG3}</b>! 🏆🎉`;
+                    document.getElementById('g3-game-modal').style.display = 'flex';
+                } else {
+                    this.goToPageG3('g3-page-theme');
+                }
+            },
+
+            resetAllGameG3() {
+                this.state.completedCombinationsG3 = [];
+                document.getElementById('g3-game-modal').style.display = 'none';
+                this.goToPageG3('g3-page-character');
+                this.state.selectedCharacterG3 = null; this.state.selectedCharIconG3 = null;
+                document.getElementById('g3-btn-next-theme').disabled = true;
+                document.querySelectorAll('#g3-page-character .g3-card').forEach(c => c.classList.remove('selected'));
+            }
+        };
+
+        /* -----------------------------------------------------------
+           5. GLOBAL ADAPTER BRIDGES
+           ----------------------------------------------------------- */
+        document.addEventListener('DOMContentLoaded', () => AppCore.init());
+
+        function launchGame(gameId) { AppCore.switchScreen(gameId); if (gameId === 'gamePetugasKereta') TrainGame.restartGame(); else if (gameId === 'gamePasangkanGambar') MatchingGame.restartGame(); else if (gameId === 'gamePuzzleAdventure') PuzzleGame.resetAllGameG3(); }
+        function showMainMenuHub() { if (typeof MatchingGame !== 'undefined') MatchingGame.stopHintTimer(); if (PuzzleGame && PuzzleGame.state.intervalG3) clearInterval(PuzzleGame.state.intervalG3); AppCore.switchScreen('mainMenuHub'); }
+
+        // Game 1 Bridges
+        function selectCharacterG1(name, avatar) { TrainGame.selectCharacter(name, avatar); }
+        function triggerChoice(animal) { TrainGame.triggerChoice(animal); }
+        function popLastAnimal() { TrainGame.popLastAnimal(); }
+        function checkTrainDeparture() { TrainGame.checkTrainDeparture(); }
+        function restartGameG1() { TrainGame.restartGame(); }
+        function playDriveHorn() { AppCore.playKlakson(); }
+
+        // Game 2 Bridges
+        function selectCharacterG2(char, element) { MatchingGame.selectCharacterG2(char, element); }
+        function confirmCharacterG2() { MatchingGame.confirmCharacterG2(); }
+        function checkAndStartTheme(themeName) { MatchingGame.checkAndStartTheme(themeName); }
+        function backToThemeMenu() { MatchingGame.backToThemeMenu(); }
+        function goToNextStep() { MatchingGame.goToNextStep(); }
+        function restartGameG2() { MatchingGame.restartGame(); }
+
+        // Game 3 Bridges
+        function selectCharacterG3(name, icon, element) { PuzzleGame.selectCharacterG3(name, icon, element); }
+        function goToPageG3(pageId) { PuzzleGame.goToPageG3(pageId); }
+        function changeDifficultyUIG3(r, c, mode) { PuzzleGame.changeDifficultyUIG3(r, c, mode); }
+        function confirmExitG3() { PuzzleGame.confirmExitG3(); }
+        function backToThemeAfterPreviewG3() { PuzzleGame.backToThemeAfterPreviewG3(); }
+        function resetAllGameG3() { PuzzleGame.resetAllGameG3(); }
     </script>
 </body>
 
