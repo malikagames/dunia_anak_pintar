@@ -653,7 +653,13 @@
             font-size: 50px;
             filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
         }
-
+        
+        .char-card .name {
+            font-weight: 700;
+            margin-top: 10px;
+            color: #1e293b;
+            font-size: 16px;
+        }
         .char-card:active {
             transform: translateY(4px);
             border-bottom-width: 4px;
@@ -1755,19 +1761,19 @@
                 <div class="char-grid">
                     <div class="char-card" onclick="selectCharacterG2('👦',this)">
                         <div class="avatar">👦</div>
-                        <div>Malik</div>
+                        <div class="name">Malik</div>
                     </div>
                     <div class="char-card" onclick="selectCharacterG2('👧',this)">
                         <div class="avatar">👧</div>
-                        <div>Malika</div>
+                        <div class="name">Malika</div>
                     </div>
                     <div class="char-card" onclick="selectCharacterG2('🦁',this)">
                         <div class="avatar">🦁</div>
-                        <div>Leo</div>
+                        <div class="name">Leo</div>
                     </div>
                     <div class="char-card" onclick="selectCharacterG2('🐰',this)">
                         <div class="avatar">🐰</div>
-                        <div>Bunny</div>
+                        <div class="name">Bunny</div>
                     </div>
                 </div>
                 <button id="btn-start-game" class="btn-action btn-disabled" onclick="confirmCharacterG2()"
