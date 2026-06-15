@@ -102,6 +102,11 @@
             display: inline-block;
         }
 
+        .game-menu-card:hover {
+            transform: scale(1.05);
+            border-color: #e67e22;
+        }
+
         .game-card-title {
             color: #2c3e50;
             font-size: 18px;
@@ -936,17 +941,20 @@
         }
 
         .g3-wrapper {
-            background: var(--bg-gradient);
+            background: transparent;
             width: 100%;
             height: 100%;
             overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             padding: 12px;
             position: relative;
         }
 
         .g3-wrapper * {
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             -webkit-tap-highlight-color: transparent;
             margin: 0;
             padding: 0;
@@ -956,211 +964,249 @@
             padding: 8px 16px !important;
         }
 
-        .g3-wrapper h1 {
-            text-align: center;
-            margin: 10px 0 20px 0;
-            color: #0c4a6e;
-            font-size: 2.2rem;
-            font-weight: 800;
-        }
-
-        .g3-wrapper h2 {
-            margin-bottom: 25px;
-            color: #0f172a;
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-align: center;
-        }
-
-        .g3-page {
+        /* MODAL SCREEN LAYOUT GAME 3 SINKRON SAMA DENGAN GAME 2 */
+        .g3-page-card-container {
             display: none;
-            max-width: 900px;
-            margin: 50px auto 15px auto;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            padding: 30px;
-            border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.05);
+            width: 92%;
+            height: 94vh;
+            max-width: 460px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 32px;
+            box-shadow: 0 15px 0 rgba(33, 150, 243, 0.15), 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            box-sizing: border-box;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.7);
         }
 
-        .g3-page.active {
-            display: block;
+        .g3-page-card-container.active {
+            display: flex;
             animation: fadeIn 0.3s ease-out;
         }
 
+        .g3-page-card-container h1, .g3-page-card-container h2 {
+            color: #2196f3;
+            margin: 5px 0;
+            font-size: 26px;
+            text-shadow: 1px 1px 0px #fff;
+            font-family: 'Comic Sans MS', sans-serif;
+            font-weight: bold;
+        }
+
+        .g3-page-card-container .g3-header-layout {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 12px;
+            border-bottom: 3px dashed #bbdefb;
+            margin-bottom: 10px;
+        }
+
+        /* SCOPED SELECTION SINKRON SEMPURNA (MENIRU GAME 2) */
+        #g3-page-character .char-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+            width: 100%;
+            justify-items: center;
+        }
+
+        #g3-page-character .g3-card-char {
+            background: linear-gradient(to bottom, #ffffff, #f3f4f6);
+            border: 4px solid #cbd5e1;
+            border-bottom: 8px solid #94a3b8;
+            border-radius: 24px;
+            padding: 15px;
+            cursor: pointer;
+            width: 105px;
+            text-align: center;
+            transition: all 0.15s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #g3-page-character .g3-card-char:active {
+            transform: translateY(4px);
+            border-bottom-width: 4px;
+        }
+
+        #g3-page-character .g3-card-char.selected {
+            border-color: #ff9f43 !important;
+            border-bottom-color: #f39c12 !important;
+            background-color: #fff9f2 !important;
+            transform: scale(1.08) translateY(-2px);
+            box-shadow: 0 8px 16px rgba(230, 126, 34, 0.15) !important;
+        }
+
+        #g3-page-character .g3-card-char .icon {
+            font-size: 50px;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+            line-height: 1;
+            margin-bottom: 0;
+            display: inline-block;
+        }
+
+        #g3-page-character .g3-card-char h3 {
+            font-weight: 700;
+            margin-top: 10px;
+            color: #1e293b;
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+
+        /* DESIGN BUTTON ACTION GAME 3 SAMAKAN STRUKTUR DENGAN GAME 2 */
+        .g3-btn-action {
+            font-size: 18px;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(to bottom, #64b5f6, #2196f3);
+            box-shadow: 0 6px 0 #1565c0, 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.1s;
+            width: 90%;
+            font-family: inherit;
+            margin-bottom: 10px;
+        }
+
+        .g3-btn-action:active {
+            transform: translateY(5px);
+            box-shadow: 0 1px 0 #1565c0;
+        }
+
+        .g3-btn-action-disabled {
+            background: linear-gradient(to bottom, #cbd5e1, #94a3b8) !important;
+            box-shadow: 0 6px 0 #64748b !important;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        /* Tema Selection Page */
         .g3-difficulty-container {
-            margin-bottom: 30px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 18px;
+            margin-bottom: 15px;
+            background: #f1f5f9;
+            padding: 12px;
             border-radius: 20px;
-            border: 1px solid #e2e8f0;
+            border: 2px dashed #cbd5e1;
+            width: 100%;
         }
 
         .g3-difficulty-container strong {
             display: block;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             color: #1e293b;
-            font-size: 1.05rem;
+            font-size: 14px;
         }
 
         .g3-diff-flex-group {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 8px;
             flex-wrap: wrap;
         }
 
         .g3-diff-btn {
             flex: 1;
-            min-width: 130px;
-            max-width: 190px;
+            min-width: 90px;
             background: #f8fafc;
             border: 2px solid #e2e8f0;
-            padding: 12px;
-            border-radius: 16px;
+            padding: 8px;
+            border-radius: 12px;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 4px;
+            gap: 2px;
             font-weight: 700;
             color: #475569;
-            transition: all 0.2s ease;
+            font-size: 13px;
         }
 
         .g3-diff-btn.active[data-mode="easy"] {
             background: #f0fdf4;
             border-color: var(--success);
             color: #166534;
-            box-shadow: 0 6px 14px rgba(76, 175, 80, 0.2);
         }
 
         .g3-diff-btn.active[data-mode="medium"] {
             background: #fff9db;
             border-color: var(--warning);
             color: #9a6e00;
-            box-shadow: 0 6px 14px rgba(255, 152, 0, 0.2);
         }
 
         .g3-diff-btn.active[data-mode="hard"] {
             background: #fff5f5;
             border-color: #ef4444;
             color: #991b1b;
-            box-shadow: 0 6px 14px rgba(239, 68, 68, 0.2);
         }
 
-        .g3-stars {
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
-
-        .g3-grid-selection {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 18px;
-            margin-bottom: 30px;
-        }
-
-        .g3-card {
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            border-radius: 20px;
-            padding: 12px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            background: white;
-            box-shadow: 0 4px 8px rgba(15, 23, 42, 0.02);
+        .g3-theme-list-scroll {
             display: flex;
             flex-direction: column;
-        }
-
-        .g3-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
-            box-shadow: 0 12px 18px rgba(33, 150, 243, 0.12);
-        }
-
-        .g3-card.selected {
-            border-color: var(--success);
-            background: var(--success-light);
-        }
-
-        .g3-card .icon {
-            font-size: 50px;
-            margin-bottom: 10px;
-            display: block;
-            text-align: center;
-        }
-
-        .g3-card .thumb {
+            gap: 10px;
             width: 100%;
-            aspect-ratio: 4/3;
-            object-fit: cover;
-            border-radius: 14px;
+            overflow-y: auto;
+            flex-grow: 1;
+            padding-right: 4px;
             margin-bottom: 10px;
         }
 
-        .g3-card h3 {
-            font-size: 1rem;
-            color: #1e293b;
-            margin-bottom: 8px;
-            font-weight: 700;
-            text-align: center;
-        }
-
-        .g3-card .play-tag {
-            margin-top: auto;
-            background: #f1f5f9;
-            color: #475569;
-            padding: 8px;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-align: center;
-        }
-
-        .g3-card:hover .play-tag {
-            background: var(--primary);
-            color: white;
-        }
-
-        .g3-card.disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            border-color: #cbd5e1;
-            background: #f8fafc;
-        }
-
-        .g3-btn {
-            padding: 12px 28px;
+        .g3-btn-theme-item {
+            font-size: 16px;
+            padding: 12px;
             border: none;
-            border-radius: 14px;
+            border-radius: 18px;
             cursor: pointer;
-            background: var(--primary);
-            color: white;
             font-weight: bold;
-            font-size: 1rem;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 10px rgba(33, 150, 243, 0.2);
+            color: white;
+            width: 100%;
+            text-align: left;
+            position: relative;
+            background: linear-gradient(to bottom, #4fc3f7, #0288d1);
+            box-shadow: 0 5px 0 #01579b;
         }
 
-        .g3-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 14px rgba(33, 150, 243, 0.3);
-        }
-
-        .g3-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            background: #94a3b8;
+        .g3-btn-theme-item:active {
+            transform: translateY(4px);
             box-shadow: none;
         }
 
+        .g3-btn-theme-item.completed {
+            background: linear-gradient(to bottom, #cbd5e1, #94a3b8) !important;
+            box-shadow: 0 5px 0 #64748b !important;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .g3-btn-theme-item.completed::after {
+            content: "✅ SELESAI";
+            font-size: 10px;
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #27ae60;
+            background: white;
+            padding: 2px 6px;
+            border-radius: 8px;
+        }
+
+        /* Area Permainan Puzzle Core */
         .g3-game-container {
             max-width: 1250px;
-            margin: 45px auto 15px auto;
+            width: 100%;
+            margin: 0 auto;
             display: none;
         }
 
@@ -1310,331 +1356,83 @@
         /* ============================================================
            BAGIAN 7: ANIMASI GLOBAL (dipakai semua game)
            ============================================================ */
-        @keyframes spin {
-            100% {
-                transform: rotate(-360deg);
-            }
-        }
-
-        @keyframes popIn {
-            0% {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        @keyframes jelly {
-            0% {
-                transform: scale(1);
-            }
-
-            30% {
-                transform: scale(1.2, 0.75);
-            }
-
-            40% {
-                transform: scale(0.75, 1.15);
-            }
-
-            50% {
-                transform: scale(1.1, 0.85);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            100% {
-                transform: scale(1.15);
-            }
-        }
-
-        @keyframes g2-pop {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.2);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        @keyframes shake {
-
-            0%,
-            100% {
-                transform: translateX(0);
-            }
-
-            20%,
-            60% {
-                transform: translateX(-8px);
-            }
-
-            40%,
-            80% {
-                transform: translateX(8px);
-            }
-        }
-
-        @keyframes blink {
-
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-
-            50% {
-                transform: scale(1.1);
-                opacity: 0.6;
-            }
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(-50px) rotate(0deg);
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        @keyframes spin { 100% { transform: rotate(-360deg); } }
+        @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        @keyframes jelly { 0% { transform: scale(1); } 30% { transform: scale(1.2, 0.75); } 40% { transform: scale(0.75, 1.15); } 50% { transform: scale(1.1, 0.85); } 100% { transform: scale(1); } }
+        @keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.15); } }
+        @keyframes g2-pop { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-8px); } 40%, 80% { transform: translateX(8px); } }
+        @keyframes blink { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.6; } }
+        @keyframes fall { 0% { transform: translateY(-50px) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(360deg); opacity: 0; } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 
         /* ============================================================
-           BAGIAN 8: RESPONSIVE — MEDIA QUERIES (FIXED OVERFLOW BUG)
+           BAGIAN 8: RESPONSIVE — MEDIA QUERIES (DESKTOP & MOBILE COHESION)
            ============================================================ */
         @media (max-width: 920px) and (orientation: landscape) {
-            .g3-game-layout {
-                grid-template-columns: 190px 1fr;
-                gap: 12px;
-            }
-
-            .g3-reference {
-                padding: 10px;
-            }
-
-            .g3-reference img {
-                max-height: 85px;
-            }
-
-            .g3-gameArea {
-                padding: 12px;
-            }
-
-            .g3-wrapper h1 {
-                font-size: 1.4rem;
-                margin: 4px 0;
-            }
-
-            .g3-wrapper h2 {
-                font-size: 1.1rem;
-                margin-bottom: 6px;
-            }
-
-            .g3-stats {
-                padding: 8px;
-                margin-bottom: 8px;
-                font-size: 0.85rem;
-            }
+            .g3-game-layout { grid-template-columns: 190px 1fr; gap: 12px; }
+            .g3-reference { padding: 10px; }
+            .g3-reference img { max-height: 85px; }
+            .g3-gameArea { padding: 12px; }
+            .g3-wrapper h1 { font-size: 1.4rem; margin: 4px 0; }
+            .g3-stats { padding: 8px; margin-bottom: 8px; font-size: 0.85rem; }
         }
 
         @media (max-width: 768px) and (orientation: portrait) {
+            /* Game 3 Core Board Layout */
+            .g3-game-layout { grid-template-columns: 1fr; gap: 12px; }
+            .g3-reference img { max-height: 110px; }
 
-            /* Game 3 - Portrait */
-            .g3-game-layout {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-
-            .g3-reference img {
-                max-height: 110px;
-            }
-
-            .g3-wrapper h1 {
-                font-size: 1.8rem;
-            }
-
-            .g3-page {
-                padding: 20px;
-                margin-top: 45px;
-            }
-
-            .g3-grid-selection {
-                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-                gap: 12px;
-            }
-
-            /* Game 1 - Portrait */
-            .g1-screen {
-                padding: 20px 15px;
-                border-radius: 28px;
-            }
-
-            .btn-choice {
-                width: 62px;
-                height: 68px;
-                font-size: 28px;
-                border-radius: 16px;
-            }
-
-            .carriage {
-                height: 42px;
-                font-size: 22px;
-            }
-
-            .locomotive {
-                font-size: 36px;
-            }
-
-            .answer-container {
-                min-height: 85px;
-                padding-bottom: 25px;
-            }
-
-            .btn-main {
-                padding: 12px;
-                font-size: 14px;
-            }
-
-            .g1-char-card {
-                width: 95px;
-                padding: 10px;
-            }
-
-            .g1-char-card .avatar {
-                font-size: 45px;
-            }
-
-            .g1-char-card .name {
-                font-size: 15px;
-            }
-
-            /* Game 2 - Portrait (FIXED BUG VISUAL SELECTION) */
-            #screen-character-g2.g2-screen {
+            /* Game 3 Character Selection & Theme Selection (Responsive Scale Sync) */
+            .g3-page-card-container {
                 height: auto !important;
                 max-height: 95vh !important;
                 padding: 15px 15px 10px 15px !important;
             }
 
-            #screen-character-g2 .char-grid {
-                margin: 10px 0 !important;
-                gap: 10px !important;
-            }
+            #g3-page-character .char-grid { margin: 10px 0 !important; gap: 10px !important; }
 
-            /* Perbaikan Utama: Mengganti height statis menjadi auto agar nama tidak meluap ke bawah luar modal */
-            #screen-character-g2 .char-card {
+            #g3-page-character .g3-card-char {
                 width: 92px !important;
                 height: auto !important;
-                line-height: normal !important;
-                font-size: 36px !important;
-                border-radius: 18px !important;
                 padding: 10px !important;
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                justify-content: center !important;
+                border-radius: 18px !important;
             }
 
-            #screen-character-g2 .char-card .avatar {
-                font-size: 44px !important;
-                line-height: 1 !important;
-            }
+            #g3-page-character .g3-card-char .icon { font-size: 44px !important; }
+            #g3-page-character .g3-card-char h3 { font-size: 14px !important; margin-top: 6px !important; }
+            .g3-btn-action { margin-bottom: 5px !important; margin-top: 5px !important; padding: 10px 20px !important; font-size: 16px !important; }
 
-            #screen-character-g2 .char-card .name {
-                font-size: 14px !important;
-                margin-top: 6px !important;
-                line-height: normal !important;
-            }
+            /* Game 1 - Portrait */
+            .g1-screen { padding: 20px 15px; border-radius: 28px; }
+            .btn-choice { width: 62px; height: 68px; font-size: 28px; border-radius: 16px; }
+            .carriage { height: 42px; font-size: 22px; }
+            .locomotive { font-size: 36px; }
+            .answer-container { min-height: 85px; padding-bottom: 25px; }
+            .btn-main { padding: 12px; font-size: 14px; }
+            .g1-char-card { width: 95px; padding: 10px; }
+            .g1-char-card .avatar { font-size: 45px; }
+            .g1-char-card .name { font-size: 15px; }
 
-            #screen-character-g2 .btn-action {
-                margin-bottom: 5px !important;
-                margin-top: 5px !important;
-                padding: 10px 20px !important;
-                font-size: 16px !important;
-            }
-
-            .g2-screen {
-                padding: 20px 15px;
-                border-radius: 28px;
-            }
-
-            .g2-body-style h1 {
-                font-size: 22px;
-            }
-
-            .btn-theme {
-                font-size: 15px;
-                padding: 12px;
-            }
-
-            .emoji-item,
-            .target-slot {
-                width: 46px;
-                height: 46px;
-                line-height: 46px;
-                font-size: 30px;
-            }
+            /* Game 2 - Portrait */
+            #screen-character-g2.g2-screen { height: auto !important; max-height: 95vh !important; padding: 15px 15px 10px 15px !important; }
+            #screen-character-g2 .char-grid { margin: 10px 0 !important; gap: 10px !important; }
+            #screen-character-g2 .char-card { width: 92px !important; height: auto !important; font-size: 36px !important; border-radius: 18px !important; padding: 10px !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; }
+            #screen-character-g2 .char-card .avatar { font-size: 44px !important; line-height: 1 !important; }
+            #screen-character-g2 .char-card .name { font-size: 14px !important; margin-top: 6px !important; line-height: normal !important; }
+            #screen-character-g2 .btn-action { margin-bottom: 5px !important; margin-top: 5px !important; padding: 10px 20px !important; font-size: 16px !important; }
+            .g2-screen { padding: 20px 15px; border-radius: 28px; }
+            .g2-body-style h1 { font-size: 22px; }
+            .btn-theme { font-size: 15px; padding: 12px; }
+            .emoji-item, .target-slot { width: 46px; height: 46px; line-height: 46px; font-size: 30px; }
 
             /* Hub Menu */
-            .hub-title {
-                font-size: 24px;
-            }
-
-            .game-menu-card {
-                width: 150px;
-                padding: 15px;
-            }
-
-            .game-icon {
-                font-size: 45px;
-            }
-
-            .game-card-title {
-                font-size: 15px;
-            }
+            .hub-title { font-size: 24px; }
+            .game-menu-card { width: 150px; padding: 15px; }
+            .game-icon { font-size: 45px; }
+            .game-card-title { font-size: 15px; }
         }
     </style>
 </head>
@@ -1854,66 +1652,61 @@
          ================================================================ -->
     <div id="gamePuzzleAdventure" class="game-hub-screen">
         <div class="g3-wrapper">
-            <h1>🧩 Puzzle Adventure</h1>
 
-            <!-- Halaman: Pilih Karakter -->
-            <div id="g3-page-character" class="g3-page active">
-                <div style="display: flex; justify-content: flex-start; margin-bottom: 15px;">
+            <!-- Halaman: Pilih Karakter (SINKRON TOTAL VISUAL MATRIX SAMA DENGAN GAME 2) -->
+            <div id="g3-page-character" class="g3-page-card-container active">
+                <div class="g3-header-layout">
                     <button class="btn-header-back" onclick="showMainMenuHub()">🏠 Keluar</button>
                 </div>
-                <h2>Pilih Karakter Kamu</h2>
-                <div class="g3-grid-selection">
-                    <div class="g3-card" onclick="selectCharacterG3('Malik', '👦', this)">
+                <h2>Siapa Kamu? 🤔</h2>
+                <div class="char-grid">
+                    <div class="g3-card-char" onclick="selectCharacterG3('Malik', '👦', this)">
                         <span class="icon">👦</span>
                         <h3>Malik</h3>
                     </div>
-                    <div class="g3-card" onclick="selectCharacterG3('Malika', '👧', this)">
+                    <div class="g3-card-char" onclick="selectCharacterG3('Maika', '👧', this)">
                         <span class="icon">👧</span>
                         <h3>Maika</h3>
                     </div>
-                    <div class="g3-card" onclick="selectCharacterG3('Leo Kid', '🦁', this)">
+                    <div class="g3-card-char" onclick="selectCharacterG3('Leo Kid', '🦁', this)">
                         <span class="icon">🦁</span>
                         <h3>Leo Kid</h3>
                     </div>
-                    <div class="g3-card" onclick="selectCharacterG3('Foxie', '🦊', this)">
+                    <div class="g3-card-char" onclick="selectCharacterG3('Foxie', '🦊', this)">
                         <span class="icon">🦊</span>
                         <h3>Foxie</h3>
                     </div>
                 </div>
-                <button id="g3-btn-next-theme" class="g3-btn" disabled onclick="goToPageG3('g3-page-theme')">Lanjut
-                    Pilih Tema ➡️</button>
+                <button id="g3-btn-next-theme" class="g3-btn-action g3-btn-action-disabled" disabled onclick="goToPageG3('g3-page-theme')">Lanjut Pilih Tema ➡️</button>
             </div>
 
-            <!-- Halaman: Pilih Tema & Kesulitan -->
-            <div id="g3-page-theme" class="g3-page">
-                <div
-                    style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-                    <button class="btn-header-back" onclick="showMainMenuHub()">🏠 Keluar</button>
+            <!-- Halaman: Pilih Tema & Kesulitan (SINKRON TOTAL VISUAL MATRIX SAMA DENGAN GAME 2) -->
+            <div id="g3-page-theme" class="g3-page-card-container">
+                <div class="g3-header-layout">
+                    <button class="g3-btn-action" onclick="goToPageG3('g3-page-character')" style="background: #7f8c8d; box-shadow: 0 5px 0 #34495e; font-size:14px; padding:6px 14px; width:auto; margin:0;">⬅️ Kembali</button>
+                    <button class="btn-header-back" onclick="showMainMenuHub()">🏠 Keluar Game</button>
                 </div>
-                <h2>Pilih Tema & Tingkat Kesulitan</h2>
                 <div class="g3-difficulty-container">
                     <strong>Pilih Tingkat Kesulitan:</strong>
                     <div class="g3-diff-flex-group">
                         <div class="g3-diff-btn active" id="g3-diff-easy" data-mode="easy"
                             onclick="changeDifficultyUIG3(3, 4, 'easy')">
                             <span>Mudah</span>
-                            <span class="g3-stars" style="color: var(--success)">⭐</span>
+                            <span style="color: #4caf50">⭐</span>
                         </div>
                         <div class="g3-diff-btn" id="g3-diff-medium" data-mode="medium"
                             onclick="changeDifficultyUIG3(4, 6, 'medium')">
                             <span>Sedang</span>
-                            <span class="g3-stars" style="color: var(--warning)">⭐⭐</span>
+                            <span style="color: #ff9800">⭐⭐</span>
                         </div>
                         <div class="g3-diff-btn" id="g3-diff-hard" data-mode="hard"
                             onclick="changeDifficultyUIG3(6, 8, 'hard')">
                             <span>Sulit</span>
-                            <span class="g3-stars" style="color: #ef4444">⭐⭐⭐</span>
+                            <span style="color: #ef4444">⭐⭐⭐</span>
                         </div>
                     </div>
                 </div>
-                <div class="g3-grid-selection" id="g3-theme-grid"></div>
-                <button class="g3-btn" onclick="goToPageG3('g3-page-character')" style="background: #64748b;">⬅️
-                    Kembali</button>
+                <div class="g3-theme-list-scroll" id="g3-theme-grid"></div>
             </div>
 
             <!-- Halaman: Area Permainan Puzzle -->
@@ -1928,11 +1721,11 @@
                             <h3 style="font-size: 0.9rem; text-align: center; margin-top: 5px;">Referensi Gambar</h3>
                             <img id="g3-refImage" src="" alt="Referensi">
                         </div>
-                        <button id="g3-btn-giveup" class="g3-btn" onclick="confirmExitG3()"
-                            style="background: #4455ef; width: 100%; margin-top: 10px;">Ganti Tema</button>
+                        <button id="g3-btn-giveup" class="g3-btn-action" onclick="confirmExitG3()"
+                            style="width: 100%; margin-top: 10px; font-size:14px; padding:10px;">Ganti Tema</button>
                     </div>
                     <div class="g3-gameArea">
-                        <h2 id="g3-current-theme-title">Nama Tema</h2>
+                        <h2 id="g3-current-theme-title" style="color:#2196f3; font-family:inherit;">Nama Tema</h2>
                         <div class="g3-stats">
                             <span>⏱️ <span id="g3-timer">00:00</span></span>
                             <span>📈 <span id="g3-progress">0%</span></span>
@@ -1943,11 +1736,9 @@
                         </div>
                         <div id="g3-preview-success-zone">
                             <h2 style="color: #15803d; font-size: 1.3rem; margin-bottom: 5px;">🎉 Hore, Sukses! 👏</h2>
-                            <p id="g3-success-message" style="font-size: 0.95rem; margin-bottom: 12px;">Hebat sekali!
-                            </p>
-                            <button class="g3-btn" onclick="backToThemeAfterPreviewG3()"
-                                style="background: var(--success); padding: 10px 24px; font-size: 0.95rem;">Lanjut Pilih
-                                Tema ➡️</button>
+                            <p id="g3-success-message" style="font-size: 0.95rem; margin-bottom: 12px;">Hebat sekali!</p>
+                            <button class="g3-btn-action" onclick="backToThemeAfterPreviewG3()"
+                                style="background: #4caf50; box-shadow:0 5px 0 #1e7e34; padding: 10px 24px; font-size: 0.95rem; width:auto;">Lanjut Pilih Tema ➡️</button>
                         </div>
                     </div>
                 </div>
@@ -1956,10 +1747,10 @@
             <!-- Modal: Semua Selesai -->
             <div id="g3-game-modal" class="g3-modal">
                 <div class="g3-modal-content">
-                    <h2 style="color: var(--warning);">🏆 LUAR BIASA! TAMAT! 🏆</h2>
+                    <h2 style="color: #ff9800;">🏆 LUAR BIASA! TAMAT! 🏆</h2>
                     <p id="g3-modal-message" style="margin: 15px 0; color: #334155; font-weight: 500;"></p>
-                    <button id="g3-modal-btn" class="g3-btn" onclick="resetAllGameG3()"
-                        style="background: var(--warning);">Main Lagi Dari Awal</button>
+                    <button id="g3-modal-btn" class="g3-btn-action" onclick="resetAllGameG3()"
+                        style="background: #ff9800; box-shadow:0 5px 0 #b36b00;">Main Lagi Dari Awal</button>
                 </div>
             </div>
 
@@ -2544,12 +2335,12 @@
                 intervalG3: null
             },
             themes: {
-                dinosaurus: { name: "Dinosaurus", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Dinosaurus.jpeg" },
-                laut: { name: "Kehidupan Laut", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Kehidupan%20Laut.jpeg" },
-                peternakan: { name: "Peternakan", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Peternakan.jpeg" },
-                sabana: { name: "Sabana", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Sabana.jpeg" },
-                taman: { name: "Taman", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Taman.jpeg" },
-                dongeng: { name: "Dunia Dongeng", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Dunia%20Dongeng%20dan%20Kastil.jpeg" }
+                dinosaurus: { name: "🦕 DINOSAURUS PURBA", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Dinosaurus.jpeg" },
+                laut: { name: "🐬 KEHIDUPAN LAUT DALAM", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Kehidupan%20Laut.jpeg" },
+                peternakan: { name: "🐄 PETERNAKAN CERIA", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Peternakan.jpeg" },
+                sabana: { name: "🦁 PETUALANGAN SABANA", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Sabana.jpeg" },
+                taman: { name: "🦋 BERMAIN DI TAMAN", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Taman.jpeg" },
+                dongeng: { name: "🏰 DUNIA KASTIL DONGENG", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Dunia%20Dongeng%20dan%20Kastil.jpeg" }
             },
 
             playSound(type) {
@@ -2581,19 +2372,29 @@
 
             goToPageG3(pageId) {
                 this.playSound('click');
-                document.querySelectorAll('.g3-page').forEach(p => p.classList.remove('active'));
+                document.querySelectorAll('.g3-page-card-container').forEach(p => p.classList.remove('active'));
                 document.getElementById('g3-page-game').classList.remove('active');
+                
                 if (pageId === 'g3-page-theme') { this.renderThemeSelectionG3(); }
-                document.getElementById(pageId).classList.add('active');
+                
+                const target = document.getElementById(pageId);
+                if (target) {
+                    if (pageId === 'g3-page-game') target.classList.add('active');
+                    else target.classList.add('active');
+                }
             },
 
             selectCharacterG3(name, icon, element) {
                 this.state.selectedCharacterG3 = name;
                 this.state.selectedCharIconG3 = icon;
                 this.playSound('click');
-                document.querySelectorAll('#g3-page-character .g3-card').forEach(c => c.classList.remove('selected'));
+                document.querySelectorAll('#g3-page-character .g3-card-char').forEach(c => c.classList.remove('selected'));
                 element.classList.add('selected');
-                document.getElementById('g3-btn-next-theme').disabled = false;
+                
+                const nextBtn = document.getElementById('g3-btn-next-theme');
+                nextBtn.classList.remove('g3-btn-action-disabled');
+                nextBtn.disabled = false;
+                
                 document.getElementById('g3-display-char-icon').innerText = icon;
                 document.getElementById('g3-display-char-name').innerText = name;
             },
@@ -2613,13 +2414,12 @@
                     const theme = this.themes[key];
                     const comboKey = key + '_' + this.state.currentDifficultyModeG3;
                     const isDone = this.state.completedCombinationsG3.includes(comboKey);
-                    const card = document.createElement('div');
-                    card.className = `g3-card ${isDone ? 'disabled' : ''}`;
-                    if (!isDone) card.onclick = () => this.launchGameInternalG3(key);
-                    card.innerHTML = `<img class="thumb" src="${theme.img}" alt="${theme.name}">
-                                      <h3>${theme.name}</h3>
-                                      <div class="play-tag">${isDone ? '✅ Selesai' : '🎮 Mainkan'}</div>`;
-                    grid.appendChild(card);
+                    
+                    const btn = document.createElement('button');
+                    btn.className = `g3-btn-theme-item ${isDone ? 'completed' : ''}`;
+                    btn.innerText = theme.name;
+                    if (!isDone) btn.onclick = () => this.launchGameInternalG3(key);
+                    grid.appendChild(btn);
                 }
             },
 
@@ -2627,14 +2427,14 @@
                 this.playSound('click');
                 this.state.currentThemeKeyG3 = themeKey;
                 this.state.isGameFinishedG3 = false;
-                document.querySelectorAll('.g3-page').forEach(p => p.classList.remove('active'));
+                document.querySelectorAll('.g3-page-card-container').forEach(p => p.classList.remove('active'));
                 document.getElementById('g3-page-game').classList.add('active');
                 document.getElementById('g3-preview-success-zone').style.display = 'none';
                 document.getElementById('g3-btn-giveup').style.display = 'inline-block';
 
                 const textDifficulty = this.state.currentDifficultyModeG3 === 'easy' ? 'Mudah ⭐' :
                     this.state.currentDifficultyModeG3 === 'medium' ? 'Sedang ⭐⭐' : 'Sulit ⭐⭐⭐';
-                document.getElementById('g3-current-theme-title').innerText = this.themes[themeKey].name + ' (' + textDifficulty + ')';
+                document.getElementById('g3-current-theme-title').innerText = this.themes[themeKey].name.replace(/^[^\s]+\s/, '') + ' (' + textDifficulty + ')';
                 document.getElementById('g3-refImage').src = this.themes[themeKey].img;
 
                 this.state.placedG3 = 0;
@@ -2813,7 +2613,7 @@
                 const comboKey = this.state.currentThemeKeyG3 + '_' + this.state.currentDifficultyModeG3;
                 if (!this.state.completedCombinationsG3.includes(comboKey)) this.state.completedCombinationsG3.push(comboKey);
                 document.getElementById('g3-success-message').innerHTML =
-                    `Hebat! Kamu berhasil menyusun tema <b>${this.themes[this.state.currentThemeKeyG3].name}</b> bersama <b>${this.state.selectedCharacterG3}</b> dalam waktu <b>${this.formatTimeG3(this.state.timerG3)}</b>!`;
+                    `Hebat! Kamu berhasil menyusun tema <b>${this.themes[this.state.currentThemeKeyG3].name.replace(/^[^\s]+\s/, '')}</b> bersama <b>${this.state.selectedCharacterG3}</b> dalam waktu <b>${this.formatTimeG3(this.state.timerG3)}</b>!`;
                 document.getElementById('g3-preview-success-zone').style.display = 'block';
             },
 
@@ -2836,8 +2636,12 @@
                 document.getElementById('g3-game-modal').style.display = 'none';
                 this.goToPageG3('g3-page-character');
                 this.state.selectedCharacterG3 = null; this.state.selectedCharIconG3 = null;
-                document.getElementById('g3-btn-next-theme').disabled = true;
-                document.querySelectorAll('#g3-page-character .g3-card').forEach(c => c.classList.remove('selected'));
+                
+                const nextBtn = document.getElementById('g3-btn-next-theme');
+                nextBtn.classList.add('g3-btn-action-disabled');
+                nextBtn.disabled = true;
+                
+                document.querySelectorAll('#g3-page-character .g3-card-char').forEach(c => c.classList.remove('selected'));
             }
         };
 
