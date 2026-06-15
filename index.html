@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Dunia Game Anak Pintar 🎮</title>
 
-    <!-- ╔══════════════════════════════════════════════════════════════╗ -->
-    <!-- ║  FONT EKSTERNAL                                              ║ -->
-    <!-- ╚══════════════════════════════════════════════════════════════╝ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap');
@@ -927,7 +924,6 @@
 
         /* ============================================================
            BAGIAN 6: STYLING GAME 3 — PUZZLE ADVENTURE 🧩
-           (Variabel CSS diisolasi di dalam #gamePuzzleAdventure)
            ============================================================ */
         #gamePuzzleAdventure {
             --primary: #2196f3;
@@ -964,7 +960,6 @@
             padding: 8px 16px !important;
         }
 
-        /* MODAL SCREEN LAYOUT GAME 3 SINKRON SAMA DENGAN GAME 2 */
         .g3-page-card-container {
             display: none;
             width: 92%;
@@ -1008,7 +1003,6 @@
             margin-bottom: 10px;
         }
 
-        /* SCOPED SELECTION SINKRON SEMPURNA (MENIRU GAME 2) */
         #g3-page-character .char-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -1063,7 +1057,6 @@
             margin-bottom: 0;
         }
 
-        /* DESIGN BUTTON ACTION GAME 3 SAMAKAN STRUKTUR DENGAN GAME 2 */
         .g3-btn-action {
             font-size: 18px;
             padding: 12px 30px;
@@ -1092,7 +1085,6 @@
             opacity: 0.7;
         }
 
-        /* Tema Selection Page */
         .g3-difficulty-container {
             margin-bottom: 15px;
             background: #f1f5f9;
@@ -1202,7 +1194,6 @@
             border-radius: 8px;
         }
 
-        /* Area Permainan Puzzle Core */
         .g3-game-container {
             max-width: 1250px;
             width: 100%;
@@ -1354,7 +1345,333 @@
 
 
         /* ============================================================
-           BAGIAN 7: ANIMASI GLOBAL (dipakai semua game)
+           BAGIAN 7: STYLING GAME 4 — POLA WARNA PINTAR 🎨
+           ============================================================ */
+        #gamePolaWarna {
+            --primary-purple: #a855f7;
+            --success-green: #22c55e;
+            --wrong-red: #ef4444;
+        }
+
+        .g4-wrapper {
+            background: transparent;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+            position: relative;
+        }
+
+        .g4-wrapper * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            margin: 0;
+            padding: 0;
+        }
+
+        #gamePolaWarna .btn-header-back {
+            padding: 8px 16px !important;
+            font-size: 14px !important;
+            height: auto !important;
+            border-radius: 15px !important;
+        }
+
+        #g4-confetti-canvas {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .g4-page-card-container {
+            display: none;
+            width: 92%;
+            height: 94vh;
+            max-width: 460px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 32px;
+            box-shadow: 0 15px 0 rgba(168, 85, 247, 0.15), 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            box-sizing: border-box;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+        }
+
+        .g4-page-card-container.active {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .g4-page-card-container h2 {
+            color: #a855f7;
+            margin: 5px 0;
+            font-size: 26px;
+            text-shadow: 1px 1px 0px #fff;
+            font-weight: bold;
+        }
+
+        .g4-header-layout {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 12px;
+            border-bottom: 3px dashed #e9d5ff;
+            margin-bottom: 10px;
+        }
+
+        #g4-page-character .char-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+            width: 100%;
+            justify-items: center;
+        }
+
+        .g4-card-char {
+            background: linear-gradient(to bottom, #ffffff, #f3f4f6);
+            border: 4px solid #cbd5e1;
+            border-bottom: 8px solid #94a3b8;
+            border-radius: 24px;
+            padding: 15px;
+            cursor: pointer;
+            width: 105px;
+            text-align: center;
+            transition: all 0.15s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .g4-card-char:active {
+            transform: translateY(4px);
+            border-bottom-width: 4px;
+        }
+
+        .g4-card-char.selected {
+            border-color: #a855f7 !important;
+            border-bottom-color: #9333ea !important;
+            background-color: #faf5ff !important;
+            transform: scale(1.08) translateY(-2px);
+            box-shadow: 0 8px 16px rgba(168, 85, 247, 0.15) !important;
+        }
+
+        .g4-card-char .icon {
+            font-size: 50px;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+            line-height: 1;
+            margin-bottom: 0;
+            display: inline-block;
+        }
+
+        .g4-card-char h3 {
+            font-weight: 700;
+            margin-top: 10px;
+            color: #1e293b;
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+
+        .g4-btn-action {
+            font-size: 18px;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(to bottom, #c084fc, #a855f7);
+            box-shadow: 0 6px 0 #7e22ce, 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.1s;
+            width: 90%;
+            font-family: inherit;
+            margin-bottom: 10px;
+        }
+
+        .g4-btn-action:active {
+            transform: translateY(5px);
+            box-shadow: 0 1px 0 #7e22ce;
+        }
+
+        .g4-btn-action-disabled {
+            background: linear-gradient(to bottom, #cbd5e1, #94a3b8) !important;
+            box-shadow: 0 6px 0 #64748b !important;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        /* --- ELEMEN UTAMA GAME 4 --- */
+        .g4-game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #edf2f7;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            border: 2px solid #cbd5e1;
+            width: 100%;
+        }
+
+        .g4-user-profile {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            color: #334155;
+        }
+
+        .g4-live-stars {
+            font-size: 16px;
+            font-weight: bold;
+            color: #b45309;
+            background: #fef3c7;
+            padding: 4px 12px;
+            border-radius: 12px;
+            border: 1px solid #fde68a;
+        }
+
+        .g4-clue-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+            background: #f0fdf4;
+            padding: 10px;
+            border-radius: 20px;
+            border: 2px dashed #bbf7d0;
+            width: 100%;
+        }
+
+        .g4-clue-dot {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: bold;
+            font-size: 13px;
+            color: #334155;
+        }
+
+        .g4-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .g4-game-zone {
+            display: flex;
+            justify-content: center;
+            gap: 22px;
+            margin: 15px 0;
+            width: 100%;
+        }
+
+        .g4-color-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .g4-target-box {
+            width: 85px;
+            height: 85px;
+            border-radius: 24px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            transform: scale(1);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .g4-target-box.pop { transform: scale(1.1); }
+
+        .g4-dropzone {
+            width: 75px;
+            height: 75px;
+            border: 4px dashed #cbd5e1;
+            border-radius: 22px;
+            background-color: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: white;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .g4-dropzone.filled {
+            border-style: solid;
+            background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+            border-color: #7e22ce;
+            box-shadow: 0 6px #581c87, inset 0 4px 6px rgba(255,255,255,0.2);
+            transform: translateY(-4px);
+        }
+
+        .g4-dropzone.hovered {
+            border-color: var(--primary-purple);
+            background-color: #f3e8ff;
+            transform: scale(1.05);
+        }
+
+        .g4-numbers-bank {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 10px 0;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .g4-drag-card {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #c084fc 0%, #a855f7 100%);
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            cursor: grab;
+            box-shadow: 0 6px #9333ea, 0 8px 16px rgba(168, 85, 247, 0.2);
+            touch-action: none;
+            transition: transform 0.1s;
+        }
+
+        .g4-drag-card:active { 
+            cursor: grabbing; 
+            transform: scale(0.95);
+        }
+
+        .g4-feedback { 
+            font-size: 18px; 
+            font-weight: bold; 
+            min-height: 26px; 
+            margin-top: 5px;
+        }
+        .g4-success { color: var(--success-green); }
+        .g4-wrong { color: var(--wrong-red); }
+
+
+        /* ============================================================
+           BAGIAN 8: ANIMASI GLOBAL (dipakai semua game)
            ============================================================ */
         @keyframes spin { 100% { transform: rotate(-360deg); } }
         @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
@@ -1369,7 +1686,7 @@
 
 
         /* ============================================================
-           BAGIAN 8: RESPONSIVE — MEDIA QUERIES (DESKTOP & MOBILE COHESION)
+           BAGIAN 9: RESPONSIVE — MEDIA QUERIES (DESKTOP & MOBILE COHESION)
            ============================================================ */
         @media (max-width: 920px) and (orientation: landscape) {
             .g3-game-layout { grid-template-columns: 190px 1fr; gap: 12px; }
@@ -1378,29 +1695,42 @@
             .g3-gameArea { padding: 12px; }
             .g3-wrapper h1 { font-size: 1.4rem; margin: 4px 0; }
             .g3-stats { padding: 8px; margin-bottom: 8px; font-size: 0.85rem; }
+            
+            .g4-game-zone { gap: 10px; margin: 5px 0;}
+            .g4-target-box { width: 60px; height: 60px;}
+            .g4-dropzone { width: 50px; height: 50px; font-size: 24px;}
+            .g4-drag-card { width: 45px; height: 45px; font-size: 22px;}
         }
 
         @media (max-width: 768px) and (orientation: portrait) {
-            /* Game 3 Core Board Layout */
-            .g3-game-layout { grid-template-columns: 1fr; gap: 12px; }
-            .g3-reference img { max-height: 110px; }
-
-            /* Game 3 Character Selection & Theme Selection (Responsive Scale Sync) */
-            .g3-page-card-container {
+            /* Game 4 Core Layout Fixes */
+            .g4-page-card-container {
                 height: auto !important;
                 max-height: 95vh !important;
                 padding: 15px 15px 10px 15px !important;
             }
+            #g4-page-character .char-grid { margin: 10px 0 !important; gap: 10px !important; }
+            .g4-card-char { width: 92px !important; height: auto !important; padding: 10px !important; border-radius: 18px !important; }
+            .g4-card-char .icon { font-size: 44px !important; }
+            .g4-card-char h3 { font-size: 14px !important; margin-top: 6px !important; }
+            .g4-btn-action { margin-bottom: 5px !important; margin-top: 5px !important; padding: 10px 20px !important; font-size: 16px !important; }
 
+            .g4-target-box { width: 65px; height: 65px;}
+            .g4-dropzone { width: 55px; height: 55px; font-size: 26px;}
+            .g4-drag-card { width: 50px; height: 50px; font-size: 24px;}
+            .g4-game-zone { gap: 15px; }
+            .g4-numbers-bank { gap: 8px; }
+            .g4-clue-dot { font-size: 11px;}
+            .g4-dot { width: 14px; height: 14px;}
+
+            /* Game 3 Core Board Layout */
+            .g3-game-layout { grid-template-columns: 1fr; gap: 12px; }
+            .g3-reference img { max-height: 110px; }
+
+            /* Game 3 Character Selection & Theme Selection */
+            .g3-page-card-container { height: auto !important; max-height: 95vh !important; padding: 15px 15px 10px 15px !important; }
             #g3-page-character .char-grid { margin: 10px 0 !important; gap: 10px !important; }
-
-            #g3-page-character .g3-card-char {
-                width: 92px !important;
-                height: auto !important;
-                padding: 10px !important;
-                border-radius: 18px !important;
-            }
-
+            #g3-page-character .g3-card-char { width: 92px !important; height: auto !important; padding: 10px !important; border-radius: 18px !important; }
             #g3-page-character .g3-card-char .icon { font-size: 44px !important; }
             #g3-page-character .g3-card-char h3 { font-size: 14px !important; margin-top: 6px !important; }
             .g3-btn-action { margin-bottom: 5px !important; margin-top: 5px !important; padding: 10px 20px !important; font-size: 16px !important; }
@@ -1439,47 +1769,43 @@
 
 <body>
 
-    <!-- ================================================================
-         MENU HUB UTAMA
-         ================================================================ -->
     <div id="mainMenuHub" class="hub-container">
         <h1 class="hub-title">Dunia Game Anak Pintar 🌟</h1>
         <p class="hub-subtitle">Yuk pilih permainan seru kamu hari ini!</p>
 
         <div class="game-menu-grid">
 
-            <!-- KARTU GAME 1 -->
             <div class="game-menu-card" onclick="launchGame('gamePetugasKereta')">
                 <span class="game-icon">🚂</span>
                 <div class="game-card-title">Petugas Kereta</div>
                 <p class="game-card-desc">Susun pola gerbong hewan cerdas!</p>
             </div>
 
-            <!-- KARTU GAME 2 -->
             <div class="game-menu-card" onclick="launchGame('gamePasangkanGambar')">
                 <span class="game-icon">🖼️</span>
                 <div class="game-card-title">Pasangkan Gambar</div>
                 <p class="game-card-desc">Pasangkan gambar yang sesuai!</p>
             </div>
 
-            <!-- KARTU GAME 3 -->
             <div class="game-menu-card" onclick="launchGame('gamePuzzleAdventure')">
                 <span class="game-icon">🧩</span>
                 <div class="game-card-title">Puzzle Adventure</div>
                 <p class="game-card-desc">Susun puzzle gambar seru!</p>
             </div>
 
+            <div class="game-menu-card" onclick="launchGame('gamePolaWarna')">
+                <span class="game-icon">🎨</span>
+                <div class="game-card-title">Pola Warna Pintar</div>
+                <p class="game-card-desc">Tebak angka dari warna rahasia!</p>
+            </div>
+
         </div>
     </div>
 
 
-    <!-- ================================================================
-         LAYAR GAME 1: PETUGAS KERETA 🚂
-         ================================================================ -->
     <div id="gamePetugasKereta" class="game-hub-screen">
         <div class="g1-body-style">
 
-            <!-- Layar: Pilih Karakter -->
             <div id="screen-char" class="g1-screen active">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                     <button class="btn-header-back" onclick="showMainMenuHub()">🏠 Keluar</button>
@@ -1497,7 +1823,6 @@
                 </div>
             </div>
 
-            <!-- Layar: Permainan -->
             <div id="screen-game-g1" class="g1-screen">
                 <div class="g1-game-header">
                     <div class="g1-header-info">
@@ -1528,7 +1853,6 @@
                 </div>
             </div>
 
-            <!-- Layar: Selesai -->
             <div id="screen-end-g1" class="g1-screen">
                 <h1>Horeee! Luar Biasa! 🎉</h1>
                 <p id="end-congrats"></p>
@@ -1546,13 +1870,9 @@
     </div>
 
 
-    <!-- ================================================================
-         LAYAR GAME 2: PASANGKAN GAMBAR 🖼️
-         ================================================================ -->
     <div id="gamePasangkanGambar" class="game-hub-screen">
         <div class="g2-body-style">
 
-            <!-- Layar: Pilih Karakter -->
             <div id="screen-character-g2" class="g2-screen active">
                 <div
                     style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
@@ -1581,7 +1901,6 @@
                     disabled>Mulai Main Baru 🎮</button>
             </div>
 
-            <!-- Layar: Pilih Tema -->
             <div id="screen-theme-g2" class="g2-screen">
                 <div class="g2-map-header">
                     <h1 id="theme-welcome" style="font-size: 22px; margin: 0; text-align: left; color: #e67e22;">Yuk
@@ -1602,7 +1921,6 @@
                 </div>
             </div>
 
-            <!-- Layar: Permainan -->
             <div id="screen-game-g2" class="g2-screen">
                 <div class="g2-game-header">
                     <button class="btn-back" onclick="backToThemeMenu()">⬅️ Peta Tema</button>
@@ -1628,7 +1946,6 @@
                 </div>
             </div>
 
-            <!-- Layar: Selesai -->
             <div id="screen-win-g2" class="g2-screen" style="justify-content: center; gap: 15px;">
                 <div class="big-char" id="final-char">👦</div>
                 <h1 style="color: #9b59b6; font-size: 26px; margin: 5px 0;">HOREEE SELESAI SEMUA! 🥳🏆</h1>
@@ -1647,13 +1964,9 @@
     </div>
 
 
-    <!-- ================================================================
-         LAYAR GAME 3: PUZZLE ADVENTURE 🧩
-         ================================================================ -->
     <div id="gamePuzzleAdventure" class="game-hub-screen">
         <div class="g3-wrapper">
 
-            <!-- Halaman: Pilih Karakter (SINKRON TOTAL VISUAL MATRIX SAMA DENGAN GAME 2) -->
             <div id="g3-page-character" class="g3-page-card-container active">
                 <div class="g3-header-layout">
                     <button class="btn-header-back" onclick="showMainMenuHub()">🏠 Keluar</button>
@@ -1680,7 +1993,6 @@
                 <button id="g3-btn-next-theme" class="g3-btn-action g3-btn-action-disabled" disabled onclick="goToPageG3('g3-page-theme')">Lanjut Pilih Tema ➡️</button>
             </div>
 
-            <!-- Halaman: Pilih Tema & Kesulitan (SINKRON TOTAL VISUAL MATRIX SAMA DENGAN GAME 2) -->
             <div id="g3-page-theme" class="g3-page-card-container">
                 <div class="g3-header-layout">
                     <button class="g3-btn-action" onclick="goToPageG3('g3-page-character')" style="background: #7f8c8d; box-shadow: 0 5px 0 #34495e; font-size:14px; padding:6px 14px; width:auto; margin:0;">⬅️ Kembali</button>
@@ -1709,7 +2021,6 @@
                 <div class="g3-theme-list-scroll" id="g3-theme-grid"></div>
             </div>
 
-            <!-- Halaman: Area Permainan Puzzle -->
             <div id="g3-page-game" class="g3-game-container">
                 <div class="g3-game-layout">
                     <div class="g3-reference">
@@ -1744,7 +2055,6 @@
                 </div>
             </div>
 
-            <!-- Modal: Semua Selesai -->
             <div id="g3-game-modal" class="g3-modal">
                 <div class="g3-modal-content">
                     <h2 style="color: #ff9800;">🏆 LUAR BIASA! TAMAT! 🏆</h2>
@@ -1758,9 +2068,96 @@
     </div>
 
 
-    <!-- ============================================================================
-         SCRIPT CORE & REFACTORED LOGIC ENGINE (Namespace-Based)
-         ============================================================================ -->
+    <div id="gamePolaWarna" class="game-hub-screen">
+        <div class="g4-wrapper">
+            <canvas id="g4-confetti-canvas"></canvas>
+            
+            <div id="g4-page-character" class="g4-page-card-container active">
+                <div class="g4-header-layout">
+                    <button class="btn-header-back" onclick="showMainMenuHub()">🏠 Keluar</button>
+                </div>
+                <h2>Siapa Kamu? 🤔</h2>
+                <div class="char-grid">
+                    <div class="g4-card-char" onclick="selectCharacterG4('Malik', '👦', this)">
+                        <span class="icon">👦</span>
+                        <h3>Malik</h3>
+                    </div>
+                    <div class="g4-card-char" onclick="selectCharacterG4('Malika', '👧', this)">
+                        <span class="icon">👧</span>
+                        <h3>Malika</h3>
+                    </div>
+                    <div class="g4-card-char" onclick="selectCharacterG4('Leo Kid', '🦁', this)">
+                        <span class="icon">🦁</span>
+                        <h3>Leo Kid</h3>
+                    </div>
+                    <div class="g4-card-char" onclick="selectCharacterG4('Foxie', '🦊', this)">
+                        <span class="icon">🦊</span>
+                        <h3>Foxie</h3>
+                    </div>
+                </div>
+                <button id="g4-btn-start-game" class="g4-btn-action g4-btn-action-disabled" disabled onclick="startGameG4()">Mulai Main Baru 🎮</button>
+            </div>
+
+            <div id="g4-page-game" class="g4-page-card-container">
+                <div class="g4-game-header">
+                    <div class="g4-user-profile">
+                        <span class="g4-profile-icon" id="g4-header-avatar-icon">👦</span>
+                        <span id="g4-header-avatar-name">Malik</span>
+                    </div>
+                    <button class="btn-header-back" onclick="showMainMenuHub()">🏠 Keluar</button>
+                    <div class="g4-live-stars" id="g4-header-stars-count">⭐ 0</div>
+                </div>
+
+                <div id="g4-soal-title" style="color: #64748b; font-size: 15px; font-weight: bold; margin-bottom: 5px;">Soal 1 dari 15</div>
+                
+                <div class="g4-clue-bar">
+                    <div class="g4-clue-dot"><span class="g4-dot" style="background-color: #ef4444;"></span>=1</div>
+                    <div class="g4-clue-dot"><span class="g4-dot" style="background-color: #3b82f6;"></span>=2</div>
+                    <div class="g4-clue-dot"><span class="g4-dot" style="background-color: #22c55e;"></span>=3</div>
+                    <div class="g4-clue-dot"><span class="g4-dot" style="background-color: #eab308;"></span>=4</div>
+                    <div class="g4-clue-dot"><span class="g4-dot" style="background-color: #64748b;"></span>=5</div>
+                </div>
+
+                <div class="g4-game-zone">
+                    <div class="g4-color-column">
+                        <div class="g4-target-box" id="g4-box-0"></div>
+                        <div class="g4-dropzone" id="g4-drop-0" data-index="0">?</div>
+                    </div>
+                    <div class="g4-color-column">
+                        <div class="g4-target-box" id="g4-box-1"></div>
+                        <div class="g4-dropzone" id="g4-drop-1" data-index="1">?</div>
+                    </div>
+                    <div class="g4-color-column">
+                        <div class="g4-target-box" id="g4-box-2"></div>
+                        <div class="g4-dropzone" id="g4-drop-2" data-index="2">?</div>
+                    </div>
+                </div>
+
+                <p style="font-size: 14px; color: #94a3b8; margin: 0 0 5px 0; font-weight: bold;">Tarik Angka ke Kotak Putus-Putus:</p>
+                <div class="g4-numbers-bank">
+                    <div class="g4-drag-card" data-val="1" draggable="true">1</div>
+                    <div class="g4-drag-card" data-val="2" draggable="true">2</div>
+                    <div class="g4-drag-card" data-val="3" draggable="true">3</div>
+                    <div class="g4-drag-card" data-val="4" draggable="true">4</div>
+                    <div class="g4-drag-card" data-val="5" draggable="true">5</div>
+                </div>
+
+                <div class="g4-feedback" id="g4-feedback-text"></div>
+                <button class="g4-btn-action" id="g4-btn-lanjut" style="display: none; background: linear-gradient(to bottom, #4ade80, #22c55e); box-shadow: 0 6px 0 #16a34a;" onclick="nextQuestionG4()">Hebat! Lanjut ➡️</button>
+            </div>
+
+            <div id="g4-page-win" class="g4-page-card-container">
+                <h2 style="color: #166534; margin-top:20px;">Luar Biasa <span id="g4-win-name"></span>! <span id="g4-win-icon"></span>🏆</h2>
+                <p style="font-size:16px; color:#475569;">Semua pola acak berhasil kamu tebak!</p>
+                <div style="font-size: 60px; margin: 20px 0;">👑🌟🌈</div>
+                <p style="font-size: 24px; font-weight: bold; color: #22c55e;">Kamu Dapat <span id="g4-win-stars"></span> Bintang!</p>
+                <button class="g4-btn-action" onclick="resetGameG4()" style="margin-top: 20px;">Main Lagi (Soal Baru!) 🔄</button>
+                <button class="g4-btn-action" onclick="showMainMenuHub()" style="background: linear-gradient(to bottom, #ff6b6b, #ee5253); box-shadow: 0 6px 0 #cf3a46;">Menu Utama 🏠</button>
+            </div>
+        </div>
+    </div>
+
+
     <script>
         /* -----------------------------------------------------------
            1. APPCRE: CENTRAL HUB SYSTEM & AUDIO MANAGER
@@ -1771,9 +2168,8 @@
 
             init() {
                 window.addEventListener('resize', () => {
-                    if (typeof PuzzleGame !== 'undefined' && PuzzleGame.resizeBoard) {
-                        PuzzleGame.resizeBoard();
-                    }
+                    if (typeof PuzzleGame !== 'undefined' && PuzzleGame.resizeBoard) PuzzleGame.resizeBoard();
+                    if (typeof ColorGame !== 'undefined' && ColorGame.resizeCanvas) ColorGame.resizeCanvas();
                 });
             },
 
@@ -1822,228 +2218,88 @@
            ----------------------------------------------------------- */
         const TrainGame = {
             state: {
-                playerName: '',
-                playerAvatar: '',
-                currentLevel: 1,
-                maxLevels: 15,
-                targetAnimals: [],
-                userCarriages: [],
-                isTransitioning: false
+                playerName: '', playerAvatar: '', currentLevel: 1, maxLevels: 15, targetAnimals: [], userCarriages: [], isTransitioning: false
             },
-            config: {
-                emojis: { panda: '🐼', lion: '🦁', frog: '🐸', rabbit: '🐰' },
-                keys: ['panda', 'lion', 'frog', 'rabbit']
-            },
+            config: { emojis: { panda: '🐼', lion: '🦁', frog: '🐸', rabbit: '🐰' }, keys: ['panda', 'lion', 'frog', 'rabbit'] },
             dom: {},
 
             initDom() {
                 this.dom = {
-                    avatar: document.getElementById('player-avatar'),
-                    name: document.getElementById('player-name'),
-                    level: document.getElementById('current-level'),
-                    targetPattern: document.getElementById('target-pattern'),
-                    trainWrapper: document.getElementById('train-wrapper'),
-                    carriagesList: document.getElementById('carriages-list'),
-                    messageBox: document.getElementById('message-box'),
-                    endCongrats: document.getElementById('end-congrats')
+                    avatar: document.getElementById('player-avatar'), name: document.getElementById('player-name'), level: document.getElementById('current-level'), targetPattern: document.getElementById('target-pattern'), trainWrapper: document.getElementById('train-wrapper'), carriagesList: document.getElementById('carriages-list'), messageBox: document.getElementById('message-box'), endCongrats: document.getElementById('end-congrats')
                 };
             },
 
             playSound(type) {
                 if (!AppCore.audioCtx) return;
-                const osc = AppCore.audioCtx.createOscillator();
-                const gain = AppCore.audioCtx.createGain();
-                osc.connect(gain);
-                gain.connect(AppCore.audioCtx.destination);
-                const now = AppCore.audioCtx.currentTime;
-
-                if (type === 'click') {
-                    osc.type = 'sine'; osc.frequency.setValueAtTime(450, now); gain.gain.setValueAtTime(0.2, now);
-                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08); osc.start(now); osc.stop(now + 0.08);
-                } else if (type === 'correct') {
-                    osc.type = 'triangle'; osc.frequency.setValueAtTime(587.33, now); osc.frequency.setValueAtTime(783.99, now + 0.12);
-                    gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3); osc.start(now); osc.stop(now + 0.3);
-                } else if (type === 'wrong') {
-                    osc.type = 'sawtooth'; osc.frequency.setValueAtTime(150, now); osc.frequency.setValueAtTime(110, now + 0.1);
-                    gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25); osc.start(now); osc.stop(now + 0.25);
-                } else if (type === 'level-up') {
-                    osc.type = 'sine'; const freqs = [523.25, 659.25, 783.99, 1046.50];
-                    freqs.forEach((f, i) => osc.frequency.setValueAtTime(f, now + (i * 0.07)));
-                    gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4); osc.start(now); osc.stop(now + 0.4);
-                }
+                const osc = AppCore.audioCtx.createOscillator(); const gain = AppCore.audioCtx.createGain();
+                osc.connect(gain); gain.connect(AppCore.audioCtx.destination); const now = AppCore.audioCtx.currentTime;
+                if (type === 'click') { osc.type = 'sine'; osc.frequency.setValueAtTime(450, now); gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08); osc.start(now); osc.stop(now + 0.08); } 
+                else if (type === 'correct') { osc.type = 'triangle'; osc.frequency.setValueAtTime(587.33, now); osc.frequency.setValueAtTime(783.99, now + 0.12); gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3); osc.start(now); osc.stop(now + 0.3); } 
+                else if (type === 'wrong') { osc.type = 'sawtooth'; osc.frequency.setValueAtTime(150, now); osc.frequency.setValueAtTime(110, now + 0.1); gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25); osc.start(now); osc.stop(now + 0.25); }
             },
 
             selectCharacter(name, avatar) {
-                this.initDom();
-                this.playSound('click');
-                this.state.playerName = name;
-                this.state.playerAvatar = avatar;
-                this.dom.avatar.innerText = avatar;
-                this.dom.name.innerText = name;
-                const savedLevel = localStorage.getItem('kereta_hewan_level');
-                this.state.currentLevel = savedLevel ? parseInt(savedLevel, 10) : 1;
-                this.showScreenG1('screen-game-g1');
-                this.startGameplay();
+                this.initDom(); this.playSound('click'); this.state.playerName = name; this.state.playerAvatar = avatar;
+                this.dom.avatar.innerText = avatar; this.dom.name.innerText = name;
+                const savedLevel = localStorage.getItem('kereta_hewan_level'); this.state.currentLevel = savedLevel ? parseInt(savedLevel, 10) : 1;
+                this.showScreenG1('screen-game-g1'); this.startGameplay();
             },
 
             generatePattern(level) {
-                let length = (level > 12) ? 6 : (level > 8) ? 5 : (level > 4) ? 4 : 3;
-                let pattern = [];
-                if (level <= 3) {
-                    let a = this.config.keys[Math.floor(Math.random() * 4)];
-                    let b = this.config.keys[Math.floor(Math.random() * 4)];
-                    while (a === b) b = this.config.keys[Math.floor(Math.random() * 4)];
-                    for (let i = 0; i < length; i++) pattern.push(i % 2 === 0 ? a : b);
-                } else if (level <= 7) {
-                    let a = this.config.keys[Math.floor(Math.random() * 4)];
-                    let b = this.config.keys[Math.floor(Math.random() * 4)];
-                    while (a === b) b = this.config.keys[Math.floor(Math.random() * 4)];
-                    for (let i = 0; i < length; i++) pattern.push((i % 3 === 0 || i % 3 === 1) ? a : b);
-                } else {
-                    for (let i = 0; i < length; i++) pattern.push(this.config.keys[Math.floor(Math.random() * 4)]);
-                }
-                return pattern;
+                let length = (level > 12) ? 6 : (level > 8) ? 5 : (level > 4) ? 4 : 3; let pattern = [];
+                if (level <= 3) { let a = this.config.keys[Math.floor(Math.random() * 4)]; let b = this.config.keys[Math.floor(Math.random() * 4)]; while (a === b) b = this.config.keys[Math.floor(Math.random() * 4)]; for (let i = 0; i < length; i++) pattern.push(i % 2 === 0 ? a : b); } 
+                else if (level <= 7) { let a = this.config.keys[Math.floor(Math.random() * 4)]; let b = this.config.keys[Math.floor(Math.random() * 4)]; while (a === b) b = this.config.keys[Math.floor(Math.random() * 4)]; for (let i = 0; i < length; i++) pattern.push((i % 3 === 0 || i % 3 === 1) ? a : b); } 
+                else { for (let i = 0; i < length; i++) pattern.push(this.config.keys[Math.floor(Math.random() * 4)]); } return pattern;
             },
 
             startGameplay() {
-                this.hideMessage();
-                this.state.isTransitioning = false;
-                this.dom.level.innerText = this.state.currentLevel;
-                this.state.targetAnimals = this.generatePattern(this.state.currentLevel);
-                this.state.userCarriages = [];
-                
+                this.hideMessage(); this.state.isTransitioning = false; this.dom.level.innerText = this.state.currentLevel; this.state.targetAnimals = this.generatePattern(this.state.currentLevel); this.state.userCarriages = [];
                 this.dom.targetPattern.innerHTML = '';
                 this.state.targetAnimals.forEach((anim, index) => {
-                    const item = document.createElement('div');
-                    item.classList.add('pattern-item');
-                    item.innerText = this.config.emojis[anim];
-                    this.dom.targetPattern.appendChild(item);
-                    if (index < this.state.targetAnimals.length - 1) {
-                        const arrow = document.createElement('div');
-                        arrow.classList.add('pattern-arrow');
-                        arrow.innerText = '➔';
-                        this.dom.targetPattern.appendChild(arrow);
-                    }
+                    const item = document.createElement('div'); item.classList.add('pattern-item'); item.innerText = this.config.emojis[anim]; this.dom.targetPattern.appendChild(item);
+                    if (index < this.state.targetAnimals.length - 1) { const arrow = document.createElement('div'); arrow.classList.add('pattern-arrow'); arrow.innerText = '➔'; this.dom.targetPattern.appendChild(arrow); }
                 });
-                
-                this.dom.trainWrapper.className = 'no-transition';
-                this.renderUserCarriages();
-                setTimeout(() => { this.dom.trainWrapper.className = 'arrived'; }, 50);
+                this.dom.trainWrapper.className = 'no-transition'; this.renderUserCarriages(); setTimeout(() => { this.dom.trainWrapper.className = 'arrived'; }, 50);
             },
 
             renderUserCarriages() {
                 this.dom.carriagesList.innerHTML = '';
-                this.state.userCarriages.forEach((anim, idx) => {
-                    const car = document.createElement('div');
-                    car.className = `carriage bg-${anim}`;
-                    car.innerText = this.config.emojis[anim];
-                    car.onclick = () => { if (!this.state.isTransitioning) this.removeCarriageAt(idx); };
-                    this.dom.carriagesList.appendChild(car);
-                });
+                this.state.userCarriages.forEach((anim, idx) => { const car = document.createElement('div'); car.className = `carriage bg-${anim}`; car.innerText = this.config.emojis[anim]; car.onclick = () => { if (!this.state.isTransitioning) this.removeCarriageAt(idx); }; this.dom.carriagesList.appendChild(car); });
             },
 
             triggerChoice(animal) {
                 if (this.state.isTransitioning) return;
                 if (this.state.userCarriages.length >= this.state.targetAnimals.length) { this.playSound('wrong'); return; }
-                this.playSound('click');
-                const btn = document.getElementById(`btn-${animal}`);
-                if (btn) {
-                    btn.classList.add('pressed');
-                    setTimeout(() => btn.classList.remove('pressed'), 400);
-                }
-                this.state.userCarriages.push(animal);
-                this.renderUserCarriages();
-                this.hideMessage();
+                this.playSound('click'); const btn = document.getElementById(`btn-${animal}`); if (btn) { btn.classList.add('pressed'); setTimeout(() => btn.classList.remove('pressed'), 400); }
+                this.state.userCarriages.push(animal); this.renderUserCarriages(); this.hideMessage();
             },
 
-            popLastAnimal() {
-                if (this.state.isTransitioning || this.state.userCarriages.length === 0) return;
-                this.playSound('click');
-                this.state.userCarriages.pop();
-                this.renderUserCarriages();
-                this.hideMessage();
-            },
-
-            removeCarriageAt(idx) {
-                this.playSound('click');
-                this.state.userCarriages.splice(idx, 1);
-                this.renderUserCarriages();
-                this.hideMessage();
-            },
+            popLastAnimal() { if (this.state.isTransitioning || this.state.userCarriages.length === 0) return; this.playSound('click'); this.state.userCarriages.pop(); this.renderUserCarriages(); this.hideMessage(); },
+            removeCarriageAt(idx) { this.playSound('click'); this.state.userCarriages.splice(idx, 1); this.renderUserCarriages(); this.hideMessage(); },
 
             checkTrainDeparture() {
                 if (this.state.isTransitioning) return;
-                if (this.state.userCarriages.length !== this.state.targetAnimals.length) {
-                    this.playSound('wrong');
-                    this.showMessage('Gerbong keretanya belum lengkap, yuk isi lagi! 🚂', 'msg-error');
-                    return;
-                }
+                if (this.state.userCarriages.length !== this.state.targetAnimals.length) { this.playSound('wrong'); this.showMessage('Gerbong keretanya belum lengkap, yuk isi lagi! 🚂', 'msg-error'); return; }
                 let isCorrect = this.state.userCarriages.every((v, i) => v === this.state.targetAnimals[i]);
                 if (isCorrect) {
-                    this.state.isTransitioning = true;
-                    localStorage.setItem('kereta_hewan_level', this.state.currentLevel + 1);
-                    AppCore.playKlakson();
-                    this.showMessage('Hebat! Keretanya siap berangkat! Juzz Juuzzz... 🟢💨', 'msg-success');
-                    this.dom.trainWrapper.classList.add('wheels-rolling');
-                    setTimeout(() => { 
-                        this.dom.trainWrapper.classList.remove('arrived'); 
-                        this.dom.trainWrapper.classList.add('departed'); 
-                    }, 300);
-                    setTimeout(() => {
-                        this.dom.trainWrapper.classList.remove('wheels-rolling');
-                        if (this.state.currentLevel < this.state.maxLevels) {
-                            this.state.currentLevel++;
-                            this.startGameplay();
-                        } else {
-                            localStorage.removeItem('kereta_hewan_level');
-                            this.showEndingScreenG1();
-                        }
-                    }, 2600);
-                } else {
-                    this.playSound('wrong');
-                    this.showMessage('Oh-oh! Urutan gerbongnya tertukar. Yuk coba lagi, pasti bisa! 💪', 'msg-error');
-                }
+                    this.state.isTransitioning = true; localStorage.setItem('kereta_hewan_level', this.state.currentLevel + 1); AppCore.playKlakson(); this.showMessage('Hebat! Keretanya siap berangkat! Juzz Juuzzz... 🟢💨', 'msg-success');
+                    this.dom.trainWrapper.classList.add('wheels-rolling'); setTimeout(() => { this.dom.trainWrapper.classList.remove('arrived'); this.dom.trainWrapper.classList.add('departed'); }, 300);
+                    setTimeout(() => { this.dom.trainWrapper.classList.remove('wheels-rolling'); if (this.state.currentLevel < this.state.maxLevels) { this.state.currentLevel++; this.startGameplay(); } else { localStorage.removeItem('kereta_hewan_level'); this.showEndingScreenG1(); } }, 2600);
+                } else { this.playSound('wrong'); this.showMessage('Oh-oh! Urutan gerbongnya tertukar. Yuk coba lagi, pasti bisa! 💪', 'msg-error'); }
             },
 
-            showMessage(text, className) {
-                this.dom.messageBox.innerText = text;
-                this.dom.messageBox.className = className;
-                this.dom.messageBox.style.display = 'block';
-            },
-
+            showMessage(text, className) { this.dom.messageBox.innerText = text; this.dom.messageBox.className = className; this.dom.messageBox.style.display = 'block'; },
             hideMessage() { if (this.dom.messageBox) this.dom.messageBox.style.display = 'none'; },
-
-            showEndingScreenG1() {
-                this.dom.endCongrats.innerText = `Hebat sekali, Masinis Cerdas ${this.state.playerName}! Kamu sukses menyusun semua gerbong dari level 1 sampai 15 dengan sempurna!`;
-                this.showScreenG1('screen-end-g1');
-            },
-
-            showScreenG1(screenId) {
-                document.querySelectorAll('#gamePetugasKereta .g1-screen').forEach(s => s.classList.remove('active'));
-                const target = document.getElementById(screenId);
-                if (target) target.classList.add('active');
-            },
-
-            restartGame() {
-                this.initDom();
-                localStorage.removeItem('kereta_hewan_level');
-                this.showScreenG1('screen-char');
-            }
+            showEndingScreenG1() { this.dom.endCongrats.innerText = `Hebat sekali, Masinis Cerdas ${this.state.playerName}! Kamu sukses menyusun semua gerbong dari level 1 sampai 15 dengan sempurna!`; this.showScreenG1('screen-end-g1'); },
+            showScreenG1(screenId) { document.querySelectorAll('#gamePetugasKereta .g1-screen').forEach(s => s.classList.remove('active')); const target = document.getElementById(screenId); if (target) target.classList.add('active'); },
+            restartGame() { this.initDom(); localStorage.removeItem('kereta_hewan_level'); this.showScreenG1('screen-char'); }
         };
 
         /* -----------------------------------------------------------
            3. MATCHINGGAME: MODUL GAME 2 (PASANGKAN GAMBAR 🖼️)
            ----------------------------------------------------------- */
         const MatchingGame = {
-            state: {
-                selectedCharacterG2: '',
-                currentTheme: '',
-                currentQuestionIdx: 0,
-                matchedCount: 0,
-                finishedThemes: [],
-                hintTimer: null,
-                activeTouchElement: null
-            },
+            state: { selectedCharacterG2: '', currentTheme: '', currentQuestionIdx: 0, matchedCount: 0, finishedThemes: [], hintTimer: null, activeTouchElement: null },
             database: {
                 laut: [['🐬', '🐳', '🐙', '🦀', '🦈', '🐠', '🪼'], ['🦑', '🦐', '🐡', '🦭', '🪼', '🐋', '🦦'], ['🐬', '🐳', '🐙', '🦀', '🦈', '🐠', '🪼']],
                 ternak: [['🐄', '🐖', '🐑', '🐓', '🐎', '🐂', '🐔'], ['🦆', '🦃', '🐐', '🫏', '🐂', '🐃', '🦙'], ['🐄', '🐖', '🐑', '🐓', '🐎', '🐐', '🦆']],
@@ -2051,289 +2307,62 @@
                 space: [['🚀', '👨‍🚀', '🛸', '🌍', '🌙', '☀️', '⭐'], ['🪐', '☄️', '🛰️', '🔭', '🚀', '👩‍🚀', '🛸'], ['🚀', '🌍', '🌙', '🪐', '⭐', '👨‍🚀', '🛰️']],
                 kendaraan: [['🚑', '🚂', '✈️', '🚢', '🚲', '🚗', '🚌'], ['🚒', '🚓', '🚕', '🚚', '🏍️', '🚁', '✈️'], ['🚑', '🚂', '✈️', '🚒', '🚗', '🚚', '🚁']]
             },
-            themeOrder: ['laut', 'ternak', 'tumbuhan', 'space', 'kendaraan'],
-            titleMap: { laut: '🐬 Hewan Laut', ternak: '🐄 Peternakan', tumbuhan: '🌲 Tanaman & Buah', space: '🚀 Antariksa', kendaraan: '🚑 Kendaraan' },
+            themeOrder: ['laut', 'ternak', 'tumbuhan', 'space', 'kendaraan'], titleMap: { laut: '🐬 Hewan Laut', ternak: '🐄 Peternakan', tumbuhan: '🌲 Tanaman & Buah', space: '🚀 Antariksa', kendaraan: '🚑 Kendaraan' },
 
             playSound(type) {
-                if (!AppCore.audioCtx) return;
-                const osc = AppCore.audioCtx.createOscillator();
-                const gain = AppCore.audioCtx.createGain();
-                osc.connect(gain);
-                gain.connect(AppCore.audioCtx.destination);
-                const now = AppCore.audioCtx.currentTime;
-
-                if (type === 'click') {
-                    osc.type = 'sine'; osc.frequency.setValueAtTime(400, now); gain.gain.setValueAtTime(0.3, now);
-                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1); osc.start(now); osc.stop(now + 0.1);
-                } else if (type === 'correct') {
-                    osc.type = 'triangle'; osc.frequency.setValueAtTime(523.25, now); osc.frequency.setValueAtTime(659.25, now + 0.1);
-                    gain.gain.setValueAtTime(0.3, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25); osc.start(now); osc.stop(now + 0.25);
-                } else if (type === 'error') {
-                    osc.type = 'sawtooth'; osc.frequency.setValueAtTime(180, now); osc.frequency.setValueAtTime(120, now + 0.1);
-                    gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2); osc.start(now); osc.stop(now + 0.2);
-                } else if (type === 'star') {
-                    osc.type = 'sine'; osc.frequency.setValueAtTime(587.33, now); osc.frequency.setValueAtTime(880, now + 0.1);
-                    gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2); osc.start(now); osc.stop(now + 0.2);
-                } else if (type === 'win') {
-                    osc.type = 'square'; const notes = [523.25, 659.25, 783.99, 1046.50];
-                    notes.forEach((freq, idx) => osc.frequency.setValueAtTime(freq, now + (idx * 0.08)));
-                    gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.45); osc.start(now); osc.stop(now + 0.45);
-                }
+                if (!AppCore.audioCtx) return; const osc = AppCore.audioCtx.createOscillator(); const gain = AppCore.audioCtx.createGain(); osc.connect(gain); gain.connect(AppCore.audioCtx.destination); const now = AppCore.audioCtx.currentTime;
+                if (type === 'click') { osc.type = 'sine'; osc.frequency.setValueAtTime(400, now); gain.gain.setValueAtTime(0.3, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1); osc.start(now); osc.stop(now + 0.1); } 
+                else if (type === 'correct') { osc.type = 'triangle'; osc.frequency.setValueAtTime(523.25, now); osc.frequency.setValueAtTime(659.25, now + 0.1); gain.gain.setValueAtTime(0.3, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25); osc.start(now); osc.stop(now + 0.25); } 
+                else if (type === 'error') { osc.type = 'sawtooth'; osc.frequency.setValueAtTime(180, now); osc.frequency.setValueAtTime(120, now + 0.1); gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2); osc.start(now); osc.stop(now + 0.2); } 
+                else if (type === 'star') { osc.type = 'sine'; osc.frequency.setValueAtTime(587.33, now); osc.frequency.setValueAtTime(880, now + 0.1); gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2); osc.start(now); osc.stop(now + 0.2); } 
+                else if (type === 'win') { osc.type = 'square'; const notes = [523.25, 659.25, 783.99, 1046.50]; notes.forEach((freq, idx) => osc.frequency.setValueAtTime(freq, now + (idx * 0.08))); gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.45); osc.start(now); osc.stop(now + 0.45); }
             },
 
-            selectCharacterG2(char, element) {
-                this.playSound('click');
-                this.state.selectedCharacterG2 = char;
-                document.querySelectorAll('#gamePasangkanGambar .char-card').forEach(card => card.classList.remove('selected'));
-                element.classList.add('selected');
-                const startBtn = document.getElementById('btn-start-game');
-                startBtn.classList.remove('btn-disabled');
-                startBtn.removeAttribute('disabled');
-            },
-
+            selectCharacterG2(char, element) { this.playSound('click'); this.state.selectedCharacterG2 = char; document.querySelectorAll('#gamePasangkanGambar .char-card').forEach(card => card.classList.remove('selected')); element.classList.add('selected'); const startBtn = document.getElementById('btn-start-game'); startBtn.classList.remove('btn-disabled'); startBtn.removeAttribute('disabled'); },
             confirmCharacterG2() { this.playSound('click'); this.updateThemeMenuUI(); this.showScreenG2('screen-theme-g2'); },
             backToThemeMenu() { this.stopHintTimer(); this.playSound('click'); this.updateThemeMenuUI(); this.showScreenG2('screen-theme-g2'); },
 
-            updateThemeMenuUI() {
-                document.getElementById('theme-welcome').innerText = `${this.state.selectedCharacterG2} Pilih Tema!`;
-                this.themeOrder.forEach(theme => {
-                    const btn = document.getElementById(`btn-${theme}`);
-                    if (btn) {
-                        if (this.state.finishedThemes.includes(theme)) btn.classList.add('completed');
-                        else btn.classList.remove('completed');
-                    }
-                });
-            },
-
-            checkAndStartTheme(themeName) {
-                if (this.state.finishedThemes.includes(themeName)) return;
-                this.state.currentQuestionIdx = 0;
-                this.startQuestion(themeName, this.state.currentQuestionIdx);
-            },
-
+            updateThemeMenuUI() { document.getElementById('theme-welcome').innerText = `${this.state.selectedCharacterG2} Pilih Tema!`; this.themeOrder.forEach(theme => { const btn = document.getElementById(`btn-${theme}`); if (btn) { if (this.state.finishedThemes.includes(theme)) btn.classList.add('completed'); else btn.classList.remove('completed'); } }); },
+            checkAndStartTheme(themeName) { if (this.state.finishedThemes.includes(themeName)) return; this.state.currentQuestionIdx = 0; this.startQuestion(themeName, this.state.currentQuestionIdx); },
             resetHintTimer() { this.stopHintTimer(); this.state.hintTimer = setTimeout(() => this.triggerHint(), 10000); },
+            stopHintTimer() { clearTimeout(this.state.hintTimer); document.querySelectorAll('#gamePasangkanGambar .emoji-item, #gamePasangkanGambar .target-slot').forEach(el => el.classList.remove('hint-blink')); },
 
-            stopHintTimer() {
-                clearTimeout(this.state.hintTimer);
-                document.querySelectorAll('#gamePasangkanGambar .emoji-item, #gamePasangkanGambar .target-slot')
-                    .forEach(el => el.classList.remove('hint-blink'));
-            },
-
-            triggerHint() {
-                const activePieces = Array.from(document.querySelectorAll('#gamePasangkanGambar .emoji-item')).filter(p => p.style.visibility !== 'hidden');
-                if (activePieces.length === 0) return;
-                const randomPiece = activePieces[0];
-                const targetEmoji = randomPiece.innerText;
-                const matchingSlot = Array.from(document.querySelectorAll('#gamePasangkanGambar .target-slot')).find(s => s.dataset.emoji === targetEmoji && !s.classList.contains('matched'));
-                if (randomPiece && matchingSlot) {
-                    randomPiece.classList.add('hint-blink');
-                    matchingSlot.classList.add('hint-blink');
-                }
-            },
+            triggerHint() { const activePieces = Array.from(document.querySelectorAll('#gamePasangkanGambar .emoji-item')).filter(p => p.style.visibility !== 'hidden'); if (activePieces.length === 0) return; const randomPiece = activePieces[0]; const targetEmoji = randomPiece.innerText; const matchingSlot = Array.from(document.querySelectorAll('#gamePasangkanGambar .target-slot')).find(s => s.dataset.emoji === targetEmoji && !s.classList.contains('matched')); if (randomPiece && matchingSlot) { randomPiece.classList.add('hint-blink'); matchingSlot.classList.add('hint-blink'); } },
 
             startQuestion(themeName, qIdx) {
-                this.state.currentTheme = themeName;
-                this.state.currentQuestionIdx = qIdx;
-                this.state.matchedCount = 0;
-                document.getElementById('next-popup').style.display = 'none';
-                document.querySelectorAll('#gamePasangkanGambar .star').forEach(s => s.classList.remove('show'));
-                document.getElementById('game-title').innerText = this.titleMap[themeName];
-                document.getElementById('game-question-info').innerText = `Soal ${qIdx + 1}/3`;
-
-                const piecesBox = document.getElementById('pieces-box');
-                const targetsBox = document.getElementById('targets-box');
-                piecesBox.innerHTML = ''; targetsBox.innerHTML = '';
-
-                const items = [...this.database[themeName][qIdx]];
-                const shuffledTargets = [...items].sort(() => Math.random() - 0.5);
-
-                shuffledTargets.forEach(emoji => {
-                    const slot = document.createElement('div');
-                    slot.classList.add('target-slot');
-                    slot.dataset.emoji = emoji;
-                    slot.innerText = emoji;
-                    slot.addEventListener('dragover', e => e.preventDefault());
-                    slot.addEventListener('drop', e => this.dropPiece(e));
-                    targetsBox.appendChild(slot);
-                });
-
+                this.state.currentTheme = themeName; this.state.currentQuestionIdx = qIdx; this.state.matchedCount = 0; document.getElementById('next-popup').style.display = 'none'; document.querySelectorAll('#gamePasangkanGambar .star').forEach(s => s.classList.remove('show')); document.getElementById('game-title').innerText = this.titleMap[themeName]; document.getElementById('game-question-info').innerText = `Soal ${qIdx + 1}/3`;
+                const piecesBox = document.getElementById('pieces-box'); const targetsBox = document.getElementById('targets-box'); piecesBox.innerHTML = ''; targetsBox.innerHTML = '';
+                const items = [...this.database[themeName][qIdx]]; const shuffledTargets = [...items].sort(() => Math.random() - 0.5);
+                shuffledTargets.forEach(emoji => { const slot = document.createElement('div'); slot.classList.add('target-slot'); slot.dataset.emoji = emoji; slot.innerText = emoji; slot.addEventListener('dragover', e => e.preventDefault()); slot.addEventListener('drop', e => this.dropPiece(e)); targetsBox.appendChild(slot); });
                 const shuffledPieces = [...items].sort(() => Math.random() - 0.5);
-                shuffledPieces.forEach(emoji => {
-                    const piece = document.createElement('div');
-                    piece.classList.add('emoji-item');
-                    piece.setAttribute('draggable', 'true');
-                    piece.id = 'emoji-' + emoji;
-                    piece.innerText = emoji;
-                    piece.addEventListener('dragstart', e => {
-                        this.stopHintTimer();
-                        e.dataTransfer.setData('text', e.target.innerText);
-                        e.dataTransfer.setData('id', e.target.id);
-                    });
-                    piece.addEventListener('touchmove', e => this.handleTouchMove(e), { passive: false });
-                    piece.addEventListener('touchend', e => this.handleTouchEnd(e));
-                    piecesBox.appendChild(piece);
-                });
-
-                this.resetHintTimer();
-                this.showScreenG2('screen-game-g2');
+                shuffledPieces.forEach(emoji => { const piece = document.createElement('div'); piece.classList.add('emoji-item'); piece.setAttribute('draggable', 'true'); piece.id = 'emoji-' + emoji; piece.innerText = emoji; piece.addEventListener('dragstart', e => { this.stopHintTimer(); e.dataTransfer.setData('text', e.target.innerText); e.dataTransfer.setData('id', e.target.id); }); piece.addEventListener('touchmove', e => this.handleTouchMove(e), { passive: false }); piece.addEventListener('touchend', e => this.handleTouchEnd(e)); piecesBox.appendChild(piece); });
+                this.resetHintTimer(); this.showScreenG2('screen-game-g2');
             },
 
-            executeMatch(slot, piece) {
-                this.stopHintTimer();
-                slot.classList.add('matched');
-                piece.style.visibility = 'hidden';
-                this.state.matchedCount++;
-                if (this.state.matchedCount === 7) { 
-                    this.stopHintTimer(); this.createConfetti(); this.playSound('win'); this.handleQuestionCleared(); 
-                } else { 
-                    this.playSound('correct'); this.resetHintTimer(); 
-                }
-            },
-
-            executeMismatch(piece) {
-                this.playSound('error');
-                piece.classList.add('shake-error');
-                setTimeout(() => piece.classList.remove('shake-error'), 300);
-                this.resetHintTimer();
-            },
-
-            dropPiece(e) {
-                e.preventDefault();
-                const draggedEmoji = e.dataTransfer.getData('text');
-                const draggedId = e.dataTransfer.getData('id');
-                const targetSlot = e.currentTarget;
-                const pieceElement = document.getElementById(draggedId);
-                if (targetSlot.dataset.emoji === draggedEmoji && !targetSlot.classList.contains('matched')) {
-                    this.executeMatch(targetSlot, pieceElement);
-                } else {
-                    this.executeMismatch(pieceElement);
-                }
-            },
-
-            handleTouchMove(e) {
-                this.stopHintTimer();
-                const touch = e.touches[0];
-                this.state.activeTouchElement = e.currentTarget;
-                this.state.activeTouchElement.style.position = 'fixed';
-                this.state.activeTouchElement.style.left = (touch.clientX - 26) + 'px';
-                this.state.activeTouchElement.style.top = (touch.clientY - 26) + 'px';
-                this.state.activeTouchElement.style.zIndex = '9999';
-                e.preventDefault();
-            },
-
-            handleTouchEnd(e) {
-                if (!this.state.activeTouchElement) return;
-                const element = this.state.activeTouchElement;
-                element.style.position = 'static';
-                element.style.zIndex = 'auto';
-                const touch = e.changedTouches[0];
-                const target = document.elementFromPoint(touch.clientX, touch.clientY);
-                if (target && target.classList.contains('target-slot') && target.dataset.emoji === element.innerText) {
-                    if (!target.classList.contains('matched')) this.executeMatch(target, element);
-                    else this.executeMismatch(element);
-                } else {
-                    this.executeMismatch(element);
-                }
-                this.state.activeTouchElement = null;
-            },
-
-            createConfetti() {
-                const screen = document.querySelector('#gamePasangkanGambar .g2-screen.active');
-                for (let i = 0; i < 30; i++) {
-                    const confetti = document.createElement('div');
-                    confetti.classList.add('confetti-piece');
-                    confetti.style.left = Math.random() * 100 + '%';
-                    confetti.style.backgroundColor = ['#ffeb3b', '#ff5722', '#e91e63', '#4caf50', '#00bcd4'][Math.floor(Math.random() * 5)];
-                    confetti.style.animationDelay = Math.random() * 0.5 + 's';
-                    screen.appendChild(confetti);
-                    setTimeout(() => confetti.remove(), 1500);
-                }
-            },
+            executeMatch(slot, piece) { this.stopHintTimer(); slot.classList.add('matched'); piece.style.visibility = 'hidden'; this.state.matchedCount++; if (this.state.matchedCount === 7) { this.stopHintTimer(); this.createConfetti(); this.playSound('win'); this.handleQuestionCleared(); } else { this.playSound('correct'); this.resetHintTimer(); } },
+            executeMismatch(piece) { this.playSound('error'); piece.classList.add('shake-error'); setTimeout(() => piece.classList.remove('shake-error'), 300); this.resetHintTimer(); },
+            dropPiece(e) { e.preventDefault(); const draggedEmoji = e.dataTransfer.getData('text'); const draggedId = e.dataTransfer.getData('id'); const targetSlot = e.currentTarget; const pieceElement = document.getElementById(draggedId); if (targetSlot.dataset.emoji === draggedEmoji && !targetSlot.classList.contains('matched')) { this.executeMatch(targetSlot, pieceElement); } else { this.executeMismatch(pieceElement); } },
+            handleTouchMove(e) { this.stopHintTimer(); const touch = e.touches[0]; this.state.activeTouchElement = e.currentTarget; this.state.activeTouchElement.style.position = 'fixed'; this.state.activeTouchElement.style.left = (touch.clientX - 26) + 'px'; this.state.activeTouchElement.style.top = (touch.clientY - 26) + 'px'; this.state.activeTouchElement.style.zIndex = '9999'; e.preventDefault(); },
+            handleTouchEnd(e) { if (!this.state.activeTouchElement) return; const element = this.state.activeTouchElement; element.style.position = 'static'; element.style.zIndex = 'auto'; const touch = e.changedTouches[0]; const target = document.elementFromPoint(touch.clientX, touch.clientY); if (target && target.classList.contains('target-slot') && target.dataset.emoji === element.innerText) { if (!target.classList.contains('matched')) this.executeMatch(target, element); else this.executeMismatch(element); } else { this.executeMismatch(element); } this.state.activeTouchElement = null; },
+            createConfetti() { const screen = document.querySelector('#gamePasangkanGambar .g2-screen.active'); for (let i = 0; i < 30; i++) { const confetti = document.createElement('div'); confetti.classList.add('confetti-piece'); confetti.style.left = Math.random() * 100 + '%'; confetti.style.backgroundColor = ['#ffeb3b', '#ff5722', '#e91e63', '#4caf50', '#00bcd4'][Math.floor(Math.random() * 5)]; confetti.style.animationDelay = Math.random() * 0.5 + 's'; screen.appendChild(confetti); setTimeout(() => confetti.remove(), 1500); } },
 
             handleQuestionCleared() {
-                const popup = document.getElementById('next-popup');
-                const title = document.getElementById('popup-status-title');
-                const text = document.getElementById('next-text');
-                const btn = document.getElementById('btn-next-action');
-
-                popup.style.display = 'block';
-                setTimeout(() => { document.getElementById('star1').classList.add('show'); this.playSound('star'); }, 300);
-                setTimeout(() => { document.getElementById('star2').classList.add('show'); TrainGame.playSound('click'); }, 600);
-                setTimeout(() => { document.getElementById('star3').classList.add('show'); TrainGame.playSound('click'); }, 900);
-
-                if (this.state.currentQuestionIdx < 2) {
-                    title.innerText = "🎉 Luar Biasa! 🎉";
-                    text.innerText = `Kamu sukses menyelesaikan Soal ${this.state.currentQuestionIdx + 1}!`;
-                    btn.innerText = `Main Soal ${this.state.currentQuestionIdx + 2} ➔`;
-                } else {
-                    if (!this.state.finishedThemes.includes(this.state.currentTheme)) this.state.finishedThemes.push(this.state.currentTheme);
-                    const isAllGameFinished = this.themeOrder.every(t => this.state.finishedThemes.includes(t));
-                    if (isAllGameFinished) {
-                        title.innerText = "🏆 PINTAR SEKALI! 🏆";
-                        text.innerText = "Semua tema telah kamu taklukkan!";
-                        btn.innerText = "Lihat Piala 👑";
-                    } else {
-                        title.innerText = "✨ Tema Selesai! ✨";
-                        text.innerText = "Hebat, 3 soal tema selesai!";
-                        btn.innerText = "Pilih Tema Lain 🗺️";
-                    }
-                }
+                const popup = document.getElementById('next-popup'); const title = document.getElementById('popup-status-title'); const text = document.getElementById('next-text'); const btn = document.getElementById('btn-next-action');
+                popup.style.display = 'block'; setTimeout(() => { document.getElementById('star1').classList.add('show'); this.playSound('star'); }, 300); setTimeout(() => { document.getElementById('star2').classList.add('show'); TrainGame.playSound('click'); }, 600); setTimeout(() => { document.getElementById('star3').classList.add('show'); TrainGame.playSound('click'); }, 900);
+                if (this.state.currentQuestionIdx < 2) { title.innerText = "🎉 Luar Biasa! 🎉"; text.innerText = `Kamu sukses menyelesaikan Soal ${this.state.currentQuestionIdx + 1}!`; btn.innerText = `Main Soal ${this.state.currentQuestionIdx + 2} ➔`; } 
+                else { if (!this.state.finishedThemes.includes(this.state.currentTheme)) this.state.finishedThemes.push(this.state.currentTheme); const isAllGameFinished = this.themeOrder.every(t => this.state.finishedThemes.includes(t)); if (isAllGameFinished) { title.innerText = "🏆 PINTAR SEKALI! 🏆"; text.innerText = "Semua tema telah kamu taklukkan!"; btn.innerText = "Lihat Piala 👑"; } else { title.innerText = "✨ Tema Selesai! ✨"; text.innerText = "Hebat, 3 soal tema selesai!"; btn.innerText = "Pilih Tema Lain 🗺️"; } }
             },
 
-            goToNextStep() {
-                this.playSound('click');
-                if (this.state.currentQuestionIdx < 2) {
-                    this.startQuestion(this.state.currentTheme, this.state.currentQuestionIdx + 1);
-                } else {
-                    const isAllGameFinished = this.themeOrder.every(t => this.state.finishedThemes.includes(t));
-                    if (isAllGameFinished) {
-                        document.getElementById('final-char').innerText = this.state.selectedCharacterG2;
-                        this.showScreenG2('screen-win-g2');
-                        this.playSound('win');
-                    } else {
-                        this.backToThemeMenu();
-                    }
-                }
-            },
-
-            showScreenG2(screenId) {
-                document.querySelectorAll('#gamePasangkanGambar .g2-screen').forEach(s => s.classList.remove('active'));
-                const target = document.getElementById(screenId);
-                if (target) target.classList.add('active');
-            },
-
-            restartGame() {
-                this.state.finishedThemes = [];
-                this.state.selectedCharacterG2 = '';
-                const startBtn = document.getElementById('btn-start-game');
-                if (startBtn) { startBtn.classList.add('btn-disabled'); startBtn.setAttribute('disabled', 'true'); }
-                document.querySelectorAll('#gamePasangkanGambar .char-card').forEach(card => card.classList.remove('selected'));
-                this.showScreenG2('screen-character-g2');
-            }
+            goToNextStep() { this.playSound('click'); if (this.state.currentQuestionIdx < 2) { this.startQuestion(this.state.currentTheme, this.state.currentQuestionIdx + 1); } else { const isAllGameFinished = this.themeOrder.every(t => this.state.finishedThemes.includes(t)); if (isAllGameFinished) { document.getElementById('final-char').innerText = this.state.selectedCharacterG2; this.showScreenG2('screen-win-g2'); this.playSound('win'); } else { this.backToThemeMenu(); } } },
+            showScreenG2(screenId) { document.querySelectorAll('#gamePasangkanGambar .g2-screen').forEach(s => s.classList.remove('active')); const target = document.getElementById(screenId); if (target) target.classList.add('active'); },
+            restartGame() { this.state.finishedThemes = []; this.state.selectedCharacterG2 = ''; const startBtn = document.getElementById('btn-start-game'); if (startBtn) { startBtn.classList.add('btn-disabled'); startBtn.setAttribute('disabled', 'true'); } document.querySelectorAll('#gamePasangkanGambar .char-card').forEach(card => card.classList.remove('selected')); this.showScreenG2('screen-character-g2'); }
         };
 
         /* -----------------------------------------------------------
            4. PUZZLEGAME: MODUL GAME 3 (PUZZLE ADVENTURE 🧩)
            ----------------------------------------------------------- */
         const PuzzleGame = {
-            state: {
-                selectedCharacterG3: null,
-                selectedCharIconG3: null,
-                currentThemeKeyG3: null,
-                currentDifficultyModeG3: 'easy',
-                completedCombinationsG3: [],
-                rowsG3: 3,
-                colsG3: 4,
-                timerG3: 0,
-                placedG3: 0,
-                totalPiecesG3: 0,
-                draggedPieceG3: null,
-                touchStartCellG3: null,
-                isGameFinishedG3: false,
-                touchStartXG3: 0,
-                touchStartYG3: 0,
-                intervalG3: null
-            },
+            state: { selectedCharacterG3: null, selectedCharIconG3: null, currentThemeKeyG3: null, currentDifficultyModeG3: 'easy', completedCombinationsG3: [], rowsG3: 3, colsG3: 4, timerG3: 0, placedG3: 0, totalPiecesG3: 0, draggedPieceG3: null, touchStartCellG3: null, isGameFinishedG3: false, touchStartXG3: 0, touchStartYG3: 0, intervalG3: null },
             themes: {
                 dinosaurus: { name: "🦕 DINOSAURUS PURBA", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Dinosaurus.jpeg" },
                 laut: { name: "🐬 KEHIDUPAN LAUT DALAM", img: "https://raw.githubusercontent.com/malikagames/Puzzle-Games/main/Kehidupan%20Laut.jpeg" },
@@ -2344,313 +2373,330 @@
             },
 
             playSound(type) {
-                if (!AppCore.audioCtx) return;
-                const osc = AppCore.audioCtx.createOscillator();
-                const gain = AppCore.audioCtx.createGain();
-                osc.connect(gain);
-                gain.connect(AppCore.audioCtx.destination);
-                const now = AppCore.audioCtx.currentTime;
-
-                if (type === 'click') {
-                    osc.type = 'sine'; osc.frequency.setValueAtTime(400, now); gain.gain.setValueAtTime(0.08, now);
-                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1); osc.start(now); osc.stop(now + 0.1);
-                } else if (type === 'move') {
-                    osc.type = 'triangle'; osc.frequency.setValueAtTime(240, now); osc.frequency.exponentialRampToValueAtTime(140, now + 0.12);
-                    gain.gain.setValueAtTime(0.12, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12); osc.start(now); osc.stop(now + 0.12);
-                } else if (type === 'theme_clear') {
-                    osc.type = 'sine'; osc.frequency.setValueAtTime(320, now); osc.frequency.setValueAtTime(480, now + 0.1); osc.frequency.setValueAtTime(640, now + 0.2);
-                    gain.gain.setValueAtTime(0.15, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4); osc.start(now); osc.stop(now + 0.4);
-                } else if (type === 'all_clear') {
-                    for (let i = 0; i < 3; i++) {
-                        const tOsc = AppCore.audioCtx.createOscillator(); const tGain = AppCore.audioCtx.createGain();
-                        tOsc.connect(tGain); tGain.connect(AppCore.audioCtx.destination); tOsc.type = 'sawtooth';
-                        tOsc.frequency.setValueAtTime(523.25 + (i * 80), now + (i * 0.12)); tGain.gain.setValueAtTime(0.08, now + (i * 0.12));
-                        tGain.gain.exponentialRampToValueAtTime(0.01, now + (i * 0.12) + 0.25); tOsc.start(now + (i * 0.12)); tOsc.stop(now + (i * 0.12) + 0.25);
-                    }
-                }
+                if (!AppCore.audioCtx) return; const osc = AppCore.audioCtx.createOscillator(); const gain = AppCore.audioCtx.createGain(); osc.connect(gain); gain.connect(AppCore.audioCtx.destination); const now = AppCore.audioCtx.currentTime;
+                if (type === 'click') { osc.type = 'sine'; osc.frequency.setValueAtTime(400, now); gain.gain.setValueAtTime(0.08, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1); osc.start(now); osc.stop(now + 0.1); } 
+                else if (type === 'move') { osc.type = 'triangle'; osc.frequency.setValueAtTime(240, now); osc.frequency.exponentialRampToValueAtTime(140, now + 0.12); gain.gain.setValueAtTime(0.12, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12); osc.start(now); osc.stop(now + 0.12); } 
+                else if (type === 'theme_clear') { osc.type = 'sine'; osc.frequency.setValueAtTime(320, now); osc.frequency.setValueAtTime(480, now + 0.1); osc.frequency.setValueAtTime(640, now + 0.2); gain.gain.setValueAtTime(0.15, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4); osc.start(now); osc.stop(now + 0.4); } 
+                else if (type === 'all_clear') { for (let i = 0; i < 3; i++) { const tOsc = AppCore.audioCtx.createOscillator(); const tGain = AppCore.audioCtx.createGain(); tOsc.connect(tGain); tGain.connect(AppCore.audioCtx.destination); tOsc.type = 'sawtooth'; tOsc.frequency.setValueAtTime(523.25 + (i * 80), now + (i * 0.12)); tGain.gain.setValueAtTime(0.08, now + (i * 0.12)); tGain.gain.exponentialRampToValueAtTime(0.01, now + (i * 0.12) + 0.25); tOsc.start(now + (i * 0.12)); tOsc.stop(now + (i * 0.12) + 0.25); } }
             },
 
-            goToPageG3(pageId) {
-                this.playSound('click');
-                document.querySelectorAll('.g3-page-card-container').forEach(p => p.classList.remove('active'));
-                document.getElementById('g3-page-game').classList.remove('active');
-                
-                if (pageId === 'g3-page-theme') { this.renderThemeSelectionG3(); }
-                
-                const target = document.getElementById(pageId);
-                if (target) {
-                    if (pageId === 'g3-page-game') target.classList.add('active');
-                    else target.classList.add('active');
-                }
-            },
+            goToPageG3(pageId) { this.playSound('click'); document.querySelectorAll('#gamePuzzleAdventure .g3-page-card-container').forEach(p => p.classList.remove('active')); document.getElementById('g3-page-game').classList.remove('active'); if (pageId === 'g3-page-theme') { this.renderThemeSelectionG3(); } const target = document.getElementById(pageId); if (target) { if (pageId === 'g3-page-game') target.classList.add('active'); else target.classList.add('active'); } },
+            selectCharacterG3(name, icon, element) { this.state.selectedCharacterG3 = name; this.state.selectedCharIconG3 = icon; this.playSound('click'); document.querySelectorAll('#g3-page-character .g3-card-char').forEach(c => c.classList.remove('selected')); element.classList.add('selected'); const nextBtn = document.getElementById('g3-btn-next-theme'); nextBtn.classList.remove('g3-btn-action-disabled'); nextBtn.disabled = false; document.getElementById('g3-display-char-icon').innerText = icon; document.getElementById('g3-display-char-name').innerText = name; },
+            changeDifficultyUIG3(r, c, mode) { this.playSound('click'); this.state.rowsG3 = r; this.state.colsG3 = c; this.state.currentDifficultyModeG3 = mode; document.querySelectorAll('#gamePuzzleAdventure .g3-diff-btn').forEach(b => b.classList.remove('active')); document.getElementById(`g3-diff-${mode}`).classList.add('active'); this.renderThemeSelectionG3(); },
 
-            selectCharacterG3(name, icon, element) {
-                this.state.selectedCharacterG3 = name;
-                this.state.selectedCharIconG3 = icon;
-                this.playSound('click');
-                document.querySelectorAll('#g3-page-character .g3-card-char').forEach(c => c.classList.remove('selected'));
-                element.classList.add('selected');
-                
-                const nextBtn = document.getElementById('g3-btn-next-theme');
-                nextBtn.classList.remove('g3-btn-action-disabled');
-                nextBtn.disabled = false;
-                
-                document.getElementById('g3-display-char-icon').innerText = icon;
-                document.getElementById('g3-display-char-name').innerText = name;
-            },
+            renderThemeSelectionG3() { const grid = document.getElementById('g3-theme-grid'); grid.innerHTML = ''; for (let key in this.themes) { const theme = this.themes[key]; const comboKey = key + '_' + this.state.currentDifficultyModeG3; const isDone = this.state.completedCombinationsG3.includes(comboKey); const btn = document.createElement('button'); btn.className = `g3-btn-theme-item ${isDone ? 'completed' : ''}`; btn.innerText = theme.name; if (!isDone) btn.onclick = () => this.launchGameInternalG3(key); grid.appendChild(btn); } },
+            launchGameInternalG3(themeKey) { this.playSound('click'); this.state.currentThemeKeyG3 = themeKey; this.state.isGameFinishedG3 = false; document.querySelectorAll('#gamePuzzleAdventure .g3-page-card-container').forEach(p => p.classList.remove('active')); document.getElementById('g3-page-game').classList.add('active'); document.getElementById('g3-preview-success-zone').style.display = 'none'; document.getElementById('g3-btn-giveup').style.display = 'inline-block'; const textDifficulty = this.state.currentDifficultyModeG3 === 'easy' ? 'Mudah ⭐' : this.state.currentDifficultyModeG3 === 'medium' ? 'Sedang ⭐⭐' : 'Sulit ⭐⭐⭐'; document.getElementById('g3-current-theme-title').innerText = this.themes[themeKey].name.replace(/^[^\s]+\s/, '') + ' (' + textDifficulty + ')'; document.getElementById('g3-refImage').src = this.themes[themeKey].img; this.state.placedG3 = 0; this.state.totalPiecesG3 = this.state.rowsG3 * this.state.colsG3; document.getElementById('g3-progress').innerText = '0%'; this.loadBestG3(); this.startTimerG3(); this.createBoardG3(); },
+            confirmExitG3() { this.playSound('click'); if (confirm('Apakah kamu ingin kembali? Progres saat ini akan hilang.')) { clearInterval(this.state.intervalG3); this.goToPageG3('g3-page-theme'); } },
+            formatTimeG3(sec) { const m = Math.floor(sec / 60); const s = sec % 60; return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0'); },
+            loadBestG3() { const key = 'best_' + this.state.currentThemeKeyG3 + '_' + this.state.rowsG3 + 'x' + this.state.colsG3; const best = localStorage.getItem(key); document.getElementById('g3-bestTime').innerText = best || '-'; },
+            saveBestG3() { const key = 'best_' + this.state.currentThemeKeyG3 + '_' + this.state.rowsG3 + 'x' + this.state.colsG3; const best = localStorage.getItem(key); if (!best || this.state.timerG3 < (parseInt(best.split(':')[0]) * 60 + parseInt(best.split(':')[1]))) { localStorage.setItem(key, this.formatTimeG3(this.state.timerG3)); } },
+            startTimerG3() { clearInterval(this.state.intervalG3); this.state.timerG3 = 0; this.state.intervalG3 = setInterval(() => { this.state.timerG3++; document.getElementById('g3-timer').innerText = this.formatTimeG3(this.state.timerG3); }, 1000); },
 
-            changeDifficultyUIG3(r, c, mode) {
-                this.playSound('click');
-                this.state.rowsG3 = r; this.state.colsG3 = c; this.state.currentDifficultyModeG3 = mode;
-                document.querySelectorAll('.g3-diff-btn').forEach(b => b.classList.remove('active'));
-                document.getElementById(`g3-diff-${mode}`).classList.add('active');
-                this.renderThemeSelectionG3();
-            },
-
-            renderThemeSelectionG3() {
-                const grid = document.getElementById('g3-theme-grid');
-                grid.innerHTML = '';
-                for (let key in this.themes) {
-                    const theme = this.themes[key];
-                    const comboKey = key + '_' + this.state.currentDifficultyModeG3;
-                    const isDone = this.state.completedCombinationsG3.includes(comboKey);
-                    
-                    const btn = document.createElement('button');
-                    btn.className = `g3-btn-theme-item ${isDone ? 'completed' : ''}`;
-                    btn.innerText = theme.name;
-                    if (!isDone) btn.onclick = () => this.launchGameInternalG3(key);
-                    grid.appendChild(btn);
-                }
-            },
-
-            launchGameInternalG3(themeKey) {
-                this.playSound('click');
-                this.state.currentThemeKeyG3 = themeKey;
-                this.state.isGameFinishedG3 = false;
-                document.querySelectorAll('.g3-page-card-container').forEach(p => p.classList.remove('active'));
-                document.getElementById('g3-page-game').classList.add('active');
-                document.getElementById('g3-preview-success-zone').style.display = 'none';
-                document.getElementById('g3-btn-giveup').style.display = 'inline-block';
-
-                const textDifficulty = this.state.currentDifficultyModeG3 === 'easy' ? 'Mudah ⭐' :
-                    this.state.currentDifficultyModeG3 === 'medium' ? 'Sedang ⭐⭐' : 'Sulit ⭐⭐⭐';
-                document.getElementById('g3-current-theme-title').innerText = this.themes[themeKey].name.replace(/^[^\s]+\s/, '') + ' (' + textDifficulty + ')';
-                document.getElementById('g3-refImage').src = this.themes[themeKey].img;
-
-                this.state.placedG3 = 0;
-                this.state.totalPiecesG3 = this.state.rowsG3 * this.state.colsG3;
-                document.getElementById('g3-progress').innerText = '0%';
-                this.loadBestG3();
-                this.startTimerG3();
-                this.createBoardG3();
-            },
-
-            confirmExitG3() {
-                this.playSound('click');
-                if (confirm('Apakah kamu ingin kembali? Progres saat ini akan hilang.')) {
-                    clearInterval(this.state.intervalG3);
-                    this.goToPageG3('g3-page-theme');
-                }
-            },
-
-            formatTimeG3(sec) {
-                const m = Math.floor(sec / 60); const s = sec % 60;
-                return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
-            },
-
-            loadBestG3() {
-                const key = 'best_' + this.state.currentThemeKeyG3 + '_' + this.state.rowsG3 + 'x' + this.state.colsG3;
-                const best = localStorage.getItem(key);
-                document.getElementById('g3-bestTime').innerText = best || '-';
-            },
-
-            saveBestG3() {
-                const key = 'best_' + this.state.currentThemeKeyG3 + '_' + this.state.rowsG3 + 'x' + this.state.colsG3;
-                const best = localStorage.getItem(key);
-                if (!best || this.state.timerG3 < (parseInt(best.split(':')[0]) * 60 + parseInt(best.split(':')[1]))) {
-                    localStorage.setItem(key, this.formatTimeG3(this.state.timerG3));
-                }
-            },
-
-            startTimerG3() {
-                clearInterval(this.state.intervalG3);
-                this.state.timerG3 = 0;
-                this.state.intervalG3 = setInterval(() => {
-                    this.state.timerG3++;
-                    document.getElementById('g3-timer').innerText = this.formatTimeG3(this.state.timerG3);
-                }, 1000);
-            },
-
-            resizeBoard() {
-                const board = document.getElementById('g3-board');
-                if (!board) return;
-                const isLandscape = window.innerWidth > window.innerHeight;
-                const maxWidth = window.innerWidth - (isLandscape ? 240 : 60);
-                const maxHeight = window.innerHeight - (isLandscape ? 110 : 320);
-                let size = Math.min(maxWidth, maxHeight, 560);
-                if (size < 280) size = 280;
-                board.style.width = size + 'px';
-            },
+            resizeBoard() { const board = document.getElementById('g3-board'); if (!board) return; const isLandscape = window.innerWidth > window.innerHeight; const maxWidth = window.innerWidth - (isLandscape ? 240 : 60); const maxHeight = window.innerHeight - (isLandscape ? 110 : 320); let size = Math.min(maxWidth, maxHeight, 560); if (size < 280) size = 280; board.style.width = size + 'px'; },
 
             createBoardG3() {
-                const board = document.getElementById('g3-board');
-                board.innerHTML = '';
-                this.resizeBoard();
-                board.style.gridTemplateColumns = `repeat(${this.state.colsG3}, 1fr)`;
-
-                let pieces = [];
-                for (let y = 0; y < this.state.rowsG3; y++) {
-                    for (let x = 0; x < this.state.colsG3; x++) {
-                        const index = y * this.state.colsG3 + x;
-                        const cell = document.createElement('div');
-                        cell.className = 'g3-cell';
-                        cell.dataset.index = index;
-                        cell.addEventListener('dragover', e => e.preventDefault());
-                        cell.addEventListener('drop', () => this.dropPieceG3(cell));
-                        board.appendChild(cell);
-                        pieces.push(index);
-                    }
-                }
-                pieces.sort(() => Math.random() - 0.5);
-
-                const cells = board.querySelectorAll('.g3-cell');
-                cells.forEach((cell, i) => {
-                    const piece = document.createElement('div');
-                    piece.className = 'g3-piece';
-                    piece.draggable = true;
-                    piece.dataset.correct = pieces[i];
-                    const px = pieces[i] % this.state.colsG3;
-                    const py = Math.floor(pieces[i] / this.state.colsG3);
-                    piece.style.backgroundImage = `url(${this.themes[this.state.currentThemeKeyG3].img})`;
-                    piece.style.backgroundSize = `${this.state.colsG3 * 100}% ${this.state.rowsG3 * 100}%`;
-                    piece.style.backgroundPosition = `${(px / (this.state.colsG3 - 1)) * 100}% ${(py / (this.state.rowsG3 - 1)) * 100}%`;
-                    piece.addEventListener('dragstart', () => this.dragStartG3(piece));
-                    piece.addEventListener('touchstart', e => this.touchStartG3(e, piece), { passive: false });
-                    piece.addEventListener('touchmove', e => this.touchMoveG3(e), { passive: false });
-                    piece.addEventListener('touchend', () => this.touchEndG3());
-                    cell.appendChild(piece);
-                });
+                const board = document.getElementById('g3-board'); board.innerHTML = ''; this.resizeBoard(); board.style.gridTemplateColumns = `repeat(${this.state.colsG3}, 1fr)`;
+                let pieces = []; for (let y = 0; y < this.state.rowsG3; y++) { for (let x = 0; x < this.state.colsG3; x++) { const index = y * this.state.colsG3 + x; const cell = document.createElement('div'); cell.className = 'g3-cell'; cell.dataset.index = index; cell.addEventListener('dragover', e => e.preventDefault()); cell.addEventListener('drop', () => this.dropPieceG3(cell)); board.appendChild(cell); pieces.push(index); } } pieces.sort(() => Math.random() - 0.5);
+                const cells = board.querySelectorAll('.g3-cell'); cells.forEach((cell, i) => { const piece = document.createElement('div'); piece.className = 'g3-piece'; piece.draggable = true; piece.dataset.correct = pieces[i]; const px = pieces[i] % this.state.colsG3; const py = Math.floor(pieces[i] / this.state.colsG3); piece.style.backgroundImage = `url(${this.themes[this.state.currentThemeKeyG3].img})`; piece.style.backgroundSize = `${this.state.colsG3 * 100}% ${this.state.rowsG3 * 100}%`; piece.style.backgroundPosition = `${(px / (this.state.colsG3 - 1)) * 100}% ${(py / (this.state.rowsG3 - 1)) * 100}%`; piece.addEventListener('dragstart', () => this.dragStartG3(piece)); piece.addEventListener('touchstart', e => this.touchStartG3(e, piece), { passive: false }); piece.addEventListener('touchmove', e => this.touchMoveG3(e), { passive: false }); piece.addEventListener('touchend', () => this.touchEndG3()); cell.appendChild(piece); });
             },
 
             dragStartG3(piece) { if (this.state.isGameFinishedG3) return; this.state.draggedPieceG3 = piece; },
             dropPieceG3(cell) { if (!this.state.draggedPieceG3 || this.state.isGameFinishedG3) return; this.swapPiecesG3(this.state.draggedPieceG3, cell); },
+            touchStartG3(e, piece) { if (this.state.isGameFinishedG3) return; this.state.draggedPieceG3 = piece; this.state.touchStartCellG3 = piece.parentNode; const touch = e.touches[0]; this.state.touchStartXG3 = touch.clientX; this.state.touchStartYG3 = touch.clientY; piece.style.zIndex = '100'; piece.style.position = 'relative'; },
+            touchMoveG3(e) { if (!this.state.draggedPieceG3 || this.state.isGameFinishedG3) return; e.preventDefault(); const touch = e.touches[0]; const dx = touch.clientX - this.state.touchStartXG3; const dy = touch.clientY - this.state.touchStartYG3; this.state.draggedPieceG3.style.transform = `translate(${dx}px, ${dy}px)`; },
+            touchEndG3() { if (!this.state.draggedPieceG3 || this.state.isGameFinishedG3) return; const pieceRect = this.state.draggedPieceG3.getBoundingClientRect(); const pieceCenterX = pieceRect.left + (pieceRect.width / 2); const pieceCenterY = pieceRect.top + (pieceRect.height / 2); this.state.draggedPieceG3.style.transform = 'none'; this.state.draggedPieceG3.style.zIndex = '1'; let closestCell = null; let minDistance = Infinity; document.querySelectorAll('.g3-cell').forEach(cell => { const cellRect = cell.getBoundingClientRect(); const cellCenterX = cellRect.left + (cellRect.width / 2); const cellCenterY = cellRect.top + (cellRect.height / 2); const distance = Math.hypot(cellCenterX - pieceCenterX, cellCenterY - pieceCenterY); if (distance < minDistance) { minDistance = distance; closestCell = cell; } }); if (closestCell && minDistance < pieceRect.width * 1.2 && closestCell !== this.state.touchStartCellG3) { this.swapPiecesG3(this.state.draggedPieceG3, closestCell); } else { this.state.touchStartCellG3.appendChild(this.state.draggedPieceG3); } this.state.draggedPieceG3 = null; this.state.touchStartCellG3 = null; },
+            
+            swapPiecesG3(piece, targetCell) { this.playSound('move'); if (targetCell.children.length > 0) { const other = targetCell.children[0]; piece.parentNode.appendChild(other); } targetCell.appendChild(piece); this.checkPuzzleG3(); },
+            checkPuzzleG3() { let correct = 0; document.querySelectorAll('.g3-cell').forEach(cell => { const piece = cell.children[0]; if (!piece) return; if (Number(piece.dataset.correct) === Number(cell.dataset.index)) { correct++; cell.classList.add('correct'); } else { cell.classList.remove('correct'); } }); this.state.placedG3 = correct; document.getElementById('g3-progress').innerText = Math.round((this.state.placedG3 / this.state.totalPiecesG3) * 100) + '%'; if (correct === this.state.totalPiecesG3) { clearInterval(this.state.intervalG3); this.saveBestG3(); this.handleThemeCompleteG3(); } },
 
-            touchStartG3(e, piece) {
-                if (this.state.isGameFinishedG3) return;
-                this.state.draggedPieceG3 = piece;
-                this.state.touchStartCellG3 = piece.parentNode;
-                const touch = e.touches[0];
-                this.state.touchStartXG3 = touch.clientX;
-                this.state.touchStartYG3 = touch.clientY;
-                piece.style.zIndex = '100';
-                piece.style.position = 'relative';
+            handleThemeCompleteG3() { this.state.isGameFinishedG3 = true; this.playSound('theme_clear'); document.getElementById('g3-btn-giveup').style.display = 'none'; const comboKey = this.state.currentThemeKeyG3 + '_' + this.state.currentDifficultyModeG3; if (!this.state.completedCombinationsG3.includes(comboKey)) this.state.completedCombinationsG3.push(comboKey); document.getElementById('g3-success-message').innerHTML = `Hebat! Kamu berhasil menyusun tema <b>${this.themes[this.state.currentThemeKeyG3].name.replace(/^[^\s]+\s/, '')}</b> bersama <b>${this.state.selectedCharacterG3}</b> dalam waktu <b>${this.formatTimeG3(this.state.timerG3)}</b>!`; document.getElementById('g3-preview-success-zone').style.display = 'block'; },
+            backToThemeAfterPreviewG3() { this.playSound('click'); const totalThemesCount = Object.keys(this.themes).length; const totalPossibleCombos = totalThemesCount * 3; if (this.state.completedCombinationsG3.length === totalPossibleCombos) { this.playSound('all_clear'); document.getElementById('g3-modal-message').innerHTML = `Selamat! Semua ${totalThemesCount} tema dengan masing-masing 3 tingkat kesulitan telah berhasil kamu selesaikan seluruhnya dengan sempurna bersama <b>${this.state.selectedCharIconG3} ${this.state.selectedCharacterG3}</b>! 🏆🎉`; document.getElementById('g3-game-modal').style.display = 'flex'; } else { this.goToPageG3('g3-page-theme'); } },
+            resetAllGameG3() { this.state.completedCombinationsG3 = []; document.getElementById('g3-game-modal').style.display = 'none'; this.goToPageG3('g3-page-character'); this.state.selectedCharacterG3 = null; this.state.selectedCharIconG3 = null; const nextBtn = document.getElementById('g3-btn-next-theme'); nextBtn.classList.add('g3-btn-action-disabled'); nextBtn.disabled = true; document.querySelectorAll('#g3-page-character .g3-card-char').forEach(c => c.classList.remove('selected')); }
+        };
+
+        /* -----------------------------------------------------------
+           5. COLORGAME: MODUL GAME 4 (POLA WARNA PINTAR 🎨)
+           ----------------------------------------------------------- */
+        const ColorGame = {
+            state: {
+                TOTAL_SOAL: 15, databaseSoal: [], currentIdx: 0, stars: 0, userAnswers: [null, null, null], activeValue: null, ghostElement: null, chosenPlayer: { name: '', emoji: '' }, particles: [], confettiCtx: null, confettiCanvas: null, isAnimating: false
+            },
+            definitions: [
+                { name: 'merah', hex: '#ef4444', value: 1 },
+                { name: 'biru', hex: '#3b82f6', value: 2 },
+                { name: 'hijau', hex: '#22c55e', value: 3 },
+                { name: 'kuning', hex: '#eab308', value: 4 },
+                { name: 'abu-abu', hex: '#64748b', value: 5 }
+            ],
+
+            init() {
+                this.state.confettiCanvas = document.getElementById('g4-confetti-canvas');
+                this.state.confettiCtx = this.state.confettiCanvas.getContext('2d');
+                this.bindEvents();
             },
 
-            touchMoveG3(e) {
-                if (!this.state.draggedPieceG3 || this.state.isGameFinishedG3) return;
-                e.preventDefault();
-                const touch = e.touches[0];
-                const dx = touch.clientX - this.state.touchStartXG3;
-                const dy = touch.clientY - this.state.touchStartYG3;
-                this.state.draggedPieceG3.style.transform = `translate(${dx}px, ${dy}px)`;
-            },
+            playSound(type) {
+                if (!AppCore.audioCtx) return;
+                const osc = AppCore.audioCtx.createOscillator(); const gainNode = AppCore.audioCtx.createGain();
+                osc.connect(gainNode); gainNode.connect(AppCore.audioCtx.destination);
 
-            touchEndG3() {
-                if (!this.state.draggedPieceG3 || this.state.isGameFinishedG3) return;
-                const pieceRect = this.state.draggedPieceG3.getBoundingClientRect();
-                const pieceCenterX = pieceRect.left + (pieceRect.width / 2);
-                const pieceCenterY = pieceRect.top + (pieceRect.height / 2);
-                this.state.draggedPieceG3.style.transform = 'none';
-                this.state.draggedPieceG3.style.zIndex = '1';
-
-                let closestCell = null; let minDistance = Infinity;
-                document.querySelectorAll('.g3-cell').forEach(cell => {
-                    const cellRect = cell.getBoundingClientRect();
-                    const cellCenterX = cellRect.left + (cellRect.width / 2);
-                    const cellCenterY = cellRect.top + (cellRect.height / 2);
-                    const distance = Math.hypot(cellCenterX - pieceCenterX, cellCenterY - pieceCenterY);
-                    if (distance < minDistance) { minDistance = distance; closestCell = cell; }
-                });
-
-                if (closestCell && minDistance < pieceRect.width * 1.2 && closestCell !== this.state.touchStartCellG3) {
-                    this.swapPiecesG3(this.state.draggedPieceG3, closestCell);
-                } else {
-                    this.state.touchStartCellG3.appendChild(this.state.draggedPieceG3);
+                if (type === 'click') {
+                    osc.type = 'sine'; osc.frequency.setValueAtTime(400, AppCore.audioCtx.currentTime); gainNode.gain.setValueAtTime(0.3, AppCore.audioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, AppCore.audioCtx.currentTime + 0.1); osc.start(); osc.stop(AppCore.audioCtx.currentTime + 0.1);
+                } else if (type === 'success') {
+                    osc.type = 'triangle'; osc.frequency.setValueAtTime(523.25, AppCore.audioCtx.currentTime); osc.frequency.setValueAtTime(659.25, AppCore.audioCtx.currentTime + 0.1); osc.frequency.setValueAtTime(783.99, AppCore.audioCtx.currentTime + 0.2); gainNode.gain.setValueAtTime(0.3, AppCore.audioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, AppCore.audioCtx.currentTime + 0.4); osc.start(); osc.stop(AppCore.audioCtx.currentTime + 0.4);
+                } else if (type === 'wrong') {
+                    osc.type = 'sawtooth'; osc.frequency.setValueAtTime(150, AppCore.audioCtx.currentTime); osc.frequency.linearRampToValueAtTime(80, AppCore.audioCtx.currentTime + 0.3); gainNode.gain.setValueAtTime(0.2, AppCore.audioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, AppCore.audioCtx.currentTime + 0.3); osc.start(); osc.stop(AppCore.audioCtx.currentTime + 0.3);
                 }
-                this.state.draggedPieceG3 = null; this.state.touchStartCellG3 = null;
             },
 
-            swapPiecesG3(piece, targetCell) {
-                this.playSound('move');
-                if (targetCell.children.length > 0) {
-                    const other = targetCell.children[0];
-                    piece.parentNode.appendChild(other);
-                }
-                targetCell.appendChild(piece);
-                this.checkPuzzleG3();
-            },
-
-            checkPuzzleG3() {
-                let correct = 0;
-                document.querySelectorAll('.g3-cell').forEach(cell => {
-                    const piece = cell.children[0];
-                    if (!piece) return;
-                    if (Number(piece.dataset.correct) === Number(cell.dataset.index)) {
-                        correct++; cell.classList.add('correct');
-                    } else {
-                        cell.classList.remove('correct');
-                    }
-                });
-                this.state.placedG3 = correct;
-                document.getElementById('g3-progress').innerText = Math.round((this.state.placedG3 / this.state.totalPiecesG3) * 100) + '%';
-                if (correct === this.state.totalPiecesG3) { clearInterval(this.state.intervalG3); this.saveBestG3(); this.handleThemeCompleteG3(); }
-            },
-
-            handleThemeCompleteG3() {
-                this.state.isGameFinishedG3 = true;
-                this.playSound('theme_clear');
-                document.getElementById('g3-btn-giveup').style.display = 'none';
-                const comboKey = this.state.currentThemeKeyG3 + '_' + this.state.currentDifficultyModeG3;
-                if (!this.state.completedCombinationsG3.includes(comboKey)) this.state.completedCombinationsG3.push(comboKey);
-                document.getElementById('g3-success-message').innerHTML =
-                    `Hebat! Kamu berhasil menyusun tema <b>${this.themes[this.state.currentThemeKeyG3].name.replace(/^[^\s]+\s/, '')}</b> bersama <b>${this.state.selectedCharacterG3}</b> dalam waktu <b>${this.formatTimeG3(this.state.timerG3)}</b>!`;
-                document.getElementById('g3-preview-success-zone').style.display = 'block';
-            },
-
-            backToThemeAfterPreviewG3() {
+            goToPage(pageId) {
                 this.playSound('click');
-                const totalThemesCount = Object.keys(this.themes).length;
-                const totalPossibleCombos = totalThemesCount * 3;
-                if (this.state.completedCombinationsG3.length === totalPossibleCombos) {
-                    this.playSound('all_clear');
-                    document.getElementById('g3-modal-message').innerHTML =
-                        `Selamat! Semua ${totalThemesCount} tema dengan masing-masing 3 tingkat kesulitan telah berhasil kamu selesaikan seluruhnya dengan sempurna bersama <b>${this.state.selectedCharIconG3} ${this.state.selectedCharacterG3}</b>! 🏆🎉`;
-                    document.getElementById('g3-game-modal').style.display = 'flex';
-                } else {
-                    this.goToPageG3('g3-page-theme');
+                document.querySelectorAll('#gamePolaWarna .g4-page-card-container').forEach(p => p.classList.remove('active'));
+                const target = document.getElementById(pageId);
+                if (target) target.classList.add('active');
+            },
+
+            selectCharacter(name, icon, element) {
+                this.playSound('click');
+                this.state.chosenPlayer.name = name;
+                this.state.chosenPlayer.emoji = icon;
+                document.querySelectorAll('#gamePolaWarna .g4-card-char').forEach(c => c.classList.remove('selected'));
+                element.classList.add('selected');
+                const btnStart = document.getElementById('g4-btn-start-game');
+                btnStart.classList.remove('g4-btn-action-disabled');
+                btnStart.disabled = false;
+            },
+
+            startGame() {
+                if (!this.state.chosenPlayer.name) return;
+                this.playSound('click');
+                document.getElementById('g4-header-avatar-icon').innerText = this.state.chosenPlayer.emoji;
+                document.getElementById('g4-header-avatar-name').innerText = this.state.chosenPlayer.name;
+                
+                this.state.stars = 0;
+                this.state.currentIdx = 0;
+                document.getElementById('g4-header-stars-count').innerText = `⭐ ${this.state.stars}`;
+                
+                this.state.databaseSoal = this.generateDynamicSoal();
+                this.goToPage('g4-page-game');
+                this.resizeCanvas();
+                this.initQuestion();
+            },
+
+            /* PERBAIKAN UTAMA: Proteksi agar 3 kotak warna TIDAK BISA SAMA SEMUA */
+            generateDynamicSoal() {
+                let tempDatabase = [];
+                for (let s = 0; s < this.state.TOTAL_SOAL; s++) {
+                    let questionColors = []; let targetAnswers = [];
+                    
+                    while (true) {
+                        questionColors = [];
+                        targetAnswers = [];
+                        const isPatternBerulang = Math.random() < 0.5;
+                        
+                        if (isPatternBerulang) {
+                            let poolWarna = [ 
+                                this.definitions[Math.floor(Math.random() * this.definitions.length)], 
+                                this.definitions[Math.floor(Math.random() * this.definitions.length)] 
+                            ];
+                            for (let i = 0; i < 3; i++) {
+                                let warnaTerpilih = poolWarna[Math.floor(Math.random() * poolWarna.length)];
+                                questionColors.push(warnaTerpilih.name); 
+                                targetAnswers.push(warnaTerpilih.value);
+                            }
+                        } else {
+                            let shuffleWarna = [...this.definitions].sort(() => Math.random() - 0.5);
+                            for (let i = 0; i < 3; i++) { 
+                                questionColors.push(shuffleWarna[i].name); 
+                                targetAnswers.push(shuffleWarna[i].value); 
+                            }
+                        }
+
+                        // VALIDASI EVALUASI: Cek jika elemen pertama, kedua, dan ketiga nilainya sama semua
+                        const semuaSama = questionColors.every(val => val === questionColors[0]);
+                        if (!semuaSama) {
+                            // Jika variatif (ada perbedaan warna), keluar dari loop dan simpan soal
+                            break; 
+                        }
+                    }
+                    
+                    tempDatabase.push({ colors: questionColors, targetAnswers: targetAnswers });
+                }
+                return tempDatabase;
+            },
+
+            initQuestion() {
+                this.state.userAnswers = [null, null, null];
+                const soal = this.state.databaseSoal[this.state.currentIdx];
+                
+                document.getElementById('g4-soal-title').innerText = `Soal ${this.state.currentIdx + 1} dari ${this.state.TOTAL_SOAL}`;
+                document.getElementById('g4-feedback-text').innerText = '';
+                document.getElementById('g4-btn-lanjut').style.display = 'none';
+
+                for(let i=0; i<3; i++) {
+                    const currentWarnaDef = this.definitions.find(c => c.name === soal.colors[i]);
+                    const box = document.getElementById(`g4-box-${i}`);
+                    box.style.backgroundColor = currentWarnaDef.hex;
+                    box.classList.add('pop');
+                    setTimeout(() => box.classList.remove('pop'), 300);
+
+                    const dz = document.getElementById(`g4-drop-${i}`);
+                    dz.innerText = '?'; dz.className = 'g4-dropzone';
                 }
             },
 
-            resetAllGameG3() {
-                this.state.completedCombinationsG3 = [];
-                document.getElementById('g3-game-modal').style.display = 'none';
-                this.goToPageG3('g3-page-character');
-                this.state.selectedCharacterG3 = null; this.state.selectedCharIconG3 = null;
-                
-                const nextBtn = document.getElementById('g3-btn-next-theme');
-                nextBtn.classList.add('g3-btn-action-disabled');
-                nextBtn.disabled = true;
-                
-                document.querySelectorAll('#g3-page-character .g3-card-char').forEach(c => c.classList.remove('selected'));
+            bindEvents() {
+                // Desktop Drag
+                document.querySelectorAll('#gamePolaWarna .g4-drag-card').forEach(card => {
+                    card.addEventListener('dragstart', (e) => { this.playSound('click'); this.state.activeValue = e.target.getAttribute('data-val'); });
+                });
+
+                document.querySelectorAll('#gamePolaWarna .g4-dropzone').forEach(zone => {
+                    zone.addEventListener('dragover', (e) => e.preventDefault());
+                    zone.addEventListener('dragenter', () => zone.classList.add('hovered'));
+                    zone.addEventListener('dragleave', () => zone.classList.remove('hovered'));
+                    zone.addEventListener('drop', () => { zone.classList.remove('hovered'); if(this.state.activeValue) this.stampAnswer(zone, this.state.activeValue); });
+                });
+
+                // Mobile Touch Drag
+                document.querySelectorAll('#gamePolaWarna .g4-numbers-bank .g4-drag-card').forEach(card => {
+                    card.addEventListener('touchstart', (e) => {
+                        this.playSound('click');
+                        this.state.activeValue = e.target.getAttribute('data-val');
+                        this.state.ghostElement = e.target.cloneNode(true);
+                        this.state.ghostElement.style.position = 'fixed';
+                        this.state.ghostElement.style.opacity = '0.85';
+                        this.state.ghostElement.style.zIndex = '10000';
+                        this.state.ghostElement.style.pointerEvents = 'none';
+                        document.body.appendChild(this.state.ghostElement);
+                        this.moveGhost(e.touches[0].clientX, e.touches[0].clientY);
+                    }, {passive: true});
+                });
+
+                window.addEventListener('touchmove', (e) => {
+                    if (!this.state.ghostElement) return;
+                    this.moveGhost(e.touches[0].clientX, e.touches[0].clientY);
+                    e.preventDefault();
+                }, {passive: false});
+
+                window.addEventListener('touchend', (e) => {
+                    if (!this.state.ghostElement) return;
+                    const touch = e.changedTouches[0];
+                    const elementUnderTouch = document.elementFromPoint(touch.clientX, touch.clientY);
+                    const zone = elementUnderTouch ? elementUnderTouch.closest('.g4-dropzone') : null;
+
+                    if (zone && this.state.activeValue) this.stampAnswer(zone, this.state.activeValue);
+
+                    document.body.removeChild(this.state.ghostElement);
+                    this.state.ghostElement = null; this.state.activeValue = null;
+                });
+            },
+
+            moveGhost(x, y) {
+                if(this.state.ghostElement) {
+                    this.state.ghostElement.style.left = (x - 25) + 'px';
+                    this.state.ghostElement.style.top = (y - 25) + 'px';
+                }
+            },
+
+            stampAnswer(zone, value) {
+                const zoneIndex = parseInt(zone.getAttribute('data-index'));
+                zone.innerText = value;
+                zone.className = 'g4-dropzone filled';
+                this.state.userAnswers[zoneIndex] = parseInt(value);
+                this.playSound('click');
+
+                if (this.state.userAnswers.filter(x => x !== null).length === 3) {
+                    this.checkFinalAnswer();
+                }
+            },
+
+            checkFinalAnswer() {
+                const soal = this.state.databaseSoal[this.state.currentIdx];
+                const isCorrect = this.state.userAnswers.every((val, index) => val === soal.targetAnswers[index]);
+                const fb = document.getElementById('g4-feedback-text');
+
+                if (isCorrect) {
+                    this.playSound('success');
+                    this.triggerConfetti();
+                    fb.innerText = "Wah, Hebat Sekali! Benar! 🎉⭐";
+                    fb.className = "g4-feedback g4-success";
+                    this.state.stars++;
+                    document.getElementById('g4-header-stars-count').innerText = `⭐ ${this.state.stars}`;
+                    document.getElementById('g4-btn-lanjut').style.display = 'inline-block';
+                } else {
+                    this.playSound('wrong');
+                    fb.innerText = "Coba lagi yuk, pasti bisa! 💪😊";
+                    fb.className = "g4-feedback g4-wrong";
+                    setTimeout(() => { this.initQuestion(); }, 1600);
+                }
+            },
+
+            nextQuestionG4() {
+                this.playSound('click');
+                if (this.state.currentIdx < this.state.TOTAL_SOAL - 1) {
+                    this.state.currentIdx++;
+                    this.initQuestion();
+                } else {
+                    document.getElementById('g4-win-name').innerText = this.state.chosenPlayer.name;
+                    document.getElementById('g4-win-icon').innerText = this.state.chosenPlayer.emoji;
+                    document.getElementById('g4-win-stars').innerText = this.state.stars;
+                    this.goToPage('g4-page-win');
+                }
+            },
+
+            resetGame() {
+                this.playSound('click');
+                this.state.chosenPlayer = { name: '', emoji: '' };
+                document.querySelectorAll('#gamePolaWarna .g4-card-char').forEach(c => c.classList.remove('selected'));
+                const btnStart = document.getElementById('g4-btn-start-game');
+                btnStart.classList.add('g4-btn-action-disabled');
+                btnStart.disabled = true;
+                this.goToPage('g4-page-character');
+            },
+
+            resizeCanvas() {
+                if(!this.state.confettiCanvas) return;
+                this.state.confettiCanvas.width = this.state.confettiCanvas.parentElement.clientWidth;
+                this.state.confettiCanvas.height = this.state.confettiCanvas.parentElement.clientHeight;
+            },
+
+            triggerConfetti() {
+                this.resizeCanvas();
+                this.state.particles = [];
+                for (let i = 0; i < 40; i++) {
+                    this.state.particles.push({
+                        x: this.state.confettiCanvas.width / 2, y: this.state.confettiCanvas.height / 2,
+                        color: ['#ff007f', '#00f0ff', '#ffde59', '#ff914d', '#00ff66'][Math.floor(Math.random() * 5)],
+                        radius: Math.random() * 4 + 3,
+                        vx: (Math.random() - 0.5) * 8, vy: (Math.random() - 0.5) * 8 - 3, alpha: 1
+                    });
+                }
+                if (!this.state.isAnimating) {
+                    this.state.isAnimating = true;
+                    this.animateConfetti();
+                }
+            },
+
+            animateConfetti() {
+                if (this.state.particles.length === 0) { this.state.isAnimating = false; return; }
+                this.state.confettiCtx.clearRect(0, 0, this.state.confettiCanvas.width, this.state.confettiCanvas.height);
+                this.state.particles.forEach((p, index) => {
+                    p.x += p.vx; p.y += p.vy; p.vy += 0.12; p.alpha -= 0.015;
+                    this.state.confettiCtx.beginPath(); this.state.confettiCtx.fillStyle = p.color; this.state.confettiCtx.globalAlpha = p.alpha;
+                    this.state.confettiCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); this.state.confettiCtx.fill();
+                    if (p.alpha <= 0) this.state.particles.splice(index, 1);
+                });
+                requestAnimationFrame(() => this.animateConfetti());
             }
         };
 
         /* -----------------------------------------------------------
-           5. GLOBAL ADAPTER BRIDGES
+           6. GLOBAL ADAPTER BRIDGES
            ----------------------------------------------------------- */
-        document.addEventListener('DOMContentLoaded', () => AppCore.init());
+        document.addEventListener('DOMContentLoaded', () => { AppCore.init(); ColorGame.init(); });
 
-        function launchGame(gameId) { AppCore.switchScreen(gameId); if (gameId === 'gamePetugasKereta') TrainGame.restartGame(); else if (gameId === 'gamePasangkanGambar') MatchingGame.restartGame(); else if (gameId === 'gamePuzzleAdventure') PuzzleGame.resetAllGameG3(); }
+        function launchGame(gameId) { AppCore.switchScreen(gameId); if (gameId === 'gamePetugasKereta') TrainGame.restartGame(); else if (gameId === 'gamePasangkanGambar') MatchingGame.restartGame(); else if (gameId === 'gamePuzzleAdventure') PuzzleGame.resetAllGameG3(); else if (gameId === 'gamePolaWarna') ColorGame.resetGame(); }
         function showMainMenuHub() { if (typeof MatchingGame !== 'undefined') MatchingGame.stopHintTimer(); if (PuzzleGame && PuzzleGame.state.intervalG3) clearInterval(PuzzleGame.state.intervalG3); AppCore.switchScreen('mainMenuHub'); }
 
         // Game 1 Bridges
@@ -2676,6 +2722,12 @@
         function confirmExitG3() { PuzzleGame.confirmExitG3(); }
         function backToThemeAfterPreviewG3() { PuzzleGame.backToThemeAfterPreviewG3(); }
         function resetAllGameG3() { PuzzleGame.resetAllGameG3(); }
+
+        // Game 4 Bridges
+        function selectCharacterG4(name, icon, element) { ColorGame.selectCharacter(name, icon, element); }
+        function startGameG4() { ColorGame.startGame(); }
+        function nextQuestionG4() { ColorGame.nextQuestionG4(); }
+        function resetGameG4() { ColorGame.resetGame(); }
     </script>
 </body>
 
