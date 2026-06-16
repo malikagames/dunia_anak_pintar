@@ -3838,8 +3838,9 @@
 
             clearSequenceOnly() { this.state.animalPos = { ...this.state.currentLevelData.start }; this.updatePositionsUI(); this.drawStaticObstacles(); },
 
-            async runSequence() {
-                if (this.state.isExecuting || this.state.commands.length === 0) return; this.state.isExecuting = true; AppCore.initAudio(); this.clearSequenceOnly(); let hitObstacle = false;
+async runSequence() {
+                if (this.state.isExecuting || this.state.commands.length === 0) return;
+                this.state.isExecuting = true; AppCore.initAudio(); this.clearSequenceOnly(); let hitObstacle = false;
                 for (let i = 0; i < this.state.commands.length; i++) {
                     const currentCmdIcon = document.getElementById(`g5-cmd-${i}`); if (currentCmdIcon) currentCmdIcon.classList.add('active');
                     const oldCell = document.getElementById(`g5-cell-${this.state.animalPos.x}-${this.state.animalPos.y}`); if (oldCell && (this.state.animalPos.x !== this.state.currentLevelData.start.x || this.state.animalPos.y !== this.state.currentLevelData.start.y)) { oldCell.classList.add('visited'); oldCell.innerText = this.state.emojiGraphics.footprint; }
@@ -3849,9 +3850,21 @@
                     this.state.animalPos.x = nextX; this.state.animalPos.y = nextY; this.playSound('step'); this.updatePositionsUI();
                     await new Promise(resolve => setTimeout(resolve, 500)); if (currentCmdIcon) currentCmdIcon.classList.remove('active');
                 }
-                if (hitObstacle) { this.playSound('fail'); this.showFailModal(true); }
-                else if (this.state.animalPos.x === this.state.currentLevelData.end.x && this.state.animalPos.y === this.state.currentLevelData.end.y) { this.playSound('win'); confetti({ particleCount: 100, spread: 60, origin: { y: 0.6 } }); this.showWinModal(); }
-                else { this.playSound('fail'); this.showFailModal(false); }
+                if (hitObstacle) { 
+                    this.playSound('fail'); this.showFailModal(true); 
+                } 
+                else if (this.state.animalPos.x === this.state.currentLevelData.end.x && this.state.animalPos.y === this.state.currentLevelData.end.y) { 
+                    this.playSound('win'); 
+                    
+                    // PERBAIKAN BUG: Memanfaatkan efek animasi konfeti internal milik Game 2 agar 100% offline & aman
+                    if (typeof MatchingGame !== 'undefined' && typeof MatchingGame.createConfetti === 'function') {
+                        MatchingGame.createConfetti();
+                    }
+                    
+                    this.showWinModal(); 
+                } else { 
+                    this.playSound('fail'); this.showFailModal(false); 
+                }
                 this.state.isExecuting = false;
             },
 
