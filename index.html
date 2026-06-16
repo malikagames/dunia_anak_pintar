@@ -73,7 +73,7 @@
             flex-wrap: wrap;
             justify-content: center;
             width: 100%;
-            max-width: 900px;
+            max-width: 1100px;
         }
 
         .game-menu-card {
@@ -97,11 +97,6 @@
             font-size: 60px;
             margin-bottom: 10px;
             display: inline-block;
-        }
-
-        .game-menu-card:hover {
-            transform: scale(1.05);
-            border-color: #e67e22;
         }
 
         .game-card-title {
@@ -1313,7 +1308,7 @@
             padding: 20px;
             background: var(--success-light);
             border: 2px dashed var(--success);
-            border-radius: 16px;
+            border-radius: 166px;
             width: 100%;
             max-width: 600px;
             text-align: center;
@@ -1671,7 +1666,319 @@
 
 
         /* ============================================================
-           BAGIAN 8: ANIMASI GLOBAL (dipakai semua game)
+           BAGIAN 8: STYLING GAME 5 — TEKA-TEKI JALAN MAKAN 🐶🥩
+           ============================================================ */
+        .g5-wrapper {
+            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+            background-color:transparent;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto; /* Memastikan halaman bisa di-scroll ke bawah */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* GANTI DARI center KE flex-start AGAR ELEMEN DIMULAI DARI ATAS */
+            align-items: center;
+            padding: 15px 12px 40px 12px; /* Ditambah padding bawah agar tombol kapsul tidak mepet dasar */
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .g5-wrapper * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Spanduk Card Utama Halaman Seleksi & Tamat */
+        .g5-screen-card {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 25px 20px;
+            box-shadow: 0 15px 0 rgba(211, 84, 0, 0.15), 0 20px 40px rgba(0, 0, 0, 0.1);
+            width: 92%;
+            max-width: 460px;
+            margin: 0 auto;
+            position: relative;
+            text-align: center;
+        }
+
+        .g5-map-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 12px;
+            border-bottom: 3px dashed #ffeaa7;
+            margin-bottom: 10px;
+        }
+
+        .g5-menu-title { 
+            color: #558b2f; 
+            font-size: 26px; 
+            margin: 15px 0 5px 0; 
+            text-shadow: 1px 1px 0px #fff;
+            font-weight: bold;
+        }
+
+        .g5-menu-subtitle {
+            color: #757575;
+            font-size: 15px;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .g5-char-select-title {
+            color: #f57c00;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .btn-header-back {
+            padding: 8px 16px !important;
+            font-size: 14px !important;
+            height: auto !important;
+            border-radius: 15px !important;
+        }
+        .g5-char-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 15px 0;
+            width: 100%;
+            justify-items: center;
+        }
+        
+        .g5-char-card {
+            background: linear-gradient(to bottom, #ffffff, #f3f4f6);
+            border: 4px solid #cbd5e1;
+            border-bottom: 8px solid #94a3b8;
+            border-radius: 24px;
+            padding: 15px;
+            cursor: pointer;
+            width: 115px;
+            text-align: center;
+            transition: all 0.15s ease;
+        }
+        
+        .g5-char-card:active {
+            transform: translateY(4px);
+            border-bottom-width: 4px;
+        }
+
+        .g5-char-card.selected {
+            border-color: #ff9f43;
+            border-bottom-color: #f39c12;
+            background-color: #fff9f2;
+            transform: scale(1.08) translateY(-2px);
+            box-shadow: 0 8px 16px rgba(230, 126, 34, 0.15);
+        }
+        
+        .g5-char-avatar { 
+            font-size: 50px; 
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+            margin-bottom: 5px; 
+        }
+        .g5-char-name { 
+            font-size: 16px; 
+            color: #1e293b; 
+            font-weight: 700; 
+            margin-top: 10px;
+        }
+
+        /* Tombol Menu Utama di Layar Hub */
+        .g5-btn-menu-action {
+            font-size: 18px;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(to bottom, #ff9f43, #f39c12);
+            box-shadow: 0 6px 0 #d35400, 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.1s;
+            width: 90%;
+            font-family: inherit;
+            margin-bottom: 10px;
+        }
+        .g5-btn-menu-action:active { transform: translateY(5px); box-shadow: 0 1px 0 #d35400; }
+
+        /* Layar Bermain Game 5 */
+        .g5-page {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+            width: 100%;
+        }
+        .g5-page.active { display: block; }
+
+        .g5-header-box {
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 15px;
+            max-width: 450px;
+            margin: 0 auto 10px auto;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+            position: relative;
+        }
+        .g5-header-box h1 { 
+            color: #558b2f; margin: 3px 0; font-size: 24px; padding-right: 80px; text-align: left; font-weight: bold;
+        }
+        #g5-level-indicator { font-size: 15px; color: #f57c00; font-weight: bold; text-align: left; }
+        #g5-instruction { color: #33691e; font-size: 15px; margin: 5px 0 3px 0; font-weight: bold; text-align: left; }
+        #g5-obstacle-warning { color: #d32f2f; font-size: 13px; margin: 3px 0; font-weight: bold; display: none; text-align: left; }
+        
+        .g5-btn-home {
+            position: absolute; top: 15px; right: 15px; background-color: #fff; border: 2px solid #b0bec5;
+            border-radius: 15px; color: #37474f; font-size: 12px; font-weight: bold; padding: 8px 10px;
+            cursor: pointer; box-shadow: 0 3px 0 #b0bec5; transition: 0.1s;
+        }
+        .g5-btn-home:active { transform: translateY(2px); box-shadow: 0 1px 0 #b0bec5; }
+
+        /* Matriks Lapangan Grid Game 5 */
+        #g5-grid-container {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(4, 70px);
+            grid-template-rows: repeat(4, 70px);
+            gap: 6px;
+            justify-content: center;
+            background-color: #a1887f;
+            padding: 12px;
+            border-radius: 18px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            margin: 10px auto;
+            width: max-content;
+        }
+        .g5-cell {
+            background-color: #d7ccc8; border-radius: 12px; width: 70px; height: 70px;
+            box-shadow: inset 0 -4px 0 rgba(0,0,0,0.1); transition: background-color 0.3s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .g5-cell.visited { background-color: #bcaaa4; }
+
+        #g5-game-animal, #g5-game-food {
+            position: absolute; width: 65px; height: 65px; display: flex; align-items: center;
+            justify-content: center; font-size: 45px;
+        }
+        #g5-game-animal { z-index: 3; transition: left 0.4s ease-in-out, top 0.4s ease-in-out; cursor: pointer; }
+        #g5-game-animal.giggle { animation: g5-giggleAnim 0.4s ease; }
+        
+        @keyframes g5-giggleAnim {
+            0% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.15) rotate(-10deg); }
+            50% { transform: scale(1.15) rotate(10deg); }
+            75% { transform: scale(1.15) rotate(-5deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+        #g5-game-food { z-index: 2; }
+        .g5-rock-emoji { font-size: 42px; }
+
+        /* Alur Pemetaan Kuota Perintah Panah */
+        .g5-sequence-wrapper { max-width: 420px; margin: 10px auto; position: relative; width: 100%; }
+        .g5-quota-dots-container { display: flex; justify-content: center; gap: 15px; margin-bottom: -5px; }
+        .g5-quota-dot { width: 12px; height: 12px; border-radius: 50%; background-color: #b0bec5; transition: background-color 0.2s; }
+        .g5-quota-dot.filled { background-color: #7cb342; }
+
+        #g5-sequence-container {
+            background: white; border: 3px dashed #558b2f; border-radius: 15px; min-height: 65px;
+            display: flex; align-items: center; justify-content: center; gap: 8px; padding: 8px; margin-top: 10px;
+            width: 100%;
+        }
+        .g5-command-icon {
+            font-size: 28px; background: #fff9c4; padding: 5px 10px; border-radius: 10px; box-shadow: 0 4px 0 #fbc02d;
+            transition: all 0.2s ease; animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .g5-command-icon.active { background: #ffeb3b; box-shadow: 0 4px 0 #f57c00; transform: scale(1.25); border: 2px solid #f57c00; }
+
+        /* Tombol Panah Arah Miring Bulat */
+        .g5-controls { display: flex; justify-content: center; gap: 15px; margin-top: 5px; }
+        .g5-btn-arrow {
+            font-size: 32px; width: 65px; height: 65px; border: none; border-radius: 50%;
+            cursor: pointer; box-shadow: 0 5px 0 #b2dfdb; background-color: #4db6ac; color: white;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .g5-btn-arrow:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 2px 0 #b2dfdb; }
+        .g5-btn-arrow:disabled { opacity: 0.4; cursor: not-allowed; background-color: #b0bec5; box-shadow: 0 5px 0 #cfd8dc; }
+
+        /* Tombol Aksi Kendali Utama (Meniru Persis image_058ac9.jpg) */
+        .g5-action-container { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            margin: 20px auto 10px auto; 
+            width: 90%; 
+            max-width: 420px;
+        }
+        
+        .g5-btn-game-control {
+            flex: 1;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            padding: 14px 0;
+            border: none;
+            border-radius: 50px; /* Pill-shaped Oval Sempurna */
+            cursor: pointer;
+            font-family: inherit;
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3); /* Teks Tebal Bayangan */
+            transition: all 0.05s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #g5-btn-run { 
+            background: linear-gradient(to bottom, #2ecc71, #27ae60); 
+            border-bottom: 6px solid #1e8449;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+        #g5-btn-run:active:not(:disabled) { transform: translateY(4px); border-bottom-width: 2px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); }
+
+        #g5-btn-clear { 
+            background: linear-gradient(to bottom, #ff6b6b, #ee5253); 
+            border-bottom: 6px solid #b83b45;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+        #g5-btn-clear:active:not(:disabled) { transform: translateY(4px); border-bottom-width: 2px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); }
+        .g5-btn-game-control:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; border-bottom-width: 6px !important; box-shadow: none !important; }
+
+        /* Pop-up Modals Modul Game 5 */
+        .g5-modal {
+            display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: white; padding: 25px; border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            text-align: center; z-index: 5005; width: 80%; max-width: 340px;
+            animation: g5-popModal 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes g5-popModal { from { transform: translate(-50%, -30%) scale(0.8); opacity: 0; } to { transform: translate(-50%, -50%) scale(1); opacity: 1; } }
+        #g5-overlay { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 5004; }
+        .g5-modal-graphic-emoji { font-size: 65px; margin: 10px auto; }
+
+        /* Album Stiker Mahkota Juara Akhir */
+        .g5-sticker-album {
+            display: flex; justify-content: center; margin: 25px auto 15px auto; background: #fff3e0;
+            padding: 20px; border-radius: 20px; border: 3px dashed #ffb74d; width: 110px; height: 110px;
+        }
+        .g5-sticker {
+            width: 100%; height: 100%; background: white; border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1); padding: 5px; position: relative;
+            animation: float 2s ease-in-out infinite alternate;
+            display: flex; align-items: center; justify-content: center; font-size: 55px;
+        }
+        .g5-crown-overlay {
+            position: absolute; top: -18px; left: 50%; transform: translateX(-50%); font-size: 36px; z-index: 5;
+            animation: blink 1s ease-in-out infinite alternate;
+        }
+        .g5-sticker-label { font-size: 15px; color: #e65100; font-weight: bold; margin-top: 5px; }
+
+
+        /* ============================================================
+           BAGIAN 9: ANIMASI GLOBAL (dipakai semua game)
            ============================================================ */
         @keyframes spin { 100% { transform: rotate(-360deg); } }
         @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
@@ -1686,7 +1993,7 @@
 
 
         /* ============================================================
-           BAGIAN 9: RESPONSIVE — MEDIA QUERIES (DESKTOP & MOBILE COHESION)
+           BAGIAN 10: RESPONSIVE — MEDIA QUERIES (DESKTOP & MOBILE COHESION)
            ============================================================ */
         @media (max-width: 920px) and (orientation: landscape) {
             .g3-game-layout { grid-template-columns: 190px 1fr; gap: 12px; }
@@ -1703,6 +2010,19 @@
         }
 
         @media (max-width: 768px) and (orientation: portrait) {
+            /* Game 5 Lapangan Responsif Potret Mobile */
+            .g5-screen-card { max-width: 95% !important; padding: 15px !important; }
+            .g5-char-grid { gap: 10px !important; }
+            .g5-char-card { width: 100px !important; padding: 10px !important; border-radius: 18px !important; }
+            .g5-char-avatar { font-size: 44px !important; }
+            .g5-char-name { font-size: 14px !important; margin-top: 6px !important; }
+            #g5-grid-container { grid-template-columns: repeat(4, 58px); grid-template-rows: repeat(4, 58px); gap: 4px; padding: 8px; }
+            .g5-cell { width: 58px; height: 58px; border-radius: 8px; }
+            #g5-game-animal, #g5-game-food { width: 54px; height: 54px; font-size: 36px; }
+            .g5-rock-emoji { font-size: 34px; }
+            .g5-btn-arrow { width: 55px; height: 55px; font-size: 26px; }
+            .g5-btn-game-control { font-size: 18px !important; padding: 11px 0 !important; }
+
             /* Game 4 Core Layout Fixes */
             .g4-page-card-container {
                 height: auto !important;
@@ -1760,7 +2080,8 @@
 
             /* Hub Menu */
             .hub-title { font-size: 24px; }
-            .game-menu-card { width: 150px; padding: 15px; }
+            .game-menu-grid { max-width: 100%; gap: 12px; }
+            .game-menu-card { width: 140px; padding: 12px; }
             .game-icon { font-size: 45px; }
             .game-card-title { font-size: 15px; }
         }
@@ -1769,6 +2090,7 @@
 
 <body>
 
+    <!-- CONTAINER HUB UTAMA -->
     <div id="mainMenuHub" class="hub-container">
         <h1 class="hub-title">Dunia Game Anak Pintar 🌟</h1>
         <p class="hub-subtitle">Yuk pilih permainan seru kamu hari ini!</p>
@@ -1797,6 +2119,13 @@
                 <span class="game-icon">🎨</span>
                 <div class="game-card-title">Pola Warna Pintar</div>
                 <p class="game-card-desc">Tebak angka dari warna rahasia!</p>
+            </div>
+
+            <!-- KARTU MENU GAME 5 (BARU) -->
+            <div class="game-menu-card" onclick="launchGame('gameJalanMakan')">
+                <span class="game-icon">🍖</span>
+                <div class="game-card-title">Jalan Makan</div>
+                <p class="game-card-desc">Bantu hewan lucu mencari makanan!</p>
             </div>
 
         </div>
@@ -2158,6 +2487,128 @@
     </div>
 
 
+    <!-- ============================================================
+       BAGIAN LAYAR LAYOUT GAME 5 — TEKA-TEKI JALAN MAKAN (INTEGRATED)
+       ============================================================ */ -->
+    <div id="gameJalanMakan" class="game-hub-screen">
+        <div class="g5-wrapper">
+
+            <!-- HALAMAN 1: SELEKSI KARAKTER (STYLE MATCHED image_05f46a.jpg) -->
+            <div id="g5-page-start" class="g5-page active">
+                <div class="g5-screen-card">
+                    <div class="g5-map-header">
+                        <button class="btn-header-back" onclick="showMainMenuHub()">🏠 Keluar</button>
+                    </div>
+
+                    <h1 class="g5-menu-title">Teka-Teki Jalan Makan! 🌟</h1>
+                    <p class="g5-menu-subtitle">Yuk tunjukkan arah yang benar agar hewan-hewan lucu bisa makan!</p>
+
+                    <div class="g5-char-select-title">PILIH HEWAN KAMU:</div>
+                    
+                    <div class="g5-char-grid">
+                        <div class="g5-char-card selected" id="g5-card-dog" onclick="selectAnimalG5('dog')">
+                            <div class="g5-char-avatar">🐶</div>
+                            <div class="g5-char-name">Anjing</div>
+                        </div>
+                        <div class="g5-char-card" id="g5-card-cat" onclick="selectAnimalG5('cat')">
+                            <div class="g5-char-avatar">🐈</div>
+                            <div class="g5-char-name">Kucing</div>
+                        </div>
+                        <div class="g5-char-card" id="g5-card-chicken" onclick="selectAnimalG5('chicken')">
+                            <div class="g5-char-avatar">🐓</div>
+                            <div class="g5-char-name">Ayam</div>
+                        </div>
+                        <div class="g5-char-card" id="g5-card-duck" onclick="selectAnimalG5('duck')">
+                            <div class="g5-char-avatar">🦆</div>
+                            <div class="g5-char-name">Bebek</div>
+                        </div>
+                    </div>
+
+                    <button class="g5-btn-menu-action" onclick="changePageG5('game')">Mulai Main Baru 🎮</button>
+                </div>
+            </div>
+
+            <!-- HALAMAN 2: GAMEPLAY UTAMA -->
+            <div id="g5-page-game" class="g5-page">
+                <div class="g5-header-box">
+                    <button class="g5-btn-home" onclick="goToMainMenuG5()">MENU 🏠</button>
+                    <div id="g5-level-indicator">SOAL 1 dari 10</div>
+                    <h1 id="g5-title-text">Bantu Anjing!</h1>
+                    <p id="g5-instruction">Gunakan maksimal 1 panah jalan</p>
+                    <div id="g5-obstacle-warning">⚠️ AWAS! HATI-HATI JANGAN SAMPAI NABRAK BATU YA! 🪨</div>
+                </div>
+
+                <div id="g5-grid-container">
+                    <div class="g5-cell" id="g5-cell-0-0"></div><div class="g5-cell" id="g5-cell-1-0"></div><div class="g5-cell" id="g5-cell-2-0"></div><div class="g5-cell" id="g5-cell-3-0"></div>
+                    <div class="g5-cell" id="g5-cell-0-1"></div><div class="g5-cell" id="g5-cell-1-1"></div><div class="g5-cell" id="g5-cell-2-1"></div><div class="g5-cell" id="g5-cell-3-1"></div>
+                    <div class="g5-cell" id="g5-cell-0-2"></div><div class="g5-cell" id="g5-cell-1-2"></div><div class="g5-cell" id="g5-cell-2-2"></div><div class="g5-cell" id="g5-cell-3-2"></div>
+                    <div class="g5-cell" id="g5-cell-0-3"></div><div class="g5-cell" id="g5-cell-1-3"></div><div class="g5-cell" id="g5-cell-2-3"></div><div class="g5-cell" id="g5-cell-3-3"></div>
+                    
+                    <div id="g5-game-animal" onclick="giggleAnimalG5()"></div>
+                    <div id="g5-game-food"></div>
+                </div>
+
+                <div class="g5-sequence-wrapper">
+                    <div class="g5-quota-dots-container" id="g5-quota-dots-container"></div>
+                    <div id="g5-sequence-container">
+                        <span style="color: #aaa; font-size: 14px;">Panah jalan muncul di sini...</span>
+                    </div>
+                </div>
+
+                <div class="g5-controls">
+                    <button class="g5-btn-arrow" id="g5-arrow-left" onclick="addCommandG5('⬅️')">⬅️</button>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <button class="g5-btn-arrow" id="g5-arrow-up" onclick="addCommandG5('⬆️')">⬆️</button>
+                        <button class="g5-btn-arrow" id="g5-arrow-down" onclick="addCommandG5('⬇️')">⬇️</button>
+                    </div>
+                    <button class="g5-btn-arrow" id="g5-arrow-right" onclick="addCommandG5('➡️')">➡️</button>
+                </div>
+
+                <div class="g5-action-container">
+                    <button class="g5-btn-game-control" id="g5-btn-clear" onclick="popLastCommandG5()">Hapus ⬅️</button>
+                    <button class="g5-btn-game-control" id="g5-btn-run" onclick="runSequenceG5()">Jalan! 🚀</button>
+                </div>
+
+                <div id="g5-overlay"></div>
+
+                <div id="g5-win-modal" class="g5-modal">
+                    <h2 style="color: #4caf50;">🎉 NYAM NYAM! 🎉</h2>
+                    <div class="g5-modal-graphic-emoji" id="g5-win-modal-graphic"></div>
+                    <p style="font-size: 18px; color: #333;" id="g5-win-text">Kamu hebat sekali!</p>
+                    <button class="g5-btn-menu-action" style="background: #4caf50; box-shadow: 0 5px 0 #2e7d32; width:100%;" onclick="nextLevelG5()">SOAL BERIKUTNYA ➡️</button>
+                </div>
+
+                <div id="g5-fail-modal" class="g5-modal">
+                    <h2 id="g5-fail-title" style="color: #e57373;">OH NOO! 🥹</h2>
+                    <div class="g5-modal-graphic-emoji" id="g5-fail-modal-graphic"></div>
+                    <p style="font-size: 18px; color: #333;" id="g5-fail-text">Makanannya belum ketemu. Yuk kita atur ulang panahnya!</p>
+                    <button class="g5-btn-menu-action" style="background: #ff9800; box-shadow: 0 5px 0 #e65100; width:100%;" onclick="closeFailModalG5()">COBA LAGI 💪</button>
+                </div>
+            </div>
+
+            <!-- HALAMAN 3: PAPAN JUARA TAMAT -->
+            <div id="g5-page-end" class="g5-page">
+                <div class="g5-screen-card" style="max-width: 440px;">
+                    <h1 class="g5-menu-title" style="color: #ff5722; margin-top:10px;">🏆 PAPAN JUARA! 🏆</h1>
+                    <p style="font-size: 16px; color: #333; margin-bottom: 10px; font-weight:bold;">Luar Biasa! Jagoanmu sudah kenyang dan memakai mahkota juara! 👑</p>
+                    
+                    <div class="g5-sticker-album">
+                        <div class="g5-sticker">
+                            <div class="g5-crown-overlay">👑</div>
+                            <div id="g5-winner-sticker-slot"></div>
+                        </div>
+                    </div>
+                    <div class="g5-sticker-label" id="g5-winner-label-slot" style="margin-bottom: 25px;">Pemenang Game</div>
+
+                    <button class="g5-btn-menu-action" onclick="restartGameG5()">Main Lagi Dari Awal 🔄</button>
+                    <button class="g5-btn-menu-action" style="background: linear-gradient(to bottom, #ff6b6b, #ee5253); box-shadow: 0 6px 0 #a51b24;" onclick="showMainMenuHub()">Kembali ke Menu Utama 🏠</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
     <script>
         /* -----------------------------------------------------------
            1. APPCRE: CENTRAL HUB SYSTEM & AUDIO MANAGER
@@ -2170,6 +2621,7 @@
                 window.addEventListener('resize', () => {
                     if (typeof PuzzleGame !== 'undefined' && PuzzleGame.resizeBoard) PuzzleGame.resizeBoard();
                     if (typeof ColorGame !== 'undefined' && ColorGame.resizeCanvas) ColorGame.resizeCanvas();
+                    if (typeof EatPathGame !== 'undefined' && document.getElementById('g5-page-game').classList.contains('active')) EatPathGame.updatePositionsUI();
                 });
             },
 
@@ -2305,7 +2757,7 @@
                 ternak: [['🐄', '🐖', '🐑', '🐓', '🐎', '🐂', '🐔'], ['🦆', '🦃', '🐐', '🫏', '🐂', '🐃', '🦙'], ['🐄', '🐖', '🐑', '🐓', '🐎', '🐐', '🦆']],
                 tumbuhan: [['🌲', '🌻', '🍄', '🍓', '🥕', '🍎', '🍇'], ['🌴', '🌹', '🌵', '🍉', '🍌', '🍋', '🍍'], ['🌻', '🌲', '🍓', '🍎', '🌹', '🍉', '🍌']],
                 space: [['🚀', '👨‍🚀', '🛸', '🌍', '🌙', '☀️', '⭐'], ['🪐', '☄️', '🛰️', '🔭', '🚀', '👩‍🚀', '🛸'], ['🚀', '🌍', '🌙', '🪐', '⭐', '👨‍🚀', '🛰️']],
-                kendaraan: [['🚑', '🚂', '✈️', '🚢', '🚲', '🚗', '🚌'], ['🚒', '🚓', '🚕', '🚚', '🏍️', '🚁', '✈️'], ['🚑', '🚂', '✈️', '🚒', '🚗', '🚚', '🚁']]
+                kendaraan: [['🚑', '🚂', '✈️', '🚢', '🚲', '🚗', '🚌'], ['🚒', '🚓', '🚕', '🚚', '🏍️', '🚁', '✈️'], ['🚑', '🚂', '✈️', '🚒', '🚗', '🚚', '裝']]
             },
             themeOrder: ['laut', 'ternak', 'tumbuhan', 'space', 'kendaraan'], titleMap: { laut: '🐬 Hewan Laut', ternak: '🐄 Peternakan', tumbuhan: '🌲 Tanaman & Buah', space: '🚀 Antariksa', kendaraan: '🚑 Kendaraan' },
 
@@ -2483,43 +2935,26 @@
                 this.initQuestion();
             },
 
-            /* PERBAIKAN UTAMA: Proteksi agar 3 kotak warna TIDAK BISA SAMA SEMUA */
             generateDynamicSoal() {
                 let tempDatabase = [];
                 for (let s = 0; s < this.state.TOTAL_SOAL; s++) {
                     let questionColors = []; let targetAnswers = [];
-                    
                     while (true) {
-                        questionColors = [];
-                        targetAnswers = [];
+                        questionColors = []; targetAnswers = [];
                         const isPatternBerulang = Math.random() < 0.5;
-                        
                         if (isPatternBerulang) {
-                            let poolWarna = [ 
-                                this.definitions[Math.floor(Math.random() * this.definitions.length)], 
-                                this.definitions[Math.floor(Math.random() * this.definitions.length)] 
-                            ];
+                            let poolWarna = [ this.definitions[Math.floor(Math.random() * this.definitions.length)], this.definitions[Math.floor(Math.random() * this.definitions.length)] ];
                             for (let i = 0; i < 3; i++) {
                                 let warnaTerpilih = poolWarna[Math.floor(Math.random() * poolWarna.length)];
-                                questionColors.push(warnaTerpilih.name); 
-                                targetAnswers.push(warnaTerpilih.value);
+                                questionColors.push(warnaTerpilih.name); targetAnswers.push(warnaTerpilih.value);
                             }
                         } else {
                             let shuffleWarna = [...this.definitions].sort(() => Math.random() - 0.5);
-                            for (let i = 0; i < 3; i++) { 
-                                questionColors.push(shuffleWarna[i].name); 
-                                targetAnswers.push(shuffleWarna[i].value); 
-                            }
+                            for (let i = 0; i < 3; i++) { questionColors.push(shuffleWarna[i].name); targetAnswers.push(shuffleWarna[i].value); }
                         }
-
-                        // VALIDASI EVALUASI: Cek jika elemen pertama, kedua, dan ketiga nilainya sama semua
                         const semuaSama = questionColors.every(val => val === questionColors[0]);
-                        if (!semuaSama) {
-                            // Jika variatif (ada perbedaan warna), keluar dari loop dan simpan soal
-                            break; 
-                        }
+                        if (!semuaSama) break; 
                     }
-                    
                     tempDatabase.push({ colors: questionColors, targetAnswers: targetAnswers });
                 }
                 return tempDatabase;
@@ -2528,7 +2963,6 @@
             initQuestion() {
                 this.state.userAnswers = [null, null, null];
                 const soal = this.state.databaseSoal[this.state.currentIdx];
-                
                 document.getElementById('g4-soal-title').innerText = `Soal ${this.state.currentIdx + 1} dari ${this.state.TOTAL_SOAL}`;
                 document.getElementById('g4-feedback-text').innerText = '';
                 document.getElementById('g4-btn-lanjut').style.display = 'none';
@@ -2536,168 +2970,232 @@
                 for(let i=0; i<3; i++) {
                     const currentWarnaDef = this.definitions.find(c => c.name === soal.colors[i]);
                     const box = document.getElementById(`g4-box-${i}`);
-                    box.style.backgroundColor = currentWarnaDef.hex;
-                    box.classList.add('pop');
+                    box.style.backgroundColor = currentWarnaDef.hex; box.classList.add('pop');
                     setTimeout(() => box.classList.remove('pop'), 300);
-
                     const dz = document.getElementById(`g4-drop-${i}`);
                     dz.innerText = '?'; dz.className = 'g4-dropzone';
                 }
             },
 
             bindEvents() {
-                // Desktop Drag
-                document.querySelectorAll('#gamePolaWarna .g4-drag-card').forEach(card => {
-                    card.addEventListener('dragstart', (e) => { this.playSound('click'); this.state.activeValue = e.target.getAttribute('data-val'); });
-                });
-
-                document.querySelectorAll('#gamePolaWarna .g4-dropzone').forEach(zone => {
-                    zone.addEventListener('dragover', (e) => e.preventDefault());
-                    zone.addEventListener('dragenter', () => zone.classList.add('hovered'));
-                    zone.addEventListener('dragleave', () => zone.classList.remove('hovered'));
-                    zone.addEventListener('drop', () => { zone.classList.remove('hovered'); if(this.state.activeValue) this.stampAnswer(zone, this.state.activeValue); });
-                });
-
-                // Mobile Touch Drag
-                document.querySelectorAll('#gamePolaWarna .g4-numbers-bank .g4-drag-card').forEach(card => {
-                    card.addEventListener('touchstart', (e) => {
-                        this.playSound('click');
-                        this.state.activeValue = e.target.getAttribute('data-val');
-                        this.state.ghostElement = e.target.cloneNode(true);
-                        this.state.ghostElement.style.position = 'fixed';
-                        this.state.ghostElement.style.opacity = '0.85';
-                        this.state.ghostElement.style.zIndex = '10000';
-                        this.state.ghostElement.style.pointerEvents = 'none';
-                        document.body.appendChild(this.state.ghostElement);
-                        this.moveGhost(e.touches[0].clientX, e.touches[0].clientY);
-                    }, {passive: true});
-                });
-
-                window.addEventListener('touchmove', (e) => {
-                    if (!this.state.ghostElement) return;
-                    this.moveGhost(e.touches[0].clientX, e.touches[0].clientY);
-                    e.preventDefault();
-                }, {passive: false});
-
-                window.addEventListener('touchend', (e) => {
-                    if (!this.state.ghostElement) return;
-                    const touch = e.changedTouches[0];
-                    const elementUnderTouch = document.elementFromPoint(touch.clientX, touch.clientY);
-                    const zone = elementUnderTouch ? elementUnderTouch.closest('.g4-dropzone') : null;
-
-                    if (zone && this.state.activeValue) this.stampAnswer(zone, this.state.activeValue);
-
-                    document.body.removeChild(this.state.ghostElement);
-                    this.state.ghostElement = null; this.state.activeValue = null;
-                });
+                document.querySelectorAll('#gamePolaWarna .g4-drag-card').forEach(card => { card.addEventListener('dragstart', (e) => { this.playSound('click'); this.state.activeValue = e.target.getAttribute('data-val'); }); });
+                document.querySelectorAll('#gamePolaWarna .g4-dropzone').forEach(zone => { zone.addEventListener('dragover', (e) => e.preventDefault()); zone.addEventListener('dragenter', () => zone.classList.add('hovered')); zone.addEventListener('dragleave', () => zone.classList.remove('hovered')); zone.addEventListener('drop', () => { zone.classList.remove('hovered'); if(this.state.activeValue) this.stampAnswer(zone, this.state.activeValue); }); });
+                document.querySelectorAll('#gamePolaWarna .g4-numbers-bank .g4-drag-card').forEach(card => { card.addEventListener('touchstart', (e) => { this.playSound('click'); this.state.activeValue = e.target.getAttribute('data-val'); this.state.ghostElement = e.target.cloneNode(true); this.state.ghostElement.style.position = 'fixed'; this.state.ghostElement.style.opacity = '0.85'; this.state.ghostElement.style.zIndex = '10000'; this.state.ghostElement.style.pointerEvents = 'none'; document.body.appendChild(this.state.ghostElement); this.moveGhost(e.touches[0].clientX, e.touches[0].clientY); }, {passive: true}); });
+                window.addEventListener('touchmove', (e) => { if (!this.state.ghostElement) return; this.moveGhost(e.touches[0].clientX, e.touches[0].clientY); e.preventDefault(); }, {passive: false});
+                window.addEventListener('touchend', (e) => { if (!this.state.ghostElement) return; const touch = e.changedTouches[0]; const elementUnderTouch = document.elementFromPoint(touch.clientX, touch.clientY); const zone = elementUnderTouch ? elementUnderTouch.closest('.g4-dropzone') : null; if (zone && this.state.activeValue) this.stampAnswer(zone, this.state.activeValue); document.body.removeChild(this.state.ghostElement); this.state.ghostElement = null; this.state.activeValue = null; });
             },
 
-            moveGhost(x, y) {
-                if(this.state.ghostElement) {
-                    this.state.ghostElement.style.left = (x - 25) + 'px';
-                    this.state.ghostElement.style.top = (y - 25) + 'px';
-                }
-            },
-
-            stampAnswer(zone, value) {
-                const zoneIndex = parseInt(zone.getAttribute('data-index'));
-                zone.innerText = value;
-                zone.className = 'g4-dropzone filled';
-                this.state.userAnswers[zoneIndex] = parseInt(value);
-                this.playSound('click');
-
-                if (this.state.userAnswers.filter(x => x !== null).length === 3) {
-                    this.checkFinalAnswer();
-                }
-            },
+            moveGhost(x, y) { if(this.state.ghostElement) { this.state.ghostElement.style.left = (x - 25) + 'px'; this.state.ghostElement.style.top = (y - 25) + 'px'; } },
+            stampAnswer(zone, value) { const zoneIndex = parseInt(zone.getAttribute('data-index')); zone.innerText = value; zone.className = 'g4-dropzone filled'; this.state.userAnswers[zoneIndex] = parseInt(value); this.playSound('click'); if (this.state.userAnswers.filter(x => x !== null).length === 3) this.checkFinalAnswer(); },
 
             checkFinalAnswer() {
-                const soal = this.state.databaseSoal[this.state.currentIdx];
-                const isCorrect = this.state.userAnswers.every((val, index) => val === soal.targetAnswers[index]);
-                const fb = document.getElementById('g4-feedback-text');
-
-                if (isCorrect) {
-                    this.playSound('success');
-                    this.triggerConfetti();
-                    fb.innerText = "Wah, Hebat Sekali! Benar! 🎉⭐";
-                    fb.className = "g4-feedback g4-success";
-                    this.state.stars++;
-                    document.getElementById('g4-header-stars-count').innerText = `⭐ ${this.state.stars}`;
-                    document.getElementById('g4-btn-lanjut').style.display = 'inline-block';
-                } else {
-                    this.playSound('wrong');
-                    fb.innerText = "Coba lagi yuk, pasti bisa! 💪😊";
-                    fb.className = "g4-feedback g4-wrong";
-                    setTimeout(() => { this.initQuestion(); }, 1600);
-                }
+                const soal = this.state.databaseSoal[this.state.currentIdx]; const isCorrect = this.state.userAnswers.every((val, index) => val === soal.targetAnswers[index]); const fb = document.getElementById('g4-feedback-text');
+                if (isCorrect) { this.playSound('success'); this.triggerConfetti(); fb.innerText = "Wah, Hebat Sekali! Benar! 🎉⭐"; fb.className = "g4-feedback g4-success"; this.state.stars++; document.getElementById('g4-header-stars-count').innerText = `⭐ ${this.state.stars}`; document.getElementById('g4-btn-lanjut').style.display = 'inline-block'; } 
+                else { this.playSound('wrong'); fb.innerText = "Coba lagi yuk, pasti bisa! 💪😊"; fb.className = "g4-feedback g4-wrong"; setTimeout(() => { this.initQuestion(); }, 1600); }
             },
 
-            nextQuestionG4() {
-                this.playSound('click');
-                if (this.state.currentIdx < this.state.TOTAL_SOAL - 1) {
-                    this.state.currentIdx++;
-                    this.initQuestion();
-                } else {
-                    document.getElementById('g4-win-name').innerText = this.state.chosenPlayer.name;
-                    document.getElementById('g4-win-icon').innerText = this.state.chosenPlayer.emoji;
-                    document.getElementById('g4-win-stars').innerText = this.state.stars;
-                    this.goToPage('g4-page-win');
-                }
-            },
-
-            resetGame() {
-                this.playSound('click');
-                this.state.chosenPlayer = { name: '', emoji: '' };
-                document.querySelectorAll('#gamePolaWarna .g4-card-char').forEach(c => c.classList.remove('selected'));
-                const btnStart = document.getElementById('g4-btn-start-game');
-                btnStart.classList.add('g4-btn-action-disabled');
-                btnStart.disabled = true;
-                this.goToPage('g4-page-character');
-            },
-
-            resizeCanvas() {
-                if(!this.state.confettiCanvas) return;
-                this.state.confettiCanvas.width = this.state.confettiCanvas.parentElement.clientWidth;
-                this.state.confettiCanvas.height = this.state.confettiCanvas.parentElement.clientHeight;
-            },
+            nextQuestionG4() { this.playSound('click'); if (this.state.currentIdx < this.state.TOTAL_SOAL - 1) { this.state.currentIdx++; this.initQuestion(); } else { document.getElementById('g4-win-name').innerText = this.state.chosenPlayer.name; document.getElementById('g4-win-icon').innerText = this.state.chosenPlayer.emoji; document.getElementById('g4-win-stars').innerText = this.state.stars; this.goToPage('g4-page-win'); } },
+            resetGame() { this.playSound('click'); this.state.chosenPlayer = { name: '', emoji: '' }; document.querySelectorAll('#gamePolaWarna .g4-card-char').forEach(c => c.classList.remove('selected')); const btnStart = document.getElementById('g4-btn-start-game'); btnStart.classList.add('g4-btn-action-disabled'); btnStart.disabled = true; this.goToPage('g4-page-character'); },
+            resizeCanvas() { if(!this.state.confettiCanvas) return; this.state.confettiCanvas.width = this.state.confettiCanvas.parentNode.clientWidth; this.state.confettiCanvas.height = this.state.confettiCanvas.parentNode.clientHeight; },
 
             triggerConfetti() {
-                this.resizeCanvas();
-                this.state.particles = [];
-                for (let i = 0; i < 40; i++) {
-                    this.state.particles.push({
-                        x: this.state.confettiCanvas.width / 2, y: this.state.confettiCanvas.height / 2,
-                        color: ['#ff007f', '#00f0ff', '#ffde59', '#ff914d', '#00ff66'][Math.floor(Math.random() * 5)],
-                        radius: Math.random() * 4 + 3,
-                        vx: (Math.random() - 0.5) * 8, vy: (Math.random() - 0.5) * 8 - 3, alpha: 1
-                    });
-                }
-                if (!this.state.isAnimating) {
-                    this.state.isAnimating = true;
-                    this.animateConfetti();
-                }
+                this.resizeCanvas(); this.state.particles = [];
+                for (let i = 0; i < 40; i++) { this.state.particles.push({ x: this.state.confettiCanvas.width / 2, y: this.state.confettiCanvas.height / 2, color: ['#ff007f', '#00f0ff', '#ffde59', '#ff914d', '#00ff66'][Math.floor(Math.random() * 5)], radius: Math.random() * 4 + 3, vx: (Math.random() - 0.5) * 8, vy: (Math.random() - 0.5) * 8 - 3, alpha: 1 }); }
+                if (!this.state.isAnimating) { this.state.isAnimating = true; this.animateConfetti(); }
             },
 
-            animateConfetti() {
-                if (this.state.particles.length === 0) { this.state.isAnimating = false; return; }
-                this.state.confettiCtx.clearRect(0, 0, this.state.confettiCanvas.width, this.state.confettiCanvas.height);
-                this.state.particles.forEach((p, index) => {
-                    p.x += p.vx; p.y += p.vy; p.vy += 0.12; p.alpha -= 0.015;
-                    this.state.confettiCtx.beginPath(); this.state.confettiCtx.fillStyle = p.color; this.state.confettiCtx.globalAlpha = p.alpha;
-                    this.state.confettiCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); this.state.confettiCtx.fill();
-                    if (p.alpha <= 0) this.state.particles.splice(index, 1);
-                });
-                requestAnimationFrame(() => this.animateConfetti());
-            }
+            animateConfetti() { if (this.state.particles.length === 0) { this.state.isAnimating = false; return; } this.state.confettiCtx.clearRect(0, 0, this.state.confettiCanvas.width, this.state.confettiCanvas.height); this.state.particles.forEach((p, index) => { p.x += p.vx; p.y += p.vy; p.vy += 0.12; p.alpha -= 0.015; this.state.confettiCtx.beginPath(); this.state.confettiCtx.fillStyle = p.color; this.state.confettiCtx.globalAlpha = p.alpha; this.state.confettiCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); this.state.confettiCtx.fill(); if (p.alpha <= 0) this.state.particles.splice(index, 1); }); requestAnimationFrame(() => this.animateConfetti()); }
         };
 
         /* -----------------------------------------------------------
-           6. GLOBAL ADAPTER BRIDGES
+           6. EATPATHGAME: MODUL GAME 5 (TEKA-TEKI JALAN MAKAN 🍖)
+           ----------------------------------------------------------- */
+        const EatPathGame = {
+            state: {
+                animalSounds: {
+                    dog: 'https://raw.githubusercontent.com/malikagames/dunia_anak_pintar/main/Anjing.mp3',
+                    cat: 'https://raw.githubusercontent.com/malikagames/dunia_anak_pintar/main/Kucing.mp3',
+                    chicken: 'https://raw.githubusercontent.com/malikagames/dunia_anak_pintar/main/Ayam.mp3',
+                    duck: 'https://raw.githubusercontent.com/malikagames/dunia_anak_pintar/main/Bebek.mp3'
+                },
+                emojiGraphics: {
+                    dog: '🐶', meat: '🥩', cat: '🐈', fish: '🐟', chicken: '🐓', 
+                    corn: '🌽', duck: '🦆', worm: '🪱', rock: '🪨', footprint: '🐾'
+                },
+                foodMapping: { dog: 'meat', cat: 'fish', chicken: 'corn', duck: 'worm' },
+                nameMapping: { dog: 'Anjing', cat: 'Kucing', chicken: 'Ayam', duck: 'Bebek' },
+                currentLevelData: { start: {x:0, y:3}, end: {x:1, y:3}, maxCmd: 4, obs: [] },
+                selectedAnimal: 'dog', currentLevel: 0, totalLevels: 10,
+                animalPos: { x: 0, y: 0 }, commands: [], isExecuting: false, currentStepAudio: null
+            },
+
+            selectAnimal(type) {
+                this.state.selectedAnimal = type; AppCore.initAudio();
+                document.querySelectorAll('#gameJalanMakan .g5-char-card').forEach(c => c.classList.remove('selected'));
+                document.getElementById(`g5-card-${type}`).classList.add('selected');
+                this.playSound('click');
+            },
+
+            changePage(pageName) {
+                if (pageName === 'game') this.playMarioStartSound(); else this.playSound('click');
+                document.querySelectorAll('#gameJalanMakan .g5-page').forEach(p => p.classList.remove('active'));
+                
+                if (pageName === 'start') {
+                    document.getElementById('g5-page-start').classList.add('active');
+                } else if (pageName === 'game') {
+                    document.getElementById('g5-page-game').classList.add('active'); this.loadLevel();
+                } else if (pageName === 'end') {
+                    document.getElementById('g5-page-end').classList.add('active');
+                    document.getElementById('g5-winner-sticker-slot').innerText = this.state.emojiGraphics[this.state.selectedAnimal];
+                    document.getElementById('g5-winner-label-slot').innerHTML = `Juara ${this.state.nameMapping[this.state.selectedAnimal]} 👑`;
+                    this.triggerEndCelebration();
+                }
+            },
+
+            goToMainMenu() { if (this.state.isExecuting) return; this.state.currentLevel = 0; this.changePage('start'); },
+
+            playMarioStartSound() {
+                AppCore.initAudio(); if (!AppCore.audioCtx) return;
+                const now = AppCore.audioCtx.currentTime;
+                const notes = [
+                    { f: 659.25, d: 0.08, t: 0 }, { f: 659.25, d: 0.08, t: 0.1 }, { f: 659.25, d: 0.08, t: 0.23 }, 
+                    { f: 523.25, d: 0.08, t: 0.35 }, { f: 659.25, d: 0.12, t: 0.45 }, { f: 783.99, d: 0.18, t: 0.6 }   
+                ];
+                notes.forEach(n => {
+                    const osc = AppCore.audioCtx.createOscillator(); const gain = AppCore.audioCtx.createGain();
+                    osc.connect(gain); gain.connect(AppCore.audioCtx.destination); osc.type = 'square'; 
+                    osc.frequency.setValueAtTime(n.f, now + n.t); gain.gain.setValueAtTime(0.05, now + n.t);
+                    gain.gain.linearRampToValueAtTime(0, now + n.t + n.d); osc.start(now + n.t); osc.stop(now + n.t + n.d);
+                });
+            },
+
+            playSound(type) {
+                AppCore.initAudio(); if (!AppCore.audioCtx) return;
+                if (type === 'step') {
+                    if (this.state.currentStepAudio) { this.state.currentStepAudio.pause(); this.state.currentStepAudio = null; }
+                    const soundUrl = this.state.animalSounds[this.state.selectedAnimal];
+                    if (soundUrl) {
+                        const audio = new Audio(soundUrl); audio.volume = 0.5; this.state.currentStepAudio = audio;
+                        audio.addEventListener('timeupdate', () => { if (audio.currentTime >= 0.45) { audio.pause(); if (this.state.currentStepAudio === audio) this.state.currentStepAudio = null; } });
+                        audio.play().catch(e => console.log(e));
+                    }
+                    return;
+                }
+                const osc = AppCore.audioCtx.createOscillator(); const gain = AppCore.audioCtx.createGain();
+                osc.connect(gain); gain.connect(AppCore.audioCtx.destination); const now = AppCore.audioCtx.currentTime;
+                if (type === 'click') {
+                    osc.type = 'sine'; osc.frequency.setValueAtTime(450, now); osc.frequency.exponentialRampToValueAtTime(900, now + 0.05); gain.gain.setValueAtTime(0.1, now); gain.gain.linearRampToValueAtTime(0, now + 0.05); osc.start(now); osc.stop(now + 0.05);
+                } else if (type === 'win') {
+                    osc.type = 'square'; gain.gain.setValueAtTime(0.06, now); gain.gain.linearRampToValueAtTime(0, now + 0.4); osc.frequency.setValueAtTime(523, now); osc.frequency.setValueAtTime(659, now + 0.08); osc.frequency.setValueAtTime(784, now + 0.16); osc.frequency.setValueAtTime(1046, now + 0.24); osc.start(now); osc.stop(now + 0.4);
+                } else if (type === 'fail') {
+                    osc.type = 'sawtooth'; osc.frequency.setValueAtTime(200, now); osc.frequency.linearRampToValueAtTime(100, now + 0.3); gain.gain.setValueAtTime(0.1, now); gain.gain.linearRampToValueAtTime(0, now + 0.3); osc.start(now); osc.stop(now + 0.3);
+                } else if (type === 'clear') {
+                    osc.type = 'sine'; osc.frequency.setValueAtTime(500, now); osc.frequency.linearRampToValueAtTime(250, now + 0.08); gain.gain.setValueAtTime(0.1, now); gain.gain.linearRampToValueAtTime(0, now + 0.08); osc.start(now); osc.stop(now + 0.08);
+                } else if (type === 'giggle') {
+                    osc.type = 'sine'; osc.frequency.setValueAtTime(600, now); osc.frequency.linearRampToValueAtTime(850, now + 0.15); gain.gain.setValueAtTime(0.1, now); gain.gain.linearRampToValueAtTime(0, now + 0.15); osc.start(now); osc.stop(now + 0.15);
+                }
+            },
+
+            giggleAnimal() { if (this.state.isExecuting) return; this.playSound('giggle'); const animalEl = document.getElementById('g5-game-animal'); animalEl.classList.add('giggle'); setTimeout(() => animalEl.classList.remove('giggle'), 400); },
+
+            generateDynamicLevel(levelIndex) {
+                const isHardMode = levelIndex >= 5; const targetSteps = isHardMode ? (Math.floor(Math.random() * 3) + 5) : (Math.floor(Math.random() * 2) + 4); let attempts = 0;
+                while (attempts < 200) {
+                    attempts++; let startX = Math.floor(Math.random() * 4); let startY = Math.floor(Math.random() * 4); let endX = Math.floor(Math.random() * 4); let endY = Math.floor(Math.random() * 4); if (Math.abs(startX - endX) + Math.abs(startY - endY) < 2) continue;
+                    let obstacles = []; if (isHardMode) { let numObstacles = Math.floor(Math.random() * 2) + 2; for (let o = 0; o < numObstacles; o++) { let obsX = Math.floor(Math.random() * 4); let obsY = Math.floor(Math.random() * 4); if ((obsX === startX && obsY === startY) || (obsX === endX && obsY === endY)) continue; if (!obstacles.some(obs => obs.x === obsX && obs.y === obsY)) obstacles.push({x: obsX, y: obsY}); } }
+                    let pathLength = this.findShortestPathLength(startX, startY, endX, endY, obstacles); if (pathLength === targetSteps) return { start: { x: startX, y: startY }, end: { x: endX, y: endY }, maxCmd: pathLength, obs: obstacles };
+                }
+                return isHardMode ? { start: {x:0, y:3}, end: {x:3, y:0}, maxCmd: 6, obs: [{x:1, y:2}, {x:2, y:1}] } : { start: {x:0, y:3}, end: {x:2, y:1}, maxCmd: 5, obs: [] };
+            },
+
+            findShortestPathLength(sx, sy, ex, ey, obs) {
+                let queue = [ { x: sx, y: sy, dist: 0 } ]; let visited = Array(4).fill().map(() => Array(4).fill(false)); obs.forEach(o => visited[o.x][o.y] = true); visited[sx][sy] = true;
+                while (queue.length > 0) {
+                    let curr = queue.shift(); if (curr.x === ex && curr.y === ey) return curr.dist;
+                    let dirs = [{x:0, y:-1}, {x:0, y:1}, {x:-1, y:0}, {x:1, y:0}]; for (let d of dirs) { let nx = curr.x + d.x; let ny = curr.y + d.y; if (nx >= 0 && nx < 4 && ny >= 0 && ny < 4 && !visited[nx][ny]) { visited[nx][ny] = true; queue.push({ x: nx, y: ny, dist: curr.dist + 1 }); } }
+                }
+                return -1;
+            },
+
+            drawStaticObstacles() {
+                document.querySelectorAll('#gameJalanMakan .g5-cell').forEach(cell => { cell.innerHTML = ''; cell.classList.remove('visited'); });
+                this.state.currentLevelData.obs.forEach(rockPos => { const rockCell = document.getElementById(`g5-cell-${rockPos.x}-${rockPos.y}`); if (rockCell) rockCell.innerHTML = `<span class="g5-rock-emoji">${this.state.emojiGraphics.rock}</span>`; });
+            },
+
+            updatePositionsUI() {
+                const isMobile = window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
+                const gap = isMobile ? 4 : 6; const cellSize = isMobile ? 58 : 70; const padding = isMobile ? 8 : 12;
+                const calcPos = (val) => padding + (val * (cellSize + gap)) + 2;
+                document.getElementById('g5-game-animal').style.left = `${calcPos(this.state.animalPos.x)}px`; document.getElementById('g5-game-animal').style.top = `${calcPos(this.state.animalPos.y)}px`;
+                document.getElementById('g5-game-food').style.left = `${calcPos(this.state.currentLevelData.end.x)}px`; document.getElementById('g5-game-food').style.top = `${calcPos(this.state.currentLevelData.end.y)}px`;
+            },
+
+            loadLevel() {
+                this.state.currentLevelData = this.generateDynamicLevel(this.state.currentLevel); const currentFood = this.state.foodMapping[this.state.selectedAnimal]; this.state.animalPos = { ...this.state.currentLevelData.start }; this.state.commands = []; this.state.isExecuting = false;
+                document.getElementById('g5-level-indicator').innerText = `SOAL ${this.state.currentLevel + 1} dari ${this.state.totalLevels}`; document.getElementById('g5-title-text').innerText = `Bantu ${this.state.nameMapping[this.state.selectedAnimal]}!`; document.getElementById('g5-instruction').innerText = `Gunakan maksimal ${this.state.currentLevelData.maxCmd} panah jalan`;
+                document.getElementById('g5-obstacle-warning').style.display = (this.state.currentLevelData.obs.length > 0) ? 'block' : 'none';
+                document.getElementById('g5-game-animal').innerText = this.state.emojiGraphics[this.state.selectedAnimal]; document.getElementById('g5-game-food').innerText = this.state.emojiGraphics[currentFood];
+                document.getElementById('g5-win-modal').style.display = 'none'; document.getElementById('g5-fail-modal').style.display = 'none'; document.getElementById('g5-overlay').style.display = 'none';
+                this.drawStaticObstacles(); this.updateSequenceUI(); this.updatePositionsUI();
+            },
+
+            addCommand(direction) { if (this.state.isExecuting || this.state.commands.length >= this.state.currentLevelData.maxCmd) return; this.playSound('click'); this.state.commands.push(direction); this.updateSequenceUI(); },
+            popLastCommand() { if (this.state.isExecuting || this.state.commands.length === 0) return; this.playSound('clear'); this.state.commands.pop(); this.updateSequenceUI(); },
+
+            updateSequenceUI() {
+                const container = document.getElementById('g5-sequence-container'); const dotsContainer = document.getElementById('g5-quota-dots-container'); dotsContainer.innerHTML = '';
+                for (let i = 0; i < this.state.currentLevelData.maxCmd; i++) { const dot = document.createElement('div'); dot.className = `g5-quota-dot ${i < this.state.commands.length ? 'filled' : ''}`; dotsContainer.appendChild(dot); }
+                const isFull = this.state.commands.length >= this.state.currentLevelData.maxCmd;
+                document.getElementById('g5-arrow-left').disabled = isFull; document.getElementById('g5-arrow-up').disabled = isFull; document.getElementById('g5-arrow-down').disabled = isFull; document.getElementById('g5-arrow-right').disabled = isFull;
+                if (this.state.commands.length === 0) { container.innerHTML = '<span style="color: #aaa; font-size: 14px;">Panah jalan muncul di sini...</span>'; return; }
+                container.innerHTML = ''; this.state.commands.forEach((cmd, index) => { const icon = document.createElement('span'); icon.className = 'g5-command-icon'; icon.id = `g5-cmd-${index}`; icon.innerText = cmd; container.appendChild(icon); });
+            },
+
+            clearSequenceOnly() { this.state.animalPos = { ...this.state.currentLevelData.start }; this.updatePositionsUI(); this.drawStaticObstacles(); },
+
+            async runSequence() {
+                if (this.state.isExecuting || this.state.commands.length === 0) return; this.state.isExecuting = true; AppCore.initAudio(); this.clearSequenceOnly(); let hitObstacle = false;
+                for (let i = 0; i < this.state.commands.length; i++) {
+                    const currentCmdIcon = document.getElementById(`g5-cmd-${i}`); if (currentCmdIcon) currentCmdIcon.classList.add('active');
+                    const oldCell = document.getElementById(`g5-cell-${this.state.animalPos.x}-${this.state.animalPos.y}`); if (oldCell && (this.state.animalPos.x !== this.state.currentLevelData.start.x || this.state.animalPos.y !== this.state.currentLevelData.start.y)) { oldCell.classList.add('visited'); oldCell.innerText = this.state.emojiGraphics.footprint; }
+                    const cmd = this.state.commands[i]; let nextX = this.state.animalPos.x; let nextY = this.state.animalPos.y;
+                    if (cmd === '⬆️' && nextY > 0) nextY--; if (cmd === '⬇️' && nextY < 3) nextY++; if (cmd === '⬅️' && nextX > 0) nextX--; if (cmd === '➡️' && nextX < 3) nextX++;
+                    const crashed = this.state.currentLevelData.obs.some(o => o.x === nextX && o.y === nextY); if (crashed) { hitObstacle = true; break; }
+                    this.state.animalPos.x = nextX; this.state.animalPos.y = nextY; this.playSound('step'); this.updatePositionsUI();
+                    await new Promise(resolve => setTimeout(resolve, 500)); if (currentCmdIcon) currentCmdIcon.classList.remove('active');
+                }
+                if (hitObstacle) { this.playSound('fail'); this.showFailModal(true); } 
+                else if (this.state.animalPos.x === this.state.currentLevelData.end.x && this.state.animalPos.y === this.state.currentLevelData.end.y) { this.playSound('win'); confetti({ particleCount: 100, spread: 60, origin: { y: 0.6 } }); this.showWinModal(); } 
+                else { this.playSound('fail'); this.showFailModal(false); }
+                this.state.isExecuting = false;
+            },
+
+            showWinModal() {
+                const currentFood = this.state.foodMapping[this.state.selectedAnimal]; document.getElementById('g5-win-modal-graphic').innerText = this.state.emojiGraphics[currentFood];
+                document.getElementById('g5-win-text').innerText = `Hebat! Kamu berhasil memberi makan ${this.state.nameMapping[this.state.selectedAnimal]}!`;
+                document.getElementById('g5-win-modal').style.display = 'block'; document.getElementById('g5-overlay').style.display = 'block';
+            },
+
+            showFailModal(isCrash) {
+                if (isCrash) { document.getElementById('g5-fail-modal-graphic').innerText = this.state.emojiGraphics.rock; document.getElementById('g5-fail-title').innerText = "BUKK! 🪨"; document.getElementById('g5-fail-text').innerText = `Aduh, ${this.state.nameMapping[this.state.selectedAnimal]}-mu menabrak batu! Yuk putar arah jalan yang lain.`; } 
+                else { document.getElementById('g5-fail-modal-graphic').innerText = this.state.emojiGraphics[this.state.selectedAnimal]; document.getElementById('g5-fail-title').innerText = "OH NOO! 🥹"; document.getElementById('g5-fail-text').innerText = "Makanannya belum ketemu. Yuk kita atur ulang panahnya!"; }
+                document.getElementById('g5-fail-modal').style.display = 'block'; document.getElementById('g5-overlay').style.display = 'block';
+            },
+
+            deleteOldTracks() { document.querySelectorAll('#gameJalanMakan .g5-cell').forEach(cell => { if(cell.innerText === this.state.emojiGraphics.footprint) cell.innerText = ''; }); },
+            closeFailModal() { this.playSound('click'); this.clearSequenceOnly(); this.deleteOldTracks(); document.getElementById('g5-fail-modal').style.display = 'none'; document.getElementById('g5-overlay').style.display = 'none'; },
+            nextLevel() { this.playSound('click'); if (this.state.currentLevel < this.state.totalLevels - 1) { this.state.currentLevel++; this.loadLevel(); } else { this.changePage('end'); } },
+            triggerEndCelebration() { this.playSound('win'); let duration = 3.5 * 1000; let end = Date.now() + duration; (function frame() { confetti({ particleCount: 6, angle: 60, spread: 55, origin: { x: 0 } }); confetti({ particleCount: 6, angle: 120, spread: 55, origin: { x: 1 } }); if (Date.now() < end) requestAnimationFrame(frame); }()); },
+            restartGame() { this.state.currentLevel = 0; this.changePage('start'); }
+        };
+
+        /* -----------------------------------------------------------
+           7. GLOBAL ADAPTER BRIDGES
            ----------------------------------------------------------- */
         document.addEventListener('DOMContentLoaded', () => { AppCore.init(); ColorGame.init(); });
 
-        function launchGame(gameId) { AppCore.switchScreen(gameId); if (gameId === 'gamePetugasKereta') TrainGame.restartGame(); else if (gameId === 'gamePasangkanGambar') MatchingGame.restartGame(); else if (gameId === 'gamePuzzleAdventure') PuzzleGame.resetAllGameG3(); else if (gameId === 'gamePolaWarna') ColorGame.resetGame(); }
-        function showMainMenuHub() { if (typeof MatchingGame !== 'undefined') MatchingGame.stopHintTimer(); if (PuzzleGame && PuzzleGame.state.intervalG3) clearInterval(PuzzleGame.state.intervalG3); AppCore.switchScreen('mainMenuHub'); }
+        function launchGame(gameId) { AppCore.switchScreen(gameId); if (gameId === 'gamePetugasKereta') TrainGame.restartGame(); else if (gameId === 'gamePasangkanGambar') MatchingGame.restartGame(); else if (gameId === 'gamePuzzleAdventure') PuzzleGame.resetAllGameG3(); else if (gameId === 'gamePolaWarna') ColorGame.resetGame(); else if (gameId === 'gameJalanMakan') EatPathGame.restartGame(); }
+        function showMainMenuHub() { if (typeof MatchingGame !== 'undefined') MatchingGame.stopHintTimer(); if (PuzzleGame && PuzzleGame.state.intervalG3) clearInterval(PuzzleGame.state.intervalG3); if (EatPathGame && EatPathGame.state.isExecuting) return; AppCore.switchScreen('mainMenuHub'); }
 
         // Game 1 Bridges
         function selectCharacterG1(name, avatar) { TrainGame.selectCharacter(name, avatar); }
@@ -2728,6 +3226,18 @@
         function startGameG4() { ColorGame.startGame(); }
         function nextQuestionG4() { ColorGame.nextQuestionG4(); }
         function resetGameG4() { ColorGame.resetGame(); }
+
+        // Game 5 Bridges
+        function selectAnimalG5(type) { EatPathGame.selectAnimal(type); }
+        function changePageG5(pageName) { EatPathGame.changePage(pageName); }
+        function goToMainMenuG5() { EatPathGame.goToMainMenu(); }
+        function giggleAnimalG5() { EatPathGame.giggleAnimal(); }
+        function addCommandG5(dir) { EatPathGame.addCommand(dir); }
+        function popLastCommandG5() { EatPathGame.popLastCommand(); }
+        function runSequenceG5() { EatPathGame.runSequence(); }
+        function closeFailModalG5() { EatPathGame.closeFailModal(); }
+        function nextLevelG5() { EatPathGame.nextLevel(); }
+        function restartGameG5() { EatPathGame.restartGame(); }
     </script>
 </body>
 
