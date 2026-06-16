@@ -2428,10 +2428,38 @@
 
         @media (max-width: 768px) and (orientation: portrait) {
 
+            /* ============================================================
+       PERBAIKAN TOTAL MODE PORTRAIT HP (GAME 5 ACCESSIBILITY)
+       ============================================================ */
+            #gameJalanMakan {
+                display: none;
+                /* Tetap sembunyikan jika tidak aktif */
+                overflow-y: auto !important;
+                /* Paksa agar layar luar bisa di-scroll */
+                -webkit-overflow-scrolling: touch;
+                /* Scroll halus di iOS/Safari */
+            }
+
+            #gameJalanMakan.active-hub {
+                display: flex !important;
+                flex-direction: column !important;
+                height: 100vh !important;
+                /* Pastikan mengambil tinggi penuh layar HP */
+            }
+
+            .g5-page {
+                width: 100% !important;
+                height: auto !important;
+                /* Lepas kuncian tinggi agar memanjang ke bawah secara alami */
+            }
+
             /* Game 5 Lapangan Responsif Potret Mobile */
             .g5-screen-card {
                 max-width: 95% !important;
+                height: auto !important;
+                /* Jangan dikunci tinggi card-nya */
                 padding: 15px !important;
+                margin: 10px auto !important;
             }
 
             .g5-char-grid {
@@ -2453,38 +2481,51 @@
                 margin-top: 6px !important;
             }
 
+            /* Ukuran Grid Kotak Agar Pas di Layar HP Potret Kecil */
             #g5-grid-container {
-                grid-template-columns: repeat(4, 58px);
-                grid-template-rows: repeat(4, 58px);
-                gap: 4px;
-                padding: 8px;
+                grid-template-columns: repeat(4, 58px) !important;
+                grid-template-rows: repeat(4, 58px) !important;
+                gap: 5px !important;
+                padding: 8px !important;
+                margin: 10px auto !important;
             }
 
             .g5-cell {
-                width: 58px;
-                height: 58px;
-                border-radius: 8px;
+                width: 58px !important;
+                height: 58px !important;
+                border-radius: 8px !important;
             }
 
             #g5-game-animal,
             #g5-game-food {
-                width: 54px;
-                height: 54px;
-                font-size: 36px;
+                width: 54px !important;
+                height: 54px !important;
+                font-size: 36px !important;
             }
 
             .g5-rock-emoji {
-                font-size: 34px;
+                font-size: 34px !important;
+            }
+
+            /* Tombol Panah Arah Ukuran HP */
+            .g5-controls {
+                margin-top: 10px !important;
+                gap: 10px !important;
             }
 
             .g5-btn-arrow {
-                width: 55px;
-                height: 55px;
-                font-size: 26px;
+                width: 52px !important;
+                height: 52px !important;
+                font-size: 24px !important;
+            }
+
+            /* Tombol Kapsul Aksi Bawah */
+            .g5-action-container {
+                margin: 15px auto 30px auto !important;
             }
 
             .g5-btn-game-control {
-                font-size: 18px !important;
+                font-size: 16px !important;
                 padding: 11px 0 !important;
             }
 
@@ -3838,7 +3879,7 @@
 
             clearSequenceOnly() { this.state.animalPos = { ...this.state.currentLevelData.start }; this.updatePositionsUI(); this.drawStaticObstacles(); },
 
-async runSequence() {
+            async runSequence() {
                 if (this.state.isExecuting || this.state.commands.length === 0) return;
                 this.state.isExecuting = true; AppCore.initAudio(); this.clearSequenceOnly(); let hitObstacle = false;
                 for (let i = 0; i < this.state.commands.length; i++) {
@@ -3850,20 +3891,20 @@ async runSequence() {
                     this.state.animalPos.x = nextX; this.state.animalPos.y = nextY; this.playSound('step'); this.updatePositionsUI();
                     await new Promise(resolve => setTimeout(resolve, 500)); if (currentCmdIcon) currentCmdIcon.classList.remove('active');
                 }
-                if (hitObstacle) { 
-                    this.playSound('fail'); this.showFailModal(true); 
-                } 
-                else if (this.state.animalPos.x === this.state.currentLevelData.end.x && this.state.animalPos.y === this.state.currentLevelData.end.y) { 
-                    this.playSound('win'); 
-                    
+                if (hitObstacle) {
+                    this.playSound('fail'); this.showFailModal(true);
+                }
+                else if (this.state.animalPos.x === this.state.currentLevelData.end.x && this.state.animalPos.y === this.state.currentLevelData.end.y) {
+                    this.playSound('win');
+
                     // PERBAIKAN BUG: Memanfaatkan efek animasi konfeti internal milik Game 2 agar 100% offline & aman
                     if (typeof MatchingGame !== 'undefined' && typeof MatchingGame.createConfetti === 'function') {
                         MatchingGame.createConfetti();
                     }
-                    
-                    this.showWinModal(); 
-                } else { 
-                    this.playSound('fail'); this.showFailModal(false); 
+
+                    this.showWinModal();
+                } else {
+                    this.playSound('fail'); this.showFailModal(false);
                 }
                 this.state.isExecuting = false;
             },
