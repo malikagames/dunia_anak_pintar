@@ -1533,6 +1533,10 @@
             color: #334155;
         }
 
+        .g4-profile-icon {
+            font-size: 16px;
+        }
+
         .g4-live-stars {
             font-size: 16px;
             font-weight: bold;
@@ -1688,14 +1692,11 @@
             width: 100%;
             height: 100%;
             overflow-y: auto;
-            /* Memastikan halaman bisa di-scroll ke bawah */
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            /* GANTI DARI center KE flex-start AGAR ELEMEN DIMULAI DARI ATAS */
             align-items: center;
             padding: 15px 12px 40px 12px;
-            /* Ditambah padding bawah agar tombol kapsul tidak mepet dasar */
             position: relative;
             box-sizing: border-box;
         }
@@ -1706,7 +1707,13 @@
             margin: 0;
             padding: 0;
         }
-
+        
+        .g5-wrapper .btn-header-back {
+            padding: 8px 16px !important;
+            font-size: 14px !important;
+            height: auto !important;
+            border-radius: 15px !important;
+        }
         /* Spanduk Card Utama Halaman Seleksi & Tamat */
         .g5-screen-card {
             background: #ffffff;
@@ -1751,13 +1758,6 @@
             font-size: 16px;
             margin-bottom: 10px;
             text-transform: uppercase;
-        }
-
-        .btn-header-back {
-            padding: 8px 16px !important;
-            font-size: 14px !important;
-            height: auto !important;
-            border-radius: 15px !important;
         }
 
         .g5-char-grid {
@@ -1857,30 +1857,6 @@
             padding-right: 80px;
             text-align: left;
             font-weight: bold;
-        }
-
-        #g5-level-indicator {
-            font-size: 15px;
-            color: #f57c00;
-            font-weight: bold;
-            text-align: left;
-        }
-
-        #g5-instruction {
-            color: #33691e;
-            font-size: 15px;
-            margin: 5px 0 3px 0;
-            font-weight: bold;
-            text-align: left;
-        }
-
-        #g5-obstacle-warning {
-            color: #d32f2f;
-            font-size: 13px;
-            margin: 3px 0;
-            font-weight: bold;
-            display: none;
-            text-align: left;
         }
 
         .g5-btn-home {
@@ -2098,13 +2074,11 @@
             padding: 14px 0;
             border: none;
             border-radius: 50px;
-            /* Pill-shaped Oval Sempurna */
             cursor: pointer;
             font-family: inherit;
             text-align: center;
             text-transform: uppercase;
             text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
-            /* Teks Tebal Bayangan */
             transition: all 0.05s ease-in-out;
             display: flex;
             align-items: center;
@@ -2429,35 +2403,28 @@
         @media (max-width: 768px) and (orientation: portrait) {
 
             /* ============================================================
-       PERBAIKAN TOTAL MODE PORTRAIT HP (GAME 5 ACCESSIBILITY)
-       ============================================================ */
+               PERBAIKAN TOTAL MODE PORTRAIT HP (GAME 5 ACCESSIBILITY)
+               ============================================================ */
             #gameJalanMakan {
                 display: none;
-                /* Tetap sembunyikan jika tidak aktif */
                 overflow-y: auto !important;
-                /* Paksa agar layar luar bisa di-scroll */
                 -webkit-overflow-scrolling: touch;
-                /* Scroll halus di iOS/Safari */
             }
 
             #gameJalanMakan.active-hub {
                 display: flex !important;
                 flex-direction: column !important;
                 height: 100vh !important;
-                /* Pastikan mengambil tinggi penuh layar HP */
             }
 
             .g5-page {
                 width: 100% !important;
                 height: auto !important;
-                /* Lepas kuncian tinggi agar memanjang ke bawah secara alami */
             }
 
-            /* Game 5 Lapangan Responsif Potret Mobile */
             .g5-screen-card {
                 max-width: 95% !important;
                 height: auto !important;
-                /* Jangan dikunci tinggi card-nya */
                 padding: 15px !important;
                 margin: 10px auto !important;
             }
@@ -2481,7 +2448,6 @@
                 margin-top: 6px !important;
             }
 
-            /* Ukuran Grid Kotak Agar Pas di Layar HP Potret Kecil */
             #g5-grid-container {
                 grid-template-columns: repeat(4, 58px) !important;
                 grid-template-rows: repeat(4, 58px) !important;
@@ -2507,7 +2473,6 @@
                 font-size: 34px !important;
             }
 
-            /* Tombol Panah Arah Ukuran HP */
             .g5-controls {
                 margin-top: 10px !important;
                 gap: 10px !important;
@@ -2519,7 +2484,6 @@
                 font-size: 24px !important;
             }
 
-            /* Tombol Kapsul Aksi Bawah */
             .g5-action-container {
                 margin: 15px auto 30px auto !important;
             }
@@ -2529,7 +2493,6 @@
                 padding: 11px 0 !important;
             }
 
-            /* Game 4 Core Layout Fixes */
             .g4-page-card-container {
                 height: auto !important;
                 max-height: 95vh !important;
@@ -2598,7 +2561,6 @@
                 height: 14px;
             }
 
-            /* Game 3 Core Board Layout */
             .g3-game-layout {
                 grid-template-columns: 1fr;
                 gap: 12px;
@@ -2608,7 +2570,6 @@
                 max-height: 110px;
             }
 
-            /* Game 3 Character Selection & Theme Selection */
             .g3-page-card-container {
                 height: auto !important;
                 max-height: 95vh !important;
@@ -2643,7 +2604,6 @@
                 font-size: 16px !important;
             }
 
-            /* Game 1 - Portrait */
             .g1-screen {
                 padding: 20px 15px;
                 border-radius: 28px;
@@ -2688,7 +2648,6 @@
                 font-size: 15px;
             }
 
-            /* Game 2 - Portrait */
             #screen-character-g2.g2-screen {
                 height: auto !important;
                 max-height: 95vh !important;
@@ -2752,7 +2711,6 @@
                 font-size: 30px;
             }
 
-            /* Hub Menu */
             .hub-title {
                 font-size: 24px;
             }
@@ -2780,7 +2738,6 @@
 
 <body>
 
-    <!-- CONTAINER HUB UTAMA -->
     <div id="mainMenuHub" class="hub-container">
         <h1 class="hub-title">Dunia Game Anak Pintar 🌟</h1>
         <p class="hub-subtitle">Yuk pilih permainan seru kamu hari ini!</p>
@@ -2811,7 +2768,6 @@
                 <p class="game-card-desc">Tebak angka dari warna rahasia!</p>
             </div>
 
-            <!-- KARTU MENU GAME 5 (BARU) -->
             <div class="game-menu-card" onclick="launchGame('gameJalanMakan')">
                 <span class="game-icon">🍖</span>
                 <div class="game-card-title">Jalan Makan</div>
@@ -3069,8 +3025,7 @@
                         </div>
                         <div id="g3-preview-success-zone">
                             <h2 style="color: #15803d; font-size: 1.3rem; margin-bottom: 5px;">🎉 Hore, Sukses! 👏</h2>
-                            <p id="g3-success-message" style="font-size: 0.95rem; margin-bottom: 12px;">Hebat sekali!
-                            </p>
+                            <p id="g3-success-message" style="font-size: 0.95rem; margin-bottom: 12px;">Hebat sekali!</p>
                             <button class="g3-btn-action" onclick="backToThemeAfterPreviewG3()"
                                 style="background: #4caf50; box-shadow:0 5px 0 #1e7e34; padding: 10px 24px; font-size: 0.95rem; width:auto;">Lanjut
                                 Pilih Tema ➡️</button>
@@ -3159,8 +3114,7 @@
                     </div>
                 </div>
 
-                <p style="font-size: 14px; color: #94a3b8; margin: 0 0 5px 0; font-weight: bold;">Tarik Angka ke Kotak
-                    Putus-Putus:</p>
+                <p style="font-size: 14px; color: #94a3b8; margin: 0 0 5px 0; font-weight: bold;">Tarik Angka ke Kotak Putus-Putus:</p>
                 <div class="g4-numbers-bank">
                     <div class="g4-drag-card" data-val="1" draggable="true">1</div>
                     <div class="g4-drag-card" data-val="2" draggable="true">2</div>
@@ -3182,23 +3136,17 @@
                 <div style="font-size: 60px; margin: 20px 0;">👑🌟🌈</div>
                 <p style="font-size: 24px; font-weight: bold; color: #22c55e;">Kamu Dapat <span
                         id="g4-win-stars"></span> Bintang!</p>
-                <button class="g4-btn-action" onclick="resetGameG4()" style="margin-top: 20px;">Main Lagi (Soal Baru!)
-                    🔄</button>
+                <button class="g4-btn-action" onclick="resetGameG4()" style="margin-top: 20px;">Main Lagi (Soal Baru!) 🔄</button>
                 <button class="g4-btn-action" onclick="showMainMenuHub()"
-                    style="background: linear-gradient(to bottom, #ff6b6b, #ee5253); box-shadow: 0 6px 0 #cf3a46;">Menu
-                    Utama 🏠</button>
+                    style="background: linear-gradient(to bottom, #ff6b6b, #ee5253); box-shadow: 0 6px 0 #cf3a46;">Menu Utama 🏠</button>
             </div>
         </div>
     </div>
 
 
-    <!-- ============================================================
-       BAGIAN LAYAR LAYOUT GAME 5 — TEKA-TEKI JALAN MAKAN (INTEGRATED)
-       ============================================================ */ -->
     <div id="gameJalanMakan" class="game-hub-screen">
         <div class="g5-wrapper">
 
-            <!-- HALAMAN 1: SELEKSI KARAKTER (STYLE MATCHED image_05f46a.jpg) -->
             <div id="g5-page-start" class="g5-page active">
                 <div class="g5-screen-card">
                     <div class="g5-map-header">
@@ -3233,7 +3181,6 @@
                 </div>
             </div>
 
-            <!-- HALAMAN 2: GAMEPLAY UTAMA -->
             <div id="g5-page-game" class="g5-page">
                 <div class="g5-header-box">
                     <button class="g5-btn-home" onclick="goToMainMenuG5()">MENU 🏠</button>
@@ -3300,20 +3247,17 @@
                 <div id="g5-fail-modal" class="g5-modal">
                     <h2 id="g5-fail-title" style="color: #e57373;">OH NOO! 🥹</h2>
                     <div class="g5-modal-graphic-emoji" id="g5-fail-modal-graphic"></div>
-                    <p style="font-size: 18px; color: #333;" id="g5-fail-text">Makanannya belum ketemu. Yuk kita atur
-                        ulang panahnya!</p>
+                    <p style="font-size: 18px; color: #333;" id="g5-fail-text">Makanannya belum ketemu. Yuk kita atur ulang panahnya!</p>
                     <button class="g5-btn-menu-action"
                         style="background: #ff9800; box-shadow: 0 5px 0 #e65100; width:100%;"
                         onclick="closeFailModalG5()">COBA LAGI 💪</button>
                 </div>
             </div>
 
-            <!-- HALAMAN 3: PAPAN JUARA TAMAT -->
             <div id="g5-page-end" class="g5-page">
                 <div class="g5-screen-card" style="max-width: 440px;">
                     <h1 class="g5-menu-title" style="color: #ff5722; margin-top:10px;">🏆 PAPAN JUARA! 🏆</h1>
-                    <p style="font-size: 16px; color: #333; margin-bottom: 10px; font-weight:bold;">Luar Biasa! Jagoanmu
-                        sudah kenyang dan memakai mahkota juara! 👑</p>
+                    <p style="font-size: 16px; color: #333; margin-bottom: 10px; font-weight:bold;">Luar Biasa! Jagoanmu sudah kenyang dan memakai mahkota juara! 👑</p>
 
                     <div class="g5-sticker-album">
                         <div class="g5-sticker">
@@ -3321,8 +3265,7 @@
                             <div id="g5-winner-sticker-slot"></div>
                         </div>
                     </div>
-                    <div class="g5-sticker-label" id="g5-winner-label-slot" style="margin-bottom: 25px;">Pemenang Game
-                    </div>
+                    <div class="g5-sticker-label" id="g5-winner-label-slot" style="margin-bottom: 25px;">Pemenang Game</div>
 
                     <button class="g5-btn-menu-action" onclick="restartGameG5()">Main Lagi Dari Awal 🔄</button>
                     <button class="g5-btn-menu-action"
@@ -3337,8 +3280,8 @@
 
     <script>
         /* -----------------------------------------------------------
-           1. APPCRE: CENTRAL HUB SYSTEM & AUDIO MANAGER
-           ----------------------------------------------------------- */
+            1. APPCRE: CENTRAL HUB SYSTEM & AUDIO MANAGER
+            ----------------------------------------------------------- */
         const AppCore = {
             audioCtx: null,
             trainKlaksonBuffer: null,
@@ -3367,6 +3310,23 @@
                     .catch(e => console.error('Gagal memuat audio klakson:', e));
             },
 
+            playUniversalClick() {
+                this.initAudio();
+                if (!this.audioCtx) return;
+                const osc = this.audioCtx.createOscillator();
+                const gain = this.audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(this.audioCtx.destination);
+                const now = this.audioCtx.currentTime;
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(420, now);
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+                osc.start(now);
+                osc.stop(now + 0.08);
+            },
+
             playKlakson() {
                 this.initAudio();
                 if (!this.audioCtx || !this.trainKlaksonBuffer) return;
@@ -3392,8 +3352,8 @@
         };
 
         /* -----------------------------------------------------------
-           2. TRAINGAME: MODUL GAME 1 (PETUGAS KERETA 🚂)
-           ----------------------------------------------------------- */
+            2. TRAINGAME: MODUL GAME 1 (PETUGAS KERETA 🚂)
+            ----------------------------------------------------------- */
         const TrainGame = {
             state: {
                 playerName: '', playerAvatar: '', currentLevel: 1, maxLevels: 15, targetAnimals: [], userCarriages: [], isTransitioning: false
@@ -3411,13 +3371,12 @@
                 if (!AppCore.audioCtx) return;
                 const osc = AppCore.audioCtx.createOscillator(); const gain = AppCore.audioCtx.createGain();
                 osc.connect(gain); gain.connect(AppCore.audioCtx.destination); const now = AppCore.audioCtx.currentTime;
-                if (type === 'click') { osc.type = 'sine'; osc.frequency.setValueAtTime(450, now); gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08); osc.start(now); osc.stop(now + 0.08); }
-                else if (type === 'correct') { osc.type = 'triangle'; osc.frequency.setValueAtTime(587.33, now); osc.frequency.setValueAtTime(783.99, now + 0.12); gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3); osc.start(now); osc.stop(now + 0.3); }
+                if (type === 'correct') { osc.type = 'triangle'; osc.frequency.setValueAtTime(587.33, now); osc.frequency.setValueAtTime(783.99, now + 0.12); gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3); osc.start(now); osc.stop(now + 0.3); }
                 else if (type === 'wrong') { osc.type = 'sawtooth'; osc.frequency.setValueAtTime(150, now); osc.frequency.setValueAtTime(110, now + 0.1); gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25); osc.start(now); osc.stop(now + 0.25); }
             },
 
             selectCharacter(name, avatar) {
-                this.initDom(); this.playSound('click'); this.state.playerName = name; this.state.playerAvatar = avatar;
+                this.initDom(); AppCore.playUniversalClick(); this.state.playerName = name; this.state.playerAvatar = avatar;
                 this.dom.avatar.innerText = avatar; this.dom.name.innerText = name;
                 const savedLevel = localStorage.getItem('kereta_hewan_level'); this.state.currentLevel = savedLevel ? parseInt(savedLevel, 10) : 1;
                 this.showScreenG1('screen-game-g1'); this.startGameplay();
@@ -3448,12 +3407,12 @@
             triggerChoice(animal) {
                 if (this.state.isTransitioning) return;
                 if (this.state.userCarriages.length >= this.state.targetAnimals.length) { this.playSound('wrong'); return; }
-                this.playSound('click'); const btn = document.getElementById(`btn-${animal}`); if (btn) { btn.classList.add('pressed'); setTimeout(() => btn.classList.remove('pressed'), 400); }
+                AppCore.playUniversalClick(); const btn = document.getElementById(`btn-${animal}`); if (btn) { btn.classList.add('pressed'); setTimeout(() => btn.classList.remove('pressed'), 400); }
                 this.state.userCarriages.push(animal); this.renderUserCarriages(); this.hideMessage();
             },
 
-            popLastAnimal() { if (this.state.isTransitioning || this.state.userCarriages.length === 0) return; this.playSound('click'); this.state.userCarriages.pop(); this.renderUserCarriages(); this.hideMessage(); },
-            removeCarriageAt(idx) { this.playSound('click'); this.state.userCarriages.splice(idx, 1); this.renderUserCarriages(); this.hideMessage(); },
+            popLastAnimal() { if (this.state.isTransitioning || this.state.userCarriages.length === 0) return; AppCore.playUniversalClick(); this.state.userCarriages.pop(); this.renderUserCarriages(); this.hideMessage(); },
+            removeCarriageAt(idx) { AppCore.playUniversalClick(); this.state.userCarriages.splice(idx, 1); this.renderUserCarriages(); this.hideMessage(); },
 
             checkTrainDeparture() {
                 if (this.state.isTransitioning) return;
@@ -3474,8 +3433,8 @@
         };
 
         /* -----------------------------------------------------------
-           3. MATCHINGGAME: MODUL GAME 2 (PASANGKAN GAMBAR 🖼️)
-           ----------------------------------------------------------- */
+            3. MATCHINGGAME: MODUL GAME 2 (PASANGKAN GAMBAR 🖼️)
+            ----------------------------------------------------------- */
         const MatchingGame = {
             state: { selectedCharacterG2: '', currentTheme: '', currentQuestionIdx: 0, matchedCount: 0, finishedThemes: [], hintTimer: null, activeTouchElement: null },
             database: {
@@ -3489,16 +3448,15 @@
 
             playSound(type) {
                 if (!AppCore.audioCtx) return; const osc = AppCore.audioCtx.createOscillator(); const gain = AppCore.audioCtx.createGain(); osc.connect(gain); gain.connect(AppCore.audioCtx.destination); const now = AppCore.audioCtx.currentTime;
-                if (type === 'click') { osc.type = 'sine'; osc.frequency.setValueAtTime(400, now); gain.gain.setValueAtTime(0.3, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1); osc.start(now); osc.stop(now + 0.1); }
-                else if (type === 'correct') { osc.type = 'triangle'; osc.frequency.setValueAtTime(523.25, now); osc.frequency.setValueAtTime(659.25, now + 0.1); gain.gain.setValueAtTime(0.3, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25); osc.start(now); osc.stop(now + 0.25); }
+                if (type === 'correct') { osc.type = 'triangle'; osc.frequency.setValueAtTime(523.25, now); osc.frequency.setValueAtTime(659.25, now + 0.1); gain.gain.setValueAtTime(0.3, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25); osc.start(now); osc.stop(now + 0.25); }
                 else if (type === 'error') { osc.type = 'sawtooth'; osc.frequency.setValueAtTime(180, now); osc.frequency.setValueAtTime(120, now + 0.1); gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2); osc.start(now); osc.stop(now + 0.2); }
                 else if (type === 'star') { osc.type = 'sine'; osc.frequency.setValueAtTime(587.33, now); osc.frequency.setValueAtTime(880, now + 0.1); gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2); osc.start(now); osc.stop(now + 0.2); }
                 else if (type === 'win') { osc.type = 'square'; const notes = [523.25, 659.25, 783.99, 1046.50]; notes.forEach((freq, idx) => osc.frequency.setValueAtTime(freq, now + (idx * 0.08))); gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.45); osc.start(now); osc.stop(now + 0.45); }
             },
 
-            selectCharacterG2(char, element) { this.playSound('click'); this.state.selectedCharacterG2 = char; document.querySelectorAll('#gamePasangkanGambar .char-card').forEach(card => card.classList.remove('selected')); element.classList.add('selected'); const startBtn = document.getElementById('btn-start-game'); startBtn.classList.remove('btn-disabled'); startBtn.removeAttribute('disabled'); },
-            confirmCharacterG2() { this.playSound('click'); this.updateThemeMenuUI(); this.showScreenG2('screen-theme-g2'); },
-            backToThemeMenu() { this.stopHintTimer(); this.playSound('click'); this.updateThemeMenuUI(); this.showScreenG2('screen-theme-g2'); },
+            selectCharacterG2(char, element) { AppCore.playUniversalClick(); this.state.selectedCharacterG2 = char; document.querySelectorAll('#gamePasangkanGambar .char-card').forEach(card => card.classList.remove('selected')); element.classList.add('selected'); const startBtn = document.getElementById('btn-start-game'); startBtn.classList.remove('btn-disabled'); startBtn.removeAttribute('disabled'); },
+            confirmCharacterG2() { AppCore.playUniversalClick(); this.updateThemeMenuUI(); this.showScreenG2('screen-theme-g2'); },
+            backToThemeMenu() { this.stopHintTimer(); AppCore.playUniversalClick(); this.updateThemeMenuUI(); this.showScreenG2('screen-theme-g2'); },
 
             updateThemeMenuUI() { document.getElementById('theme-welcome').innerText = `${this.state.selectedCharacterG2} Pilih Tema!`; this.themeOrder.forEach(theme => { const btn = document.getElementById(`btn-${theme}`); if (btn) { if (this.state.finishedThemes.includes(theme)) btn.classList.add('completed'); else btn.classList.remove('completed'); } }); },
             checkAndStartTheme(themeName) { if (this.state.finishedThemes.includes(themeName)) return; this.state.currentQuestionIdx = 0; this.startQuestion(themeName, this.state.currentQuestionIdx); },
@@ -3526,19 +3484,19 @@
 
             handleQuestionCleared() {
                 const popup = document.getElementById('next-popup'); const title = document.getElementById('popup-status-title'); const text = document.getElementById('next-text'); const btn = document.getElementById('btn-next-action');
-                popup.style.display = 'block'; setTimeout(() => { document.getElementById('star1').classList.add('show'); this.playSound('star'); }, 300); setTimeout(() => { document.getElementById('star2').classList.add('show'); TrainGame.playSound('click'); }, 600); setTimeout(() => { document.getElementById('star3').classList.add('show'); TrainGame.playSound('click'); }, 900);
+                popup.style.display = 'block'; setTimeout(() => { document.getElementById('star1').classList.add('show'); this.playSound('star'); }, 300); setTimeout(() => { document.getElementById('star2').classList.add('show'); AppCore.playUniversalClick(); }, 600); setTimeout(() => { document.getElementById('star3').classList.add('show'); AppCore.playUniversalClick(); }, 900);
                 if (this.state.currentQuestionIdx < 2) { title.innerText = "🎉 Luar Biasa! 🎉"; text.innerText = `Kamu sukses menyelesaikan Soal ${this.state.currentQuestionIdx + 1}!`; btn.innerText = `Main Soal ${this.state.currentQuestionIdx + 2} ➔`; }
                 else { if (!this.state.finishedThemes.includes(this.state.currentTheme)) this.state.finishedThemes.push(this.state.currentTheme); const isAllGameFinished = this.themeOrder.every(t => this.state.finishedThemes.includes(t)); if (isAllGameFinished) { title.innerText = "🏆 PINTAR SEKALI! 🏆"; text.innerText = "Semua tema telah kamu taklukkan!"; btn.innerText = "Lihat Piala 👑"; } else { title.innerText = "✨ Tema Selesai! ✨"; text.innerText = "Hebat, 3 soal tema selesai!"; btn.innerText = "Pilih Tema Lain 🗺️"; } }
             },
 
-            goToNextStep() { this.playSound('click'); if (this.state.currentQuestionIdx < 2) { this.startQuestion(this.state.currentTheme, this.state.currentQuestionIdx + 1); } else { const isAllGameFinished = this.themeOrder.every(t => this.state.finishedThemes.includes(t)); if (isAllGameFinished) { document.getElementById('final-char').innerText = this.state.selectedCharacterG2; this.showScreenG2('screen-win-g2'); this.playSound('win'); } else { this.backToThemeMenu(); } } },
+            goToNextStep() { AppCore.playUniversalClick(); if (this.state.currentQuestionIdx < 2) { this.startQuestion(this.state.currentTheme, this.state.currentQuestionIdx + 1); } else { const isAllGameFinished = this.themeOrder.every(t => this.state.finishedThemes.includes(t)); if (isAllGameFinished) { document.getElementById('final-char').innerText = this.state.selectedCharacterG2; this.showScreenG2('screen-win-g2'); this.playSound('win'); } else { this.backToThemeMenu(); } } },
             showScreenG2(screenId) { document.querySelectorAll('#gamePasangkanGambar .g2-screen').forEach(s => s.classList.remove('active')); const target = document.getElementById(screenId); if (target) target.classList.add('active'); },
             restartGame() { this.state.finishedThemes = []; this.state.selectedCharacterG2 = ''; const startBtn = document.getElementById('btn-start-game'); if (startBtn) { startBtn.classList.add('btn-disabled'); startBtn.setAttribute('disabled', 'true'); } document.querySelectorAll('#gamePasangkanGambar .char-card').forEach(card => card.classList.remove('selected')); this.showScreenG2('screen-character-g2'); }
         };
 
         /* -----------------------------------------------------------
-           4. PUZZLEGAME: MODUL GAME 3 (PUZZLE ADVENTURE 🧩)
-           ----------------------------------------------------------- */
+            4. PUZZLEGAME: MODUL GAME 3 (PUZZLE ADVENTURE 🧩)
+            ----------------------------------------------------------- */
         const PuzzleGame = {
             state: { selectedCharacterG3: null, selectedCharIconG3: null, currentThemeKeyG3: null, currentDifficultyModeG3: 'easy', completedCombinationsG3: [], rowsG3: 3, colsG3: 4, timerG3: 0, placedG3: 0, totalPiecesG3: 0, draggedPieceG3: null, touchStartCellG3: null, isGameFinishedG3: false, touchStartXG3: 0, touchStartYG3: 0, intervalG3: null },
             themes: {
@@ -3552,19 +3510,18 @@
 
             playSound(type) {
                 if (!AppCore.audioCtx) return; const osc = AppCore.audioCtx.createOscillator(); const gain = AppCore.audioCtx.createGain(); osc.connect(gain); gain.connect(AppCore.audioCtx.destination); const now = AppCore.audioCtx.currentTime;
-                if (type === 'click') { osc.type = 'sine'; osc.frequency.setValueAtTime(400, now); gain.gain.setValueAtTime(0.08, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1); osc.start(now); osc.stop(now + 0.1); }
-                else if (type === 'move') { osc.type = 'triangle'; osc.frequency.setValueAtTime(240, now); osc.frequency.exponentialRampToValueAtTime(140, now + 0.12); gain.gain.setValueAtTime(0.12, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12); osc.start(now); osc.stop(now + 0.12); }
+                if (type === 'move') { osc.type = 'triangle'; osc.frequency.setValueAtTime(240, now); osc.frequency.exponentialRampToValueAtTime(140, now + 0.12); gain.gain.setValueAtTime(0.12, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12); osc.start(now); osc.stop(now + 0.12); }
                 else if (type === 'theme_clear') { osc.type = 'sine'; osc.frequency.setValueAtTime(320, now); osc.frequency.setValueAtTime(480, now + 0.1); osc.frequency.setValueAtTime(640, now + 0.2); gain.gain.setValueAtTime(0.15, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4); osc.start(now); osc.stop(now + 0.4); }
                 else if (type === 'all_clear') { for (let i = 0; i < 3; i++) { const tOsc = AppCore.audioCtx.createOscillator(); const tGain = AppCore.audioCtx.createGain(); tOsc.connect(tGain); tGain.connect(AppCore.audioCtx.destination); tOsc.type = 'sawtooth'; tOsc.frequency.setValueAtTime(523.25 + (i * 80), now + (i * 0.12)); tGain.gain.setValueAtTime(0.08, now + (i * 0.12)); tGain.gain.exponentialRampToValueAtTime(0.01, now + (i * 0.12) + 0.25); tOsc.start(now + (i * 0.12)); tOsc.stop(now + (i * 0.12) + 0.25); } }
             },
 
-            goToPageG3(pageId) { this.playSound('click'); document.querySelectorAll('#gamePuzzleAdventure .g3-page-card-container').forEach(p => p.classList.remove('active')); document.getElementById('g3-page-game').classList.remove('active'); if (pageId === 'g3-page-theme') { this.renderThemeSelectionG3(); } const target = document.getElementById(pageId); if (target) { if (pageId === 'g3-page-game') target.classList.add('active'); else target.classList.add('active'); } },
-            selectCharacterG3(name, icon, element) { this.state.selectedCharacterG3 = name; this.state.selectedCharIconG3 = icon; this.playSound('click'); document.querySelectorAll('#g3-page-character .g3-card-char').forEach(c => c.classList.remove('selected')); element.classList.add('selected'); const nextBtn = document.getElementById('g3-btn-next-theme'); nextBtn.classList.remove('g3-btn-action-disabled'); nextBtn.disabled = false; document.getElementById('g3-display-char-icon').innerText = icon; document.getElementById('g3-display-char-name').innerText = name; },
-            changeDifficultyUIG3(r, c, mode) { this.playSound('click'); this.state.rowsG3 = r; this.state.colsG3 = c; this.state.currentDifficultyModeG3 = mode; document.querySelectorAll('#gamePuzzleAdventure .g3-diff-btn').forEach(b => b.classList.remove('active')); document.getElementById(`g3-diff-${mode}`).classList.add('active'); this.renderThemeSelectionG3(); },
+            goToPageG3(pageId) { AppCore.playUniversalClick(); document.querySelectorAll('#gamePuzzleAdventure .g3-page-card-container').forEach(p => p.classList.remove('active')); document.getElementById('g3-page-game').classList.remove('active'); if (pageId === 'g3-page-theme') { this.renderThemeSelectionG3(); } const target = document.getElementById(pageId); if (target) { if (pageId === 'g3-page-game') target.classList.add('active'); else target.classList.add('active'); } },
+            selectCharacterG3(name, icon, element) { this.state.selectedCharacterG3 = name; this.state.selectedCharIconG3 = icon; AppCore.playUniversalClick(); document.querySelectorAll('#g3-page-character .g3-card-char').forEach(c => c.classList.remove('selected')); element.classList.add('selected'); const nextBtn = document.getElementById('g3-btn-next-theme'); nextBtn.classList.remove('g3-btn-action-disabled'); nextBtn.disabled = false; document.getElementById('g3-display-char-icon').innerText = icon; document.getElementById('g3-display-char-name').innerText = name; },
+            changeDifficultyUIG3(r, c, mode) { AppCore.playUniversalClick(); this.state.rowsG3 = r; this.state.colsG3 = c; this.state.currentDifficultyModeG3 = mode; document.querySelectorAll('#gamePuzzleAdventure .g3-diff-btn').forEach(b => b.classList.remove('active')); document.getElementById(`g3-diff-${mode}`).classList.add('active'); this.renderThemeSelectionG3(); },
 
             renderThemeSelectionG3() { const grid = document.getElementById('g3-theme-grid'); grid.innerHTML = ''; for (let key in this.themes) { const theme = this.themes[key]; const comboKey = key + '_' + this.state.currentDifficultyModeG3; const isDone = this.state.completedCombinationsG3.includes(comboKey); const btn = document.createElement('button'); btn.className = `g3-btn-theme-item ${isDone ? 'completed' : ''}`; btn.innerText = theme.name; if (!isDone) btn.onclick = () => this.launchGameInternalG3(key); grid.appendChild(btn); } },
-            launchGameInternalG3(themeKey) { this.playSound('click'); this.state.currentThemeKeyG3 = themeKey; this.state.isGameFinishedG3 = false; document.querySelectorAll('#gamePuzzleAdventure .g3-page-card-container').forEach(p => p.classList.remove('active')); document.getElementById('g3-page-game').classList.add('active'); document.getElementById('g3-preview-success-zone').style.display = 'none'; document.getElementById('g3-btn-giveup').style.display = 'inline-block'; const textDifficulty = this.state.currentDifficultyModeG3 === 'easy' ? 'Mudah ⭐' : this.state.currentDifficultyModeG3 === 'medium' ? 'Sedang ⭐⭐' : 'Sulit ⭐⭐⭐'; document.getElementById('g3-current-theme-title').innerText = this.themes[themeKey].name.replace(/^[^\s]+\s/, '') + ' (' + textDifficulty + ')'; document.getElementById('g3-refImage').src = this.themes[themeKey].img; this.state.placedG3 = 0; this.state.totalPiecesG3 = this.state.rowsG3 * this.state.colsG3; document.getElementById('g3-progress').innerText = '0%'; this.loadBestG3(); this.startTimerG3(); this.createBoardG3(); },
-            confirmExitG3() { this.playSound('click'); if (confirm('Apakah kamu ingin kembali? Progres saat ini akan hilang.')) { clearInterval(this.state.intervalG3); this.goToPageG3('g3-page-theme'); } },
+            launchGameInternalG3(themeKey) { AppCore.playUniversalClick(); this.state.currentThemeKeyG3 = themeKey; this.state.isGameFinishedG3 = false; document.querySelectorAll('#gamePuzzleAdventure .g3-page-card-container').forEach(p => p.classList.remove('active')); document.getElementById('g3-page-game').classList.add('active'); document.getElementById('g3-preview-success-zone').style.display = 'none'; document.getElementById('g3-btn-giveup').style.display = 'inline-block'; const textDifficulty = this.state.currentDifficultyModeG3 === 'easy' ? 'Mudah ⭐' : this.state.currentDifficultyModeG3 === 'medium' ? 'Sedang ⭐⭐' : 'Sulit ⭐⭐⭐'; document.getElementById('g3-current-theme-title').innerText = this.themes[themeKey].name.replace(/^[^\s]+\s/, '') + ' (' + textDifficulty + ')'; document.getElementById('g3-refImage').src = this.themes[themeKey].img; this.state.placedG3 = 0; this.state.totalPiecesG3 = this.state.rowsG3 * this.state.colsG3; document.getElementById('g3-progress').innerText = '0%'; this.loadBestG3(); this.startTimerG3(); this.createBoardG3(); },
+            confirmExitG3() { AppCore.playUniversalClick(); if (confirm('Apakah kamu ingin kembali? Progres saat ini akan hilang.')) { clearInterval(this.state.intervalG3); this.goToPageG3('g3-page-theme'); } },
             formatTimeG3(sec) { const m = Math.floor(sec / 60); const s = sec % 60; return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0'); },
             loadBestG3() { const key = 'best_' + this.state.currentThemeKeyG3 + '_' + this.state.rowsG3 + 'x' + this.state.colsG3; const best = localStorage.getItem(key); document.getElementById('g3-bestTime').innerText = best || '-'; },
             saveBestG3() { const key = 'best_' + this.state.currentThemeKeyG3 + '_' + this.state.rowsG3 + 'x' + this.state.colsG3; const best = localStorage.getItem(key); if (!best || this.state.timerG3 < (parseInt(best.split(':')[0]) * 60 + parseInt(best.split(':')[1]))) { localStorage.setItem(key, this.formatTimeG3(this.state.timerG3)); } },
@@ -3588,13 +3545,13 @@
             checkPuzzleG3() { let correct = 0; document.querySelectorAll('.g3-cell').forEach(cell => { const piece = cell.children[0]; if (!piece) return; if (Number(piece.dataset.correct) === Number(cell.dataset.index)) { correct++; cell.classList.add('correct'); } else { cell.classList.remove('correct'); } }); this.state.placedG3 = correct; document.getElementById('g3-progress').innerText = Math.round((this.state.placedG3 / this.state.totalPiecesG3) * 100) + '%'; if (correct === this.state.totalPiecesG3) { clearInterval(this.state.intervalG3); this.saveBestG3(); this.handleThemeCompleteG3(); } },
 
             handleThemeCompleteG3() { this.state.isGameFinishedG3 = true; this.playSound('theme_clear'); document.getElementById('g3-btn-giveup').style.display = 'none'; const comboKey = this.state.currentThemeKeyG3 + '_' + this.state.currentDifficultyModeG3; if (!this.state.completedCombinationsG3.includes(comboKey)) this.state.completedCombinationsG3.push(comboKey); document.getElementById('g3-success-message').innerHTML = `Hebat! Kamu berhasil menyusun tema <b>${this.themes[this.state.currentThemeKeyG3].name.replace(/^[^\s]+\s/, '')}</b> bersama <b>${this.state.selectedCharacterG3}</b> dalam waktu <b>${this.formatTimeG3(this.state.timerG3)}</b>!`; document.getElementById('g3-preview-success-zone').style.display = 'block'; },
-            backToThemeAfterPreviewG3() { this.playSound('click'); const totalThemesCount = Object.keys(this.themes).length; const totalPossibleCombos = totalThemesCount * 3; if (this.state.completedCombinationsG3.length === totalPossibleCombos) { this.playSound('all_clear'); document.getElementById('g3-modal-message').innerHTML = `Selamat! Semua ${totalThemesCount} tema dengan masing-masing 3 tingkat kesulitan telah berhasil kamu selesaikan seluruhnya dengan sempurna bersama <b>${this.state.selectedCharIconG3} ${this.state.selectedCharacterG3}</b>! 🏆🎉`; document.getElementById('g3-game-modal').style.display = 'flex'; } else { this.goToPageG3('g3-page-theme'); } },
+            backToThemeAfterPreviewG3() { AppCore.playUniversalClick(); const totalThemesCount = Object.keys(this.themes).length; const totalPossibleCombos = totalThemesCount * 3; if (this.state.completedCombinationsG3.length === totalPossibleCombos) { this.playSound('all_clear'); document.getElementById('g3-modal-message').innerHTML = `Selamat! Semua ${totalThemesCount} tema dengan masing-masing 3 tingkat kesulitan telah berhasil kamu selesaikan seluruhnya dengan sempurna bersama <b>${this.state.selectedCharIconG3} ${this.state.selectedCharacterG3}</b>! 🏆🎉`; document.getElementById('g3-game-modal').style.display = 'flex'; } else { this.goToPageG3('g3-page-theme'); } },
             resetAllGameG3() { this.state.completedCombinationsG3 = []; document.getElementById('g3-game-modal').style.display = 'none'; this.goToPageG3('g3-page-character'); this.state.selectedCharacterG3 = null; this.state.selectedCharIconG3 = null; const nextBtn = document.getElementById('g3-btn-next-theme'); nextBtn.classList.add('g3-btn-action-disabled'); nextBtn.disabled = true; document.querySelectorAll('#g3-page-character .g3-card-char').forEach(c => c.classList.remove('selected')); }
         };
 
         /* -----------------------------------------------------------
-           5. COLORGAME: MODUL GAME 4 (POLA WARNA PINTAR 🎨)
-           ----------------------------------------------------------- */
+            5. COLORGAME: MODUL GAME 4 (POLA WARNA PINTAR 🎨)
+            ----------------------------------------------------------- */
         const ColorGame = {
             state: {
                 TOTAL_SOAL: 15, databaseSoal: [], currentIdx: 0, stars: 0, userAnswers: [null, null, null], activeValue: null, ghostElement: null, chosenPlayer: { name: '', emoji: '' }, particles: [], confettiCtx: null, confettiCanvas: null, isAnimating: false
@@ -3614,13 +3571,10 @@
             },
 
             playSound(type) {
-                if (!AppCore.audioCtx) return;
-                const osc = AppCore.audioCtx.createOscillator(); const gainNode = AppCore.audioCtx.createGain();
+                if (!AppCore.audioCtx) return; const osc = AppCore.audioCtx.createOscillator(); const gainNode = AppCore.audioCtx.createGain();
                 osc.connect(gainNode); gainNode.connect(AppCore.audioCtx.destination);
 
-                if (type === 'click') {
-                    osc.type = 'sine'; osc.frequency.setValueAtTime(400, AppCore.audioCtx.currentTime); gainNode.gain.setValueAtTime(0.3, AppCore.audioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, AppCore.audioCtx.currentTime + 0.1); osc.start(); osc.stop(AppCore.audioCtx.currentTime + 0.1);
-                } else if (type === 'success') {
+                if (type === 'success') {
                     osc.type = 'triangle'; osc.frequency.setValueAtTime(523.25, AppCore.audioCtx.currentTime); osc.frequency.setValueAtTime(659.25, AppCore.audioCtx.currentTime + 0.1); osc.frequency.setValueAtTime(783.99, AppCore.audioCtx.currentTime + 0.2); gainNode.gain.setValueAtTime(0.3, AppCore.audioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, AppCore.audioCtx.currentTime + 0.4); osc.start(); osc.stop(AppCore.audioCtx.currentTime + 0.4);
                 } else if (type === 'wrong') {
                     osc.type = 'sawtooth'; osc.frequency.setValueAtTime(150, AppCore.audioCtx.currentTime); osc.frequency.linearRampToValueAtTime(80, AppCore.audioCtx.currentTime + 0.3); gainNode.gain.setValueAtTime(0.2, AppCore.audioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, AppCore.audioCtx.currentTime + 0.3); osc.start(); osc.stop(AppCore.audioCtx.currentTime + 0.3);
@@ -3628,14 +3582,14 @@
             },
 
             goToPage(pageId) {
-                this.playSound('click');
+                AppCore.playUniversalClick();
                 document.querySelectorAll('#gamePolaWarna .g4-page-card-container').forEach(p => p.classList.remove('active'));
                 const target = document.getElementById(pageId);
                 if (target) target.classList.add('active');
             },
 
             selectCharacter(name, icon, element) {
-                this.playSound('click');
+                AppCore.playUniversalClick();
                 this.state.chosenPlayer.name = name;
                 this.state.chosenPlayer.emoji = icon;
                 document.querySelectorAll('#gamePolaWarna .g4-card-char').forEach(c => c.classList.remove('selected'));
@@ -3647,7 +3601,7 @@
 
             startGame() {
                 if (!this.state.chosenPlayer.name) return;
-                this.playSound('click');
+                AppCore.playUniversalClick();
                 document.getElementById('g4-header-avatar-icon').innerText = this.state.chosenPlayer.emoji;
                 document.getElementById('g4-header-avatar-name').innerText = this.state.chosenPlayer.name;
 
@@ -3704,15 +3658,15 @@
             },
 
             bindEvents() {
-                document.querySelectorAll('#gamePolaWarna .g4-drag-card').forEach(card => { card.addEventListener('dragstart', (e) => { this.playSound('click'); this.state.activeValue = e.target.getAttribute('data-val'); }); });
+                document.querySelectorAll('#gamePolaWarna .g4-drag-card').forEach(card => { card.addEventListener('dragstart', (e) => { AppCore.playUniversalClick(); this.state.activeValue = e.target.getAttribute('data-val'); }); });
                 document.querySelectorAll('#gamePolaWarna .g4-dropzone').forEach(zone => { zone.addEventListener('dragover', (e) => e.preventDefault()); zone.addEventListener('dragenter', () => zone.classList.add('hovered')); zone.addEventListener('dragleave', () => zone.classList.remove('hovered')); zone.addEventListener('drop', () => { zone.classList.remove('hovered'); if (this.state.activeValue) this.stampAnswer(zone, this.state.activeValue); }); });
-                document.querySelectorAll('#gamePolaWarna .g4-numbers-bank .g4-drag-card').forEach(card => { card.addEventListener('touchstart', (e) => { this.playSound('click'); this.state.activeValue = e.target.getAttribute('data-val'); this.state.ghostElement = e.target.cloneNode(true); this.state.ghostElement.style.position = 'fixed'; this.state.ghostElement.style.opacity = '0.85'; this.state.ghostElement.style.zIndex = '10000'; this.state.ghostElement.style.pointerEvents = 'none'; document.body.appendChild(this.state.ghostElement); this.moveGhost(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true }); });
+                document.querySelectorAll('#gamePolaWarna .g4-numbers-bank .g4-drag-card').forEach(card => { card.addEventListener('touchstart', (e) => { AppCore.playUniversalClick(); this.state.activeValue = e.target.getAttribute('data-val'); this.state.ghostElement = e.target.cloneNode(true); this.state.ghostElement.style.position = 'fixed'; this.state.ghostElement.style.opacity = '0.85'; this.state.ghostElement.style.zIndex = '10000'; this.state.ghostElement.style.pointerEvents = 'none'; document.body.appendChild(this.state.ghostElement); this.moveGhost(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true }); });
                 window.addEventListener('touchmove', (e) => { if (!this.state.ghostElement) return; this.moveGhost(e.touches[0].clientX, e.touches[0].clientY); e.preventDefault(); }, { passive: false });
                 window.addEventListener('touchend', (e) => { if (!this.state.ghostElement) return; const touch = e.changedTouches[0]; const elementUnderTouch = document.elementFromPoint(touch.clientX, touch.clientY); const zone = elementUnderTouch ? elementUnderTouch.closest('.g4-dropzone') : null; if (zone && this.state.activeValue) this.stampAnswer(zone, this.state.activeValue); document.body.removeChild(this.state.ghostElement); this.state.ghostElement = null; this.state.activeValue = null; });
             },
 
             moveGhost(x, y) { if (this.state.ghostElement) { this.state.ghostElement.style.left = (x - 25) + 'px'; this.state.ghostElement.style.top = (y - 25) + 'px'; } },
-            stampAnswer(zone, value) { const zoneIndex = parseInt(zone.getAttribute('data-index')); zone.innerText = value; zone.className = 'g4-dropzone filled'; this.state.userAnswers[zoneIndex] = parseInt(value); this.playSound('click'); if (this.state.userAnswers.filter(x => x !== null).length === 3) this.checkFinalAnswer(); },
+            stampAnswer(zone, value) { const zoneIndex = parseInt(zone.getAttribute('data-index')); zone.innerText = value; zone.className = 'g4-dropzone filled'; this.state.userAnswers[zoneIndex] = parseInt(value); AppCore.playUniversalClick(); if (this.state.userAnswers.filter(x => x !== null).length === 3) this.checkFinalAnswer(); },
 
             checkFinalAnswer() {
                 const soal = this.state.databaseSoal[this.state.currentIdx]; const isCorrect = this.state.userAnswers.every((val, index) => val === soal.targetAnswers[index]); const fb = document.getElementById('g4-feedback-text');
@@ -3720,8 +3674,8 @@
                 else { this.playSound('wrong'); fb.innerText = "Coba lagi yuk, pasti bisa! 💪😊"; fb.className = "g4-feedback g4-wrong"; setTimeout(() => { this.initQuestion(); }, 1600); }
             },
 
-            nextQuestionG4() { this.playSound('click'); if (this.state.currentIdx < this.state.TOTAL_SOAL - 1) { this.state.currentIdx++; this.initQuestion(); } else { document.getElementById('g4-win-name').innerText = this.state.chosenPlayer.name; document.getElementById('g4-win-icon').innerText = this.state.chosenPlayer.emoji; document.getElementById('g4-win-stars').innerText = this.state.stars; this.goToPage('g4-page-win'); } },
-            resetGame() { this.playSound('click'); this.state.chosenPlayer = { name: '', emoji: '' }; document.querySelectorAll('#gamePolaWarna .g4-card-char').forEach(c => c.classList.remove('selected')); const btnStart = document.getElementById('g4-btn-start-game'); btnStart.classList.add('g4-btn-action-disabled'); btnStart.disabled = true; this.goToPage('g4-page-character'); },
+            nextQuestionG4() { AppCore.playUniversalClick(); if (this.state.currentIdx < this.state.TOTAL_SOAL - 1) { this.state.currentIdx++; this.initQuestion(); } else { document.getElementById('g4-win-name').innerText = this.state.chosenPlayer.name; document.getElementById('g4-win-icon').innerText = this.state.chosenPlayer.emoji; document.getElementById('g4-win-stars').innerText = this.state.stars; this.goToPage('g4-page-win'); } },
+            resetGame() { AppCore.playUniversalClick(); this.state.chosenPlayer = { name: '', emoji: '' }; document.querySelectorAll('#gamePolaWarna .g4-card-char').forEach(c => c.classList.remove('selected')); const btnStart = document.getElementById('g4-btn-start-game'); btnStart.classList.add('g4-btn-action-disabled'); btnStart.disabled = true; this.goToPage('g4-page-character'); },
             resizeCanvas() { if (!this.state.confettiCanvas) return; this.state.confettiCanvas.width = this.state.confettiCanvas.parentNode.clientWidth; this.state.confettiCanvas.height = this.state.confettiCanvas.parentNode.clientHeight; },
 
             triggerConfetti() {
@@ -3734,8 +3688,8 @@
         };
 
         /* -----------------------------------------------------------
-           6. EATPATHGAME: MODUL GAME 5 (TEKA-TEKI JALAN MAKAN 🍖)
-           ----------------------------------------------------------- */
+            6. EATPATHGAME: MODUL GAME 5 (TEKA-TEKI JALAN MAKAN 🍖)
+            ----------------------------------------------------------- */
         const EatPathGame = {
             state: {
                 animalSounds: {
@@ -3759,11 +3713,11 @@
                 this.state.selectedAnimal = type; AppCore.initAudio();
                 document.querySelectorAll('#gameJalanMakan .g5-char-card').forEach(c => c.classList.remove('selected'));
                 document.getElementById(`g5-card-${type}`).classList.add('selected');
-                this.playSound('click');
+                AppCore.playUniversalClick();
             },
 
             changePage(pageName) {
-                if (pageName === 'game') this.playMarioStartSound(); else this.playSound('click');
+                if (pageName === 'game') this.playMarioStartSound(); else AppCore.playUniversalClick();
                 document.querySelectorAll('#gameJalanMakan .g5-page').forEach(p => p.classList.remove('active'));
 
                 if (pageName === 'start') {
@@ -3809,9 +3763,7 @@
                 }
                 const osc = AppCore.audioCtx.createOscillator(); const gain = AppCore.audioCtx.createGain();
                 osc.connect(gain); gain.connect(AppCore.audioCtx.destination); const now = AppCore.audioCtx.currentTime;
-                if (type === 'click') {
-                    osc.type = 'sine'; osc.frequency.setValueAtTime(450, now); osc.frequency.exponentialRampToValueAtTime(900, now + 0.05); gain.gain.setValueAtTime(0.1, now); gain.gain.linearRampToValueAtTime(0, now + 0.05); osc.start(now); osc.stop(now + 0.05);
-                } else if (type === 'win') {
+                if (type === 'win') {
                     osc.type = 'square'; gain.gain.setValueAtTime(0.06, now); gain.gain.linearRampToValueAtTime(0, now + 0.4); osc.frequency.setValueAtTime(523, now); osc.frequency.setValueAtTime(659, now + 0.08); osc.frequency.setValueAtTime(784, now + 0.16); osc.frequency.setValueAtTime(1046, now + 0.24); osc.start(now); osc.stop(now + 0.4);
                 } else if (type === 'fail') {
                     osc.type = 'sawtooth'; osc.frequency.setValueAtTime(200, now); osc.frequency.linearRampToValueAtTime(100, now + 0.3); gain.gain.setValueAtTime(0.1, now); gain.gain.linearRampToValueAtTime(0, now + 0.3); osc.start(now); osc.stop(now + 0.3);
@@ -3865,7 +3817,7 @@
                 this.drawStaticObstacles(); this.updateSequenceUI(); this.updatePositionsUI();
             },
 
-            addCommand(direction) { if (this.state.isExecuting || this.state.commands.length >= this.state.currentLevelData.maxCmd) return; this.playSound('click'); this.state.commands.push(direction); this.updateSequenceUI(); },
+            addCommand(direction) { if (this.state.isExecuting || this.state.commands.length >= this.state.currentLevelData.maxCmd) return; AppCore.playUniversalClick(); this.state.commands.push(direction); this.updateSequenceUI(); },
             popLastCommand() { if (this.state.isExecuting || this.state.commands.length === 0) return; this.playSound('clear'); this.state.commands.pop(); this.updateSequenceUI(); },
 
             updateSequenceUI() {
@@ -3896,12 +3848,9 @@
                 }
                 else if (this.state.animalPos.x === this.state.currentLevelData.end.x && this.state.animalPos.y === this.state.currentLevelData.end.y) {
                     this.playSound('win');
-
-                    // PERBAIKAN BUG: Memanfaatkan efek animasi konfeti internal milik Game 2 agar 100% offline & aman
                     if (typeof MatchingGame !== 'undefined' && typeof MatchingGame.createConfetti === 'function') {
                         MatchingGame.createConfetti();
                     }
-
                     this.showWinModal();
                 } else {
                     this.playSound('fail'); this.showFailModal(false);
@@ -3922,19 +3871,19 @@
             },
 
             deleteOldTracks() { document.querySelectorAll('#gameJalanMakan .g5-cell').forEach(cell => { if (cell.innerText === this.state.emojiGraphics.footprint) cell.innerText = ''; }); },
-            closeFailModal() { this.playSound('click'); this.clearSequenceOnly(); this.deleteOldTracks(); document.getElementById('g5-fail-modal').style.display = 'none'; document.getElementById('g5-overlay').style.display = 'none'; },
-            nextLevel() { this.playSound('click'); if (this.state.currentLevel < this.state.totalLevels - 1) { this.state.currentLevel++; this.loadLevel(); } else { this.changePage('end'); } },
+            closeFailModal() { AppCore.playUniversalClick(); this.clearSequenceOnly(); this.deleteOldTracks(); document.getElementById('g5-fail-modal').style.display = 'none'; document.getElementById('g5-overlay').style.display = 'none'; },
+            nextLevel() { AppCore.playUniversalClick(); if (this.state.currentLevel < this.state.totalLevels - 1) { this.state.currentLevel++; this.loadLevel(); } else { this.changePage('end'); } },
             triggerEndCelebration() { this.playSound('win'); let duration = 3.5 * 1000; let end = Date.now() + duration; (function frame() { confetti({ particleCount: 6, angle: 60, spread: 55, origin: { x: 0 } }); confetti({ particleCount: 6, angle: 120, spread: 55, origin: { x: 1 } }); if (Date.now() < end) requestAnimationFrame(frame); }()); },
             restartGame() { this.state.currentLevel = 0; this.changePage('start'); }
         };
 
         /* -----------------------------------------------------------
-           7. GLOBAL ADAPTER BRIDGES
-           ----------------------------------------------------------- */
+            7. GLOBAL ADAPTER BRIDGES
+            ----------------------------------------------------------- */
         document.addEventListener('DOMContentLoaded', () => { AppCore.init(); ColorGame.init(); });
 
-        function launchGame(gameId) { AppCore.switchScreen(gameId); if (gameId === 'gamePetugasKereta') TrainGame.restartGame(); else if (gameId === 'gamePasangkanGambar') MatchingGame.restartGame(); else if (gameId === 'gamePuzzleAdventure') PuzzleGame.resetAllGameG3(); else if (gameId === 'gamePolaWarna') ColorGame.resetGame(); else if (gameId === 'gameJalanMakan') EatPathGame.restartGame(); }
-        function showMainMenuHub() { if (typeof MatchingGame !== 'undefined') MatchingGame.stopHintTimer(); if (PuzzleGame && PuzzleGame.state.intervalG3) clearInterval(PuzzleGame.state.intervalG3); if (EatPathGame && EatPathGame.state.isExecuting) return; AppCore.switchScreen('mainMenuHub'); }
+        function launchGame(gameId) { AppCore.playUniversalClick(); AppCore.switchScreen(gameId); if (gameId === 'gamePetugasKereta') TrainGame.restartGame(); else if (gameId === 'gamePasangkanGambar') MatchingGame.restartGame(); else if (gameId === 'gamePuzzleAdventure') PuzzleGame.resetAllGameG3(); else if (gameId === 'gamePolaWarna') ColorGame.resetGame(); else if (gameId === 'gameJalanMakan') EatPathGame.restartGame(); }
+        function showMainMenuHub() { if (typeof MatchingGame !== 'undefined') MatchingGame.stopHintTimer(); if (PuzzleGame && PuzzleGame.state.intervalG3) clearInterval(PuzzleGame.state.intervalG3); if (EatPathGame && EatPathGame.state.isExecuting) return; AppCore.playUniversalClick(); AppCore.switchScreen('mainMenuHub'); }
 
         // Game 1 Bridges
         function selectCharacterG1(name, avatar) { TrainGame.selectCharacter(name, avatar); }
