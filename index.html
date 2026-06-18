@@ -564,6 +564,9 @@
         /* ============================================================
            BAGIAN 5: STYLING GAME 2 — PASANGKAN GAMBAR 🖼️
            ============================================================ */
+        /* ============================================================
+           PERBAIKAN KONTROLLER LAYAR GAME 2 (PASANGKAN GAMBAR) 🧩
+           ============================================================ */
         .g2-body-style {
             text-align: center;
             display: flex;
@@ -595,17 +598,23 @@
             margin: 2px 0;
         }
 
+        /* PERBAIKAN CARD CONTAINER UTAMA GAME 2 */
         .g2-screen {
             display: none;
             width: 92%;
-            height: 94vh;
-            max-width: 460px;
+            max-width: 440px;
+
+            /* TINGGI DINAMIS: Mengikuti teknik perbaikan Game 5 & Game 6 */
+            height: auto;
+            max-height: 92vh;
+
             margin: 0 auto;
             background: #ffffff;
-            padding: 20px;
+            padding: 20px 16px;
             border-radius: 32px;
             box-shadow: 0 15px 0 rgba(211, 84, 0, 0.15), 0 20px 40px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            overflow-y: auto;
+            /* Aman di HP pendek karena konten bisa di-scroll internal */
             position: relative;
             box-sizing: border-box;
         }
@@ -613,8 +622,12 @@
         .g2-screen.active {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+
+            /* PERBAIKAN: Mengubah space-between menjadi flex-start dengan gap */
+            justify-content: flex-start;
             align-items: center;
+            gap: 15px;
+            /* Menjaga konsistensi jarak antar elemen */
         }
 
         .g2-map-header {
@@ -624,14 +637,16 @@
             align-items: center;
             padding-bottom: 12px;
             border-bottom: 3px dashed #ffeaa7;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+            /* Dikurangi agar grid karakter naik */
         }
 
         .char-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
-            margin: 20px 0;
+            margin: 10px 0;
+            /* Dikurangi agar tidak mendorong konten bawah terlalu ekstrim */
             width: 100%;
             justify-items: center;
         }
@@ -643,7 +658,8 @@
             border-radius: 24px;
             padding: 15px;
             cursor: pointer;
-            width: 105px;
+            width: 115px;
+            /* Disesuaikan agar proporsional */
             text-align: center;
             transition: all 0.15s ease;
         }
@@ -669,7 +685,7 @@
             border-color: #ff9f43;
             border-bottom-color: #f39c12;
             background-color: #fff9f2;
-            transform: scale(1.08) translateY(-2px);
+            transform: scale(1.06) translateY(-2px);
             box-shadow: 0 8px 16px rgba(230, 126, 34, 0.15);
         }
 
@@ -684,14 +700,17 @@
             background: linear-gradient(to bottom, #ff9f43, #f39c12);
             box-shadow: 0 6px 0 #d35400, 0 8px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.1s;
-            width: 90%;
+            width: 100%;
+            max-width: 280px;
+            /* Dikunci agar tidak terlalu melebar di layar laptop */
             font-family: inherit;
-            margin-bottom: 10px;
+            margin-top: 5px;
+            margin-bottom: 5px;
         }
 
         .btn-action:active {
-            transform: translateY(5px);
-            box-shadow: 0 1px 0 #d35400;
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #d35400;
         }
 
         .btn-disabled {
@@ -708,7 +727,7 @@
             width: 100%;
             flex-grow: 1;
             justify-content: center;
-            margin: 15px 0;
+            margin: 10px 0;
         }
 
         .btn-theme {
@@ -916,7 +935,6 @@
             font-size: 80px;
             animation: float 2s infinite ease-in-out;
         }
-
 
         /* ============================================================
            BAGIAN 6: STYLING GAME 3 — PUZZLE ADVENTURE 🧩
@@ -2212,7 +2230,7 @@
         /* ============================================================
            BAGIAN 9: STYLING GAME 6 — Mencari Hewan Tersembunyi 🔍
            ============================================================ */
-#gameMemoryChess {
+        #gameMemoryChess {
             --primary: #4caf50;
             --primary-dark: #388e3c;
             --primary-light: #e8f5e9;
@@ -2248,19 +2266,24 @@
             display: none;
             width: 94%;
             max-width: 440px;
-            height: auto; /* Membiarkan konten menentukan tinggi secara alami */
-            max-height: 92vh; /* Membatasi agar tidak meluap keluar layar HP */
+            height: auto;
+            /* Membiarkan konten menentukan tinggi secara alami */
+            max-height: 92vh;
+            /* Membatasi agar tidak meluap keluar layar HP */
             margin: 0 auto;
             background: #ffffff;
             padding: 20px 16px;
             border-radius: 32px;
             box-shadow: 0 15px 0 rgba(76, 175, 80, 0.15), 0 20px 40px rgba(0, 0, 0, 0.1);
-            overflow-y: auto; /* Jika layar sangat kecil, card bisa di-scroll internal */
+            overflow-y: auto;
+            /* Jika layar sangat kecil, card bisa di-scroll internal */
             position: relative;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* Elemen merapat rapi ke atas, tidak renggang */
-            gap: 15px; /* Memberikan jarak antar elemen yang konsisten */
+            justify-content: flex-start;
+            /* Elemen merapat rapi ke atas, tidak renggang */
+            gap: 15px;
+            /* Memberikan jarak antar elemen yang konsisten */
         }
 
         .g6-page-card-container.active {
@@ -2369,7 +2392,8 @@
             border-radius: 24px;
             padding: 14px;
             cursor: pointer;
-            width: 100%; /* Menyesuaikan kolom grid secara fleksibel */
+            width: 100%;
+            /* Menyesuaikan kolom grid secara fleksibel */
             max-width: 130px;
             text-align: center;
             transition: all 0.15s ease;
@@ -2422,7 +2446,6 @@
             opacity: 0.7;
         }
 
-        /* Kontainer Target Instruksi */
         #g6-target-container {
             background: #f8fafc;
             padding: 8px 15px;
@@ -2469,7 +2492,8 @@
         .g6-pawn {
             background-color: #ffffff;
             border: 3.5px solid var(--warning);
-            aspect-ratio: 1 / 1; /* Menjaga bentuk bidak selalu kotak sempurna */
+            aspect-ratio: 1 / 1;
+            /* Menjaga bentuk bidak selalu kotak sempurna */
             border-radius: 14px;
             display: flex;
             align-items: center;
@@ -2508,7 +2532,7 @@
             background: white;
             padding: 25px;
             border-radius: 28px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
             text-align: center;
             z-index: 6000;
             border: 5px solid var(--success);
@@ -2525,17 +2549,47 @@
             padding: 0 6px;
         }
 
-        @keyframes g6-blink { from { opacity: 1; } to { opacity: 0.6; } }
+        @keyframes g6-blink {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0.6;
+            }
+        }
 
         /* Optimasi Khusus Layar Kecil (Mobile Kebawah) */
         @media (max-width: 380px) {
-            .g6-page-card-container { padding: 14px 10px; gap: 10px; }
-            .g6-char-grid { gap: 10px; }
-            .g6-card-char { padding: 8px; border-radius: 16px; }
-            #g6-board { gap: 6px; }
-            .g6-pawn { font-size: 22px; border-width: 2.5px; border-radius: 10px; }
-            #g6-target-emoji { font-size: 40px; }
+            .g6-page-card-container {
+                padding: 14px 10px;
+                gap: 10px;
+            }
+
+            .g6-char-grid {
+                gap: 10px;
+            }
+
+            .g6-card-char {
+                padding: 8px;
+                border-radius: 16px;
+            }
+
+            #g6-board {
+                gap: 6px;
+            }
+
+            .g6-pawn {
+                font-size: 22px;
+                border-width: 2.5px;
+                border-radius: 10px;
+            }
+
+            #g6-target-emoji {
+                font-size: 40px;
+            }
         }
+
         /* ============================================================
            BAGIAN 10: ANIMASI GLOBAL (dipakai semua game)
            ============================================================ */
@@ -4306,9 +4360,9 @@
         /* ============================================================
        MEMORY CHESS : MODUL GAME 6 — Mencari Hewan Tersembunyi 🔍
        ============================================================ */
-  /* ============================================================
-           BAGIAN 12: LOGIKA GAME 6 — PETAK UMPET HEWAN 🐾
-           ============================================================ */
+        /* ============================================================
+                 BAGIAN 12: LOGIKA GAME 6 — PETAK UMPET HEWAN 🐾
+                 ============================================================ */
         const MemoryChessGame = {
             BASE_ANIMALS: ['🐯', '🐻', '🐼', '🐨', '🦊', '🐰', '🐵', '🐸', '🐷', '🦁', '🐮', '🐭', '🐱', '🐶', '🐹', '🐥', '🐧', '🦉', '🐙', '🐢'],
             activeAnimals: [],
@@ -4321,14 +4375,14 @@
             startTime: 0,
             totalPlaySeconds: 0,
             wrongAttempts: 0,
-            
+
             // State Skor & Profil Karakter Pilihan
             earnedStars: 0,
             selectedCharName: '',
             selectedCharIcon: '',
 
             // Fungsi Pembantu Pengacak Elemen Array
-            shuffleArray: function(array) {
+            shuffleArray: function (array) {
                 let shuffled = [...array];
                 for (let i = shuffled.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
@@ -4338,11 +4392,11 @@
             },
 
             // Integrasi Efek Suara Sinkron dengan AudioContext AppCore
-            playMcSound: function(type) {
+            playMcSound: function (type) {
                 if (typeof AppCore !== 'undefined' && AppCore.initAudio) {
                     AppCore.initAudio();
                 }
-                
+
                 const ctx = (typeof AppCore !== 'undefined') ? AppCore.audioCtx : null;
                 if (!ctx) return;
 
@@ -4355,9 +4409,9 @@
                 if (type === 'correct') {
                     // Nada Ceria Naik Beruntun (Akor C-Major)
                     osc.type = 'triangle';
-                    osc.frequency.setValueAtTime(523.25, now);       
-                    osc.frequency.setValueAtTime(659.25, now + 0.08); 
-                    osc.frequency.setValueAtTime(783.99, now + 0.16); 
+                    osc.frequency.setValueAtTime(523.25, now);
+                    osc.frequency.setValueAtTime(659.25, now + 0.08);
+                    osc.frequency.setValueAtTime(783.99, now + 0.16);
                     gainNode.gain.setValueAtTime(0.25, now);
                     gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
                     osc.start(now);
@@ -4365,8 +4419,8 @@
                 } else if (type === 'wrong') {
                     // Nada Gagal Meliuk Turun
                     osc.type = 'sawtooth';
-                    osc.frequency.setValueAtTime(220, now);           
-                    osc.frequency.linearRampToValueAtTime(140, now + 0.2); 
+                    osc.frequency.setValueAtTime(220, now);
+                    osc.frequency.linearRampToValueAtTime(140, now + 0.2);
                     gainNode.gain.setValueAtTime(0.12, now);
                     gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.22);
                     osc.start(now);
@@ -4375,7 +4429,7 @@
             },
 
             // Pilihan Karakter di Layar Pertama Game 6
-            selectCharacter: function(name, icon, element) {
+            selectCharacter: function (name, icon, element) {
                 AppCore.playUniversalClick();
                 this.selectedCharName = name;
                 this.selectedCharIcon = icon;
@@ -4391,20 +4445,20 @@
             },
 
             // Konfirmasi Karakter dan Masuk Ke Arena Bermain
-            confirmCharacter: function() {
+            confirmCharacter: function () {
                 AppCore.playUniversalClick();
                 document.getElementById('g6-page-character').classList.remove('active');
                 document.getElementById('g6-page-play').classList.add('active');
-                
+
                 // Distribusikan aset profil terpilih ke HUD Bar
                 document.getElementById('g6-hud-avatar-icon').innerText = this.selectedCharIcon;
                 document.getElementById('g6-hud-avatar-name').innerText = this.selectedCharName;
-                
+
                 this.startActualGameLayout();
             },
 
             // Inisialisasi Ulang & Pembuatan Arena Permainan Baru
-            startActualGameLayout: function() {
+            startActualGameLayout: function () {
                 const boardElement = document.getElementById('g6-board');
                 const winMessage = document.getElementById('g6-win-message');
                 const timerBox = document.getElementById('g6-timer-box');
@@ -4421,12 +4475,12 @@
                 winMessage.style.display = 'none';
                 this.wrongAttempts = 0;
                 this.totalPlaySeconds = 0;
-                this.earnedStars = 0; 
+                this.earnedStars = 0;
                 this.isMemorizePhase = true;
                 this.isWaitingFeedback = false;
                 timerBox.className = '';
                 feedbackText.innerText = '';
-                
+
                 // Inisialisasi awal nilai counter bintang pada HUD Bar
                 document.getElementById('g6-hud-stars-count').innerText = this.earnedStars;
 
@@ -4442,9 +4496,9 @@
                 // Render Elemen Kotak Grid
                 this.activeAnimals.forEach((animal) => {
                     const pawn = document.createElement('div');
-                    pawn.classList.add('g6-pawn'); 
+                    pawn.classList.add('g6-pawn');
                     pawn.dataset.animal = animal;
-                    pawn.innerHTML = animal; 
+                    pawn.innerHTML = animal;
                     pawn.addEventListener('click', (e) => this.handlePawnClick(e));
                     boardElement.appendChild(pawn);
                 });
@@ -4453,7 +4507,7 @@
             },
 
             // Pengendali Hitung Mundur 30 Detik Fase Mengingat
-            startMemorizeTimer: function(seconds) {
+            startMemorizeTimer: function (seconds) {
                 const timerBox = document.getElementById('g6-timer-box');
                 let timeLeft = seconds;
                 timerBox.innerText = `${timeLeft}s`;
@@ -4474,7 +4528,7 @@
             },
 
             // Transisi Menutup Kotak & Memulai Fase Tebakan
-            endMemorizePhase: function() {
+            endMemorizePhase: function () {
                 this.isMemorizePhase = false;
                 const timerBox = document.getElementById('g6-timer-box');
                 const gameStateText = document.getElementById('g6-game-state-text');
@@ -4482,7 +4536,7 @@
 
                 timerBox.className = '';
                 timerBox.innerText = `00:00`;
-                
+
                 gameStateText.innerText = "Fase Menebak 🎮";
                 targetLabelElement.innerText = "Cari Hewan Ini:";
 
@@ -4506,7 +4560,7 @@
             },
 
             // Mengambil Instruksi Target Hewan Berikutnya Berkelanjutan
-            pickNewTarget: function() {
+            pickNewTarget: function () {
                 if (this.targetPool.length === 0) {
                     this.endGame();
                     return;
@@ -4517,7 +4571,7 @@
             },
 
             // Logika Evaluasi Ketukan Kotak (Kondisional If-Else)
-            handlePawnClick: function(e) {
+            handlePawnClick: function (e) {
                 if (this.isMemorizePhase || this.isWaitingFeedback) return;
 
                 const clickedPawn = e.currentTarget;
@@ -4525,13 +4579,13 @@
 
                 const animal = clickedPawn.dataset.animal;
                 const feedbackText = document.getElementById('g6-feedback-text');
-                
-                clickedPawn.innerHTML = animal; 
+
+                clickedPawn.innerHTML = animal;
                 clickedPawn.classList.remove('covered');
 
                 if (animal === this.currentTarget) {
                     // TEBAKAN BENAR
-                    this.isWaitingFeedback = true; 
+                    this.isWaitingFeedback = true;
                     clickedPawn.classList.add('matched');
                     feedbackText.innerText = "Hore kamu betul! 🎉";
                     feedbackText.style.color = "#10b981";
@@ -4542,17 +4596,17 @@
                     this.earnedStars++;
                     document.getElementById('g6-hud-stars-count').innerText = this.earnedStars;
 
-                    this.targetPool.shift(); 
+                    this.targetPool.shift();
 
                     setTimeout(() => {
                         feedbackText.innerText = "";
-                        MemoryChessGame.isWaitingFeedback = false; 
+                        MemoryChessGame.isWaitingFeedback = false;
                         MemoryChessGame.pickNewTarget();
                     }, 1200);
 
                 } else {
                     // TEBAKAN SALAH
-                    this.isWaitingFeedback = true; 
+                    this.isWaitingFeedback = true;
                     feedbackText.innerText = "Coba cari lagi! 🌟";
                     feedbackText.style.color = "#f97316";
                     this.wrongAttempts++;
@@ -4563,15 +4617,15 @@
                         clickedPawn.classList.add('covered');
                         clickedPawn.innerHTML = '●';
                         feedbackText.innerText = "";
-                        MemoryChessGame.isWaitingFeedback = false; 
-                    }, 1500); 
+                        MemoryChessGame.isWaitingFeedback = false;
+                    }, 1500);
                 }
             },
 
             // Penyelesaian Permainan Akhir & Pemicu Pop-up Skor Menang
-            endGame: function() {
+            endGame: function () {
                 clearInterval(this.gameplayInterval);
-                
+
                 const winMessage = document.getElementById('g6-win-message');
                 const durationResult = document.getElementById('g6-duration-result');
                 const wrongResult = document.getElementById('g6-wrong-result');
@@ -4583,16 +4637,16 @@
 
                 durationResult.innerText = `Waktu Penyelesaian: ${timeString}`;
                 wrongResult.innerText = `Salah Tebak: ${this.wrongAttempts} Kali`;
-                finalStars.innerText = this.earnedStars; 
+                finalStars.innerText = this.earnedStars;
 
                 winMessage.style.display = 'block';
             },
 
             // Mengembalikan View Port Ke Layar Pemilihan Karakter Awal
-            resetToCharacterSelection: function() {
+            resetToCharacterSelection: function () {
                 document.getElementById('g6-page-play').classList.remove('active');
                 document.getElementById('g6-page-character').classList.add('active');
-                
+
                 const confirmBtn = document.getElementById('btn-confirm-g6');
                 confirmBtn.classList.add('g6-btn-disabled');
                 confirmBtn.setAttribute('disabled', 'true');
@@ -4600,7 +4654,7 @@
             },
 
             // Pembersih Sisa Aliran Waktu Interval Internal
-            clearTimers: function() {
+            clearTimers: function () {
                 clearInterval(this.memorizeTimer);
                 clearInterval(this.gameplayInterval);
             }
