@@ -1707,13 +1707,14 @@
             margin: 0;
             padding: 0;
         }
-        
+
         .g5-wrapper .btn-header-back {
             padding: 8px 16px !important;
             font-size: 14px !important;
             height: auto !important;
             border-radius: 15px !important;
         }
+
         /* Spanduk Card Utama Halaman Seleksi & Tamat */
         .g5-screen-card {
             background: #ffffff;
@@ -2056,7 +2057,7 @@
             box-shadow: 0 5px 0 #cfd8dc;
         }
 
-        /* Tombol Aksi Kendali Utama (Meniru Persis image_058ac9.jpg) */
+        /* Tombol Aksi Kendali Utama  */
         .g5-action-container {
             display: flex;
             justify-content: center;
@@ -2208,9 +2209,317 @@
             margin-top: 5px;
         }
 
+        /* ============================================================
+           BAGIAN 9: STYLING GAME 6 — Mencari Hewan Tersembunyi 🔍
+           ============================================================ */
+        #gameMemoryChess {
+            --primary: #4caf50;
+            --primary-dark: #388e3c;
+            --primary-light: #e8f5e9;
+            --warning: #ff9800;
+            --warning-light: #fff3e0;
+            --success: #10b981;
+            --danger: #dc2626;
+        }
+
+        .g6-wrapper {
+            background: transparent;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+            position: relative;
+        }
+
+        .g6-wrapper * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            margin: 0;
+            padding: 0;
+        }
+
+        .g6-wrapper .btn-header-back {
+            padding: 10px 24px !important;
+            font-size: 15px !important;
+            height: auto !important;
+            border-radius: 25px !important;
+            font-family: 'Fredoka', 'Comic Sans MS', 'Chalkboard SE', sans-serif !important;
+            background: linear-gradient(to bottom, #ff6b6b, #ee5253) !important;
+            box-shadow: 0 4px 0 #cf3a46 !important;
+            white-space: nowrap !important;
+            display: inline-block !important;
+        }
+
+        .g6-page-card-container {
+            display: none;
+            width: 92%;
+            height: 94vh;
+            max-width: 460px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 18px 16px;
+            border-radius: 32px;
+            box-shadow: 0 15px 0 rgba(76, 175, 80, 0.15), 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+        }
+
+        .g6-page-card-container.active {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .g6-header-layout-init {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            padding-bottom: 10px;
+            border-bottom: 3px dashed #c8e6c9;
+            margin-bottom: 12px;
+        }
+
+        /* STRUKTUR HEADER BAR PERSIS SEPERTI DI GAMBAR */
+        .g6-game-header-bar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #edf2f7;
+            padding: 8px 14px;
+            border-radius: 20px;
+            border: 2px solid #cbd5e1;
+            margin-bottom: 10px;
+        }
+
+        .g6-hud-profile {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: bold;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+
+        /* Tombol Keluar Lonjong di Tengah */
+        .btn-header-back-g6-center {
+            padding: 8px 22px;
+            background: linear-gradient(to bottom, #ff6b6b, #ee5253);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 4px 0 #cf3a46;
+            font-family: inherit;
+            transition: transform 0.1s;
+        }
+
+        .btn-header-back-g6-center:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 #cf3a46;
+        }
+
+        /* Pill Nilai Bintang di Kanan */
+        .g6-hud-stars-pill {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #b45309;
+            background: #fef3c7;
+            padding: 5px 14px;
+            border-radius: 15px;
+            border: 1px solid #fde68a;
+        }
+
+        /* Grid & Card Karakter */
+        .g6-char-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 15px 0;
+            width: 100%;
+            justify-items: center;
+        }
+
+        .g6-card-char {
+            background: linear-gradient(to bottom, #ffffff, #f3f4f6);
+            border: 4px solid #cbd5e1;
+            border-bottom: 8px solid #94a3b8;
+            border-radius: 24px;
+            padding: 12px;
+            cursor: pointer;
+            width: 110px;
+            text-align: center;
+            transition: all 0.15s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .g6-card-char.selected {
+            border-color: #ff9f43;
+            border-bottom-color: #f39c12;
+            background-color: #fff9f2;
+            transform: scale(1.08) translateY(-2px);
+            box-shadow: 0 8px 16px rgba(230, 126, 34, 0.15);
+        }
+
+        .g6-btn-action-init {
+            font-size: 18px;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(to bottom, #ff9f43, #f39c12);
+            box-shadow: 0 6px 0 #d35400, 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.1s;
+            width: 90%;
+            font-family: inherit;
+            margin-bottom: 10px;
+        }
+
+        .g6-btn-action-init:active:not(:disabled) {
+            transform: translateY(5px);
+            box-shadow: 0 1px 0 #d35400;
+        }
+
+        .g6-btn-disabled {
+            background: linear-gradient(to bottom, #cbd5e1, #94a3b8) !important;
+            box-shadow: 0 6px 0 #64748b !important;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        /* Area Target & Papan */
+        #g6-target-container {
+            background: #f8fafc;
+            padding: 8px 15px;
+            border-radius: 22px;
+            border: 4px dashed var(--primary);
+            width: 100%;
+            max-width: 260px;
+            margin: 5px 0;
+        }
+
+        #g6-target-label {
+            font-size: 13px;
+            color: #64748b;
+            font-weight: bold;
+        }
+
+        #g6-target-emoji {
+            font-size: 55px;
+            line-height: 1.1;
+        }
+
+        #g6-feedback-text {
+            font-size: 16px;
+            font-weight: bold;
+            min-height: 22px;
+        }
+
+        #g6-board {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            width: 100%;
+            max-width: 420px;
+            padding: 4px;
+        }
+
+        .g6-pawn {
+            background-color: #ffffff;
+            border: 4px solid var(--warning);
+            aspect-ratio: 1;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            box-shadow: 0 4px 0 #cbd5e1;
+        }
+
+        .g6-pawn.covered {
+            background-color: #e2e8f0;
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 0 #94a3b8;
+        }
+
+        .g6-pawn:active:not(.disabled) {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 #cbd5e1;
+        }
+
+        .g6-pawn.matched {
+            background-color: #d1fae5;
+            border-color: var(--success);
+            box-shadow: 0 4px 0 #059669;
+            cursor: default;
+        }
+
+        #g6-win-message {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 25px;
+            border-radius: 28px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            z-index: 5000;
+            border: 5px solid var(--success);
+            width: 300px;
+        }
+
+        .g6-timer-urgent {
+            animation: g6-blink 0.5s infinite alternate;
+            color: #ffffff !important;
+            background-color: var(--danger) !important;
+            border-radius: 8px;
+            padding: 0 4px;
+        }
+
+        @keyframes g6-blink {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0.6;
+            }
+        }
+
+        @media (max-width: 400px) {
+            #g6-board {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 8px;
+            }
+
+            .g6-pawn {
+                font-size: 26px;
+            }
+        }
 
         /* ============================================================
-           BAGIAN 9: ANIMASI GLOBAL (dipakai semua game)
+           BAGIAN 10: ANIMASI GLOBAL (dipakai semua game)
            ============================================================ */
         @keyframes spin {
             100% {
@@ -2346,7 +2655,7 @@
 
 
         /* ============================================================
-           BAGIAN 10: RESPONSIVE — MEDIA QUERIES (DESKTOP & MOBILE COHESION)
+           BAGIAN 11: RESPONSIVE — MEDIA QUERIES (DESKTOP & MOBILE COHESION)
            ============================================================ */
         @media (max-width: 920px) and (orientation: landscape) {
             .g3-game-layout {
@@ -2774,6 +3083,11 @@
                 <p class="game-card-desc">Bantu hewan lucu mencari makanan!</p>
             </div>
 
+            <div class="game-menu-card" onclick="launchGame('gameMemoryChess')">
+                <span class="game-icon">🔍</span>
+                <div class="game-card-title">Mencari Hewan Tersembunyi</div>
+                <p class="game-card-desc">Ingat posisi dan temukan hewan tersembunyi!</p>
+            </div>
         </div>
     </div>
 
@@ -3025,7 +3339,8 @@
                         </div>
                         <div id="g3-preview-success-zone">
                             <h2 style="color: #15803d; font-size: 1.3rem; margin-bottom: 5px;">🎉 Hore, Sukses! 👏</h2>
-                            <p id="g3-success-message" style="font-size: 0.95rem; margin-bottom: 12px;">Hebat sekali!</p>
+                            <p id="g3-success-message" style="font-size: 0.95rem; margin-bottom: 12px;">Hebat sekali!
+                            </p>
                             <button class="g3-btn-action" onclick="backToThemeAfterPreviewG3()"
                                 style="background: #4caf50; box-shadow:0 5px 0 #1e7e34; padding: 10px 24px; font-size: 0.95rem; width:auto;">Lanjut
                                 Pilih Tema ➡️</button>
@@ -3114,7 +3429,8 @@
                     </div>
                 </div>
 
-                <p style="font-size: 14px; color: #94a3b8; margin: 0 0 5px 0; font-weight: bold;">Tarik Angka ke Kotak Putus-Putus:</p>
+                <p style="font-size: 14px; color: #94a3b8; margin: 0 0 5px 0; font-weight: bold;">Tarik Angka ke Kotak
+                    Putus-Putus:</p>
                 <div class="g4-numbers-bank">
                     <div class="g4-drag-card" data-val="1" draggable="true">1</div>
                     <div class="g4-drag-card" data-val="2" draggable="true">2</div>
@@ -3136,9 +3452,11 @@
                 <div style="font-size: 60px; margin: 20px 0;">👑🌟🌈</div>
                 <p style="font-size: 24px; font-weight: bold; color: #22c55e;">Kamu Dapat <span
                         id="g4-win-stars"></span> Bintang!</p>
-                <button class="g4-btn-action" onclick="resetGameG4()" style="margin-top: 20px;">Main Lagi (Soal Baru!) 🔄</button>
+                <button class="g4-btn-action" onclick="resetGameG4()" style="margin-top: 20px;">Main Lagi (Soal Baru!)
+                    🔄</button>
                 <button class="g4-btn-action" onclick="showMainMenuHub()"
-                    style="background: linear-gradient(to bottom, #ff6b6b, #ee5253); box-shadow: 0 6px 0 #cf3a46;">Menu Utama 🏠</button>
+                    style="background: linear-gradient(to bottom, #ff6b6b, #ee5253); box-shadow: 0 6px 0 #cf3a46;">Menu
+                    Utama 🏠</button>
             </div>
         </div>
     </div>
@@ -3207,7 +3525,6 @@
                     <div class="g5-cell" id="g5-cell-1-3"></div>
                     <div class="g5-cell" id="g5-cell-2-3"></div>
                     <div class="g5-cell" id="g5-cell-3-3"></div>
-
                     <div id="g5-game-animal" onclick="giggleAnimalG5()"></div>
                     <div id="g5-game-food"></div>
                 </div>
@@ -3247,7 +3564,8 @@
                 <div id="g5-fail-modal" class="g5-modal">
                     <h2 id="g5-fail-title" style="color: #e57373;">OH NOO! 🥹</h2>
                     <div class="g5-modal-graphic-emoji" id="g5-fail-modal-graphic"></div>
-                    <p style="font-size: 18px; color: #333;" id="g5-fail-text">Makanannya belum ketemu. Yuk kita atur ulang panahnya!</p>
+                    <p style="font-size: 18px; color: #333;" id="g5-fail-text">Makanannya belum ketemu. Yuk kita atur
+                        ulang panahnya!</p>
                     <button class="g5-btn-menu-action"
                         style="background: #ff9800; box-shadow: 0 5px 0 #e65100; width:100%;"
                         onclick="closeFailModalG5()">COBA LAGI 💪</button>
@@ -3257,7 +3575,8 @@
             <div id="g5-page-end" class="g5-page">
                 <div class="g5-screen-card" style="max-width: 440px;">
                     <h1 class="g5-menu-title" style="color: #ff5722; margin-top:10px;">🏆 PAPAN JUARA! 🏆</h1>
-                    <p style="font-size: 16px; color: #333; margin-bottom: 10px; font-weight:bold;">Luar Biasa! Jagoanmu sudah kenyang dan memakai mahkota juara! 👑</p>
+                    <p style="font-size: 16px; color: #333; margin-bottom: 10px; font-weight:bold;">Luar Biasa! Jagoanmu
+                        sudah kenyang dan memakai mahkota juara! 👑</p>
 
                     <div class="g5-sticker-album">
                         <div class="g5-sticker">
@@ -3265,13 +3584,102 @@
                             <div id="g5-winner-sticker-slot"></div>
                         </div>
                     </div>
-                    <div class="g5-sticker-label" id="g5-winner-label-slot" style="margin-bottom: 25px;">Pemenang Game</div>
+                    <div class="g5-sticker-label" id="g5-winner-label-slot" style="margin-bottom: 25px;">Pemenang Game
+                    </div>
 
                     <button class="g5-btn-menu-action" onclick="restartGameG5()">Main Lagi Dari Awal 🔄</button>
                     <button class="g5-btn-menu-action"
                         style="background: linear-gradient(to bottom, #ff6b6b, #ee5253); box-shadow: 0 6px 0 #a51b24;"
                         onclick="showMainMenuHub()">Kembali ke Menu Utama 🏠</button>
                 </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- GAME 6: PETAK UMPET HEWAN 🐾 -->
+    <div id="gameMemoryChess" class="game-hub-screen">
+        <div class="g6-wrapper">
+
+            <!-- TAMPILAN 1: PILIH KARAKTER -->
+            <div id="g6-page-character" class="g6-page-card-container active">
+                <div class="g6-header-layout-init">
+                    <button class="btn-header-back" onclick="showMainMenuHub()">🏠 Keluar</button>
+                </div>
+                <h2
+                    style="color: #4caf50; font-family: inherit; font-size: 26px; font-weight: bold; margin-bottom: 15px;">
+                    Siapa Kamu? 🤔</h2>
+
+                <div class="g6-char-grid">
+                    <div class="g6-card-char" onclick="selectCharacterG6('Malik', '👦', this)">
+                        <span style="font-size: 50px;">👦</span>
+                        <strong style="margin-top: 10px; color: #1e293b; font-size: 16px;">Malik</strong>
+                    </div>
+                    <div class="g6-card-char" onclick="selectCharacterG6('Malika', '👧', this)">
+                        <span style="font-size: 50px;">👧</span>
+                        <strong style="margin-top: 10px; color: #1e293b; font-size: 16px;">Malika</strong>
+                    </div>
+                    <div class="g6-card-char" onclick="selectCharacterG6('Leo Kid', '🦁', this)">
+                        <span style="font-size: 50px;">🦁</span>
+                        <strong style="margin-top: 10px; color: #1e293b; font-size: 16px;">Leo Kid</strong>
+                    </div>
+                    <div class="g6-card-char" onclick="selectCharacterG6('Foxie', '🦊', this)">
+                        <span style="font-size: 50px;">🦊</span>
+                        <strong style="margin-top: 10px; color: #1e293b; font-size: 16px;">Foxie</strong>
+                    </div>
+                </div>
+
+                <button class="g6-btn-action-init g6-btn-disabled" id="btn-confirm-g6" onclick="confirmCharacterG6()"
+                    disabled>Mulai Main Baru 🎮</button>
+            </div>
+
+            <!-- TAMPILAN 2: IN-GAME -->
+            <div id="g6-page-play" class="g6-page-card-container">
+
+                <!-- HEADER BAR -->
+                <div class="g6-game-header-bar">
+                    <div class="g6-hud-profile">
+                        <span id="g6-hud-avatar-icon">👧</span>
+                        <span id="g6-hud-avatar-name">Malika</span>
+                    </div>
+
+                    <button class="btn-header-back-g6-center" onclick="showMainMenuHub()">🏠 Keluar</button>
+
+                    <div class="g6-hud-stars-pill">
+                        <span>⭐</span>
+                        <span id="g6-hud-stars-count">0</span>
+                    </div>
+                </div>
+
+                <!-- Tambahan timer info kecil diletakkan di bawah bar agar tidak tumpang tindih -->
+                <div
+                    style="display: flex; justify-content: space-between; width: 100%; padding: 0 10px; font-weight: bold;">
+                    <span id="g6-game-state-text" style="color: #64748b; font-size: 14px;">Fase Mengingat 🐾</span>
+                    <span id="g6-timer-box" style="color: #e11d48; font-size: 14px;">30s</span>
+                </div>
+
+                <!-- Target Instruksi -->
+                <div id="g6-target-container">
+                    <div id="g6-target-label">Ingat Posisi Hewan!</div>
+                    <div id="g6-target-emoji">👀</div>
+                    <div id="g6-feedback-text"></div>
+                </div>
+
+                <!-- Papan Grid 20 Kotak -->
+                <div id="g6-board"></div>
+            </div>
+
+            <!-- MODAL SKOR AKHIR INTERNAL -->
+            <div id="g6-win-message">
+                <h2 style="color: #10b981; margin: 0; font-size: 26px;">🎉 HEBAT SEKALI! 🎉</h2>
+                <p id="g6-duration-result" style="font-weight: bold; color: #4b5563; margin: 10px 0;"></p>
+                <p id="g6-wrong-result" style="color: #6b7280; font-size: 14px; margin: 5px 0;"></p>
+                <div style="font-size: 50px; margin: 15px 0;">👑🏆🌟</div>
+                <p style="font-size: 22px; font-weight: bold; color: #22c55e;">Kamu Dapat <span
+                        id="g6-final-stars">0</span> Bintang!</p>
+                <button class="g6-btn-action-init"
+                    style="background: linear-gradient(to bottom, #ff9f43, #f39c12); box-shadow: 0 6px 0 #d35400; width: 100%; margin-top: 15px;"
+                    onclick="resetAllGameG6()">Main Lagi 🔄</button>
             </div>
 
         </div>
@@ -3318,7 +3726,7 @@
                 osc.connect(gain);
                 gain.connect(this.audioCtx.destination);
                 const now = this.audioCtx.currentTime;
-                
+
                 osc.type = 'sine';
                 osc.frequency.setValueAtTime(420, now);
                 gain.gain.setValueAtTime(0.2, now);
@@ -3877,14 +4285,335 @@
             restartGame() { this.state.currentLevel = 0; this.changePage('start'); }
         };
 
+        /* ============================================================
+       MEMORY CHESS : MODUL GAME 6 — Mencari Hewan Tersembunyi 🔍
+       ============================================================ */
+  /* ============================================================
+           BAGIAN 12: LOGIKA GAME 6 — PETAK UMPET HEWAN 🐾
+           ============================================================ */
+        const MemoryChessGame = {
+            BASE_ANIMALS: ['🐯', '🐻', '🐼', '🐨', '🦊', '🐰', '🐵', '🐸', '🐷', '🦁', '🐮', '🐭', '🐱', '🐶', '🐹', '🐥', '🐧', '🦉', '🐙', '🐢'],
+            activeAnimals: [],
+            targetPool: [],
+            currentTarget: '',
+            isMemorizePhase: true,
+            isWaitingFeedback: false,
+            memorizeTimer: null,
+            gameplayInterval: null,
+            startTime: 0,
+            totalPlaySeconds: 0,
+            wrongAttempts: 0,
+            
+            // State Skor & Profil Karakter Pilihan
+            earnedStars: 0,
+            selectedCharName: '',
+            selectedCharIcon: '',
+
+            // Fungsi Pembantu Pengacak Elemen Array
+            shuffleArray: function(array) {
+                let shuffled = [...array];
+                for (let i = shuffled.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+                }
+                return shuffled;
+            },
+
+            // Integrasi Efek Suara Sinkron dengan AudioContext AppCore
+            playMcSound: function(type) {
+                if (typeof AppCore !== 'undefined' && AppCore.initAudio) {
+                    AppCore.initAudio();
+                }
+                
+                const ctx = (typeof AppCore !== 'undefined') ? AppCore.audioCtx : null;
+                if (!ctx) return;
+
+                const osc = ctx.createOscillator();
+                const gainNode = ctx.createGain();
+                osc.connect(gainNode);
+                gainNode.connect(ctx.destination);
+                const now = ctx.currentTime;
+
+                if (type === 'correct') {
+                    // Nada Ceria Naik Beruntun (Akor C-Major)
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, now);       
+                    osc.frequency.setValueAtTime(659.25, now + 0.08); 
+                    osc.frequency.setValueAtTime(783.99, now + 0.16); 
+                    gainNode.gain.setValueAtTime(0.25, now);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                    osc.start(now);
+                    osc.stop(now + 0.3);
+                } else if (type === 'wrong') {
+                    // Nada Gagal Meliuk Turun
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, now);           
+                    osc.frequency.linearRampToValueAtTime(140, now + 0.2); 
+                    gainNode.gain.setValueAtTime(0.12, now);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.22);
+                    osc.start(now);
+                    osc.stop(now + 0.22);
+                }
+            },
+
+            // Pilihan Karakter di Layar Pertama Game 6
+            selectCharacter: function(name, icon, element) {
+                AppCore.playUniversalClick();
+                this.selectedCharName = name;
+                this.selectedCharIcon = icon;
+
+                // Reset penanda kartu karakter lain dan pilih yang baru
+                document.querySelectorAll('#gameMemoryChess .g6-card-char').forEach(card => card.classList.remove('selected'));
+                element.classList.add('selected');
+
+                // Buka kunci tombol konfirmasi masuk arena game
+                const confirmBtn = document.getElementById('btn-confirm-g6');
+                confirmBtn.classList.remove('g6-btn-disabled');
+                confirmBtn.removeAttribute('disabled');
+            },
+
+            // Konfirmasi Karakter dan Masuk Ke Arena Bermain
+            confirmCharacter: function() {
+                AppCore.playUniversalClick();
+                document.getElementById('g6-page-character').classList.remove('active');
+                document.getElementById('g6-page-play').classList.add('active');
+                
+                // Distribusikan aset profil terpilih ke HUD Bar
+                document.getElementById('g6-hud-avatar-icon').innerText = this.selectedCharIcon;
+                document.getElementById('g6-hud-avatar-name').innerText = this.selectedCharName;
+                
+                this.startActualGameLayout();
+            },
+
+            // Inisialisasi Ulang & Pembuatan Arena Permainan Baru
+            startActualGameLayout: function() {
+                const boardElement = document.getElementById('g6-board');
+                const winMessage = document.getElementById('g6-win-message');
+                const timerBox = document.getElementById('g6-timer-box');
+                const feedbackText = document.getElementById('g6-feedback-text');
+                const gameStateText = document.getElementById('g6-game-state-text');
+                const targetLabelElement = document.getElementById('g6-target-label');
+                const targetEmojiElement = document.getElementById('g6-target-emoji');
+
+                // Matikan paksa interval aktif sebelumnya (mencegah akumulasi timer/leak memory)
+                clearInterval(this.memorizeTimer);
+                clearInterval(this.gameplayInterval);
+
+                boardElement.innerHTML = '';
+                winMessage.style.display = 'none';
+                this.wrongAttempts = 0;
+                this.totalPlaySeconds = 0;
+                this.earnedStars = 0; 
+                this.isMemorizePhase = true;
+                this.isWaitingFeedback = false;
+                timerBox.className = '';
+                feedbackText.innerText = '';
+                
+                // Inisialisasi awal nilai counter bintang pada HUD Bar
+                document.getElementById('g6-hud-stars-count').innerText = this.earnedStars;
+
+                gameStateText.innerText = "Fase Mengingat 🐾";
+                targetLabelElement.innerText = "Ingat Posisi Hewan!";
+                targetEmojiElement.innerHTML = "👀";
+
+                // Memastikan data 20 hewan mutlak unik didapat lalu diacak posisinya
+                const uniqueAnimalsSet = new Set(this.BASE_ANIMALS);
+                this.activeAnimals = this.shuffleArray(Array.from(uniqueAnimalsSet)).slice(0, 20);
+                this.targetPool = [...this.activeAnimals];
+
+                // Render Elemen Kotak Grid
+                this.activeAnimals.forEach((animal) => {
+                    const pawn = document.createElement('div');
+                    pawn.classList.add('g6-pawn'); 
+                    pawn.dataset.animal = animal;
+                    pawn.innerHTML = animal; 
+                    pawn.addEventListener('click', (e) => this.handlePawnClick(e));
+                    boardElement.appendChild(pawn);
+                });
+
+                this.startMemorizeTimer(30);
+            },
+
+            // Pengendali Hitung Mundur 30 Detik Fase Mengingat
+            startMemorizeTimer: function(seconds) {
+                const timerBox = document.getElementById('g6-timer-box');
+                let timeLeft = seconds;
+                timerBox.innerText = `${timeLeft}s`;
+
+                this.memorizeTimer = setInterval(() => {
+                    timeLeft--;
+                    timerBox.innerText = `${timeLeft}s`;
+
+                    if (timeLeft <= 5 && timeLeft > 0) {
+                        timerBox.classList.add('g6-timer-urgent');
+                    }
+
+                    if (timeLeft <= 0) {
+                        clearInterval(MemoryChessGame.memorizeTimer);
+                        MemoryChessGame.endMemorizePhase();
+                    }
+                }, 1000);
+            },
+
+            // Transisi Menutup Kotak & Memulai Fase Tebakan
+            endMemorizePhase: function() {
+                this.isMemorizePhase = false;
+                const timerBox = document.getElementById('g6-timer-box');
+                const gameStateText = document.getElementById('g6-game-state-text');
+                const targetLabelElement = document.getElementById('g6-target-label');
+
+                timerBox.className = '';
+                timerBox.innerText = `00:00`;
+                
+                gameStateText.innerText = "Fase Menebak 🎮";
+                targetLabelElement.innerText = "Cari Hewan Ini:";
+
+                // Tutup seluruh kotak papan menjadi lambang lingkaran abu-abu
+                const pawns = document.querySelectorAll('.g6-pawn');
+                pawns.forEach(pawn => {
+                    pawn.classList.add('covered');
+                    pawn.innerHTML = '●';
+                });
+
+                // Mulai Hitung Stopwatch Penyelesaian Game
+                this.startTime = Date.now();
+                this.gameplayInterval = setInterval(() => {
+                    MemoryChessGame.totalPlaySeconds = Math.floor((Date.now() - MemoryChessGame.startTime) / 1000);
+                    let mins = Math.floor(MemoryChessGame.totalPlaySeconds / 60).toString().padStart(2, '0');
+                    let secs = (MemoryChessGame.totalPlaySeconds % 60).toString().padStart(2, '0');
+                    timerBox.innerText = `${mins}:${secs}`;
+                }, 1000);
+
+                this.pickNewTarget();
+            },
+
+            // Mengambil Instruksi Target Hewan Berikutnya Berkelanjutan
+            pickNewTarget: function() {
+                if (this.targetPool.length === 0) {
+                    this.endGame();
+                    return;
+                }
+                this.targetPool = this.shuffleArray(this.targetPool);
+                this.currentTarget = this.targetPool[0];
+                document.getElementById('g6-target-emoji').innerHTML = this.currentTarget;
+            },
+
+            // Logika Evaluasi Ketukan Kotak (Kondisional If-Else)
+            handlePawnClick: function(e) {
+                if (this.isMemorizePhase || this.isWaitingFeedback) return;
+
+                const clickedPawn = e.currentTarget;
+                if (clickedPawn.classList.contains('matched') || !clickedPawn.classList.contains('covered')) return;
+
+                const animal = clickedPawn.dataset.animal;
+                const feedbackText = document.getElementById('g6-feedback-text');
+                
+                clickedPawn.innerHTML = animal; 
+                clickedPawn.classList.remove('covered');
+
+                if (animal === this.currentTarget) {
+                    // TEBAKAN BENAR
+                    this.isWaitingFeedback = true; 
+                    clickedPawn.classList.add('matched');
+                    feedbackText.innerText = "Hore kamu betul! 🎉";
+                    feedbackText.style.color = "#10b981";
+
+                    this.playMcSound('correct');
+
+                    // Tambah +1 bintang live progress langsung pada HUD Pill kanan atas
+                    this.earnedStars++;
+                    document.getElementById('g6-hud-stars-count').innerText = this.earnedStars;
+
+                    this.targetPool.shift(); 
+
+                    setTimeout(() => {
+                        feedbackText.innerText = "";
+                        MemoryChessGame.isWaitingFeedback = false; 
+                        MemoryChessGame.pickNewTarget();
+                    }, 1200);
+
+                } else {
+                    // TEBAKAN SALAH
+                    this.isWaitingFeedback = true; 
+                    feedbackText.innerText = "Coba cari lagi! 🌟";
+                    feedbackText.style.color = "#f97316";
+                    this.wrongAttempts++;
+
+                    this.playMcSound('wrong');
+
+                    setTimeout(() => {
+                        clickedPawn.classList.add('covered');
+                        clickedPawn.innerHTML = '●';
+                        feedbackText.innerText = "";
+                        MemoryChessGame.isWaitingFeedback = false; 
+                    }, 1500); 
+                }
+            },
+
+            // Penyelesaian Permainan Akhir & Pemicu Pop-up Skor Menang
+            endGame: function() {
+                clearInterval(this.gameplayInterval);
+                
+                const winMessage = document.getElementById('g6-win-message');
+                const durationResult = document.getElementById('g6-duration-result');
+                const wrongResult = document.getElementById('g6-wrong-result');
+                const finalStars = document.getElementById('g6-final-stars');
+
+                let finalMins = Math.floor(this.totalPlaySeconds / 60);
+                let finalSecs = this.totalPlaySeconds % 60;
+                let timeString = finalMins > 0 ? `${finalMins} Menit ${finalSecs} Detik` : `${finalSecs} Detik`;
+
+                durationResult.innerText = `Waktu Penyelesaian: ${timeString}`;
+                wrongResult.innerText = `Salah Tebak: ${this.wrongAttempts} Kali`;
+                finalStars.innerText = this.earnedStars; 
+
+                winMessage.style.display = 'block';
+            },
+
+            // Mengembalikan View Port Ke Layar Pemilihan Karakter Awal
+            resetToCharacterSelection: function() {
+                document.getElementById('g6-page-play').classList.remove('active');
+                document.getElementById('g6-page-character').classList.add('active');
+                
+                const confirmBtn = document.getElementById('btn-confirm-g6');
+                confirmBtn.classList.add('g6-btn-disabled');
+                confirmBtn.setAttribute('disabled', 'true');
+                document.querySelectorAll('#gameMemoryChess .g6-card-char').forEach(card => card.classList.remove('selected'));
+            },
+
+            // Pembersih Sisa Aliran Waktu Interval Internal
+            clearTimers: function() {
+                clearInterval(this.memorizeTimer);
+                clearInterval(this.gameplayInterval);
+            }
+        };
+
         /* -----------------------------------------------------------
             7. GLOBAL ADAPTER BRIDGES
-            ----------------------------------------------------------- */
+        ----------------------------------------------------------- */
         document.addEventListener('DOMContentLoaded', () => { AppCore.init(); ColorGame.init(); });
 
-        function launchGame(gameId) { AppCore.playUniversalClick(); AppCore.switchScreen(gameId); if (gameId === 'gamePetugasKereta') TrainGame.restartGame(); else if (gameId === 'gamePasangkanGambar') MatchingGame.restartGame(); else if (gameId === 'gamePuzzleAdventure') PuzzleGame.resetAllGameG3(); else if (gameId === 'gamePolaWarna') ColorGame.resetGame(); else if (gameId === 'gameJalanMakan') EatPathGame.restartGame(); }
-        function showMainMenuHub() { if (typeof MatchingGame !== 'undefined') MatchingGame.stopHintTimer(); if (PuzzleGame && PuzzleGame.state.intervalG3) clearInterval(PuzzleGame.state.intervalG3); if (EatPathGame && EatPathGame.state.isExecuting) return; AppCore.playUniversalClick(); AppCore.switchScreen('mainMenuHub'); }
+        function launchGame(gameId) {
+            AppCore.playUniversalClick();
+            AppCore.switchScreen(gameId);
+            if (gameId === 'gamePetugasKereta') TrainGame.restartGame();
+            else if (gameId === 'gamePasangkanGambar') MatchingGame.restartGame();
+            else if (gameId === 'gamePuzzleAdventure') PuzzleGame.resetAllGameG3();
+            else if (gameId === 'gamePolaWarna') ColorGame.resetGame();
+            else if (gameId === 'gameJalanMakan') EatPathGame.restartGame();
+            else if (gameId === 'gameMemoryChess') MemoryChessGame.resetToCharacterSelection(); // Balikkan ke pilih karakter dulu
+        }
 
+        function showMainMenuHub() {
+            if (typeof MatchingGame !== 'undefined') MatchingGame.stopHintTimer();
+            if (PuzzleGame && PuzzleGame.state.intervalG3) clearInterval(PuzzleGame.state.intervalG3);
+            if (EatPathGame && EatPathGame.state.isExecuting) return;
+
+            if (typeof MemoryChessGame !== 'undefined') MemoryChessGame.clearTimers();
+
+            AppCore.playUniversalClick();
+            AppCore.switchScreen('mainMenuHub');
+        }
         // Game 1 Bridges
         function selectCharacterG1(name, avatar) { TrainGame.selectCharacter(name, avatar); }
         function triggerChoice(animal) { TrainGame.triggerChoice(animal); }
@@ -3926,6 +4655,11 @@
         function closeFailModalG5() { EatPathGame.closeFailModal(); }
         function nextLevelG5() { EatPathGame.nextLevel(); }
         function restartGameG5() { EatPathGame.restartGame(); }
+
+        // Game 6 Bridges (Memory Chess Hewan)
+        function selectCharacterG6(name, icon, element) { MemoryChessGame.selectCharacter(name, icon, element); }
+        function confirmCharacterG6() { MemoryChessGame.confirmCharacter(); }
+        function resetAllGameG6() { AppCore.playUniversalClick(); MemoryChessGame.startActualGameLayout(); }
     </script>
 </body>
 
